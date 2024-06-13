@@ -31,3 +31,14 @@ Usuario *UsuarioController::find(std::string nickname)
     std::cout << "El usuario con nickname " << nickname << " no existe." << std::endl;
     return nullptr;
 }
+
+// Listar todos los usuarios
+std::vector<Usuario *> UsuarioController::listarUsuarios()
+{
+    std::vector<Usuario *> listaUsuarios;
+    for (const auto &pair : users)
+    {
+        listaUsuarios.push_back(pair.second);
+    }
+    return listaUsuarios;
+}

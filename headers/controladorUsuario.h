@@ -3,6 +3,7 @@
 #include "Usuario.h"
 #include <map>
 #include <string>
+#include <vector>
 
 class UsuarioController
 {
@@ -18,4 +19,6 @@ public:
 
     // Encontrar un usuario por su nickname
     Usuario *find(std::string nickname);
+
+    std::vector<Usuario *> listarUsuarios();
 };
