@@ -7,7 +7,7 @@
 class ProductoController
 {
 private:
-    std::map<std::string, Producto *> productos;
+    std::map<int, Producto *> productos;
 
 public:
     // Agregar un Producto
