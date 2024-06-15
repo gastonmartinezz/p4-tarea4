@@ -1,36 +1,36 @@
-#include "Comentario.h"
 
-DTFecha crearFechas(int dia, int mes, int anio)
-{
-    DTFecha fecha;
-    fecha.dia = dia;
-    fecha.mes = mes;
-    fecha.año = anio;
 
-    return fecha;
-}
+#include "../include/Comentario.h"
+#include <string>
+#include "DTFecha.h"
+
 // Constructor
-Comentario::Comentario(const std::string &texto, const DTFecha &fecha)
+Comentario::Comentario(std::string &texto, DTFecha &fecha)
     : Texto(texto), Fecha_de_realizado(fecha) {}
 
 // Getters
-std::string Comentario::getTexto() const
+std::string Comentario::getTexto()
 {
     return Texto;
 }
 
-std::string Comentario::getFechaDeRealizado() const
+DTFecha Comentario::getFechaDeRealizado()
 {
-    return Fecha_de_realizado.toString();
+    return Fecha_de_realizado;
 }
 
 // Setters
-void Comentario::setTexto(const std::string &texto)
+void Comentario::setID(int id)
 {
-    Texto = texto;
+    this->id = id;
 }
 
-void Comentario::setFechaDeRealizado(const DTFecha &fecha)
+void Comentario::setTexto(std::string &texto)
 {
-    Fecha_de_realizado = fecha;
+    this->Texto = texto;
+}
+
+void Comentario::setFechaDeRealizado(DTFecha &fecha)
+{
+    this->Fecha_de_realizado = fecha;
 }

@@ -1,10 +1,10 @@
-#include "include/producto.h"
+#include "../include/Producto.h"
 #include <iostream>
 #include <string>
 
 Producto::Producto(int id, int stock, float precio, std::string nombre,
-std::string descripcion, categoria) : id(id), stock(stock), precio(precio), 
-nombre(nombre), descripcion(descripcion), categoria(categoria) {};
+                   std::string descripcion, categoria) : id(id), stock(stock), precio(precio),
+                                                         nombre(nombre), descripcion(descripcion), categoria(categoria){};
 
 int Producto::getId() { return id; };
 int Producto::getStock() { return stock; };
