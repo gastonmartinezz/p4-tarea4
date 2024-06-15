@@ -19,7 +19,7 @@ bool compararFechas(DTFecha fecha1, DTFecha fecha2) {
         return true;
 
     } else if (fecha1.anio < fecha2.anio) {
-        return false;
+        return false;   
         
     } else {
         if (fecha1.mes > fecha2.mes) {
@@ -123,18 +123,18 @@ set<DTPromocion> seleccionarPromocion(string nombre) {
 
 string mostrarInfoProductos() {
     for (auto p: productosSistemas) {
-        cout << "Id: " << p->id
-        cout << "Nombre: " << p->nombre
+        cout << "Id: " << p->id << endl;    
+        cout << "Nombre: " << p->nombre << endl;
     }
 }
 
 void seleccionaYMostrarDataProductos(int id) {
     for (auto p: productosSistemas) {
         if (id == p->id) {
-            cout << "Precio: " << p->precio
-            cout << "Stock: " << p->stock
-            cout << "Descripcion: " << p->descripcion
-            cout << "Vendedor: " << p->vendedor->nickname
+            cout << "Precio: " << p->precio << endl;
+            cout << "Stock: " << p->stock << endl;
+            cout << "Descripcion: " << p->descripcion << endl;
+            cout << "Vendedor: " << p->vendedor->nickname << endl;
         }
     }
 }
