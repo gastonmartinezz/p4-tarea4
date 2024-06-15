@@ -13,6 +13,10 @@ std::set<std::string> Cliente::getNotificaciones() const {
     return notificaciones;
 }
 
+std::vector<Compra> Cliente::getCompras() const {
+    return compras;
+}
+
 void Cliente::setDireccion(const DTDireccion& direccion) {
     this->direccion = direccion;
 }
@@ -25,6 +29,10 @@ void Cliente::eliminarNotificacion(const std::string& notificacion) {
     notificaciones.erase(notificacion);
 }
 
+void Cliente::agregarCompra(const Compra& compra) {
+    compras.push_back(compra);
+}
+
 void Cliente::mostrarInformacion() const {
-    std::cout << "Cliente: " << nickname << "\n";
+    // Implementación de la función para mostrar la información del cliente
 }

@@ -13,6 +13,14 @@ std::set<Cliente> Vendedor::getSuscriptores() const {
     return suscriptores;
 }
 
+std::vector<Producto> Vendedor::getProductos() const {
+    return productos;
+}
+
+std::vector<Promocion> Vendedor::getPromociones() const {
+    return promociones;
+}
+
 void Vendedor::setCodigoRut(int codigoRut) {
     this->codigoRut = codigoRut;
 }
@@ -25,6 +33,14 @@ void Vendedor::eliminarSuscriptor(const Cliente& cliente) {
     suscriptores.erase(cliente);
 }
 
+void Vendedor::agregarProducto(const Producto& producto) {
+    productos.push_back(producto);
+}
+
+void Vendedor::agregarPromocion(const Promocion& promocion) {
+    promociones.push_back(promocion);
+}
+
 void Vendedor::mostrarInformacion() const {
-    std::cout << "Vendedor: " << nickname << "\n";
+    // Implementación de la función para mostrar la información del vendedor
 }
