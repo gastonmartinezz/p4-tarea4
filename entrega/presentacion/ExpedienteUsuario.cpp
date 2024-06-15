@@ -36,17 +36,18 @@ void expedienteUsuario() {
 
     Cliente* cliente = dynamic_cast<Cliente*>(usuarioSeleccionado);
     if (cliente) {
-        std::cout << "Direccion: " << cliente->getDireccion() << std::endl;
-        std::cout << "Ciudad: " << cliente->getCiudad() << std::endl;
+        std::cout << "Direccion: " << cliente->getDireccion().calle << ", "
+                  << cliente->getDireccion().ciudad << ", "
+                  << cliente->getDireccion().pais << std::endl;
 
         // Listar compras del cliente
-        std::vector<Compra> compras = cliente->getCompras(); // Suponemos que Cliente tiene un método getCompras
+        std::vector<Compra> compras = cliente->getCompras();
         std::cout << "Compras Realizadas:" << std::endl;
         for (const Compra& compra : compras) {
             std::cout << "Compra ID: " << compra.getId() << std::endl;
             std::cout << "Fecha: " << compra.getFecha().toString() << std::endl;
             std::cout << "Productos:" << std::endl;
-            for (const Producto& producto : compra.getProductos()) { // Suponemos que Compra tiene un método getProductos
+            for (const Producto& producto : compra.getProductos()) {
                 std::cout << "- " << producto.getNombre() << ", Precio: " << producto.getPrecio() << std::endl;
             }
         }
@@ -54,17 +55,17 @@ void expedienteUsuario() {
 
     Vendedor* vendedor = dynamic_cast<Vendedor*>(usuarioSeleccionado);
     if (vendedor) {
-        std::cout << "Codigo RUT: " << vendedor->getCodigoRUT() << std::endl;
+        std::cout << "Codigo RUT: " << vendedor->getCodigoRut() << std::endl;
 
         // Listar productos del vendedor
-        std::vector<Producto> productos = vendedor->getProductos(); // Suponemos que Vendedor tiene un método getProductos
+        std::vector<Producto> productos = vendedor->getProductos();
         std::cout << "Productos a la Venta:" << std::endl;
         for (const Producto& producto : productos) {
             std::cout << "- " << producto.getNombre() << ", Precio: " << producto.getPrecio() << std::endl;
         }
 
         // Listar promociones del vendedor
-        std::vector<Promocion> promociones = vendedor->getPromociones(); // Suponemos que Vendedor tiene un método getPromociones
+        std::vector<Promocion> promociones = vendedor->getPromociones();
         std::cout << "Promociones Vigentes:" << std::endl;
         for (const Promocion& promocion : promociones) {
             std::cout << "- " << promocion.getNombre() << ", Descuento: " << promocion.getDescuento() << std::endl;
