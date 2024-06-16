@@ -2,19 +2,22 @@
 #define DTUSUARIO
 
 #include <string>
+#include "DataTypes/DTFecha.h"
 
 using namespace std;
 
 class DTUsuario
 {
 protected:
-    string nombre;
-    string fechaNacimiento;
+    std::string nickname;
+    DTFecha fechaNacimiento;
+    std::string password;
 
 public:
-    DTUsuario(string, string);
+    DTUsuario(std::string nombre, DTFecha fechaNacimiento, std::string password = "");
     string getNombre();
-    string getFechaNacimiento();
+    DTFecha getFechaNacimiento();
+    std::string getPassword();
     ~DTUsuario();
 };
 

@@ -7,18 +7,20 @@
 
 using namespace std;
 
-class DTCliente {
+class DTCliente
+{
 private:
+    std::string nickname;
     string direccion;
     set<string> compras;
 
 public:
-    DTCliente(string direccion, set<string> compras);
+    DTCliente(std::string nickname, string direccion, set<string> compras);
     string getDireccion();
     set<string> getCompras();
     ~DTCliente();
 };
 
-ostream& operator<<(ostream& os, DTCliente dtCliente);
+ostream &operator<<(ostream &os, DTCliente dtCliente);
 
 #endif // DTCLIENTE_H

@@ -1,4 +1,5 @@
 #include "../include/Cliente.h"
+#include "../include/DTCliente.h"
 #include <iostream>
 
 Cliente::Cliente(const std::string &nickname, const std::string &password, const DTFecha &fechaDeNacimiento,
@@ -44,3 +45,8 @@ void Cliente::mostrarInformacion() const
 {
     // Implementación de la función para mostrar la información del cliente
 }
+
+DTCliente Cliente::toDataType()
+{
+    return DTCliente(getNickname(), getDireccion(), getCompras());
+};

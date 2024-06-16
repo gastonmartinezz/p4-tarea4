@@ -1,4 +1,5 @@
 #include "../include/Vendedor.h"
+#include "../include/DTVendedor.h"
 #include <iostream>
 
 Vendedor::Vendedor(const std::string &nickname, const std::string &password, const DTFecha &fechaDeNacimiento,
@@ -54,3 +55,8 @@ void Vendedor::mostrarInformacion() const
 {
     // Implementación de la función para mostrar la información del vendedor
 }
+
+DTVendedor Vendedor::toDataType() {
+
+    DTVendedor(getCodigoRut(), getProductos(), getPromociones())
+};

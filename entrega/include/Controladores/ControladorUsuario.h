@@ -44,8 +44,8 @@ public:
     void datosCliente(const std::string &direccion, const std::string &ciudad);
     void confirmarAltaUsuario();
     std::vector<DTUsuario> listarUsuarios();
-    std::vector<DTUsuario> listarClientes();
-    std::vector<DTUsuario> listaVendedor();
+    std::vector<DTCliente> listarClientes();
+    std::vector<DTVendedor> listaVendedor();
     void listarComentarios();
     void eliminarComentarioYRespuestas(int comentarioId);
     void obtenerVendedoresNoSuscriptos();
