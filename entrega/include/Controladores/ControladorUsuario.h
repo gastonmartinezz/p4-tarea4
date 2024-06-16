@@ -20,9 +20,9 @@ private:
     // Constructor privado para el patrón Singleton
     ControladorUsuario() = default;
     static ControladorUsuario *instancia;
-    std::map<std::string, Usuario *> Usuarios;
-    std::map<std::string, Cliente *> Clientes;
-    std::map<std::string, Vendedor *> Vendedores;
+    std::map<std::string, Usuario *> ListaUsuarios;
+    std::map<std::string, Cliente *> ListaClientes;
+    std::map<std::string, Vendedor *> ListaVendedores;
 
 public:
     // Métodos estáticos para obtener la instancia única
