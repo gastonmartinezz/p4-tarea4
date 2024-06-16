@@ -4,7 +4,6 @@
 
 #include "Interfaces/ICProductos.h"
 #include "Interfaces/ICUsuario.h"
-#include "Interfaces/IReloj.h" //DEFINIR
 
 class Fabrica{
     private:

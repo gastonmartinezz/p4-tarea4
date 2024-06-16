@@ -1,8 +1,7 @@
 
-
+#include "../include/DataTypes/DTFecha.h" 
 #include "../include/Comentario.h"
 #include <string>
-#include "DTFecha.h"
 
 // Constructor
 Comentario::Comentario(std::string &texto, DTFecha &fecha)

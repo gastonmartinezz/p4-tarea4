@@ -1,4 +1,5 @@
 #include "../include/Compras.h"
+#include "../include/DataTypes/DTFecha.h" 
 
 Compra::Compra(int id, const DTFecha& fecha, const std::vector<Producto>& productos)
     : id(id), fecha(fecha), productos(productos) {}

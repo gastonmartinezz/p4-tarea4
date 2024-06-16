@@ -1,6 +1,5 @@
 #ifndef PROMOCION_H
 #define PROMOCION_H
-#include <resto.cpp> //???
 #include <string>
 
 class Promocion {

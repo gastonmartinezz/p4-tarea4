@@ -3,7 +3,6 @@
 
 #include <vector>
 #include "Producto.h"
-#include "DTFecha.h"
 
 class Compra {
 private:

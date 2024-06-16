@@ -2,7 +2,7 @@
 #define CLIENTE_H
 
 #include "Usuario.h"
-#include "Compra.h"
+#include "Compras.h"
 #include <vector>
 #include <set>
 #include <string>

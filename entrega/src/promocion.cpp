@@ -1,5 +1,5 @@
-#include <promocion.h>
-
+#include "../include/Promocion.h"   
+#include "../include/DataTypes/DTFecha.h" 
 Promocion::~Promocion() {}
 
 float Promocion::getDescuento() {
