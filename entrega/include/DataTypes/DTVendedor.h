@@ -9,7 +9,8 @@
 
 using namespace std;
 
-class DTVendedor {
+class DTVendedor
+{
 private:
     string rut;
     set<DTProducto> productos;
@@ -23,6 +24,6 @@ public:
     ~DTVendedor();
 };
 
-ostream& operator<<(ostream& os, DTVendedor dtVendedor);
+ostream &operator<<(ostream &os, DTVendedor dtVendedor);
 
 #endif // DTVENDEDOR_H

@@ -33,4 +33,7 @@ void Usuario::setFechaDeNacimiento(const DTFecha &fechaDeNacimiento)
     this->fechaDeNacimiento = fechaDeNacimiento;
 }
 
-DTUsuario Usuario::toDataType();
+DTUsuario Usuario::toDataType()
+{
+    return DTUsuario(getNickname(), getFechaDeNacimiento());
+};

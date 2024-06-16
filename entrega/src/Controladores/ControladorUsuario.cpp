@@ -35,11 +35,35 @@ void ControladorUsuario::confirmarAltaUsuario()
 
 std::vector<DTUsuario> ControladorUsuario::listarUsuarios()
 {
+    vector<DTUsuario> aux;
+
+    for (auto it = ListaUsuarios.begin(); it != ListaUsuarios.end(); it++)
+    {
+        aux.push_back(it->second->toDataType());
+    }
+    return aux;
 }
 
-std::vector<DTUsuario> ControladorUsuario::listarClientes()
+std::vector<DTCliente> ControladorUsuario::listarClientes()
 {
-    // Implementación para listar clientes
+    vector<DTCliente> aux;
+
+    for (auto it = ListaClientes.begin(); it != ListaClientes.end(); it++)
+    {
+        aux.push_back(it->second->toDataType());
+    }
+    return aux;
+}
+
+std::vector<DTVendedor> ControladorUsuario::listaVendedor()
+{
+    vector<DTVendedor> aux;
+
+    for (auto it = ListaVendedores.begin(); it != ListaVendedores.end(); it++)
+    {
+        aux.push_back(it->second->toDataType());
+    }
+    return aux;
 }
 
 void ControladorUsuario::listarComentarios()
@@ -71,12 +95,6 @@ bool ControladorUsuario::validarPassword(const std::string &nickname, const std:
 void ControladorUsuario::listarComentariosUsuarioSeleccionado(const std::string &nickname)
 {
     // Implementación para listar comentarios de usuario seleccionado
-}
-
-std::set<DTUsuario> ControladorUsuario::listaVendedor()
-{
-    // Implementación para obtener lista de vendedores
-    return std::set<DTUsuario>(); // Valor de retorno por defecto, cambiar según implementación
 }
 
 void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId)

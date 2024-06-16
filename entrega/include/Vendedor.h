@@ -25,7 +25,7 @@ public:
     std::set<Cliente> getSuscriptores() const;
     std::vector<Producto> getProductos() const;    // Agregar este método para obtener los productos
     std::vector<Promocion> getPromociones() const; // Agregar este método para obtener las promociones
-
+    DTVendedor Vendedor::toDataType();
     void setCodigoRut(int codigoRut);
     void agregarSuscriptor(const Cliente &cliente);
     void eliminarSuscriptor(const Cliente &cliente);
