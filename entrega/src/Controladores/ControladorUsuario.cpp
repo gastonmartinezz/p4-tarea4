@@ -1,6 +1,7 @@
 #include "ControladorUsuario.h"
 #include <iostream>
-
+#include <stdexcept>
+#include "../include/Controladores/ControladorUsuario.h"
 // Inicialización de la instancia singleton
 ControladorUsuario *ControladorUsuario::instancia = nullptr;
 
@@ -13,24 +14,49 @@ ControladorUsuario *ControladorUsuario::getInstancia()
     return instancia;
 }
 
-void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento)
-{
-    // Implementación para ingresar datos de usuario
+
+void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento) {
+    if (ListaUsuarios.find(nickname) != ListaUsuarios.end()) {
+        throw std::invalid_argument("El nickname ya está en uso.");
+    }
+    if (password.length() < 6) {
+        throw std::invalid_argument("La contraseña debe tener al menos 6 caracteres.");
+    }
+
+    nicknameTemp = nickname;
+    passwordTemp = password;
+    fechaNacimientoTemp = fechaNacimiento;
 }
 
-void ControladorUsuario::datosVendedor(const std::string &codigoRUT)
-{
-    // Implementación para ingresar datos de vendedor
+void ControladorUsuario::datosVendedor(const std::string &codigoRUT) {
+    if (codigoRUT.length() != 12) {
+        throw std::invalid_argument("El código RUT debe tener 12 caracteres.");
+    }
+    codigoRUTTemp = codigoRUT;
+    esClienteTemp = false;
 }
 
-void ControladorUsuario::datosCliente(const std::string &direccion, const std::string &ciudad)
-{
-    // Implementación para ingresar datos de cliente
+void ControladorUsuario::datosCliente(const std::string &direccion, const std::string &ciudad) {
+    direccionTemp = direccion;
+    ciudadTemp = ciudad;
+    esClienteTemp = true;
 }
 
-void ControladorUsuario::confirmarAltaUsuario()
-{
-    // Implementación para confirmar alta de usuario
+
+void ControladorUsuario::confirmarAltaUsuario() {
+    if (ListaUsuarios.find(nicknameTemp) != ListaUsuarios.end()) {
+        throw std::invalid_argument("El nickname ya está en uso.");
+    }
+
+    Usuario* nuevoUsuario = nullptr;
+    if (esClienteTemp) {
+        nuevoUsuario = new Cliente(nicknameTemp, passwordTemp, fechaNacimientoTemp, direccionTemp, ciudadTemp);
+        ListaClientes[nicknameTemp] = dynamic_cast<Cliente*>(nuevoUsuario);
+    } else {
+        nuevoUsuario = new Vendedor(nicknameTemp, passwordTemp, fechaNacimientoTemp, std::stoi(codigoRUTTemp));
+        ListaVendedores[nicknameTemp] = dynamic_cast<Vendedor*>(nuevoUsuario);
+    }
+    ListaUsuarios[nicknameTemp] = nuevoUsuario;
 }
 
 std::vector<DTUsuario> ControladorUsuario::listarUsuarios()
@@ -62,10 +88,12 @@ void ControladorUsuario::agregarSuscripcion(const std::string &nickname)
     // Implementación para agregar suscripción
 }
 
-bool ControladorUsuario::validarPassword(const std::string &nickname, const std::string &password)
-{
-    // Implementación para validar contraseña
-    return false; // Valor de retorno por defecto, cambiar según implementación
+bool ControladorUsuario::validarPassword(const std::string &nickname, const std::string &password) {
+    auto it = ListaUsuarios.find(nickname);
+    if (it != ListaUsuarios.end() && it->second->getPassword() == password) {
+        return true;
+    }
+    return false;
 }
 
 void ControladorUsuario::listarComentariosUsuarioSeleccionado(const std::string &nickname)

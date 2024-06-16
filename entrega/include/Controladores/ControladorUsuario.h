@@ -20,14 +20,23 @@ private:
     // Constructor privado para el patrón Singleton
     ControladorUsuario() = default;
     static ControladorUsuario *instancia;
+
     std::map<std::string, Usuario *> ListaUsuarios;
     std::map<std::string, Cliente *> ListaClientes;
     std::map<std::string, Vendedor *> ListaVendedores;
 
+    // Miembros temporales para el registro de usuarios en AltaUsuario.cpp
+    std::string nicknameTemp;
+    std::string passwordTemp;
+    DTFecha fechaNacimientoTemp;
+    std::string direccionTemp;
+    std::string ciudadTemp;
+    std::string codigoRUTTemp;
+    bool esClienteTemp;
+
 public:
     // Métodos estáticos para obtener la instancia única
-    static ControladorUsuario *
-    getInstancia();
+    static ControladorUsuario *getInstancia();
 
     // Métodos del diagrama UML
     void ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento);
