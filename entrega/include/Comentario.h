@@ -1,13 +1,13 @@
 #include <string>
 #include <iostream>
 #include <ctime>
-#include "../include/DataTypes/DTFecha.h"  
+#include "DataTypes/DTFecha.h"  
 class Comentario
 {
 private:
     int id;
     std::string Texto;
-     Fecha_de_realizado;
+    DTFecha Fecha_de_realizado;
 
 public:
     // Constructor

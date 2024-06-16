@@ -3,12 +3,7 @@
 
 #include <string>
 #include <set>
-
-struct DTFecha {
-    int dia;
-    int mes;
-    int anio;
-};
+#include "DataTypes/DTFecha.h"
 
 class Usuario {
 protected:

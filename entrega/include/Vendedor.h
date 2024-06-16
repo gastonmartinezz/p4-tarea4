@@ -1,5 +1,3 @@
-#ifndef VENDEDOR_H
-#define VENDEDOR_H
 
 #include "Usuario.h"
 #include "Producto.h"

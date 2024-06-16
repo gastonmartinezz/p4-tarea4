@@ -1,45 +1,45 @@
-#include "../../include/DataTypes/DtFecha.h"
+#include "../../include/DataTypes/DTFecha.h"
 
-DtFecha::DtFecha() {
+DTFecha::DTFecha() {
     this->dia = 1;
     this->mes = 1;
     this->anio = 1700;
 }
 
-DtFecha:: DtFecha (int d,int m,int a){
+DTFecha:: DTFecha (int d,int m,int a){
     dia=d;
     mes=m;
     anio=a;
     
 }
 
-int DtFecha::getAnio(){
+int DTFecha::getAnio(){
     return anio;
 }
  DTFecha
-int DtFecha::getDia(){
+int DTFecha::getDia(){
     return dia;
 }
 
 
-int DtFecha::getMes(){
+int DTFecha::getMes(){
     return mes;
 }
 
-bool DtFecha::operator>(DtFecha f){
+bool DTFecha::operator>(DTFecha f){
     if(anio>f.anio) return true;
     if(anio==f.anio && mes>f.mes) return true;
     if(anio==f.anio && mes==f.mes && dia>f.dia) return true;
     return false;
 }
 
-DtFecha::~DtFecha(){}
+DTFecha::~DTFecha(){}
 
-ostream& operator<<(ostream& os, DtFecha fecha) {
+ostream& operator<<(ostream& os, DTFecha fecha) {
     os << fecha.getDia() << "/" << fecha.getMes() << "/" << fecha.getAnio();
     return os;
 }
 
-bool DtFecha::esNula(){
+bool DTFecha::esNula(){
     return anio==1700;
 }

@@ -4,23 +4,23 @@
 #include <iostream>
 using namespace std;
 
-class DtFecha{
+class DTFecha{
     private:
         int dia;
         int mes;
         int anio;
     public:
-        DtFecha();
-        DtFecha(int,int,int);
+        DTFecha();
+        DTFecha(int,int,int);
         int getDia();
         int getMes();	
         int getAnio();
        
-        bool operator>(DtFecha);
+        bool operator>(DTFecha);
         bool esNula();
-        ~DtFecha();
+        ~DTFecha();
 };
 
-ostream& operator<<(ostream&, DtFecha);
+ostream& operator<<(ostream&, DTFecha);
 
 #endif

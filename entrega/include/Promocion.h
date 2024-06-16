@@ -1,6 +1,10 @@
-#ifndef PROMOCION_H
-#define PROMOCION_H
+#include <iostream>
+#include <set>
 #include <string>
+#include "DataTypes/DTFecha.h"
+#include "Vendedor.h"
+
+
 
 class Promocion {
     private:
