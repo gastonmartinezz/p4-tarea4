@@ -1,19 +1,24 @@
-//Caso de Uso: Consultar Producto
+#include <iostream>
+#include <set>
+#include <Producto.h>
+#include <ControladorProducto.h> //Hay que arreglar el directorio cuanto antes
 
-string mostrarInfoProductos() {
-    for (auto p: productosSistemas) {
-        cout << "Id: " << p->id << endl;    
-        cout << "Nombre: " << p->nombre << endl;
-    }
-}
+using namespace std;
 
-void seleccionaYMostrarDataProductos(int id) {
+set<Producto *> productosSistemas; //Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
+
+void consultarProducto() {
+    listarProductos();
+    int id;
+    cout << "Indique el numero de Id del producto que desea ver: " << endl;
+    cin >> id;
+
     for (auto p: productosSistemas) {
-        if (id == p->id) {
-            cout << "Precio: " << p->precio << endl;
-            cout << "Stock: " << p->stock << endl;
-            cout << "Descripcion: " << p->descripcion << endl;
-            cout << "Vendedor: " << p->vendedor->nickname << endl;
+        if (id == getId()) {
+            cout << "Precio: " << getPrecio() << endl;
+            cout << "Stock: " << getStock() << endl;
+            cout << "Descripcion: " << getDescripcion()<< endl;
+            cout << "Vendedor: " << getVendedor() << endl;
         }
     }
 }

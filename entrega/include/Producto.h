@@ -3,26 +3,30 @@
 
 #include <iostream>
 #include <string>
+#include <Vendedor.h>
+using namespace std;
 
 class Producto {
 private:
     int id;
     int stock;
     float precio;
-    std::string nombre;
-    std::string descripcion;
+    string nombre;
+    string descripcion;
+    Vendedor vendedor;
 
 public:
     enum class Categoria { Ropa, Electrodomesticos, Otros }; // Enum declarado dentro de la clase Producto
 
     Producto();
-    Producto(int id, int stock, float precio, std::string nombre, std::string descripcion, Categoria categoria);
+    Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria);
     int getId();
     int getStock();
     float getPrecio();
-    std::string getNombre();
-    std::string getDescripcion();
+    string getNombre();
+    string getDescripcion();
     ~Producto();
+    Vendedor getVendedor(); //hay que implementar este metodo en el .cpp xq es nuevo
 };
 
 #endif // PRODUCTO_H
