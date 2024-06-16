@@ -1,7 +1,10 @@
+#ifndef COMENTARIO_H
+#define COMENTARIO_H
+
 #include <string>
 #include <iostream>
 #include <ctime>
-#include "DataTypes/DTFecha.h"  
+#include "DataTypes/DTFecha.h"
 class Comentario
 {
 private:
@@ -22,3 +25,5 @@ public:
     void setTexto(std::string &texto);
     void setFechaDeRealizado(DTFecha &fecha);
 };
+
+#endif
