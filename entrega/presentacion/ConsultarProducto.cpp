@@ -2,9 +2,7 @@
 #include <set>
 #include <Producto.h>
 #include <ControladorProducto.h> //Hay que arreglar el directorio cuanto antes
-
 using namespace std;
-
 
 void consultarProducto() {
     ControladorProducto::listarProductos();
@@ -13,12 +11,12 @@ void consultarProducto() {
     cin >> id;
 
     for (auto p: productosSistema) {
-        if (id == Producto::getId()) {
-            cout << "Id: " << Producto::getId() << endl;
-            cout << "Precio: " << Producto::getPrecio() << endl;
-            cout << "Stock: " << Producto::getStock() << endl;
-            cout << "Descripcion: " << Producto::getDescripcion()<< endl;
-            cout << "Vendedor: " << Producto::getVendedor() << endl;
+        if (id == p->getId()) {
+            cout << "Id: " << p->getId() << endl;
+            cout << "Precio: " << p->getPrecio() << endl;
+            cout << "Stock: " << p->getStock() << endl;
+            cout << "Descripcion: " << p->getDescripcion()<< endl;
+            cout << "Vendedor: " << p->getVendedor() << endl;
         }
     }
 }
