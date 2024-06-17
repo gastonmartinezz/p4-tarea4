@@ -31,4 +31,6 @@ public:
     Vendedor getVendedor();
 };
 
+set<Promocion*> promociones; //Set donde guardamos todas las promociones del sistema
+set<Promocion*> promocionesVigentes; //Set donde guardamos todas las promociones vigentes del sistema
 #endif

@@ -2,11 +2,10 @@
 #include <DTFecha.h>
 #include <Promocion.h>
 #include <Vendedor.h>
-#include <locale>
+#include <algorithm>
+#include <cctype>
 using namespace std;
 
-set<Promocion*> promociones; //Set donde guardamos todas las promociones del sistema
-set<Promocion*> promocionesVigentes; //Set donde guardamos todas las promociones vigentes del sistema
 //Funcion para comparar fechas
 bool compararFechas(DTFecha fecha1, DTFecha fecha2) {
     if (fecha1.anio > fecha2.anio) {
@@ -30,34 +29,39 @@ bool compararFechas(DTFecha fecha1, DTFecha fecha2) {
 set<Contenido*> obtenerPromocionesActivas(DTFecha fecha) {
     for (auto f: promociones) {
         for (auto p: Promocion) {
-            if (compararFechas(getFechaVencimiento(p), fecha)) {
+            if (compararFechas(Promocion::getFechaVencimiento(p), fecha)) {
                 promocionesVigentes.insert(p);
             }
         }
     }
 
     for (auto promociones: promocionesVigentes) {
-        cout << "Nombre de la promocion: " << getNombre() << endl;
-        cout << "Descripcion de la promocion: " << getDescripcion() << endl;
-        cout << "Descuento de la promocion: " << getDescuento() << endl;
-        cout << "Fecha de Vencimiento de la promocion: " << getFechaVencimiento() << endl;
-        cout << "Vendedor de la promocion: " << getVendedor() << endl;
+        cout << "Nombre de la promocion: " << Promocion::getNombre() << endl;
+        cout << "Descripcion de la promocion: " << Promocion::getDescripcion() << endl;
+        cout << "Descuento de la promocion: " << Promocion::getDescuento() << endl;
+        cout << "Fecha de Vencimiento de la promocion: " << Promocion::getFechaVencimiento() << endl;
+        cout << "Vendedor de la promocion: " << Promocion::getVendedor() << endl;
     }
 }
 
-string seleccionarPromocion(string nombre) {
-    for (auto p: promocionesVigentes) {
-        if ((string)toupper(nombre); == (string)toupper(getNombre())) {
-            //Imprimir datos del vendedor y los productos de la promocion (fijarse en cambiar el tipo de devolucion de la funcion)
-            cout << "Nombre de la promocion: " << getNombre() << endl;
-            cout << "Vendedor de la promocion: " << getVendedor() << endl;
-            cout << "RUT del vendedor: " << getCodigoRut() << endl;
+string seleccionarPromocion(string nombre) {    
+    transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
+    string nombrePromocion = Promocion::getNombre();
+    transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
 
-            for (auto productos: productosDentroDePromo) {
-                cout << "Nombre del producto: " << getNombre() << endl; 
-                cout << "Id del producto: " << getId() << endl;
-                cout << "Descripcion del producto: " << getDescripcion() << endl;
-                cout << "Stock del producto: " << getStoc() << endl;
+    for (auto p: promocionesVigentes) {
+        if (nombre == nombrePromocion) {
+            //Imprimir datos del vendedor y los productos de la promocion 
+            //(fijarse en cambiar el tipo de devolucion de la funcion)
+            cout << "Nombre de la promocion: " << Promocion::getNombre() << endl;
+            cout << "Vendedor de la promocion: " << Promocion::getVendedor() << endl;
+            cout << "RUT del vendedor: " << Vendedor::getCodigoRut() << endl;
+
+            for (auto productos: Promocion::productosDentroDePromo()) {
+                cout << "Nombre del producto: " << Producto::getNombre() << endl; 
+                cout << "Id del producto: " << Producto::getId() << endl;
+                cout << "Descripcion del producto: " << Producto::getDescripcion() << endl;
+                cout << "Stock del producto: " << Producto::getStock() << endl;
             }
 
         }
@@ -88,18 +92,15 @@ void consultarPromocion() {
     cout << "Deseas seleccionar una promocion para ver sus detalles? (si/no)" << endl;
     cin >> respuesta;
 
-    if ((string)toupper(respuesta) == "NO") {
-        cout << "No se mostraran detalles sobre ninguna promocion." << endl;
+    transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
 
-    } else if ((string)toupper(respuesta) == "SI") {
+    if ((respuesta == "NO") or (respuesta == "N")) {
+        cout << "No se mostraran los detalles de ninguna promocion." << endl;
+
+    } else if ((respuesta == "SI") or (respuesta == "S")) {
         cout << "Ingresa el nombre de la promocion que deseas ver: " << endl;
         cin >> nombrePromocion;
 
         seleccionarPromocion(nombrePromocion);
     }
 }
-
-
-
-
-

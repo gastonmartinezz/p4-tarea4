@@ -5,20 +5,20 @@
 
 using namespace std;
 
-set<Producto *> productosSistemas; //Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
 
 void consultarProducto() {
-    listarProductos();
+    ControladorProducto::listarProductos();
     int id;
     cout << "Indique el numero de Id del producto que desea ver: " << endl;
     cin >> id;
 
-    for (auto p: productosSistemas) {
-        if (id == getId()) {
-            cout << "Precio: " << getPrecio() << endl;
-            cout << "Stock: " << getStock() << endl;
-            cout << "Descripcion: " << getDescripcion()<< endl;
-            cout << "Vendedor: " << getVendedor() << endl;
+    for (auto p: productosSistema) {
+        if (id == Producto::getId()) {
+            cout << "Id: " << Producto::getId() << endl;
+            cout << "Precio: " << Producto::getPrecio() << endl;
+            cout << "Stock: " << Producto::getStock() << endl;
+            cout << "Descripcion: " << Producto::getDescripcion()<< endl;
+            cout << "Vendedor: " << Producto::getVendedor() << endl;
         }
     }
 }

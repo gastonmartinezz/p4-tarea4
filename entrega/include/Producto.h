@@ -29,6 +29,8 @@ public:
     Vendedor getVendedor(); //hay que implementar este metodo en el .cpp xq es nuevo
 };
 
+set<Producto *> productosSistema; //Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
+
 #endif // PRODUCTO_H
 
 /* TRABAJO MANUEL
