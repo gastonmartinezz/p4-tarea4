@@ -9,11 +9,11 @@ using namespace std;
 
 class DTNotificacion {
 private:
-    string emisor;
+    string emisor; // Vendedor emisor ?
     string nombre;
     int id;
     string texto;
-    set<string> contenido;
+    set<string> contenido; //set<Producto> contenido?
 
 public:
     DTNotificacion(string emisor, string nombre, int id, string texto, set<string> contenido);
