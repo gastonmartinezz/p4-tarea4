@@ -8,25 +8,28 @@
 #include <vector>
 #include <set>
 #include <string>
+#include "../include/DataTypes/DTVendedor.h"
+using namespace std;
 
-class Vendedor : public Usuario
-{
+class Vendedor : public Usuario {
 private:
     int codigoRut;
-    std::set<Cliente> suscriptores;
-    std::vector<Producto> productos;    // Agregar esta línea para almacenar los productos del vendedor
-    std::vector<Promocion> promociones; // Agregar esta línea para almacenar las promociones del vendedor
+    set<Cliente> suscriptores;
+    vector<Producto> productos;    // Agregar esta línea para almacenar los productos del vendedor
+    vector<Promocion> promociones; // Agregar esta línea para almacenar las promociones del vendedor
 
 public:
-    Vendedor(const std::string &nickname, const std::string &password, const DTFecha &fechaDeNacimiento,
-             int codigoRut);
+    Vendedor(); //revisar este constructor en conjunto - tonga
+    Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento,int codigoRut);
 
     int getCodigoRut() const;
-    std::set<Cliente> getSuscriptores() const;
-    std::vector<Producto> getProductos() const;    // Agregar este método para obtener los productos
-    std::vector<Promocion> getPromociones() const; // Agregar este método para obtener las promociones
+    set<Cliente> getSuscriptores() const;
+    vector<Producto> getProductos() const;    // Agregar este método para obtener los productos
+    vector<Promocion> getPromociones() const; // Agregar este método para obtener las promociones
     DTVendedor Vendedor::toDataType();
+
     void setCodigoRut(int codigoRut);
+
     void agregarSuscriptor(const Cliente &cliente);
     void eliminarSuscriptor(const Cliente &cliente);
     void agregarProducto(const Producto &producto);    // Agregar este método para agregar un producto

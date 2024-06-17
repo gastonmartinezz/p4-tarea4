@@ -6,7 +6,7 @@
 #include <string>
 #include "DataTypes/DTFecha.h"
 #include <Vendedor.h>
-#include <producto|promocion.h>
+#include <contenido.h>
 using namespace std;
 
 class Promocion {
@@ -16,19 +16,26 @@ private:
     string descripcion;
     DTFecha fecha_vencimiento;
     set<Contenido*> productosDentroDePromo;
-    Vendedor Vendedor;
+    Vendedor* vendedor;
 
 public:
-    Promocion();
     Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven);
     ~Promocion();
+
     set<Contenido*> getProductosDentroDePromo();
     string getDescripcion();
     float getDescuento();
-    string getNombre() const;
-    void agregarProducto(Producto *prod);
+    string getNombre();
     DTFecha getFechaVencimiento();
-    Vendedor getVendedor();
+    Vendedor* getVendedor();
+
+    void setDescuento(float descuento);
+    void setNombre(string nombre);
+    void setDescripcion(string descripcion);
+    void setFechaVencimiento(DTFecha fecha);
+    void setVendedor(Vendedor* vendedor);
+
+    void agregarProducto(Contenido *contenido);
 };
 
 set<Promocion*> promociones; //Set donde guardamos todas las promociones del sistema

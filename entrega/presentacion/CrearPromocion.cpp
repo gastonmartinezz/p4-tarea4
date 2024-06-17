@@ -3,10 +3,10 @@
 #include <string>
 #include <set>
 #include <Promocion.h>
-#include <producto|promocion.h>
+#include <contenido.h>
 using namespace std;
 
-set<Vendedor *> vendedoresSistema; //Set donde guardamos todos los vendedores del sistema
+set<Vendedor*> vendedoresSistema; //Set donde guardamos todos los vendedores del sistema
 
 Promocion ingresarPromocion(string nombre, string descripcion, DTFecha vencimiento, float descuento) {
     Promocion *promoNueva = Promocion(descuento, nombre, descripcion, vencimiento);
@@ -15,27 +15,26 @@ Promocion ingresarPromocion(string nombre, string descripcion, DTFecha vencimien
 
 string obtenerListaVendedores() {
     for (auto p: vendedoresSistema) {
-        cout << Vendedor::getNickname() << endl;
+        cout << p->getNickname() << endl;
     }
 }
 
 void seleccionarVendedorYObtenerProductos(string nickname) {
     for (auto p: vendedoresSistema) {
-        if (nickname == Vendedor::getNickname()) {
-            for (auto prod: Producto::getProductos()) {
-                cout << Producto::getId() << endl;
-                cout << Producto::getNombre() << endl;
+        if (nickname == p->getNickname()) {
+            for (auto prod: p->getProductos()) {
+                cout << prod.getId() << endl; //Ver si el contenedor de productos es un objeto o no.
+                cout << prod.getNombre() << endl;
             }
         }
     }
 }
 
-
 //Funcion para ver si existe un producto dentro de la promocion
 bool productoEnPromoExistente(int id) {
     for (auto promo: promocionesVigentes) {
-        for (auto productos: Promocion::getProductosDentroDePromo()) {
-            if (id == Producto::getId()) {
+        for (auto productos: promo->getProductosDentroDePromo()) {
+            if (id == productos->getProducto()->getId()) { //Preciso ayuda con este.
                 return true;
                 break;
             } else {
@@ -47,10 +46,10 @@ bool productoEnPromoExistente(int id) {
 
 void seleccionarProductosParaPromocion(string nickname, int id, int cant_minima) {
     for (auto p: vendedoresSistema) {
-        if (nickname == Vendedor::getNickname()) {
-            for (auto prod: Vendedor::getProductos()) {
+        if (nickname == p->getNickname()) {
+            for (auto prod: p->getProductos()) {
                 if (productoEnPromoExistente(id)) {
-                    cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a una promoción"
+                    cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
                 } else {
                     promoNueva->productosDentroDePromo.insert(prod);
                     //Indiquemos la cantidad minima para la promocion por producto

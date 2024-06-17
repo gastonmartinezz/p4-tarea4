@@ -28,40 +28,39 @@ bool compararFechas(DTFecha fecha1, DTFecha fecha2) {
 //Caso de Uso: Consultar Promocion
 set<Contenido*> obtenerPromocionesActivas(DTFecha fecha) {
     for (auto f: promociones) {
-        for (auto p: Promocion) {
-            if (compararFechas(Promocion::getFechaVencimiento(p), fecha)) {
-                promocionesVigentes.insert(p);
-            }
+        if (compararFechas(f->getFechaVencimiento(), fecha)) {
+            promocionesVigentes.insert(f);
         }
     }
 
     for (auto promociones: promocionesVigentes) {
-        cout << "Nombre de la promocion: " << Promocion::getNombre() << endl;
-        cout << "Descripcion de la promocion: " << Promocion::getDescripcion() << endl;
-        cout << "Descuento de la promocion: " << Promocion::getDescuento() << endl;
-        cout << "Fecha de Vencimiento de la promocion: " << Promocion::getFechaVencimiento() << endl;
-        cout << "Vendedor de la promocion: " << Promocion::getVendedor() << endl;
+        cout << "Nombre de la promocion: " << promociones->getNombre() << endl;
+        cout << "Descripcion de la promocion: " << promociones->getDescripcion() << endl;
+        cout << "Descuento de la promocion: " << promociones->getDescuento() << endl;
+        cout << "Fecha de Vencimiento de la promocion: " << promociones->getFechaVencimiento() << endl;
+        cout << "Vendedor de la promocion: " << promociones->getVendedor() << endl;
     }
 }
 
 string seleccionarPromocion(string nombre) {    
     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
-    string nombrePromocion = Promocion::getNombre();
-    transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
-
+    
     for (auto p: promocionesVigentes) {
+        string nombrePromocion = p->getNombre();
+        transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
+
         if (nombre == nombrePromocion) {
             //Imprimir datos del vendedor y los productos de la promocion 
             //(fijarse en cambiar el tipo de devolucion de la funcion)
-            cout << "Nombre de la promocion: " << Promocion::getNombre() << endl;
-            cout << "Vendedor de la promocion: " << Promocion::getVendedor() << endl;
-            cout << "RUT del vendedor: " << Vendedor::getCodigoRut() << endl;
+            cout << "Nombre de la promocion: " << p->getNombre() << endl;
+            cout << "Vendedor de la promocion: " << p->getVendedor() << endl;
+            cout << "RUT del vendedor: " << p->getVendedor()->getCodigoRut() << endl;
 
-            for (auto productos: Promocion::productosDentroDePromo()) {
-                cout << "Nombre del producto: " << Producto::getNombre() << endl; 
-                cout << "Id del producto: " << Producto::getId() << endl;
-                cout << "Descripcion del producto: " << Producto::getDescripcion() << endl;
-                cout << "Stock del producto: " << Producto::getStock() << endl;
+            for (auto productos: p->getProductosDentroDePromo()) {
+                cout << "Nombre del producto: " << productos->getProducto()->getNombre() << endl; 
+                cout << "Id del producto: " << productos->getProducto()->getId() << endl;
+                cout << "Descripcion del producto: " << productos->getProducto()->getDescripcion() << endl;
+                cout << "Stock del producto: " << productos->getProducto()->getStock() << endl;
             }
 
         }

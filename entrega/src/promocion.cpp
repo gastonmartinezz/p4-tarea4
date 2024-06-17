@@ -1,70 +1,68 @@
-#include "Promocion.h"
-#include "Vendedor.h"
+#include <Promocion.h>
+#include <Vendedor.h>
+#include <contenido.h>
+using namespace std;
 
-// Constructor
-Promocion::Promocion(float descuento, std::string nombre, std::string descripcion, DTFecha fecha_vencimiento)
-    : descuento(descuento), nombre(nombre), descripcion(descripcion), fecha_vencimiento(fecha_vencimiento) {}
+Promocion::Promocion(float descuento, string nombre, string descripcion, DTFecha fecha_vencimiento)
+    : descuento(descuento), nombre(nombre), descripcion(descripcion), fecha_vencimiento(fecha_vencimiento), 
+    vendedor() {} //revisar constructor default en vendedor.h
 
-// Destructor
 Promocion::~Promocion() {
-    // No se requiere implementación específica si no hay recursos dinámicos que liberar
+    for (auto prod: productosDentroDePromo) {
+        delete prod;
+    }
+
+    productosDentroDePromo.clear();
 }
 
-// Métodos de acceso
+// Métodos de acceso 'Get'
 float Promocion::getDescuento() {
     return descuento;
 }
 
-std::string Promocion::getNombre() const {
+string Promocion::getNombre() {
     return nombre;
 }
 
+string Promocion::getDescripcion() {
+    return descripcion;
+}
+
 DTFecha Promocion::getFechaVencimiento() {
     return fecha_vencimiento;
 }
 
-Vendedor Promocion::getVendedor() {
+set<Contenido*> Promocion::getProductosDentroDePromo() {
+    return productosDentroDePromo;
+}
+
+Vendedor* Promocion::getVendedor() {
     return vendedor;
 }
 
-// Otros métodos
-void Promocion::agregarProducto(Producto* prod) {
-    productosDentroDePromo.insert(prod);
-}
-
-/*
-#include <promocion.h>
-#include <producto.h>
-
-Promocion::~Promocion() {}
-
-float Promocion::getDescuento() {
-    return descuento;
-}
-
-DTFecha Promocion::getFechaVencimiento() {
-    return fecha_vencimiento;
-}
-
-//Promocion::Promocion() {}
-//Tengo dudas con este constructor (tambien tengo que ver como agregar la clase vendedor de forma dinamica)
-Promocion::Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven) {
-    /* Promocion *p = new Promocion(descuento, nombre, desc, fecha_ven);
-    p->descuento = descuento;
-    p->nombre = nombre;
-    p->descripcion = desc;
-    p->fecha_vencimiento = fecha_ven;
-
-    set() */
-    /*
+//Métodos de acceso 'Set'
+void Promocion::setDescuento(float descuento) {
     this->descuento = descuento;
-    this->nombre = nombre;
-    this->descripcion = desc;
-    this->fecha_vencimiento = fecha_ven;
-    this->productosDentroDePromo = std::set<Producto*>();
 }
 
-void Promocion::agregarProducto(Producto* prod) {
-    productosDentroDePromo.insert(prod);
-} 
-*/
+void Promocion::setNombre(string nombre) {
+    this->nombre = nombre;
+}
+
+void Promocion::setDescripcion(string descripcion) {
+    this->descripcion = descripcion;
+}
+
+void Promocion::setFechaVencimiento(DTFecha fecha) {
+    this->fecha_vencimiento = fecha;
+    //Corregir esto mas adelante cuando tengamos bien implementado DTFecha (corregir tambien en el .h). A su vez, fijarse bien como implementar bien la fecha como atributo ya que puede haber problema con el formato dentro de la clase.
+}
+
+void Promocion::setVendedor(Vendedor* vendedor) {
+    this->vendedor = vendedor;
+}
+
+// Otros métodos
+void Promocion::agregarProducto(Contenido *contenido) {
+    productosDentroDePromo.insert(contenido);
+}
