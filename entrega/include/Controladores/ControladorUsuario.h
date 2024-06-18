@@ -48,7 +48,6 @@ public:
     std::vector<DTVendedor> listaVendedor();
     void listarComentarios();
     void eliminarComentarioYRespuestas(int comentarioId);
-    void obtenerVendedoresNoSuscriptos();
     void agregarSuscripcion(const std::string &nickname);
     bool validarPassword(const std::string &nickname, const std::string &password);
     void listarComentariosUsuarioSeleccionado(const std::string &nickname);

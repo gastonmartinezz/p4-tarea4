@@ -14,19 +14,21 @@ private:
     std::string Texto;
     DTFecha Fecha_de_realizado;
     std::vector<Comentario *> respuestas;
-    Comentario *comentarioRaiz;
-    Usuario *QuienComenta;
+    Comentario *comentarioRaiz = nullptr;
+    Usuario *quienComenta;
 
 public:
     // Constructor
-    Comentario(std::string &texto, DTFecha &fecha);
+    Comentario(int id, std::string &texto, DTFecha &fecha);
 
     // Getters
     std::string getTexto();
+    int getId();
     DTFecha getFechaDeRealizado();
-    std::vector<Comentario *> getRespuetas();
+    std::vector<Comentario *> getRespuestas();
     Comentario *getComentarioRaiz();
     Usuario *getQuienComenta();
+    void imprimir();
 
     // Setters
     void setID(int id);
@@ -35,6 +37,8 @@ public:
     void setRespuesta(Comentario *res);
     void setRaiz(Comentario *raiz);
     void setQuienComenta(Usuario *quien);
+    // Imprime comentario y sus respuestas de forma recursiva
+    std::map<int, Comentario *> printComentarios();
 };
 
 #endif

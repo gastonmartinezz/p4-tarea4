@@ -2,10 +2,12 @@
 #include "../include/DataTypes/DTFecha.h"
 #include "../include/Comentario.h"
 #include <string>
+#include <map>
+#include <functional>
 
 // Constructor
-Comentario::Comentario(std::string &texto, DTFecha &fecha)
-    : Texto(texto), Fecha_de_realizado(fecha) {}
+Comentario::Comentario(int id, std::string &texto, DTFecha &fecha)
+    : id(id), Texto(texto), Fecha_de_realizado(fecha) {}
 
 // Getters
 std::string Comentario::getTexto()
@@ -34,7 +36,7 @@ void Comentario::setFechaDeRealizado(DTFecha &fecha)
     this->Fecha_de_realizado = fecha;
 }
 
-std::vector<Comentario *> Comentario::getRespuetas()
+std::vector<Comentario *> Comentario::getRespuestas()
 {
     return respuestas;
 };
@@ -46,7 +48,7 @@ Comentario *Comentario::getComentarioRaiz()
 
 Usuario *Comentario::getQuienComenta()
 {
-    return QuienComenta;
+    return quienComenta;
 };
 
 void Comentario::setRespuesta(Comentario *res)
@@ -60,5 +62,31 @@ void Comentario::setRaiz(Comentario *raiz)
 void Comentario::setQuienComenta(Usuario *quien)
 {
 
-    QuienComenta = quien;
+    quienComenta = quien;
 };
+
+std::map<int, Comentario *> printComentarios()
+{
+    std::map<int, Comentario *> comentariosMap;
+
+    // Función lambda recursiva para imprimir y llenar el map de comentarios
+    std::function<void(Comentario *)> imprimirYAgregar = [&](Comentario *comentario)
+    {
+        if (comentario)
+        {
+            comentario->imprimir();
+            comentariosMap[comentario->getId()] = comentario;
+
+            // Recorrer respuestas recursivamente
+            for (Comentario *respuesta : comentario->getRespuestas())
+            {
+                imprimirYAgregar(respuesta);
+            }
+        }
+    };
+
+    // Iniciar la impresión y llenado del mapa desde el comentario actual
+    imprimirYAgregar(this);
+
+    return comentariosMap;
+}

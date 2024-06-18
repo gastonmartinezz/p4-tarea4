@@ -5,6 +5,7 @@
 #include <vector>
 #include <set>
 #include "DataTypes/DTFecha.h"
+#include "DataTypes/DTCliente.h"
 #include "Usuario.h"
 #include "Cliente.h"
 #include "Vendedor.h"
@@ -19,15 +20,16 @@ public:
     virtual void datosVendedor(const std::string &codigoRUT) = 0;
     virtual void datosCliente(const std::string &direccion, const std::string &ciudad) = 0;
     virtual void confirmarAltaUsuario() = 0;
-    virtual void listarUsuarios() = 0;
-    virtual void listarClientes() = 0;
+    virtual std::vector<DTUsuario> listarUsuarios() = 0;
+    virtual std::vector<DTCliente> listarClientes() = 0;
+    virtual std::vector<DTVendedor> listaVendedor() = 0;
+
     virtual void listarComentarios() = 0;
     virtual void eliminarComentarioYRespuestas(int comentarioId) = 0;
-    virtual void obtenerVendedoresNoSuscriptos() = 0;
+
     virtual void agregarSuscripcion(const std::string &nickname) = 0;
     virtual bool validarPassword(const std::string &nickname, const std::string &password) = 0;
     virtual void listarComentariosUsuarioSeleccionado(const std::string &nickname) = 0;
-    virtual std::set<DTUsuario> listaVendedor() = 0;
     virtual void eliminarComentario(int comentarioId) = 0;
     virtual void eliminarLinkComentario(int comentarioId) = 0;
     virtual std::vector<Vendedor> obtenerVendedoresNoSuscriptos() = 0;
