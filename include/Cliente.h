@@ -1,8 +1,8 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
-#include "Usuario.h"
-#include "Compra.h"
+#include <Usuario.h>
+#include <Compra.h>
 #include <vector>
 #include <set>
 #include <string>

@@ -1,4 +1,4 @@
-#include "../include/Producto.h"
+#include <Promocion.h>
 
 Producto::Producto() : id(0), stock(0), precio(0.0f), nombre(""), descripcion("") {}
 
@@ -19,28 +19,16 @@ std::string Producto::getDescripcion() { return descripcion; }
 
 Vendedor Producto::getVendedor() const { return vendedor; }
 
-void Producto::setId(int id) {
-    this->id = id;
-}
+void Producto::setId(int id) { this->id = id; }
 
-void Producto::setStock(int stock) {
-    this->stock = stock;
-}
+void Producto::setStock(int stock) { this->stock = stock; }
 
-void Producto::setPrecio(float precio) {
-    this->precio = precio;
-}
+void Producto::setPrecio(float precio) { this->precio = precio; }
 
-void Producto::setNombre(const string& nombre) {
-    this->nombre = nombre;
-}
+void Producto::setNombre(const string& nombre) { this->nombre = nombre; }
 
-void Producto::setDescripcion(const string& descripcion) {
-    this->descripcion = descripcion;
-}
+void Producto::setDescripcion(const string& descripcion) { this->descripcion = descripcion; }
 
-void Producto::setVendedor(const Vendedor& vendedor) {
-    this->vendedor = vendedor;
-}
+void Producto::setVendedor(const Vendedor& vendedor) { this->vendedor = vendedor; }
 
-Producto::~Producto() {}
+Producto::~Producto() { delete producto; }

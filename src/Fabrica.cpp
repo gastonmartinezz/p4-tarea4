@@ -1,6 +1,6 @@
-#include "../include/Fabrica.h"
-#include "../include/Controladores/ControladorProducto.h"
-#include "../include/Controladores/ControladorUsuario.h"
+#include <Fabrica.h>
+#include <ControladorProducto.h>
+#include <ControladorUsuario.h>
 
 ICUsuario *Fabrica::getICUsuario()
 {

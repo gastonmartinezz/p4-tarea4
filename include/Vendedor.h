@@ -1,10 +1,10 @@
 #ifndef VENDEDOR_H
 #define VENDEDOR_H
 
-#include "Usuario.h"
-#include "Producto.h"
-#include "Promocion.h"
-#include "Cliente.h"
+#include <Usuario.h>
+#include <Producto.h>
+#include <Promocion.h>
+#include <Cliente.h>
 #include <vector>
 #include <set>
 #include <string>

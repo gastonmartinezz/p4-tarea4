@@ -2,7 +2,7 @@
 #define COMPRA_H
 
 #include <vector>
-#include "Producto.h"
+#include <Producto.h>
 #include "DataTypes/DTFecha.h"
 
 class Compra {

@@ -4,10 +4,10 @@
 #include <string>
 #include <vector>
 #include <set>
-#include "Producto.h"
-#include "Promocion.h"
-#include "Comentario.h"
-#include "Compra.h"
+#include <Producto.h>
+#include <Promocion.h>
+#include <Comentario.h>
+#include <Compra.h>
 #include "DataTypes/DTFecha.h"
 using namespace std;
 

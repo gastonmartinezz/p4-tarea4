@@ -6,7 +6,7 @@
 #include <iostream>
 #include <ctime>
 #include "DataTypes/DTFecha.h"
-#include "Usuario.h"
+#include <Usuario.h>
 class Comentario
 {
 private:
