@@ -4,6 +4,8 @@
 #include <set>
 #include <Promocion.h>
 #include <contenido.h>
+#include <algorithm>
+#include <cctype>
 using namespace std;
 
 set<Vendedor*> vendedoresSistema; //Set donde guardamos todos los vendedores del sistema
@@ -15,7 +17,11 @@ string obtenerListaVendedores() {
 }
 
 void seleccionarVendedorYObtenerProductos(string nickname) {
+    transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
+
     for (auto p: vendedoresSistema) {
+        transform(p->getNickname().begin(), p->getNickname().end(), p->getNickname().begin(), ::toupper);
+        
         if (nickname == p->getNickname()) {
             for (auto prod: p->getProductos()) {
                 cout << prod.getId() << endl; //Ver si el contenedor de productos es un objeto o no.
@@ -67,11 +73,10 @@ void ingresarPromocionASistema(Promocion promo) {
 //Faltaria funcion para dar de alta la promocion en el sistema que tengo dudas para hacerlo
 
 void crearPromocion() {
-    string nombre, desc, nombreVendedor;
+    string nombre, desc;
     float descuento;
     int dia, mes, anio;
     DTFecha fechaVencimiento;
-    Vendedor* vendedor;
 
     cout << "Ingresa el nombre de la promoción: " << endl;
     cin >> nombre;
@@ -85,18 +90,46 @@ void crearPromocion() {
     cin >> mes;
     cout << "Ingrese el anio de la fecha de vencimiento: " << endl;
     cin >> anio;
-    cout<< "Ingresa el nombre del vendedor de la promocion: " << endl;
-    cin >> nombreVendedor;
-    //La idea de esto es buscar al vendedor por nombre en los vendedores del sistema y copiar esa memoria (o si les parece mejor que apunte )
 
     fechaVencimiento->dia = dia;
     fechaVencimiento->mes = mes;
     fechaVencimiento->anio = anio;
+    
+
+    obtenerListaVendedores();
+
+    string nickVendedor;
+    cout << "Ingrese el nombre del vendedor para asignarle la promoción: " << endl;
+    cin >> nickVendedor;
+
+    seleccionarVendedorYObtenerProductos(nickVendedor);
+
+    //Invoco la función para ir agregando los productos a la promoción.
+    string respuesta;
+    int idProducto;
+    int cantMin;
+
+    while ((respuesta != "si") or (respuesta != "s")) {
+        cout << "Ingrese el Id del producto que desea agregar a la promoción: " << endl;
+        cin >> idProducto;
+
+        cout << "Ingrese la cantidad mínima de ese producto para que la promoción sea válida: " << endl;
+        cin >> cantMin;
+
+        seleccionarProductosParaPromocion(nickVendedor, idProducto, cantMin);
+
+        cout << "Desea agregar otro producto a la promoción? " << endl;
+        cin >> respuesta;
+        transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
+    }
+
+    
+    
+    seleccionarProductosParaPromocion(nickVendedor, )
 
     Promocion* promoNueva = new Promocion();
     promoNueva->setDescripcion(desc);
     promoNueva->setNombre(nombre);
     promoNueva->setDescuento(descuento);
     promoNueva->setFechaVencimiento(fechaVencimiento);
-    promoNueva-
 }
