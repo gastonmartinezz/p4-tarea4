@@ -11,6 +11,11 @@
 #include  "../include/DataTypes/DTFecha.h"
 using namespace std;
 
+class Producto;
+class Promocion;
+class Comentario;
+class Compra;
+
 class ControladorProducto {
 private:
     // Constructor privado para el patrón Singleton

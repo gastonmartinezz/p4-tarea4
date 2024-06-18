@@ -11,6 +11,10 @@
 #include "../include/DataTypes/DTVendedor.h"
 using namespace std;
 
+class Cliente;
+class Producto;
+class Promocion;
+
 class Vendedor : public Usuario {
 private:
     int codigoRut;

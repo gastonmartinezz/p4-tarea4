@@ -35,7 +35,6 @@ public:
     float getPrecio();
     string getNombre();
     string getDescripcion();
-    ~Producto();
     Vendedor getVendedor();
     std::map<int, Comentario *> getComentarios();
 

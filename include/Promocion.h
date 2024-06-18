@@ -9,6 +9,9 @@
 #include "contenido.h"
 using namespace std;
 
+class Vendedor;
+class Contenido;
+
 class Promocion {
 private:
     float descuento;
