@@ -52,7 +52,7 @@ public:
     void agregarSuscripcion(const std::string &nickname);
     bool validarPassword(const std::string &nickname, const std::string &password);
     void listarComentariosUsuarioSeleccionado(const std::string &nickname);
-    std::vector<DTUsuario> listaVendedor();
+
     void eliminarComentarioYRespuestas(int comentarioId);
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
