@@ -2,6 +2,8 @@
 #include <iostream>
 #include <stdexcept>
 #include "../include/Controladores/ControladorUsuario.h"
+using namespace std;
+
 // Inicialización de la instancia singleton
 ControladorUsuario *ControladorUsuario::instancia = nullptr;
 
@@ -15,12 +17,12 @@ ControladorUsuario *ControladorUsuario::getInstancia()
 }
 
 
-void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento) {
+void ControladorUsuario::ingresarDatosUsuario(const string &nickname, const string &password, const DTFecha &fechaNacimiento) {
     if (ListaUsuarios.find(nickname) != ListaUsuarios.end()) {
-        throw std::invalid_argument("El nickname ya está en uso.");
+        throw invalid_argument("El nickname ya está en uso.");
     }
     if (password.length() < 6) {
-        throw std::invalid_argument("La contraseña debe tener al menos 6 caracteres.");
+        throw invalid_argument("La contraseña debe tener al menos 6 caracteres.");
     }
 
     nicknameTemp = nickname;
@@ -28,15 +30,15 @@ void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const
     fechaNacimientoTemp = fechaNacimiento;
 }
 
-void ControladorUsuario::datosVendedor(const std::string &codigoRUT) {
+void ControladorUsuario::datosVendedor(const string &codigoRUT) {
     if (codigoRUT.length() != 12) {
-        throw std::invalid_argument("El código RUT debe tener 12 caracteres.");
+        throw invalid_argument("El código RUT debe tener 12 caracteres.");
     }
     codigoRUTTemp = codigoRUT;
     esClienteTemp = false;
 }
 
-void ControladorUsuario::datosCliente(const std::string &direccion, const std::string &ciudad) {
+void ControladorUsuario::datosCliente(const string &direccion, const string &ciudad) {
     direccionTemp = direccion;
     ciudadTemp = ciudad;
     esClienteTemp = true;

@@ -9,6 +9,7 @@
 #include "Comentario.h"
 #include "Compra.h"
 #include "DataTypes/DTFecha.h"
+using namespace std;
 
 class ControladorProducto
 {
@@ -22,7 +23,7 @@ public:
     static ControladorProducto *getInstancia();
 
     // Métodos del diagrama UML
-    void listarProductos();
+    vector<Producto*> listarProductos();
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const std::string &nombre, float descuento, const DTFecha &fechaVen);
     void listarVendedor();
@@ -39,5 +40,7 @@ public:
     void registrarCompra(const Compra &compra);
     void desplegarCompra(int compraId) const;
 };
+
+vector<Producto*> arrayProductos; //Array donde guardamos los productos del sistema.
 
 #endif // CONTROLADORPRODUCTO_H

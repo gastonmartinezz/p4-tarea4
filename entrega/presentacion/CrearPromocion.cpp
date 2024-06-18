@@ -8,11 +8,6 @@ using namespace std;
 
 set<Vendedor*> vendedoresSistema; //Set donde guardamos todos los vendedores del sistema
 
-Promocion ingresarPromocion(string nombre, string descripcion, DTFecha vencimiento, float descuento) {
-    Promocion *promoNueva = Promocion(descuento, nombre, descripcion, vencimiento);
-    return promoNueva;
-}
-
 string obtenerListaVendedores() {
     for (auto p: vendedoresSistema) {
         cout << p->getNickname() << endl;
@@ -72,5 +67,36 @@ void ingresarPromocionASistema(Promocion promo) {
 //Faltaria funcion para dar de alta la promocion en el sistema que tengo dudas para hacerlo
 
 void crearPromocion() {
+    string nombre, desc, nombreVendedor;
+    float descuento;
+    int dia, mes, anio;
+    DTFecha fechaVencimiento;
+    Vendedor* vendedor;
 
+    cout << "Ingresa el nombre de la promoción: " << endl;
+    cin >> nombre;
+    cout << "Ingrese la descripción de la promoción: " << endl;
+    cin >> desc;
+    cout << "Ingrese el descuento de la promoción: " << endl;
+    cin >> descuento;
+    cout << "Ingrese el dia de la fecha de vencimiento: " << endl;
+    cin >> dia;
+    cout << "Ingrese el numero de mes de la fecha de vencimiento: " << endl;
+    cin >> mes;
+    cout << "Ingrese el anio de la fecha de vencimiento: " << endl;
+    cin >> anio;
+    cout<< "Ingresa el nombre del vendedor de la promocion: " << endl;
+    cin >> nombreVendedor;
+    //La idea de esto es buscar al vendedor por nombre en los vendedores del sistema y copiar esa memoria (o si les parece mejor que apunte )
+
+    fechaVencimiento->dia = dia;
+    fechaVencimiento->mes = mes;
+    fechaVencimiento->anio = anio;
+
+    Promocion* promoNueva = new Promocion();
+    promoNueva->setDescripcion(desc);
+    promoNueva->setNombre(nombre);
+    promoNueva->setDescuento(descuento);
+    promoNueva->setFechaVencimiento(fechaVencimiento);
+    promoNueva-
 }

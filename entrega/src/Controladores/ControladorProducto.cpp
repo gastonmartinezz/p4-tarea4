@@ -1,5 +1,6 @@
 #include "ControladorProducto.h"
 #include <iostream>
+using namespace std;
 
 // Inicialización de la instancia singleton
 ControladorProducto* ControladorProducto::instancia = nullptr;
@@ -11,15 +12,24 @@ ControladorProducto* ControladorProducto::getInstancia() {
     return instancia;
 }
 
-void ControladorProducto::listarProductos() {
-    // Implementación para listar productos
+vector<Producto*> ControladorProducto::listarProductos() {
+    for (int i = 0; i <= arrayProductos.size(); i++) {
+        cout << "Nombre: " << arrayProductos[i]->getNombre() << endl;
+        cout << "Descripción: " << arrayProductos[i]->getDescripcion() << endl;
+        cout << "Id: " << arrayProductos[i]->getId() << endl;
+        /*cout << "Precio: " << arrayProductos[i]->getPrecio() << endl;
+        cout << "Stock: " << arrayProductos[i]->getStock() << endl;
+        cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;*/
+
+        //Comento las salidas de consola de arriba ya que no se si debemos imprimir toda la información del producto
+    }
 }
 
 void ControladorProducto::confirmarAltaPromocion() {
     // Implementación para confirmar alta de promoción
 }
 
-void ControladorProducto::ingresarDatosPromocion(const std::string& nombre, float descuento, const DTFecha& fechaVen) {
+void ControladorProducto::ingresarDatosPromocion(const string& nombre, float descuento, const DTFecha& fechaVen) {
     // Implementación para ingresar datos de promoción
 }
 
@@ -39,11 +49,11 @@ void ControladorProducto::ponerProductosLibres() {
     // Implementación para poner productos libres
 }
 
-void ControladorProducto::ingresarDatos(const std::string& nombre, float precio, int stock) {
+void ControladorProducto::ingresarDatos(const string& nombre, float precio, int stock) {
     // Implementación para ingresar datos de producto
 }
 
-void ControladorProducto::crearPromocion(const std::string& nombre, float descuento, const DTFecha& fechaVen) {
+void ControladorProducto::crearPromocion(const string& nombre, float descuento, const DTFecha& fechaVen) {
     // Implementación para crear promoción
 }
 

@@ -62,7 +62,6 @@ string seleccionarPromocion(string nombre) {
                 cout << "Descripcion del producto: " << productos->getProducto()->getDescripcion() << endl;
                 cout << "Stock del producto: " << productos->getProducto()->getStock() << endl;
             }
-
         }
     }
 }
@@ -80,7 +79,7 @@ void consultarPromocion() {
     cout << "Introduzca el año de la fecha deseada: " << endl;
     cin >> anio;
 
-    fecha-> dia = dia;
+    fecha->dia = dia;
     fecha->mes = mes;
     fecha->anio = anio;
 

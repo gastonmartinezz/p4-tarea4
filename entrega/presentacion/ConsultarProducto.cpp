@@ -5,18 +5,20 @@
 using namespace std;
 
 void consultarProducto() {
-    ControladorProducto::listarProductos();
+    ControladorProducto* controlador = ControladorProducto::getInstancia();
+    controlador->listarProductos();
+
     int id;
     cout << "Indique el numero de Id del producto que desea ver: " << endl;
     cin >> id;
 
-    for (auto p: productosSistema) {
-        if (id == p->getId()) {
-            cout << "Id: " << p->getId() << endl;
-            cout << "Precio: " << p->getPrecio() << endl;
-            cout << "Stock: " << p->getStock() << endl;
-            cout << "Descripcion: " << p->getDescripcion()<< endl;
-            cout << "Vendedor: " << p->getVendedor() << endl;
+    for (int i = 0; i <= arrayProductos.size(); i++) {
+        if (id == arrayProductos[i]->getId()) { 
+            cout << "Id: " << arrayProductos[i]->getId() << endl;
+            cout << "Precio: " << arrayProductos[i]->getPrecio() << endl;
+            cout << "Stock: " << arrayProductos[i]->getStock() << endl;
+            cout << "Descripcion: " << arrayProductos[i]->getDescripcion()<< endl;
+            cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;
         }
     }
 }

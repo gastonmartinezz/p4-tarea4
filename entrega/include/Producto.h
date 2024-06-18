@@ -6,6 +6,7 @@
 #include <map>
 #include <Vendedor.h>
 #include <Comentario.h>
+#include <ControladorProducto.h>
 using namespace std;
 
 class Producto
@@ -17,7 +18,7 @@ private:
     string nombre;
     string descripcion;
     Vendedor vendedor;
-    std::map<int, Comentario *> Comentarios;
+    map<int, Comentario *> Comentarios;
 
 public:
     enum class Categoria
@@ -48,6 +49,6 @@ public:
     void setComentario(Comentario *);
 };
 
-set<Producto *> productosSistema; // Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
+vector<Producto *> productosSistema; // Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
 
 #endif // PRODUCTO_H
