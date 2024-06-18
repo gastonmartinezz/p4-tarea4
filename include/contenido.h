@@ -1,23 +1,27 @@
 #ifndef CONTENIDO_H
 #define CONTENIDO_H
-#include "../include/Promocion.h"
-#include "../include/Producto.h"
+#include "Promocion.h"
+#include "Producto.h"
 
-//Esta clase es la clase producto/promocion
+// Esta clase es la clase producto/promocion
 
-class Contenido {
-    private:
-    Producto* prod;
-    Promocion* promo;
+class Producto;
+class Promocion;
 
-    public:
+class Contenido
+{
+private:
+    Producto *prod;
+    Promocion *promo;
+
+public:
     int cantidad_minima;
 
-    Contenido(Producto* prod, Promocion* promo);
+    Contenido(Producto *prod, Promocion *promo);
     ~Contenido();
 
     int getCantMinima();
-    Producto* getProducto();
+    Producto *getProducto();
 
     void setCantMinima(int cantMinima);
 };
