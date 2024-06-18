@@ -20,7 +20,7 @@ private:
     std::map<int, Comentario *> Comentarios;
 
 public:
-    DTProducto(int id, int stock, float precio, string nombre, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios;);
+    DTProducto(int id, int stock, float precio, string nombre, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios);
     int getId();
     int getStock();
     float getPrecio();
@@ -29,7 +29,8 @@ public:
     string getCategoria();
     string getVendedor();
     std::map<int, Comentario *> getComentarios();
-    void addComentario(Comentario *) ~DTProducto();
+    void addComentario(Comentario *);
+    ~DTProducto();
 };
 
 ostream &operator<<(ostream &os, DTProducto dtProducto);

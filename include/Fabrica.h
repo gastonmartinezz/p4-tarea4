@@ -1,11 +1,10 @@
 #ifndef FABRICA_H
 #define FABRICA_H
 
-#include "Interfaces/ICProductos.h"
-#include "Interfaces/ICUsuario.h"
+#include  "../include/Interfaces/ICProductos.h"
+#include  "../include/Interfaces/ICUsuario.h"
 
-class Fabrica
-{
+class Fabrica {
 private:
     Fabrica();
 

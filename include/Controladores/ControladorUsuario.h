@@ -5,14 +5,14 @@
 #include <vector>
 #include <map>
 #include <set>
-#include <Usuario.h>
-#include <Cliente.h>
-#include <Vendedor.h>
-#include <Comentario.h>
-#include "DataTypes/DTFecha.h"
-#include "DataTypes/DTUsuario.h"
-#include "DataTypes/DTVendedor.h"
-#include "DataTypes/DTCliente.h"
+#include  "../include/Usuario.h"
+#include  "../include/Cliente.h"
+#include  "../include/Vendedor.h"
+#include  "../include/Comentario.h"
+#include  "../include/DataTypes/DTFecha.h"
+#include  "../include/DataTypes/DTUsuario.h"
+#include  "../include/DataTypes/DTVendedor.h"
+#include  "../include/DataTypes/DTCliente.h"
 
 class ControladorUsuario
 {

@@ -1,16 +1,12 @@
-/*#include <iostream>
+/* #include <iostream>
 #include "../include/Interfaces/ICUsuario.h"
 #include "../include/Fabrica.h" //DEFINIR
 #include <string>
-#include "../include/ControladorUsuario.h"
-#include "../include/DTFecha.h"
-*/
-
-
-
+#include "../include/Controladores/ControladorProducto.h"
+#include "../include/DataTypes/DTFecha.h"
 #include "../include/Fabrica.h"
 #include "../include/DataTypes/DTFecha.h"
-#include <iostream>
+#include <iostream>/ 
 #include <string>
 
 void altaUsuario() {
@@ -55,7 +51,7 @@ void altaUsuario() {
     } catch (const std::invalid_argument &e) {
         std::cerr << "Error: " << e.what() << std::endl;
     }
-}
+} */
 
 
 

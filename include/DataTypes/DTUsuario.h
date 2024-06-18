@@ -2,8 +2,7 @@
 #define DTUSUARIO
 
 #include <string>
-#include "DataTypes/DTFecha.h"
-
+#include "../include/DataTypes/DTFecha.h"
 using namespace std;
 
 class DTUsuario

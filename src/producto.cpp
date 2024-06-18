@@ -1,4 +1,5 @@
-#include <Promocion.h>
+#include "../include/Promocion.h"
+#include "../include/Producto.h"
 
 Producto::Producto() : id(0), stock(0), precio(0.0f), nombre(""), descripcion("") {}
 
@@ -17,7 +18,7 @@ std::string Producto::getNombre() { return nombre; }
 
 std::string Producto::getDescripcion() { return descripcion; }
 
-Vendedor Producto::getVendedor() const { return vendedor; }
+Vendedor Producto::getVendedor() { return vendedor; }
 
 void Producto::setId(int id) { this->id = id; }
 

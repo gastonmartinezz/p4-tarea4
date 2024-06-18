@@ -1,4 +1,4 @@
-#include <contenido.h>
+#include "../include/contenido.h"
 
 Contenido::Contenido(Producto* prod, Promocion* promo): producto(prod), promo(promo), cantidad_minima(0) {
     //Tengo dudas con este constructor

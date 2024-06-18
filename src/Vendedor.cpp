@@ -1,4 +1,4 @@
-#include <Vendedor.h>
+#include "../include/Vendedor.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include <iostream>
 

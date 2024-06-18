@@ -1,9 +1,9 @@
-#include <iostream>
-#include <DTFecha.h>
-#include <Promocion.h>
-#include <Vendedor.h>
+/* #include <iostream>
 #include <algorithm>
 #include <cctype>
+#include "../include/Promocion.h"
+#include "../include/Vendedor.h"
+#include "../include/DataTypes/DTFecha.h"
 using namespace std;
 
 //Funcion para comparar fechas
@@ -101,4 +101,4 @@ void consultarPromocion() {
 
         seleccionarPromocion(nombrePromocion);
     }
-}
+} */

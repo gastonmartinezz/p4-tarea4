@@ -4,13 +4,12 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <Vendedor.h>
-#include <Comentario.h>
-#include <ControladorProducto.h>
+#include "Vendedor.h"
+#include "Comentario.h"
+#include "../include/Controladores/ControladorProducto.h"
 using namespace std;
 
-class Producto
-{
+class Producto {
 private:
     int id;
     int stock;

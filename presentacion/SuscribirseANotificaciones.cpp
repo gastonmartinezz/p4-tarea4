@@ -1,9 +1,9 @@
-#include <iostream>
-#include <include/Usuario.h>
-#include <include/Cliente.h>
-#include <include/Vendedor.h>
-#include <include/controladorUsuario.h>
-#include <include/dataTypes.h>
+/* #include <iostream>
+#include "../include/Usuario.h"
+#include "../include/Cliente.h"
+#include "../include/Vendedor.h"
+#include "../include/Controladores/ControladorUsuario.h"
+//#include <include/dataTypes.h>
 #include <set>
 
 
@@ -34,4 +34,4 @@ void agregarSuscripcion(DTUsuario cliente, DTUsuario vendedor) {
     if(vendedoresNoSuscriptos.count(vendedor) > 0) {
         clientesSuscriptos.insert(cliente);
     }
-}
+} */

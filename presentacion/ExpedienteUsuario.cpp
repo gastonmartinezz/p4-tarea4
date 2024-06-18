@@ -1,4 +1,4 @@
-#include <iostream>
+/* #include <iostream>
 #include <vector>
 #include "../include/Fabrica.h"
 #include "../include/Usuario.h"
@@ -82,3 +82,4 @@ void expedienteUsuario()
         }
     }
 }
+ */

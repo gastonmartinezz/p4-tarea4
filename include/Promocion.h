@@ -4,9 +4,9 @@
 #include <iostream>
 #include <set>
 #include <string>
-#include "DataTypes/DTFecha.h"
-#include <Vendedor.h>
-#include <contenido.h>
+#include "../include/DataTypes/DTFecha.h"
+#include "Vendedor.h"
+#include "contenido.h"
 using namespace std;
 
 class Promocion {

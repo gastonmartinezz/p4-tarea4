@@ -1,4 +1,4 @@
-
+/* 
 #include "../include/Fabrica.h"
 #include "../include/DataTypes/DTFecha.h"
 #include "../include/Comentario.h"
@@ -124,4 +124,4 @@ void DejarComentario()
             productos[i_producto]->addComentario(new_coment) ///// hay que pasarlo por el controlador
         }
     }
-};
+}; */

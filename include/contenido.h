@@ -1,11 +1,13 @@
-#include <Promocion.h>
-#include <Producto.h>
+#ifndef CONTENIDO_H
+#define CONTENIDO_H
+#include "../include/Promocion.h"
+#include "../include/Producto.h"
 
 //Esta clase es la clase producto/promocion
 
 class Contenido {
     private:
-    Producto* producto;
+    Producto* prod;
     Promocion* promo;
 
     public:
@@ -19,3 +21,5 @@ class Contenido {
 
     void setCantMinima(int cantMinima);
 };
+
+#endif

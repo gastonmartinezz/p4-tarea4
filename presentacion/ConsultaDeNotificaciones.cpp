@@ -1,8 +1,8 @@
-#include <iostream>
-#include <include/Usuario.h>
-#include <include/Cliente.h>
-#include <include/Vendedor.h>
-#include <include/dataTypes.h>
+/* #include <iostream>
+#include  "../include/Usuario.h"
+#include  "../include/Cliente.h"
+#include  "../include/Vendedor.h"
+//#include  "../include/DataTypes/dataTypes.h"
 #include <set>
 
 
@@ -23,3 +23,4 @@ void mostrarYEliminarNotificacion(DTUsuario cliente) {
         cliente.eliminarNotificacion(it);
     }
 }
+ */

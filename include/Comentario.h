@@ -5,10 +5,9 @@
 #include <vector>
 #include <iostream>
 #include <ctime>
-#include "DataTypes/DTFecha.h"
-#include <Usuario.h>
-class Comentario
-{
+#include "../include/DataTypes/DTFecha.h"
+#include "Usuario.h"
+class Comentario {
 private:
     int id;
     std::string Texto;

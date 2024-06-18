@@ -1,9 +1,9 @@
-#include <iostream>
-#include <include/Usuario.h>
-#include <include/Cliente.h>
-#include <include/Vendedor.h>
-#include <include/controladorUsuario.h>
-#include <include/dataTypes.h>
+/* #include <iostream>
+#include "../include/Usuario.h"
+#include "../include/Cliente.h"
+#include "../include/Vendedor.h"
+#include "../include/Controladores/ControladorUsuario.h"
+//#include <include/dataTypes.h>
 #include <set>
 
 set<DTUsuario> obtenerVendedoresSuscriptos(DTUsuario cliente) {
@@ -28,4 +28,4 @@ void eliminarVendedorSuscripto(DTUsuario cliente, DTUsuario vendedor) {
         clientesSuscriptos.erase(cliente);
     }
 
-}
+} */

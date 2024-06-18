@@ -1,6 +1,6 @@
-#include <Promocion.h>
-#include <Vendedor.h>
-#include <contenido.h>
+#include "../include/Promocion.h"
+#include "../include/Vendedor.h"
+#include "../include/contenido.h"
 using namespace std;
 
 Promocion::Promocion(float descuento, string nombre, string descripcion, DTFecha fecha_vencimiento)

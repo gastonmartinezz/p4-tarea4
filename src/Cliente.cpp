@@ -1,5 +1,5 @@
 #include <Cliente.h>
-#include "../include/DTCliente.h"
+#include "../include/DataTypes/DTCliente.h"
 #include <iostream>
 
 Cliente::Cliente(const std::string &nickname, const std::string &password, const DTFecha &fechaDeNacimiento,

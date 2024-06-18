@@ -1,4 +1,4 @@
-#include <Usuario.h>
+#include "../include/Usuario.h"
 
 Usuario::Usuario(const std::string &nickname, const std::string &password, const DTFecha &fechaDeNacimiento)
     : nickname(nickname), password(password), fechaDeNacimiento(fechaDeNacimiento) {}

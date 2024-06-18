@@ -4,14 +4,13 @@
 #include <string>
 #include <vector>
 #include <set>
-#include "Producto.h"
-#include "Promocion.h"
-#include "Comentario.h"
-#include "Compra.h"
-#include "DataTypes/DTFecha.h"
+#include  "../include/Producto.h"
+#include  "../include/Promocion.h"
+#include  "../include/Comentario.h"
+#include  "../include/Compra.h"
+#include  "../include/DataTypes/DTFecha.h"
 
-class ICProductos
-{
+class ICProductos {
 public:
     virtual ~ICProductos() = default;
 

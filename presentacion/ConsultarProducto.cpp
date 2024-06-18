@@ -1,7 +1,7 @@
-#include <iostream>
+/* #include <iostream>
 #include <set>
-#include <Producto.h>
-#include <ControladorProducto.h> //Hay que arreglar el directorio cuanto antes
+#include "../include/Producto.h"
+#include  "../include/Controladores/ControladorProducto.h"
 using namespace std;
 
 void consultarProducto() {
@@ -22,3 +22,4 @@ void consultarProducto() {
         }
     }
 }
+ */

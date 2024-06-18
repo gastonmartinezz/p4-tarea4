@@ -3,9 +3,8 @@
 
 #include <string>
 #include <set>
-#include "DataTypes/DTFecha.h"
-#include "DataTypes/DTUsuario.h"
-
+#include  "../include/DataTypes/DTUsuario.h"
+ 
 class Usuario
 {
 protected:
@@ -23,7 +22,7 @@ public:
     void setNickname(const std::string &nickname);
     void setPassword(const std::string &password);
     void setFechaDeNacimiento(const DTFecha &fechaDeNacimiento);
-    DTUsuario Usuario::toDataType();
+    DTUsuario toDataType();
 
     virtual ~Usuario() = default;
     virtual void mostrarInformacion() const = 0;
