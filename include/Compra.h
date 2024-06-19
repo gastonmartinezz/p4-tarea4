@@ -2,17 +2,20 @@
 #define COMPRA_H
 
 #include <vector>
-#include  "Producto.h"
-#include  "../include/DataTypes/DTFecha.h"
+#include "Producto.h"
+#include "../include/DataTypes/DTFecha.h"
 
-class Compra {
+class Producto;
+
+class Compra
+{
 private:
     int id;
     DTFecha fecha;
     std::vector<Producto> productos;
 
 public:
-    Compra(int id, const DTFecha& fecha, const std::vector<Producto>& productos);
+    Compra(int id, const DTFecha &fecha, const std::vector<Producto> &productos);
 
     int getId() const;
     DTFecha getFecha() const;

@@ -85,7 +85,7 @@ std::map<int, Comentario *> printComentarios()
     };
 
     // Iniciar la impresión y llenado del mapa desde el comentario actual
-    imprimirYAgregar(this);
+    // imprimirYAgregar(this);
 
     return comentariosMap;
 }

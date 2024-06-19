@@ -7,9 +7,12 @@
 #include "Vendedor.h"
 #include "Comentario.h"
 #include "../include/Controladores/ControladorProducto.h"
+
+class Vendedor;
 using namespace std;
 
-class Producto {
+class Producto
+{
 private:
     int id;
     int stock;

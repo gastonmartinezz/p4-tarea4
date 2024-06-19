@@ -4,10 +4,12 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <map>
 #include <ctime>
 #include "../include/DataTypes/DTFecha.h"
 #include "Usuario.h"
-class Comentario {
+class Comentario
+{
 private:
     int id;
     std::string Texto;
