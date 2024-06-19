@@ -6,11 +6,12 @@
 #include <set>
 #include <algorithm>
 #include <cctype>
-#include  "../include/Producto.h"
-#include  "../include/Promocion.h"
-#include  "../include/Comentario.h"
-#include  "../include/Compra.h"
-#include  "../include/DataTypes/DTFecha.h"
+#include "../include/Producto.h"
+#include "../include/Promocion.h"
+#include "../include/Comentario.h"
+#include "../include/Compra.h"
+#include "../include/DataTypes/DTFecha.h"
+#include "../include/Interfaces/ICProductos.h"
 using namespace std;
 
 class Producto;
@@ -18,18 +19,19 @@ class Promocion;
 class Comentario;
 class Compra;
 
-class ControladorProducto {
+class ControladorProducto : public ICProductos
+{
 private:
     // Constructor privado para el patrón Singleton
     ControladorProducto() = default;
-    static ControladorProducto* instance;
+    static ControladorProducto *instance;
 
 public:
     // Métodos estáticos para obtener la instancia única
-    static ControladorProducto* getInstance();
+    static ControladorProducto *getInstance();
 
     // Métodos del diagrama UML
-    vector<DTProducto*> listarProductos();
+    vector<DTProducto *> listarProductos();
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
     void listarVendedor();
@@ -50,6 +52,6 @@ public:
     void ingresarPromocionASistema(Promocion promo);
 };
 
-vector<Producto*> arrayProductos; //Array donde guardamos los productos del sistema.
+vector<Producto *> arrayProductos; // Array donde guardamos los productos del sistema.
 
 #endif // CONTROLADORPRODUCTO_H

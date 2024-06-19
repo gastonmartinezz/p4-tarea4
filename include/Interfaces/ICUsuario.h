@@ -20,9 +20,9 @@ public:
     virtual void datosVendedor(const std::string &codigoRUT) = 0;
     virtual void datosCliente(const std::string &direccion, const std::string &ciudad) = 0;
     virtual void confirmarAltaUsuario() = 0;
-    virtual std::vector<DTUsuario> listarUsuarios() = 0;
-    virtual std::vector<DTCliente> listarClientes() = 0;
-    virtual std::vector<DTVendedor> listaVendedor() = 0;
+    virtual std::vector<DTUsuario> listarUsuarios();
+    virtual std::vector<DTCliente> listarClientes();
+    virtual std::vector<DTVendedor> listaVendedor();
 
     virtual void listarComentarios() = 0;
     virtual void eliminarComentarioYRespuestas(int comentarioId) = 0;

@@ -4,17 +4,22 @@
 #include <string>
 #include <vector>
 #include <set>
-#include  "../include/Producto.h"
-#include  "../include/Promocion.h"
-#include  "../include/Comentario.h"
-#include  "../include/Compra.h"
-#include  "../include/DataTypes/DTFecha.h"
+#include "../include/Producto.h"
+#include "../include/Promocion.h"
+#include "../include/Comentario.h"
+#include "../include/Compra.h"
+#include "../include/DataTypes/DTFecha.h"
 
-class ICProductos {
+class Compra;
+class Producto;
+class Promocion;
+class DTFecha;
+class Comentario;
+class ICProductos
+{
 public:
     virtual ~ICProductos() = default;
-
-    virtual void listarProductos() = 0;
+    virtual vector<DTProducto *> listarProductos();
     virtual void confirmarAltaPromocion() = 0;
     virtual void ingresarDatosPromocion(const std::string &nombre, float descuento, const DTFecha &fechaVen) = 0;
     virtual void listarVendedor() = 0;
