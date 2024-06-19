@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <set>
-#include "../include/DataTypes/DTDireccion.h"
+#include "DTDireccion.h"
 #include "../include/Compra.h"
 
 using namespace std;
@@ -16,11 +16,11 @@ class DTCliente
 {
 private:
     std::string nickname;
-    string direccion;
+    DTDireccion direccion;
     set<string> compras;
 
 public:
-    DTCliente(std::string nickname, DTDireccion direccion, set<Compra*> compras); //Ver si el puntero a compra es correcto
+    DTCliente(std::string nickname, DTDireccion direccion, set<Compra *> compras); // Ver si el puntero a compra es correcto
     DTDireccion getDireccion();
     set<string> getCompras();
     ~DTCliente();

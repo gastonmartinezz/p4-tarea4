@@ -16,12 +16,14 @@ ControladorUsuario *ControladorUsuario::getInstancia()
     return instancia;
 }
 
-
-void ControladorUsuario::ingresarDatosUsuario(const string &nickname, const string &password, const DTFecha &fechaNacimiento) {
-    if (ListaUsuarios.find(nickname) != ListaUsuarios.end()) {
+void ControladorUsuario::ingresarDatosUsuario(const string &nickname, const string &password, const DTFecha &fechaNacimiento)
+{
+    if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
+    {
         throw invalid_argument("El nickname ya está en uso.");
     }
-    if (password.length() < 6) {
+    if (password.length() < 6)
+    {
         throw invalid_argument("La contraseña debe tener al menos 6 caracteres.");
     }
 
@@ -30,35 +32,42 @@ void ControladorUsuario::ingresarDatosUsuario(const string &nickname, const stri
     fechaNacimientoTemp = fechaNacimiento;
 }
 
-void ControladorUsuario::datosVendedor(const string &codigoRUT) {
-    if (codigoRUT.length() != 12) {
+void ControladorUsuario::datosVendedor(const string &codigoRUT)
+{
+    if (codigoRUT.length() != 12)
+    {
         throw invalid_argument("El código RUT debe tener 12 caracteres.");
     }
     codigoRUTTemp = codigoRUT;
     esClienteTemp = false;
 }
 
-void ControladorUsuario::datosCliente(const string &direccion, const string &ciudad) {
+void ControladorUsuario::datosCliente(const string &direccion, const string &ciudad)
+{
     direccionTemp = direccion;
     ciudadTemp = ciudad;
     esClienteTemp = true;
 }
 
+void ControladorUsuario::confirmarAltaUsuario()
+{
+    // if (ListaUsuarios.find(nicknameTemp) != ListaUsuarios.end())
+    // {
+    //     throw std::invalid_argument("El nickname ya está en uso.");
+    // }
 
-void ControladorUsuario::confirmarAltaUsuario() {
-    if (ListaUsuarios.find(nicknameTemp) != ListaUsuarios.end()) {
-        throw std::invalid_argument("El nickname ya está en uso.");
-    }
-
-    Usuario* nuevoUsuario = nullptr;
-    if (esClienteTemp) {
-        nuevoUsuario = new Cliente(nicknameTemp, passwordTemp, fechaNacimientoTemp, direccionTemp, ciudadTemp);
-        ListaClientes[nicknameTemp] = dynamic_cast<Cliente*>(nuevoUsuario);
-    } else {
-        nuevoUsuario = new Vendedor(nicknameTemp, passwordTemp, fechaNacimientoTemp, std::stoi(codigoRUTTemp));
-        ListaVendedores[nicknameTemp] = dynamic_cast<Vendedor*>(nuevoUsuario);
-    }
-    ListaUsuarios[nicknameTemp] = nuevoUsuario;
+    // Usuario *nuevoUsuario = nullptr;
+    // if (esClienteTemp)
+    // {
+    //     nuevoUsuario = new Cliente(nicknameTemp, passwordTemp, fechaNacimientoTemp, direccionTemp, ciudadTemp);
+    //     ListaClientes[nicknameTemp] = dynamic_cast<Cliente *>(nuevoUsuario);
+    // }
+    // else
+    // {
+    //     nuevoUsuario = new Vendedor(nicknameTemp, passwordTemp, fechaNacimientoTemp, std::stoi(codigoRUTTemp));
+    //     ListaVendedores[nicknameTemp] = dynamic_cast<Vendedor *>(nuevoUsuario);
+    // }
+    // ListaUsuarios[nicknameTemp] = nuevoUsuario;
 }
 
 std::vector<DTUsuario> ControladorUsuario::listarUsuarios()
@@ -104,7 +113,7 @@ void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId)
     // Implementación para eliminar comentario y respuestas
 }
 
-void ControladorUsuario::obtenerVendedoresNoSuscriptos()
+// void ControladorUsuario::obtenerVendedoresNoSuscriptos()
 {
     // Implementación para obtener vendedores no suscriptos
 }
@@ -114,9 +123,11 @@ void ControladorUsuario::agregarSuscripcion(const std::string &nickname)
     // Implementación para agregar suscripción
 }
 
-bool ControladorUsuario::validarPassword(const std::string &nickname, const std::string &password) {
+bool ControladorUsuario::validarPassword(const std::string &nickname, const std::string &password)
+{
     auto it = ListaUsuarios.find(nickname);
-    if (it != ListaUsuarios.end() && it->second->getPassword() == password) {
+    if (it != ListaUsuarios.end() && it->second->getPassword() == password)
+    {
         return true;
     }
     return false;

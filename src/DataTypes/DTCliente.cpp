@@ -1,12 +1,11 @@
 #include "DTCliente.h"
+#include "DTDireccion.h"
 
-DTCliente::DTCliente(std::string nickname, string direccion, set<string> compras)
-    : nickname(nickname), direccion(direccion), compras(compras) {}
+class DTDireccion;
 
-string DTCliente::getDireccion()
-{
-    return direccion;
-}
+DTCliente::DTCliente(std::string nickname, DTDireccion direccion, set<Compra *> compras){};
+
+DTDireccion DTCliente::getDireccion() {};
 
 set<string> DTCliente::getCompras()
 {
