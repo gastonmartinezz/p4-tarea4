@@ -1,45 +1,45 @@
-# Compilador y flags
-CXX = g++
-CXXFLAGS = -std=c++11 -Iinclude
+# Define the compiler
+CC = g++
 
-# Directorios
+# Define the directories
+INCLUDE_DIR = include
 SRC_DIR = src
-INC_DIR = include
 PRESENTACION_DIR = presentacion
-OBJ_DIR = obj
-BIN_DIR = bin
+BUILD_DIR = build
 
-# Archivos fuente y objetos
-SRCS = $(wildcard $(SRC_DIR)/*.cpp) $(wildcard $(SRC_DIR)/*/*.cpp) $(wildcard $(PRESENTACION_DIR)/*.cpp)
-OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
-OBJS := $(patsubst $(PRESENTACION_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(OBJS))
+# Define the output executable
+OUTPUT = main
 
-# Ejecutable
-EXEC = $(BIN_DIR)/programa
+# Collect all the source files
+SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp $(SRC_DIR)/Controladores/*.cpp $(SRC_DIR)/DataTypes/*.cpp $(PRESENTACION_DIR)/*.cpp)
+OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRC_FILES))
+OBJ_FILES := $(patsubst $(PRESENTACION_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(OBJ_FILES))
 
-# Regla principal
-all: $(EXEC)
+# Define the include flags
+INCLUDE_FLAGS = -I$(INCLUDE_DIR) -I$(INCLUDE_DIR)/Controladores -I$(INCLUDE_DIR)/DataTypes -I$(INCLUDE_DIR)/Interfaces
 
-# Regla para compilar el ejecutable
-$(EXEC): $(OBJS) | $(BIN_DIR)
-	$(CXX) $(CXXFLAGS) -o $@ $^
+# Define the compile flags
+CFLAGS = -Wall -g $(INCLUDE_FLAGS)
 
-# Regla para compilar archivos objeto
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# Define the linker flags
+LDFLAGS =
 
-$(OBJ_DIR)/%.o: $(PRESENTACION_DIR)/%.cpp | $(OBJ_DIR)
-	$(CXX) $(CXXFLAGS) -c $< -o $@
+# Rule to build the output executable
+$(OUTPUT): $(OBJ_FILES)
+	$(CC) $(OBJ_FILES) -o $(OUTPUT) $(LDFLAGS)
 
-# Directorios de salida
-$(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+# Rule to build object files
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-$(BIN_DIR):
-	mkdir -p $(BIN_DIR)
+$(BUILD_DIR)/%.o: $(PRESENTACION_DIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
 
-# Limpiar archivos compilados
+# Rule to clean the build directory
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf $(BUILD_DIR)/*.o $(OUTPUT)
 
-.PHONY: all clean
+# Phony targets
+.PHONY: clean

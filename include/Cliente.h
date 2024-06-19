@@ -33,8 +33,7 @@ public:
     void agregarNotificacion(std::string &notificacion);
     void eliminarNotificacion(std::string &notificacion);
     void agregarCompra(Compra *compra); // Agregar este método para agregar una compra
-
-    void mostrarInformacion();
+    void mostrarInformacionCliente();
 };
 
 #endif // CLIENTE_H

@@ -3,15 +3,15 @@
 using namespace std;
 
 // Inicialización de la instancia singleton
-ControladorProducto *ControladorProducto::instancia = nullptr;
-
-ControladorProducto *ControladorProducto::getInstancia()
+ControladorProducto* ControladorProducto::instance = nullptr;
+ControladorHostal::ControladorProducto(){}
+ControladorProducto* ControladorProducto::getInstance()
 {
-    if (!instancia)
+    if (!instance)
     {
-        instancia = new ControladorProducto();
+        instance = new ControladorProducto();
     }
-    return instancia;
+    return instance;
 }
 
 vector<DTProducto*> ControladorProducto::listarProductos() {

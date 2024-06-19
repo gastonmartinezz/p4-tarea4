@@ -24,8 +24,11 @@ public:
     void setFechaDeNacimiento(const DTFecha &fechaDeNacimiento);
     DTUsuario toDataType();
 
+
+
+
     virtual ~Usuario() = default;
-    virtual void mostrarInformacion() const = 0;
+    void mostrarInformacion() const; 
 };
 
 #endif // USUARIO_H

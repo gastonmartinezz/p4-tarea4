@@ -21,7 +21,8 @@ class ControladorUsuario
 private:
     // Constructor privado para el patrón Singleton
     ControladorUsuario() = default;
-    static ControladorUsuario *instancia;
+    static ControladorUsuario* instance;
+
 
     map<string, Usuario *> ListaUsuarios;
     map<string, Cliente *> ListaClientes;
@@ -77,7 +78,7 @@ public:
 */
 
 // Métodos estáticos para obtener la instancia única
-    static ControladorUsuario *getInstancia();
+    static ControladorUsuario* getInstance();
 
     // Métodos del diagrama UML
     void ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento);
@@ -89,14 +90,10 @@ public:
     void listarComentarios();
     void eliminarComentarioYRespuestas(int comentarioId);
     void obtenerVendedoresNoSuscriptos();
-    void agregarSuscripcion(const std::string &nickname);
     bool validarPassword(const std::string &nickname, const std::string &password);
     void listarComentariosUsuarioSeleccionado(const std::string &nickname);
-    std::vector<DTUsuario> listaVendedor();
-    void eliminarComentarioYRespuestas(int comentarioId);
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
-    std::vector<Vendedor> obtenerVendedoresNoSuscriptos();
     void agregarSuscripcion(const std::string &vendedorNickname);
     std::vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
     void suscribirse(const std::string &vendedorNickname);

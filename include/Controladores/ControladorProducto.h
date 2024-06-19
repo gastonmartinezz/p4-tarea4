@@ -22,11 +22,11 @@ class ControladorProducto {
 private:
     // Constructor privado para el patrón Singleton
     ControladorProducto() = default;
-    static ControladorProducto *instancia;
+    static ControladorProducto* instance;
 
 public:
     // Métodos estáticos para obtener la instancia única
-    static ControladorProducto *getInstancia();
+    static ControladorProducto* getInstance();
 
     // Métodos del diagrama UML
     vector<DTProducto*> listarProductos();

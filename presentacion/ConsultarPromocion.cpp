@@ -1,3 +1,5 @@
+
+/*
 #include <iostream>
 #include <algorithm>
 #include <cctype>
@@ -102,3 +104,4 @@ void consultarPromocion() {
         seleccionarPromocion(nombrePromocion);
     }
 }
+*/

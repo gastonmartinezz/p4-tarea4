@@ -1,3 +1,4 @@
+/*
 #include "../include/Fabrica.h"
 #include "../include/DataTypes/DTFecha.h"
 #include <iostream>
@@ -63,3 +64,4 @@ void altaUsuario() {
         std::cerr << "Error: " << e.what() << std::endl;
     }
 }
+ */

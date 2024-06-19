@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <set>
 #include "../include/Producto.h"
@@ -22,3 +23,5 @@ void consultarProducto() {
         }
     }
 }
+
+*/

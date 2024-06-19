@@ -5,17 +5,17 @@
 using namespace std;
 
 // Inicialización de la instancia singleton
-ControladorUsuario *ControladorUsuario::instancia = nullptr;
+ControladorUsuario* ControladorUsuario::instance = NULL;
 
-ControladorUsuario::ControladorUsuario() {}
+ControladorUsuario::ControladorUsuario(){}
 
-ControladorUsuario* ControladorUsuario::getInstancia()
+ControladorUsuario* ControladorUsuario::getInstance()
 {
-    if (instancia == nullptr)
+    if (instance == nullptr)
     {
-        instancia = new ControladorUsuario();
+        instance = new ControladorUsuario();
     }
-    return instancia;
+    return instance;
 }
 
 void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento) {

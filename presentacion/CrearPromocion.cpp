@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <string>
 #include <set>
@@ -104,3 +105,5 @@ void crearPromocion() {
     promoNueva->setDescuento(descuento);
     promoNueva->setFechaVencimiento(fechaVencimiento);
 } 
+
+*/

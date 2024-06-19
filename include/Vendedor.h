@@ -39,7 +39,7 @@ public:
     void agregarProducto(const Producto &producto);    // Agregar este método para agregar un producto
     void agregarPromocion(const Promocion &promocion); // Agregar este método para agregar una promoción
 
-    void mostrarInformacion() const override;
+    void mostrarInformacionVendedor() const;
 };
 
 set<Vendedor*> vendedoresSistema; //Set donde guardamos todos los vendedores del sistema

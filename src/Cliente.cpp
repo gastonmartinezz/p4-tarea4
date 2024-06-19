@@ -43,7 +43,7 @@ void Cliente::agregarCompra(Compra *compra)
     compras.push_back(compra);
 }
 
-void Cliente::mostrarInformacion()
+void Cliente::mostrarInformacionCliente()
 {
     // Implementación de la función para mostrar la información del cliente
 }
