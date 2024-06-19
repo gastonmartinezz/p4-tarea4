@@ -5,7 +5,8 @@
 #include <vector>
 #include <map>
 #include <set>
-<<<<<<< HEAD
+#include <algorithm>
+#include <cctype>
 #include "../include/Usuario.h"
 #include "../include/Cliente.h"
 #include "../include/Vendedor.h"
@@ -14,19 +15,6 @@
 #include "../include/DataTypes/DTUsuario.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include "../include/DataTypes/DTCliente.h"
-=======
-#include <algorithm>
-#include <cctype>
-#include  "../include/Usuario.h"
-#include  "../include/Cliente.h"
-#include  "../include/Vendedor.h"
-#include  "../include/Comentario.h"
-#include  "../include/DataTypes/DTFecha.h"
-#include  "../include/DataTypes/DTUsuario.h"
-#include  "../include/DataTypes/DTVendedor.h"
-#include  "../include/DataTypes/DTCliente.h"
-using namespace std;
->>>>>>> 857170a (cambios)
 
 class ControladorUsuario
 {
