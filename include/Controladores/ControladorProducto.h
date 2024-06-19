@@ -29,13 +29,13 @@ public:
     // Métodos del diagrama UML
     vector<Producto*> listarProductos();
     void confirmarAltaPromocion();
-    void ingresarDatosPromocion(const std::string &nombre, float descuento, const DTFecha &fechaVen);
+    void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
     void listarVendedor();
     void eliminarLinkComentario(int comentarioId);
     void agregarProducto(const Producto &producto);
     void ponerProductosLibres();
-    void ingresarDatos(const std::string &nombre, float precio, int stock);
-    void crearPromocion(const std::string &nombre, float descuento, const DTFecha &fechaVen);
+    void ingresarDatos(const string &nombre, float precio, int stock);
+    void crearPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
     float sumaDeLosPrecios() const;
     bool productoEstaEnDetalleCompra(int productoId, int compraId) const;
     void agregarProductoACarrito(int productoId);

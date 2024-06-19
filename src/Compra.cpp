@@ -1,17 +1,37 @@
+#include <string>
+#include <iostream>
+#include <ctime>
 #include "../include/Compra.h"
-#include "../include/DataTypes/DTFecha.h" 
 
-Compra::Compra(int id, const DTFecha& fecha, const std::vector<Producto>& productos)
-    : id(id), fecha(fecha), productos(productos) {}
-
-int Compra::getId() const {
-    return id;
+Compra::Compra(float monto_total, DTFecha fecha, vector<carro>& carrito)
+    : monto_total(monto_total), fecha(fecha), carrito(carrito) {
+    // Constructor: inicialización de atributos
 }
 
-DTFecha Compra::getFecha() const {
+float Compra::getMonto_total() const {
+    return monto_total;
+}
+
+DTFecha Compra::getFecha_de_la_compra() const {
     return fecha;
 }
 
-std::vector<Producto> Compra::getProductos() const {
-    return productos;
+vector<carro> Compra::getCarrito() const {
+    return carrito;
+}
+
+void Compra::setMonto_total(float monto_total) {
+    this->monto_total = monto_total;
+}
+
+void Compra::setFecha_de_la_compra(DTFecha fecha) {
+    this->fecha = fecha;
+}
+
+void Compra::setCarrito(const vector<carro>& carrito) {
+    this->carrito = carrito;
+}
+
+Compra::~Compra() {
+    // Destructor: limpieza o liberación de recursos
 }

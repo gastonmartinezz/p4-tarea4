@@ -1,4 +1,4 @@
-/* #include <iostream>
+#include <iostream>
 #include <string>
 #include <set>
 #include <algorithm>
@@ -6,8 +6,9 @@
 #include "../include/Promocion.h"
 #include "../include/contenido.h"
 #include "../include/Vendedor.h"
+#include "../include/Controladores/ControladorProducto.h"
+#include "../include/Controladores/ControladorUsuario.h"
 using namespace std;
-
 
 //Función para imprimir los vendedores que hay registrado en el sistema.
 string obtenerListaVendedores() {
@@ -20,12 +21,12 @@ void seleccionarVendedorYObtenerProductos(string nickname) {
     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
 
     for (auto p: vendedoresSistema) {
-        string nicknameVendedorTemporal = p->getNickname(); //Es temporal ya que solo se realiza el cambio para la búsqueda y así no modificar el nickname original.
+        string nicknameVendedorTemporal = p->getNickname();
         transform(nicknameVendedorTemporal.begin(), nicknameVendedorTemporal.end(), nicknameVendedorTemporal.begin(), ::toupper);
         
         if (nickname == nicknameVendedorTemporal) {
             for (auto prod: p->getProductos()) {
-                cout << prod.getId() << endl; //Ver si el contenedor de productos es un objeto o no.
+                cout << prod.getId() << endl;
                 cout << prod.getNombre() << endl;
             }
         }
@@ -47,6 +48,9 @@ bool productoEnPromoExistente(int id) {
 }
 
 void seleccionarProductosParaPromocion(string nickname, int id, int cant_minima) {
+
+    transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
+
     for (auto p: vendedoresSistema) {
         if (nickname == p->getNickname()) {
             for (auto prod: p->getProductos()) {
@@ -134,4 +138,4 @@ void crearPromocion() {
     promoNueva->setNombre(nombre);
     promoNueva->setDescuento(descuento);
     promoNueva->setFechaVencimiento(fechaVencimiento);
-} */
+} 
