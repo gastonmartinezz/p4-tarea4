@@ -5,14 +5,14 @@
 #include <vector>
 #include <map>
 #include <set>
-#include  "../include/Usuario.h"
-#include  "../include/Cliente.h"
-#include  "../include/Vendedor.h"
-#include  "../include/Comentario.h"
-#include  "../include/DataTypes/DTFecha.h"
-#include  "../include/DataTypes/DTUsuario.h"
-#include  "../include/DataTypes/DTVendedor.h"
-#include  "../include/DataTypes/DTCliente.h"
+#include "../include/Usuario.h"
+#include "../include/Cliente.h"
+#include "../include/Vendedor.h"
+#include "../include/Comentario.h"
+#include "../include/DataTypes/DTFecha.h"
+#include "../include/DataTypes/DTUsuario.h"
+#include "../include/DataTypes/DTVendedor.h"
+#include "../include/DataTypes/DTCliente.h"
 
 class ControladorUsuario
 {
@@ -52,11 +52,10 @@ public:
     bool validarPassword(const std::string &nickname, const std::string &password);
     void listarComentariosUsuarioSeleccionado(const std::string &nickname);
 
-    void eliminarComentarioYRespuestas(int comentarioId);
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
     std::vector<Vendedor> obtenerVendedoresNoSuscriptos();
-    void agregarSuscripcion(const std::string &vendedorNickname);
+
     std::vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
     void suscribirse(const std::string &vendedorNickname);
     std::vector<std::string> obtenerNotificaciones(const std::string &nickname);

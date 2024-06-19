@@ -48,7 +48,7 @@ void Cliente::mostrarInformacion()
     // Implementación de la función para mostrar la información del cliente
 }
 
-DTCliente Cliente::toDataType() {};
+// DTCliente Cliente::toDataType() {};
 // DTCliente Cliente::toDataType()
 // {
 //   return   DTCliente::DTCliente(getNickname(),  getDireccion(), getCompras());

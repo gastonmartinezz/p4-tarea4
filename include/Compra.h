@@ -19,7 +19,7 @@ private:
     std::vector<carro> carrito;
 
 public:
-    Compra(int id, const DTFecha &fecha, const std::vector<Producto> &productos);
+    Compra(float monto_total, DTFecha fecha, vector<carro> &carrito);
 
     // Getters
     float getMonto_total() const;

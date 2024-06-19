@@ -19,7 +19,7 @@ private:
     float precio;
     string nombre;
     string descripcion;
-    Vendedor vendedor;
+    Vendedor *quienVende;
     map<int, Comentario *> Comentarios;
 
 public:
@@ -30,7 +30,7 @@ public:
         Otros
     }; // Enum declarado dentro de la clase Producto
 
-    Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria);
+    Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria, Vendedor *quienVende);
     ~Producto();
 
     int getId();
@@ -38,7 +38,7 @@ public:
     float getPrecio();
     string getNombre();
     string getDescripcion();
-    Vendedor getVendedor();
+    Vendedor *getVendedor();
     std::map<int, Comentario *> getComentarios();
 
     void setId(int id);
