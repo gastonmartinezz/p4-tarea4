@@ -3,23 +3,36 @@
 
 #include <vector>
 #include "Producto.h"
+#include "../include/DataTypes/DTProducto.h"
 #include "../include/DataTypes/DTFecha.h"
+#include "../include/DataTypes/DTCarro.h"
+using namespace std;
 
 class Producto;
+class DTProducto;
 
 class Compra
 {
 private:
-    int id;
+    float monto_total;
     DTFecha fecha;
-    std::vector<Producto> productos;
+    std::vector<carro> carrito;
 
 public:
     Compra(int id, const DTFecha &fecha, const std::vector<Producto> &productos);
 
-    int getId() const;
-    DTFecha getFecha() const;
-    std::vector<Producto> getProductos() const;
+    // Getters
+    float getMonto_total() const;
+    DTFecha getFecha_de_la_compra() const;
+    vector<carro> getCarrito() const;
+
+    // Setters
+    void setMonto_total(float monto_total);
+    void setFecha_de_la_compra(DTFecha fecha);
+    void setCarrito(const vector<carro> &productos);
+
+    // Destructor
+    ~Compra();
 };
 
 #endif // COMPRA_H
