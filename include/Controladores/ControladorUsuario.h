@@ -27,16 +27,18 @@ private:
     map<string, Cliente *> ListaClientes;
     map<string, Vendedor *> ListaVendedores;
 
-    // Miembros temporales para el registro de usuarios en AltaUsuario.cpp
-    string nicknameTemp;
-    string passwordTemp;
-    DTFecha fechaNacimientoTemp;
-    string direccionTemp;
-    string ciudadTemp;
-    string codigoRUTTemp;
-    bool esClienteTemp;
+    // // Miembros temporales para el registro de usuarios en AltaUsuario.cpp
+    // string nicknameTemp;
+    // string passwordTemp;
+    // DTFecha fechaNacimientoTemp;
+    // string direccionTemp;
+    // string ciudadTemp;
+    // string codigoRUTTemp;
+    // bool esClienteTemp;
 
 public:
+
+/*
     // Métodos estáticos para obtener la instancia única
     static ControladorUsuario *getInstancia();
 
@@ -56,7 +58,6 @@ public:
 
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
-<<<<<<< HEAD
     std::vector<Vendedor> obtenerVendedoresNoSuscriptos();
 
     std::vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
@@ -67,20 +68,45 @@ public:
     std::vector<std::string> getNotificaciones(const std::string &nickname);
     std::vector<Vendedor> obtenerVendedoresSuscritos(const std::string &clienteNickname);
     void eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname);
-=======
-    vector<Vendedor> obtenerVendedoresNoSuscriptos();
-    void agregarSuscripcion(const string &vendedorNickname);
-    vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
-    void suscribirse(const string &vendedorNickname);
-    vector<string> obtenerNotificaciones(const string &nickname);
-    void mostrarYEliminarNotificacion(const string &nickname);
-    void eliminarNotificaciones(const string &nickname);
-    vector<string> getNotificaciones(const string &nickname);
-    vector<Vendedor> obtenerVendedoresSuscritos(const string &clienteNickname);
-    void eliminarSuscripcion(const string &vendedorNickname, const string &clienteNickname);
->>>>>>> 857170a (cambios)
     void registrarCompra(const Compra &compra);
     void obtenerListaVendedoresSistema();
+};
+
+#endif // CONTROLADORUSUARIO_H
+
+*/
+
+// Métodos estáticos para obtener la instancia única
+    static ControladorUsuario *getInstancia();
+
+    // Métodos del diagrama UML
+    void ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento);
+    void confirmarAltaUsuario(const std::string &direccion, const std::string &ciudad);
+    void confirmarAltaVendedor(const std::string &codigoRUT);
+    std::vector<DTUsuario> listarUsuarios();
+    std::vector<DTUsuario> listarClientes();
+    std::vector<DTUsuario> listaVendedor();
+    void listarComentarios();
+    void eliminarComentarioYRespuestas(int comentarioId);
+    void obtenerVendedoresNoSuscriptos();
+    void agregarSuscripcion(const std::string &nickname);
+    bool validarPassword(const std::string &nickname, const std::string &password);
+    void listarComentariosUsuarioSeleccionado(const std::string &nickname);
+    std::vector<DTUsuario> listaVendedor();
+    void eliminarComentarioYRespuestas(int comentarioId);
+    void eliminarComentario(int comentarioId);
+    void eliminarLinkComentario(int comentarioId);
+    std::vector<Vendedor> obtenerVendedoresNoSuscriptos();
+    void agregarSuscripcion(const std::string &vendedorNickname);
+    std::vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
+    void suscribirse(const std::string &vendedorNickname);
+    std::vector<std::string> obtenerNotificaciones(const std::string &nickname);
+    void mostrarYEliminarNotificacion(const std::string &nickname);
+    void eliminarNotificaciones(const std::string &nickname);
+    std::vector<std::string> getNotificaciones(const std::string &nickname);
+    std::vector<Vendedor> obtenerVendedoresSuscritos(const std::string &clienteNickname);
+    void eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname);
+    void registrarCompra(const Compra &compra);
 };
 
 #endif // CONTROLADORUSUARIO_H
