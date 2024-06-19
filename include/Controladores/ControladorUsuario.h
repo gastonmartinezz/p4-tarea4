@@ -84,8 +84,8 @@ public:
     void confirmarAltaUsuario(const std::string &direccion, const std::string &ciudad);
     void confirmarAltaVendedor(const std::string &codigoRUT);
     std::vector<DTUsuario> listarUsuarios();
-    std::vector<DTUsuario> listarClientes();
-    std::vector<DTUsuario> listaVendedor();
+    std::vector<DTCliente> listarClientes();
+    std::vector<DTVendedor> listaVendedor();
 
     void listarComentarios();
     void eliminarComentarioYRespuestas(int comentarioId);

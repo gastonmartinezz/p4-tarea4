@@ -15,11 +15,11 @@ class Producto;
 class Promocion;
 class DTFecha;
 class Comentario;
-class ICProductos
-{
+
+class ICProductos {
 public:
     virtual ~ICProductos() = default;
-    virtual vector<DTProducto *> listarProductos();
+    virtual vector<DTProducto *> listarProductos() = 0;
     virtual void confirmarAltaPromocion() = 0;
     virtual void ingresarDatosPromocion(const std::string &nombre, float descuento, const DTFecha &fechaVen) = 0;
     virtual void listarVendedor() = 0;
@@ -35,6 +35,9 @@ public:
     virtual void confirmarCompra() = 0;
     virtual void registrarCompra(const Compra &compra) = 0;
     virtual void desplegarCompra(int compraId) const = 0;
+    virtual bool productoEnPromoExistente(int id) = 0;
+    virtual void obtenerProductosDeVendedor(std::string nickname) = 0;
+    virtual void ingresarPromocionASistema(Promocion promo) = 0;
 };
 
 #endif // ICPRODUCTOS_H

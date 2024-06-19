@@ -2,18 +2,15 @@
 #include "../include/Controladores/ControladorProducto.h"
 #include "../include/Controladores/ControladorUsuario.h"
 
-ICUsuario* Fabrica::getICUsuario()
-{
+ICUsuario* Fabrica::getICUsuario() {
     return ControladorUsuario::getInstance();
 }
 
-ICProductos* Fabrica::getICProductos()
-{
+ICProductos* Fabrica::getICProductos() { //Cambie el tipo de devolucion de la funcion para ver si funciona correctamente
     return ControladorProducto::getInstance();
 }
 
-void Fabrica::eliminar()
-{
+void Fabrica::eliminar() {
     ControladorUsuario* aux1 = ControladorUsuario::getInstance();
     delete aux1;
     ControladorProducto* aux2 = ControladorProducto::getInstance();

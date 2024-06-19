@@ -4,8 +4,7 @@
 #include "../include/Interfaces/ICProductos.h"
 #include "../include/Interfaces/ICUsuario.h"
 
-class Fabrica
-{
+class Fabrica {
 private:
     Fabrica();
 

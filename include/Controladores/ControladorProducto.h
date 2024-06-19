@@ -11,7 +11,7 @@
 #include "../include/Comentario.h"
 #include "../include/Compra.h"
 #include "../include/DataTypes/DTFecha.h"
-#include "../include/Interfaces/ICProductos.h"
+#include "../Interfaces/ICProductos.h"
 using namespace std;
 
 class Producto;
@@ -19,8 +19,7 @@ class Promocion;
 class Comentario;
 class Compra;
 
-class ControladorProducto : public ICProductos
-{
+class ControladorProducto : public ICProductos {
 private:
     // Constructor privado para el patrón Singleton
     ControladorProducto() = default;
