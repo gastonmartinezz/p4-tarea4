@@ -19,7 +19,7 @@ class Promocion;
 class Comentario;
 class Compra;
 
-class ControladorProducto : public ICProductos {
+class ControladorProducto /* public ICProductos */ {
 private:
     // Constructor privado para el patrón Singleton
     ControladorProducto() = default;

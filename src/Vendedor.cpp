@@ -1,6 +1,7 @@
 #include "../include/Vendedor.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include <iostream>
+#include <set>
 
 Vendedor::Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, int codigoRut): 
 Usuario(nickname, password, fechaDeNacimiento), codigoRut(codigoRut) {}
@@ -9,15 +10,15 @@ int Vendedor::getCodigoRut() const {
     return codigoRut;
 }
 
-set<Cliente> Vendedor::getSuscriptores() const {
+set<Cliente*> Vendedor::getSuscriptores() const {
     return suscriptores;
 }
 
-vector<Producto> Vendedor::getProductos() const {
+vector<Producto*> Vendedor::getProductos() const {
     return productos;
 }
 
-vector<Promocion> Vendedor::getPromociones() const {
+vector<Promocion*> Vendedor::getPromociones() const {
     return promociones;
 }
 

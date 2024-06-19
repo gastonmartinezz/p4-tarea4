@@ -1,4 +1,5 @@
 #include "../include/Controladores/ControladorProducto.h"
+#include "../include/Interfaces/ICProductos.h"
 #include <iostream>
 using namespace std;
 

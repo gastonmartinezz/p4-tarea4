@@ -2,11 +2,11 @@
 #include "../include/Controladores/ControladorProducto.h"
 #include "../include/Controladores/ControladorUsuario.h"
 
-ICUsuario* Fabrica::getICUsuario() {
+ControladorUsuario* Fabrica::getICUsuario() {
     return ControladorUsuario::getInstance();
 }
 
-ICProductos* Fabrica::getICProductos() { //Cambie el tipo de devolucion de la funcion para ver si funciona correctamente
+ControladorProducto* Fabrica::getICProductos() { //Cambie el tipo de devolucion de la funcion para ver si funciona correctamente
     return ControladorProducto::getInstance();
 }
 
