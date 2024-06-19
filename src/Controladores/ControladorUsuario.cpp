@@ -7,6 +7,8 @@ using namespace std;
 // Inicialización de la instancia singleton
 ControladorUsuario *ControladorUsuario::instancia = nullptr;
 
+ControladorUsuario::ControladorUsuario() {}
+
 ControladorUsuario *ControladorUsuario::getInstancia()
 {
     if (instancia == nullptr)

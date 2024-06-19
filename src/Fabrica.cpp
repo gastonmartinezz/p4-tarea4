@@ -4,18 +4,18 @@
 
 ICUsuario *Fabrica::getICUsuario()
 {
-    return ControladorUsuario::getInstance();
+    return ControladorUsuario::getInstancia();
 }
 
 ICProductos *Fabrica::getICProductos()
 {
-    return ControladorProducto::getInstance();
+    return ControladorProducto::getInstancia();
 }
 
 void Fabrica::eliminar()
 {
-    ControladorUsuario *aux = ControladorUsuario::getInstance();
+    ControladorUsuario *aux = ControladorUsuario::getInstancia();
     delete aux;
-    ControladorProducto *aux = ControladorProducto::getInstance();
+    ControladorProducto *aux = ControladorProducto::getInstancia();
     delete aux;
 }
