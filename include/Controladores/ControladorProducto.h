@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include <set>
+#include <algorithm>
+#include <cctype>
 #include  "../include/Producto.h"
 #include  "../include/Promocion.h"
 #include  "../include/Comentario.h"
@@ -27,7 +29,7 @@ public:
     static ControladorProducto *getInstancia();
 
     // Métodos del diagrama UML
-    vector<Producto*> listarProductos();
+    vector<DTProducto*> listarProductos();
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
     void listarVendedor();
@@ -43,6 +45,9 @@ public:
     void confirmarCompra();
     void registrarCompra(const Compra &compra);
     void desplegarCompra(int compraId) const;
+    bool productoEnPromoExistente(int id);
+    void obtenerProductosDeVendedor(string nickname);
+    void ingresarPromocionASistema(Promocion promo);
 };
 
 vector<Producto*> arrayProductos; //Array donde guardamos los productos del sistema.

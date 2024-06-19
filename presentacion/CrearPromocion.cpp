@@ -11,41 +11,6 @@
 using namespace std;
 
 //Función para imprimir los vendedores que hay registrado en el sistema.
-string obtenerListaVendedores() {
-    for (auto p: vendedoresSistema) {
-        cout << p->getNickname() << endl;
-    }
-}
-
-void seleccionarVendedorYObtenerProductos(string nickname) {
-    transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
-
-    for (auto p: vendedoresSistema) {
-        string nicknameVendedorTemporal = p->getNickname();
-        transform(nicknameVendedorTemporal.begin(), nicknameVendedorTemporal.end(), nicknameVendedorTemporal.begin(), ::toupper);
-        
-        if (nickname == nicknameVendedorTemporal) {
-            for (auto prod: p->getProductos()) {
-                cout << prod.getId() << endl;
-                cout << prod.getNombre() << endl;
-            }
-        }
-    }
-}
-
-//Funcion para ver si existe un producto dentro de la promocion
-bool productoEnPromoExistente(int id) {
-    for (auto promo: promocionesVigentes) {
-        for (auto productos: promo->getProductosDentroDePromo()) {
-            if (id == productos->getProducto()->getId()) { //Preciso ayuda con este.
-                return true;
-                break;
-            } else {
-                return false;
-            }
-        }
-    }
-}
 
 void seleccionarProductosParaPromocion(string nickname, int id, int cant_minima) {
 
@@ -109,7 +74,7 @@ void crearPromocion() {
     cout << "Ingrese el nickname del vendedor para asignarle la promoción: " << endl;
     cin >> nickVendedor;
 
-    seleccionarVendedorYObtenerProductos(nickVendedor);
+    obtenerProductosDeVendedor(nickVendedor);
 
     //Invoco la función para ir agregando los productos a la promoción.
     string respuesta;

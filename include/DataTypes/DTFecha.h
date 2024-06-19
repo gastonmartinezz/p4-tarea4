@@ -9,11 +9,12 @@ class DTFecha{
         int dia;
         int mes;
         int anio;
+        
     public:
         DTFecha();
         DTFecha(int,int,int);
         int getDia();
-        int getMes();	
+        int getMes();
         int getAnio();
        
         bool operator>(DTFecha);

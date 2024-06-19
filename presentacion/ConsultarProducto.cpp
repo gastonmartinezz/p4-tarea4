@@ -13,12 +13,12 @@ void consultarProducto() {
     cin >> id;
 
     for (int i = 0; i <= arrayProductos.size(); i++) {
-        if (id == arrayProductos[i]->getId()) { 
+        if (id == arrayProductos[i]->getId()) {
             cout << "Id: " << arrayProductos[i]->getId() << endl;
             cout << "Precio: " << arrayProductos[i]->getPrecio() << endl;
             cout << "Stock: " << arrayProductos[i]->getStock() << endl;
             cout << "Descripcion: " << arrayProductos[i]->getDescripcion()<< endl;
-            cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;
+            //cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;
         }
     }
 }

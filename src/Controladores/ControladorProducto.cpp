@@ -14,10 +14,8 @@ ControladorProducto *ControladorProducto::getInstancia()
     return instancia;
 }
 
-vector<Producto *> ControladorProducto::listarProductos()
-{
-    for (int i = 0; i <= arrayProductos.size(); i++)
-    {
+vector<DTProducto*> ControladorProducto::listarProductos() {
+    for (int i = 0; i <= arrayProductos.size(); i++) {
         cout << "Nombre: " << arrayProductos[i]->getNombre() << endl;
         cout << "Descripción: " << arrayProductos[i]->getDescripcion() << endl;
         cout << "Id: " << arrayProductos[i]->getId() << endl;
@@ -104,4 +102,37 @@ void ControladorProducto::registrarCompra(const Compra &compra)
 void ControladorProducto::desplegarCompra(int compraId) const
 {
     // Implementación para desplegar detalles de una compra
+}
+
+bool productoEnPromoExistente(int id) {
+    for (auto promo: promocionesVigentes) {
+        for (auto productos: promo->getProductosDentroDePromo()) {
+            if (id == productos->getProducto()->getId()) { //Preciso ayuda con este.
+                return true;
+                break;
+            } else {
+                return false;
+            }
+        }
+    }
+}
+
+void obtenerProductosDeVendedor(string nickname) {
+    transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
+
+    for (auto p: vendedoresSistema) {
+        string nicknameVendedorTemporal = p->getNickname();
+        transform(nicknameVendedorTemporal.begin(), nicknameVendedorTemporal.end(), nicknameVendedorTemporal.begin(), ::toupper);
+        
+        if (nickname == nicknameVendedorTemporal) {
+            for (auto prod: p->getProductos()) {
+                cout << prod.getId() << endl;
+                cout << prod.getNombre() << endl;
+            }
+        }
+    }
+}
+
+void ingresarPromocionASistema(Promocion promo) {
+    promocionesVigentes.insert(promo);
 }

@@ -5,6 +5,7 @@
 #include <vector>
 #include <map>
 #include <set>
+<<<<<<< HEAD
 #include "../include/Usuario.h"
 #include "../include/Cliente.h"
 #include "../include/Vendedor.h"
@@ -13,6 +14,19 @@
 #include "../include/DataTypes/DTUsuario.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include "../include/DataTypes/DTCliente.h"
+=======
+#include <algorithm>
+#include <cctype>
+#include  "../include/Usuario.h"
+#include  "../include/Cliente.h"
+#include  "../include/Vendedor.h"
+#include  "../include/Comentario.h"
+#include  "../include/DataTypes/DTFecha.h"
+#include  "../include/DataTypes/DTUsuario.h"
+#include  "../include/DataTypes/DTVendedor.h"
+#include  "../include/DataTypes/DTCliente.h"
+using namespace std;
+>>>>>>> 857170a (cambios)
 
 class ControladorUsuario
 {
@@ -21,17 +35,17 @@ private:
     ControladorUsuario() = default;
     static ControladorUsuario *instancia;
 
-    std::map<std::string, Usuario *> ListaUsuarios;
-    std::map<std::string, Cliente *> ListaClientes;
-    std::map<std::string, Vendedor *> ListaVendedores;
+    map<string, Usuario *> ListaUsuarios;
+    map<string, Cliente *> ListaClientes;
+    map<string, Vendedor *> ListaVendedores;
 
     // Miembros temporales para el registro de usuarios en AltaUsuario.cpp
-    std::string nicknameTemp;
-    std::string passwordTemp;
+    string nicknameTemp;
+    string passwordTemp;
     DTFecha fechaNacimientoTemp;
-    std::string direccionTemp;
-    std::string ciudadTemp;
-    std::string codigoRUTTemp;
+    string direccionTemp;
+    string ciudadTemp;
+    string codigoRUTTemp;
     bool esClienteTemp;
 
 public:
@@ -39,21 +53,22 @@ public:
     static ControladorUsuario *getInstancia();
 
     // Métodos del diagrama UML
-    void ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento);
-    void datosVendedor(const std::string &codigoRUT);
-    void datosCliente(const std::string &direccion, const std::string &ciudad);
+    void ingresarDatosUsuario(const string &nickname, const string &password, const DTFecha &fechaNacimiento);
+    void datosVendedor(const string &codigoRUT);
+    void datosCliente(const string &direccion, const string &ciudad);
     void confirmarAltaUsuario();
-    std::vector<DTUsuario> listarUsuarios();
-    std::vector<DTCliente> listarClientes();
-    std::vector<DTVendedor> listaVendedor();
+    vector<DTUsuario> listarUsuarios();
+    vector<DTCliente> listarClientes();
+    vector<DTVendedor> listaVendedor();
     void listarComentarios();
     void eliminarComentarioYRespuestas(int comentarioId);
-    void agregarSuscripcion(const std::string &nickname);
-    bool validarPassword(const std::string &nickname, const std::string &password);
-    void listarComentariosUsuarioSeleccionado(const std::string &nickname);
+    void agregarSuscripcion(const string &nickname);
+    bool validarPassword(const string &nickname, const string &password);
+    void listarComentariosUsuarioSeleccionado(const string &nickname);
 
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
+<<<<<<< HEAD
     std::vector<Vendedor> obtenerVendedoresNoSuscriptos();
 
     std::vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
@@ -64,7 +79,20 @@ public:
     std::vector<std::string> getNotificaciones(const std::string &nickname);
     std::vector<Vendedor> obtenerVendedoresSuscritos(const std::string &clienteNickname);
     void eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname);
+=======
+    vector<Vendedor> obtenerVendedoresNoSuscriptos();
+    void agregarSuscripcion(const string &vendedorNickname);
+    vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
+    void suscribirse(const string &vendedorNickname);
+    vector<string> obtenerNotificaciones(const string &nickname);
+    void mostrarYEliminarNotificacion(const string &nickname);
+    void eliminarNotificaciones(const string &nickname);
+    vector<string> getNotificaciones(const string &nickname);
+    vector<Vendedor> obtenerVendedoresSuscritos(const string &clienteNickname);
+    void eliminarSuscripcion(const string &vendedorNickname, const string &clienteNickname);
+>>>>>>> 857170a (cambios)
     void registrarCompra(const Compra &compra);
+    void obtenerListaVendedoresSistema();
 };
 
 #endif // CONTROLADORUSUARIO_H
