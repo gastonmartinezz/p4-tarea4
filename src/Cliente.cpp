@@ -1,55 +1,57 @@
 #include <Cliente.h>
 #include "../include/DataTypes/DTDireccion.h"
+#include "../include/DataTypes/DTCliente.h"
 #include <iostream>
 
 class DTCliente;
 
-Cliente::Cliente(std::string &nickname, std::string &password, DTFecha &fechaDeNacimiento,
-                 DTDireccion &direccion)
+Cliente::Cliente(string &nickname, string &password, DTFecha &fechaDeNacimiento, DTDireccion &direccion)
     : Usuario(nickname, password, fechaDeNacimiento), direccion(direccion) {}
 
-DTDireccion Cliente::getDireccion()
-{
+
+
+DTDireccion Cliente::getDireccion() {
     return direccion;
 }
 
-std::set<std::string> Cliente::getNotificaciones()
-{
+set<string> Cliente::getNotificaciones() {
     return notificaciones;
 }
 
-std::vector<Compra *> Cliente::getCompras()
-{
+vector<Compra *> Cliente::getCompras() {
     return compras;
 }
 
-void Cliente::setDireccion(DTDireccion &direccion)
-{
+void Cliente::setDireccion(DTDireccion &direccion) {
     this->direccion = direccion;
 }
 
-void Cliente::agregarNotificacion(std::string &notificacion)
-{
+void Cliente::agregarNotificacion(string &notificacion) {
     notificaciones.insert(notificacion);
 }
 
-void Cliente::eliminarNotificacion(std::string &notificacion)
-{
+void Cliente::eliminarNotificacion(string &notificacion) {
     notificaciones.erase(notificacion);
 }
 
-void Cliente::agregarCompra(Compra *compra)
-{
+void Cliente::agregarCompra(Compra *compra) {
     compras.push_back(compra);
 }
 
-void Cliente::mostrarInformacionCliente()
-{
-    // Implementación de la función para mostrar la información del cliente
+void Cliente::mostrarInformacionCliente() {
+    cout << "Nickname: " << getNickname() << endl;
+    cout << "Fecha de Nacimiento: " << getFechaDeNacimiento() << endl;
+    cout << "Direccion: " << getDireccion() << endl;
+
 }
 
-// DTCliente Cliente::toDataType() {};
-// DTCliente Cliente::toDataType()
-// {
-//   return   DTCliente::DTCliente(getNickname(),  getDireccion(), getCompras());
-// };
+DTCliente Cliente::toDataType() {
+    return DTCliente(getNickname(), getDireccion(), getCompras());
+}
+
+Cliente::~Cliente() {
+    for (auto compra : compras) {
+        delete compra;
+    }
+    compras.clear();
+}

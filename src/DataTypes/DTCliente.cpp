@@ -1,9 +1,7 @@
 #include "../include/DataTypes/DTCliente.h"
 #include "../include/DataTypes/DTDireccion.h"
 
-class DTDireccion;
-
-DTCliente::DTCliente(std::string nickname, DTDireccion direccion, set<Compra *> compras) {};
+DTCliente::DTCliente(string nickname, DTDireccion direccion, vector<Compra *> compras) {};
 
 DTDireccion DTCliente::getDireccion() {
     return direccion;

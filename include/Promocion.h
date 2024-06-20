@@ -22,7 +22,6 @@ private:
     Vendedor* vendedor;
 
 public:
-    Promocion();
     Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven);
     ~Promocion();
 

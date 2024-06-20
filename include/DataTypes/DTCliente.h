@@ -18,7 +18,7 @@ private:
     set<string> compras;
 
 public:
-    DTCliente(std::string nickname, DTDireccion direccion, set<Compra *> compras); // Ver si el puntero a compra es correcto
+    DTCliente(string nickname, DTDireccion direccion, vector<Compra*> compras); // Ver si el puntero a compra es correcto
     DTDireccion getDireccion();
     set<string> getCompras();
     ~DTCliente();

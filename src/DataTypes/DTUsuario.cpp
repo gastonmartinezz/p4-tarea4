@@ -13,4 +13,8 @@ DTFecha DTUsuario::getFechaNacimiento(){
     return fechaNacimiento;
 }
 
+string DTUsuario::getPassword() {
+    return password;
+}
+
 DTUsuario::~DTUsuario(){}

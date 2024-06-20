@@ -16,7 +16,7 @@ class Compra
 private:
     float monto_total;
     DTFecha fecha;
-    std::vector<carro> carrito;
+    vector<carro> carrito;
 
 public:
     Compra(float monto_total, DTFecha fecha, vector<carro> &carrito);

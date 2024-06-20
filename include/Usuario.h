@@ -4,31 +4,27 @@
 #include <string>
 #include <set>
 #include  "../include/DataTypes/DTUsuario.h"
+using namespace std;
  
-class Usuario
-{
+class Usuario {
 protected:
-    std::string nickname;
-    std::string password;
+    string nickname;
+    string password;
     DTFecha fechaDeNacimiento;
 
 public:
-    Usuario(const std::string &nickname, const std::string &password, const DTFecha &fechaDeNacimiento);
+    Usuario(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento);
 
-    std::string getNickname() const;
-    std::string getPassword() const;
-    DTFecha getFechaDeNacimiento() const;
+    string getNickname();
+    string getPassword();
+    DTFecha getFechaDeNacimiento();
 
-    void setNickname(const std::string &nickname);
-    void setPassword(const std::string &password);
-    void setFechaDeNacimiento(const DTFecha &fechaDeNacimiento);
+    void setNickname(string &nickname);
+    void setPassword(string &password);
+    void setFechaDeNacimiento(DTFecha &fechaDeNacimiento);
     DTUsuario toDataType();
 
-
-
-
-    virtual ~Usuario() = default;
-    void mostrarInformacion() const; 
+    ~Usuario();
 };
 
 #endif // USUARIO_H

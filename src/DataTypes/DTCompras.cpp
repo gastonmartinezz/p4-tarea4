@@ -11,6 +11,13 @@ DTFecha DTCompras::getFechaCompra() {
     return fechaCompra;
 }
 
+void DTCompras::setNombreCliente(string nombreCliente){
+    this->nombreCliente = nombreCliente;
+}
+void DTCompras::setFechaCompra(DTFecha fecha) {
+    this->fechaCompra = fecha;
+}
+
 DTCompras::~DTCompras() {}
 
 ostream& operator<<(ostream& os, DTCompras dtCompras) {

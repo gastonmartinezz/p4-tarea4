@@ -8,8 +8,7 @@
 class Producto;
 class Promocion;
 
-class Contenido
-{
+class Contenido {
 private:
     Producto *prod;
     Promocion *promo;

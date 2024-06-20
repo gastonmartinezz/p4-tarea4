@@ -8,9 +8,9 @@ using namespace std;
 class DTUsuario
 {
 protected:
-    std::string nickname;
+    string nickname;
     DTFecha fechaNacimiento;
-    std::string password;
+    string password;
 
 public:
     DTUsuario(string nombre, DTFecha fechaNacimiento, string password = "");

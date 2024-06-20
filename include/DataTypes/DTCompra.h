@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include "DTFecha.h"
-
 using namespace std;
 
 class DTCompras {
@@ -16,6 +15,9 @@ public:
     DTCompras(string nombreCliente, DTFecha fechaCompra);
     string getNombreCliente();
     DTFecha getFechaCompra();
+
+    void setNombreCliente(string nombreCliente);
+    void setFechaCompra(DTFecha fecha);
     ~DTCompras();
 };
 

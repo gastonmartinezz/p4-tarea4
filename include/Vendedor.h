@@ -39,6 +39,7 @@ public:
     void agregarPromocion(Promocion*); // Agregar este método para agregar una promoción
 
     void mostrarInformacionVendedor();
+    ~Vendedor();
 };
 
 set<Vendedor*> vendedoresSistema; //Set donde guardamos todos los vendedores del sistema

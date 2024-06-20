@@ -49,3 +49,21 @@ void Vendedor::mostrarInformacionVendedor() {
 void Vendedor::toDataType() {
     DTVendedor(getCodigoRut(), getProductos(), getPromociones());
 };
+
+Vendedor::~Vendedor() {
+    // Liberar memoria de los productos
+    for (auto producto : productos) {
+        delete producto;
+    }
+    productos.clear();
+
+    // Liberar memoria de las promociones
+    for (auto promocion : promociones) {
+        delete promocion;
+    }
+    promociones.clear();
+
+    // No liberamos memoria de los suscriptores porque no somos los dueños de esos punteros,
+    // asumimos que otra parte del programa es responsable de ello.
+    suscriptores.clear();
+}

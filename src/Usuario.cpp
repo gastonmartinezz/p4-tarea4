@@ -1,39 +1,34 @@
 #include "../include/Usuario.h"
 
-Usuario::Usuario(const std::string &nickname, const std::string &password, const DTFecha &fechaDeNacimiento)
+Usuario::Usuario(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento)
     : nickname(nickname), password(password), fechaDeNacimiento(fechaDeNacimiento) {}
 
-std::string Usuario::getNickname() const
-{
+string Usuario::getNickname() {
     return nickname;
 }
 
-std::string Usuario::getPassword() const
-{
+string Usuario::getPassword() {
     return password;
 }
 
-DTFecha Usuario::getFechaDeNacimiento() const
-{
+DTFecha Usuario::getFechaDeNacimiento() {
     return fechaDeNacimiento;
 }
 
-void Usuario::setNickname(const std::string &nickname)
-{
+void Usuario::setNickname(string &nickname) {
     this->nickname = nickname;
 }
 
-void Usuario::setPassword(const std::string &password)
-{
+void Usuario::setPassword(string &password) {
     this->password = password;
 }
 
-void Usuario::setFechaDeNacimiento(const DTFecha &fechaDeNacimiento)
-{
+void Usuario::setFechaDeNacimiento(DTFecha &fechaDeNacimiento) {
     this->fechaDeNacimiento = fechaDeNacimiento;
 }
 
-DTUsuario Usuario::toDataType()
-{
+DTUsuario Usuario::toDataType() {
     return DTUsuario(getNickname(), getFechaDeNacimiento());
 };
+
+Usuario::~Usuario() {}

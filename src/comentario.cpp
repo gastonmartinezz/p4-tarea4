@@ -5,11 +5,18 @@
 #include <functional>
 
 // Constructor
-Comentario::Comentario(int id, std::string &texto, DTFecha &fecha)
+Comentario::Comentario(int id, string &texto, DTFecha &fecha)
     : id(id), Texto(texto), Fecha_de_realizado(fecha) {}
 
+Comentario::~Comentario() {}
+
 // Getters
-std::string Comentario::getTexto()
+
+int Comentario::getId() {
+    return id;
+}
+
+string Comentario::getTexto()
 {
     return Texto;
 }
@@ -35,7 +42,7 @@ void Comentario::setFechaDeRealizado(DTFecha &fecha)
     this->Fecha_de_realizado = fecha;
 }
 
-std::vector<Comentario *> Comentario::getRespuestas()
+vector<Comentario *> Comentario::getRespuestas()
 {
     return respuestas;
 };
@@ -64,12 +71,12 @@ void Comentario::setQuienComenta(Usuario *quien)
     quienComenta = quien;
 };
 
-std::map<int, Comentario *> printComentarios()
+map<int, Comentario *> printComentarios()
 {
-    std::map<int, Comentario *> comentariosMap;
+    map<int, Comentario *> comentariosMap;
 
     // Función lambda recursiva para imprimir y llenar el map de comentarios
-    std::function<void(Comentario *)> imprimirYAgregar = [&](Comentario *comentario)
+    function<void(Comentario *)> imprimirYAgregar = [&](Comentario *comentario)
     {
         if (comentario)
         {

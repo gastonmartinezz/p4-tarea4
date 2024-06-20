@@ -17,7 +17,7 @@ private:
     string descripcion;
     string categoria;
     string vendedor;
-    std::map<int, Comentario *> Comentarios;
+    map<int, Comentario*> Comentarios;
 
 public:
     DTProducto(int id, int stock, float precio, string nombre, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios);
@@ -29,6 +29,15 @@ public:
     string getCategoria();
     string getVendedor();
     std::map<int, Comentario *> getComentarios();
+
+    void setNombre(string nombre);
+    void setStock(int stock);
+    void setPrecio(float precio);
+    void setId(int id);
+    void setDescripcion(string descripcion);
+    void setCategoria(string categoria);
+    void setVendedor(string vendedor);
+
     void addComentario(Comentario *);
     ~DTProducto();
 };

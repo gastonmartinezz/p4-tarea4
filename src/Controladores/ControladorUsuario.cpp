@@ -56,7 +56,7 @@ void ControladorUsuario::confirmarAltaUsuario(string &nickname, string &password
     }
 
     Usuario *nuevoUsuario = new Cliente(nickname, password, fechaNacimiento, direccion);
-    ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
+    //ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
     ListaUsuarios[nickname] = nuevoUsuario;
 }
 
@@ -72,7 +72,7 @@ void ControladorUsuario::confirmarAltaVendedor(string &nickname, string &passwor
     }
 
     Usuario *nuevoUsuario = new Vendedor(nickname, password, fechaNacimiento, std::stoi(codigoRUT));
-    ListaVendedores[nickname] = dynamic_cast<Vendedor *>(nuevoUsuario);
+    //ListaVendedores[nickname] = dynamic_cast<Vendedor *>(nuevoUsuario);
     ListaUsuarios[nickname] = nuevoUsuario;
 }
 

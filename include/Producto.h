@@ -47,7 +47,7 @@ public:
     void setNombre(const string &nombre);
     void setDescripcion(const string &descripcion);
     void setVendedor(Vendedor* vendedor);
-    void setComentario(Comentario *);
+    //void setComentario(Comentario *);
 };
 
 vector<Producto *> productosSistema; // Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
