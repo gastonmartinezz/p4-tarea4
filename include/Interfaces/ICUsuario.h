@@ -11,14 +11,15 @@
 #include "Vendedor.h"
 #include "Comentario.h"
 
-class ICUsuario {
+class ICUsuario
+{
 public:
     virtual ~ICUsuario() = default;
 
     virtual void ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento) = 0;
     virtual void datosVendedor(const std::string &codigoRUT) = 0;
     virtual void datosCliente(const std::string &direccion, const std::string &ciudad) = 0;
-    virtual void confirmarAltaUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento, const std::string &direccion, const std::string &ciudad) = 0;
+    virtual void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion) = 0;
     virtual std::vector<DTUsuario> listarUsuarios() = 0;
     virtual std::vector<DTCliente> listarClientes() = 0;
     virtual std::vector<DTVendedor> listaVendedor() = 0;

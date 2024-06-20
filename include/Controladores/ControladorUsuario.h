@@ -17,7 +17,8 @@
 #include "../include/DataTypes/DTVendedor.h"
 #include "../include/DataTypes/DTCliente.h"
 
-class ControladorUsuario : public ICUsuario {
+class ControladorUsuario : public ICUsuario
+{
 private:
     // Constructor privado para el patrón Singleton
     ControladorUsuario() = default;
@@ -80,8 +81,7 @@ public:
 
     // Métodos del diagrama UML
     void ingresarDatosUsuario(const string &nickname, const string &password, const DTFecha &fechaNacimiento);
-    void confirmarAltaUsuario(const string &direccion, const string &ciudad);
-    void confirmarAltaVendedor(const string &codigoRUT);
+
     vector<DTUsuario> listarUsuarios();
     vector<DTCliente> listarClientes();
     vector<DTVendedor> listaVendedor();
@@ -90,10 +90,10 @@ public:
     void datosVendedor(const string &codigoRUT);
     void datosCliente(const string &direccion, const string &ciudad);
     void eliminarComentarioYRespuestas(int comentarioId);
-    virtual vector<Vendedor> obtenerVendedoresNoSuscriptos();
+    vector<Vendedor> obtenerVendedoresNoSuscriptos();
     bool validarPassword(const string &nickname, const string &password);
     void listarComentariosUsuarioSeleccionado(const string &nickname);
-    void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); //Le saque ciudad pq no me compilaba - Tonga
+    void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); // Le saque ciudad pq no me compilaba - Tonga
     void confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT);
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
