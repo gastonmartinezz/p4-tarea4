@@ -19,7 +19,7 @@ private:
     float precio;
     string nombre;
     string descripcion;
-    Vendedor *quienVende;
+    Vendedor* quienVende;
     map<int, Comentario *> Comentarios;
 
 public:
@@ -46,7 +46,7 @@ public:
     void setPrecio(float precio);
     void setNombre(const string &nombre);
     void setDescripcion(const string &descripcion);
-    void setVendedor(const Vendedor &vendedor);
+    void setVendedor(Vendedor* vendedor);
     void setComentario(Comentario *);
 };
 

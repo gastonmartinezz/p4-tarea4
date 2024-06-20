@@ -23,23 +23,22 @@ private:
     vector<Promocion*> promociones; // Agregar esta línea para almacenar las promociones del vendedor
 
 public:
-    Vendedor();
     Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento,int codigoRut);
 
-    int getCodigoRut() const;
-    set<Cliente*> getSuscriptores() const;
-    vector<Producto*> getProductos() const;    // Agregar este método para obtener los productos
-    vector<Promocion*> getPromociones() const; // Agregar este método para obtener las promociones
-    DTVendedor toDataType();
+    int getCodigoRut();
+    set<Cliente*> getSuscriptores();
+    vector<Producto*> getProductos();    // Agregar este método para obtener los productos
+    vector<Promocion*> getPromociones(); // Agregar este método para obtener las promociones
+    void toDataType(); //es un void pq en si genera un nuevo objeto en DTVendedor.cpp [REVISAR]
 
     void setCodigoRut(int codigoRut);
 
-    void agregarSuscriptor(const Cliente &cliente);
-    void eliminarSuscriptor(const Cliente &cliente);
-    void agregarProducto(const Producto &producto);    // Agregar este método para agregar un producto
-    void agregarPromocion(const Promocion &promocion); // Agregar este método para agregar una promoción
+    void agregarSuscriptor(Cliente*);
+    void eliminarSuscriptor(Cliente*);
+    void agregarProducto(Producto*);    // Agregar este método para agregar un producto
+    void agregarPromocion(Promocion*); // Agregar este método para agregar una promoción
 
-    void mostrarInformacionVendedor() const;
+    void mostrarInformacionVendedor();
 };
 
 set<Vendedor*> vendedoresSistema; //Set donde guardamos todos los vendedores del sistema

@@ -6,19 +6,19 @@
 Vendedor::Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, int codigoRut): 
 Usuario(nickname, password, fechaDeNacimiento), codigoRut(codigoRut) {}
 
-int Vendedor::getCodigoRut() const {
+int Vendedor::getCodigoRut() {
     return codigoRut;
 }
 
-set<Cliente*> Vendedor::getSuscriptores() const {
+set<Cliente*> Vendedor::getSuscriptores() {
     return suscriptores;
 }
 
-vector<Producto*> Vendedor::getProductos() const {
+vector<Producto*> Vendedor::getProductos() {
     return productos;
 }
 
-vector<Promocion*> Vendedor::getPromociones() const {
+vector<Promocion*> Vendedor::getPromociones() {
     return promociones;
 }
 
@@ -26,25 +26,26 @@ void Vendedor::setCodigoRut(int codigoRut) {
     this->codigoRut = codigoRut;
 }
 
-void Vendedor::agregarSuscriptor(const Cliente &cliente) {
+void Vendedor::agregarSuscriptor(Cliente* cliente) {
     suscriptores.insert(cliente);
 }
 
-void Vendedor::eliminarSuscriptor(const Cliente &cliente) {
+void Vendedor::eliminarSuscriptor(Cliente* cliente) {
     suscriptores.erase(cliente);
 }
 
-void Vendedor::agregarProducto(const Producto &producto) {
+void Vendedor::agregarProducto(Producto* producto) {
     productos.push_back(producto);
 }
 
-void Vendedor::agregarPromocion(const Promocion &promocion) {
+void Vendedor::agregarPromocion(Promocion* promocion) {
     promociones.push_back(promocion);
 }
 
-void Vendedor::mostrarInformacion() const {
+void Vendedor::mostrarInformacionVendedor() {
     // Implementación de la función para mostrar la información del vendedor
 };
-DTVendedor Vendedor::toDataType() {
+
+void Vendedor::toDataType() {
     DTVendedor(getCodigoRut(), getProductos(), getPromociones());
 };

@@ -2,21 +2,19 @@
 #include <iostream>
 #include <stdexcept>
 #include "../include/Controladores/ControladorUsuario.h"
+#include "../include/Cliente.h"
 using namespace std;
 
 // Inicialización de la instancia singleton
 ControladorUsuario *ControladorUsuario::instance = NULL;
 
-ControladorUsuario::ControladorUsuario() {}
-
-ControladorUsuario *ControladorUsuario::getInstance()
+/* ControladorUsuario *ControladorUsuario::getInstance()
 {
-    if (instance == nullptr)
-    {
+    if (instance == nullptr) {
         instance = new ControladorUsuario();
     }
     return instance;
-}
+} */
 
 void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento)
 {
@@ -34,29 +32,27 @@ void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const
 
 void ControladorUsuario::datosVendedor(const string &codigoRUT)
 {
-    if (codigoRUT.length() != 12)
-    {
+    if (codigoRUT.length() != 12) {
         throw invalid_argument("El código RUT debe tener 12 caracteres.");
     }
-    codigoRUTTemp = codigoRUT;
-    esClienteTemp = false;
+    string codigoRUTTemp = codigoRUT;
+    //bool esClienteTemp = false; !!!!!LO COMENTE PORQUE ME DABA ERROR DE COMPILACION - TONGA
 }
 
-void ControladorUsuario::datosCliente(const string &direccion, const string &ciudad)
-{
-    direccionTemp = direccion;
-    ciudadTemp = ciudad;
-    esClienteTemp = true;
+void ControladorUsuario::datosCliente(const string &direccion, const string &ciudad) {
+    string direccionTemp = direccion;
+    string ciudadTemp = ciudad;
+    //esClienteTemp = true;  !!!!!LO COMENTE PORQUE ME DABA ERROR DE COMPILACION - TONGA
 }
 
-void ControladorUsuario::confirmarAltaUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento, const std::string &direccion, const std::string &ciudad)
+
+void ControladorUsuario::confirmarAltaUsuario(std::string &nickname, std::string &password, DTFecha &fechaNacimiento, DTDireccion &direccion)
 {
-    if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
-    {
+    if (ListaUsuarios.find(nickname) != ListaUsuarios.end()) {
         throw std::invalid_argument("El nickname ya está en uso.");
     }
 
-    Usuario *nuevoUsuario = new Cliente(nickname, password, fechaNacimiento, direccion, ciudad);
+    Usuario *nuevoUsuario = new Cliente(nickname, password, fechaNacimiento, direccion);
     ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
     ListaUsuarios[nickname] = nuevoUsuario;
 }

@@ -30,7 +30,7 @@ public:
     static ControladorProducto *getInstance();
 
     // Métodos del diagrama UML
-    vector<DTProducto *> listarProductos();
+    void listarProductos(); //es un void ya que es hacer 'cout'
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
     void listarVendedor();

@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <set>
+#include <vector>
 #include <string>
 #include "DTProducto.h"
 #include "DTPromocion.h"
@@ -17,7 +18,7 @@ private:
     set<DTPromocion> promociones;
 
 public:
-    DTVendedor(string rut, set<DTProducto> productos, set<DTPromocion> promociones);
+    DTVendedor(int rut, vector<Producto*> productos, vector<Promocion*> promociones); //Compila pero estamos usando OBJETOS y no DATATYPES. Hay que corregirlo
     string getRut();
     set<DTProducto> getProductos();
     set<DTPromocion> getPromociones();

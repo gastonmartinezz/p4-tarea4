@@ -17,8 +17,7 @@
 #include "../include/DataTypes/DTVendedor.h"
 #include "../include/DataTypes/DTCliente.h"
 
-class ControladorUsuario : public ICUsuario
-{
+class ControladorUsuario : public ICUsuario {
 private:
     // Constructor privado para el patrón Singleton
     ControladorUsuario() = default;
@@ -88,10 +87,13 @@ public:
     std::vector<DTVendedor> listaVendedor();
 
     void listarComentarios();
+    void datosVendedor(const string &codigoRUT);
+    void datosCliente(const string &direccion, const string &ciudad);
     void eliminarComentarioYRespuestas(int comentarioId);
     virtual std::vector<Vendedor> obtenerVendedoresNoSuscriptos();
     bool validarPassword(const std::string &nickname, const std::string &password);
     void listarComentariosUsuarioSeleccionado(const std::string &nickname);
+    void confirmarAltaUsuario(std::string &nickname, std::string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); //Le saque ciudad pq no me compilaba - Tonga
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
     void agregarSuscripcion(const std::string &vendedorNickname);

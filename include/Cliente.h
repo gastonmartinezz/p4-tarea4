@@ -5,23 +5,23 @@
 #include "Compra.h"
 #include "../include/DataTypes/DTCliente.h"
 #include "../include/DataTypes/DTDireccion.h"
+#include "../include/Compra.h"
 #include <vector>
 #include <set>
 #include <string>
 
 class DTCliente;
 class DTDireccion;
+class Compra;
 
-class Cliente : public Usuario
-{
+class Cliente : public Usuario {
 private:
     DTDireccion direccion;
     std::set<std::string> notificaciones;
     std::vector<Compra *> compras; // Agregar esta línea para almacenar las compras del cliente
 
 public:
-    Cliente(std::string &nickname, std::string &password, DTFecha &fechaDeNacimiento,
-            DTDireccion &direccion);
+    Cliente(std::string &nickname, std::string &password, DTFecha &fechaDeNacimiento, DTDireccion &direccion);
 
     DTDireccion getDireccion();
     std::set<std::string> getNotificaciones();

@@ -14,13 +14,12 @@ ControladorProducto *ControladorProducto::getInstance()
     return instance;
 }
 
-vector<DTProducto *> ControladorProducto::listarProductos()
+void ControladorProducto::listarProductos()
 {
-    for (int i = 0; i <= arrayProductos.size(); i++)
-    {
+    for (long unsigned int i = 0; i <= arrayProductos.size(); i++) {
         cout << "Nombre: " << arrayProductos[i]->getNombre() << endl;
         cout << "Descripción: " << arrayProductos[i]->getDescripcion() << endl;
-        cout << "Id: " << arrayProductos[i]->getId() << endl;
+        cout << "Id: " << arrayProductos[i]->getId() << endl; 
         /*cout << "Precio: " << arrayProductos[i]->getPrecio() << endl;
         cout << "Stock: " << arrayProductos[i]->getStock() << endl;
         cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;*/
@@ -106,23 +105,21 @@ void ControladorProducto::desplegarCompra(int compraId) const
     // Implementación para desplegar detalles de una compra
 }
 
-bool productoEnPromoExistente(int id)
-{
-    for (auto promo : promocionesVigentes)
-    {
-        for (auto productos : promo->getProductosDentroDePromo())
-        {
-            if (id == productos->getProducto()->getId())
-            { // Preciso ayuda con este.
-                return true;
+bool productoEnPromoExistente(int id) {
+    bool b;
+    for (auto promo: promocionesVigentes) {
+        for (auto productos : promo->getProductosDentroDePromo()) {
+            if (id == productos->getProducto()->getId()) {
+                b = true;
                 break;
             }
             else
             {
-                return false;
+                b = false;
             }
         }
     }
+    return b;
 }
 
 // void obtenerProductosDeVendedor(string nickname) {

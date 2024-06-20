@@ -27,6 +27,6 @@ void Producto::setNombre(const string &nombre) { this->nombre = nombre; }
 
 void Producto::setDescripcion(const string &descripcion) { this->descripcion = descripcion; }
 
-void Producto::setVendedor(const Vendedor &vendedor) { this->quienVende = vendedor; }
+void Producto::setVendedor(Vendedor* vendedor) { this->quienVende = vendedor; }
 
 Producto::~Producto() {}
