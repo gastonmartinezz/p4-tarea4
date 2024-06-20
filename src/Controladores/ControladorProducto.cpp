@@ -1,6 +1,7 @@
 #include "../include/Controladores/ControladorProducto.h"
 #include "../include/Interfaces/ICProductos.h"
 #include <iostream>
+#include <vector>
 using namespace std;
 
 // Inicialización de la instancia singleton
@@ -16,16 +17,28 @@ ControladorProducto *ControladorProducto::getInstance()
 
 void ControladorProducto::listarProductos()
 {
-    for (long unsigned int i = 0; i <= arrayProductos.size(); i++) {
+    for (long unsigned int i = 0; i <= arrayProductos.size(); i++)
+    {
         cout << "Nombre: " << arrayProductos[i]->getNombre() << endl;
         cout << "Descripción: " << arrayProductos[i]->getDescripcion() << endl;
-        cout << "Id: " << arrayProductos[i]->getId() << endl; 
+        cout << "Id: " << arrayProductos[i]->getId() << endl;
         /*cout << "Precio: " << arrayProductos[i]->getPrecio() << endl;
         cout << "Stock: " << arrayProductos[i]->getStock() << endl;
         cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;*/
 
         // Comento las salidas de consola de arriba ya que no se si debemos imprimir toda la información del producto
     }
+}
+
+vector<DTProducto> ControladorProducto::listarProductos2()
+{
+    vector<DTProducto> aux;
+
+    for (auto it = listaProductos.begin(); it != listaProductos.end(); it++)
+    {
+        aux.push_back(it->second->toDataType());
+    }
+    return aux;
 }
 
 void ControladorProducto::confirmarAltaPromocion()
@@ -105,11 +118,15 @@ void ControladorProducto::desplegarCompra(int compraId) const
     // Implementación para desplegar detalles de una compra
 }
 
-bool productoEnPromoExistente(int id) {
+bool productoEnPromoExistente(int id)
+{
     bool b;
-    for (auto promo: promocionesVigentes) {
-        for (auto productos : promo->getProductosDentroDePromo()) {
-            if (id == productos->getProducto()->getId()) {
+    for (auto promo : promocionesVigentes)
+    {
+        for (auto productos : promo->getProductosDentroDePromo())
+        {
+            if (id == productos->getProducto()->getId())
+            {
                 b = true;
                 break;
             }

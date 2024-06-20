@@ -6,6 +6,7 @@
 #include <set>
 #include <algorithm>
 #include <cctype>
+#include <map>
 #include "../include/Producto.h"
 #include "../include/Promocion.h"
 #include "../include/Comentario.h"
@@ -19,18 +20,21 @@ class Promocion;
 class Comentario;
 class Compra;
 
-class ControladorProducto /* : public ICProductos */ {
+class ControladorProducto /* : public ICProductos */
+{
 private:
     // Constructor privado para el patrón Singleton
     ControladorProducto() = default;
     static ControladorProducto *instance;
+    map<int, Producto *> listaProductos;
 
 public:
     // Métodos estáticos para obtener la instancia única
     static ControladorProducto *getInstance();
 
     // Métodos del diagrama UML
-    void listarProductos(); //es un void ya que es hacer 'cout'
+    vector<DTProducto> listarProductos2();
+    void listarProductos(); // es un void ya que es hacer 'cout'
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
     void listarVendedor();

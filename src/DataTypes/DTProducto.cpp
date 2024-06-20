@@ -1,62 +1,76 @@
 #include "DTProducto.h"
 #include <map>
 
-DTProducto::DTProducto(int id, int stock, float precio, string nombre, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios)
+DTProducto::DTProducto(int id, string nombre, int stock, float precio, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios)
     : id(id), stock(stock), precio(precio), nombre(nombre), descripcion(descripcion), categoria(categoria), vendedor(vendedor), Comentarios(Comentarios) {}
 
-int DTProducto::getId() {
+int DTProducto::getId()
+{
     return id;
 }
 
-int DTProducto::getStock() {
+int DTProducto::getStock()
+{
     return stock;
 }
 
-float DTProducto::getPrecio() {
+float DTProducto::getPrecio()
+{
     return precio;
 }
 
-string DTProducto::getNombre() {
+string DTProducto::getNombre()
+{
     return nombre;
 }
 
-string DTProducto::getDescripcion() {
+string DTProducto::getDescripcion()
+{
     return descripcion;
 }
 
-string DTProducto::getCategoria() {
+string DTProducto::getCategoria()
+{
     return categoria;
 }
 
-string DTProducto::getVendedor() {
+string DTProducto::getVendedor()
+{
     return vendedor;
 }
 
-void DTProducto::setNombre(string nombre) {
+void DTProducto::setNombre(string nombre)
+{
     this->nombre = nombre;
 }
 
-void DTProducto::setStock(int stock) {
+void DTProducto::setStock(int stock)
+{
     this->stock = stock;
 }
 
-void DTProducto::setPrecio(float precio) {
+void DTProducto::setPrecio(float precio)
+{
     this->precio = precio;
 }
 
-void DTProducto::setId(int id) {
+void DTProducto::setId(int id)
+{
     this->id = id;
 }
 
-void DTProducto::setDescripcion(string descripcion) {
+void DTProducto::setDescripcion(string descripcion)
+{
     this->descripcion = descripcion;
 }
 
-void DTProducto::setCategoria(string categoria) {
+void DTProducto::setCategoria(string categoria)
+{
     this->categoria = categoria;
 }
 
-void DTProducto::setVendedor(string vendedor) {
+void DTProducto::setVendedor(string vendedor)
+{
     this->vendedor = vendedor;
 }
 

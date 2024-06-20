@@ -7,6 +7,7 @@
 #include "Vendedor.h"
 #include "Comentario.h"
 #include "../include/Controladores/ControladorProducto.h"
+#include "../include/DataTypes/DTProducto.h"
 
 class Vendedor;
 using namespace std;
@@ -19,7 +20,7 @@ private:
     float precio;
     string nombre;
     string descripcion;
-    Vendedor* quienVende;
+    Vendedor *quienVende;
     map<int, Comentario *> Comentarios;
 
 public:
@@ -46,8 +47,9 @@ public:
     void setPrecio(float precio);
     void setNombre(const string &nombre);
     void setDescripcion(const string &descripcion);
-    void setVendedor(Vendedor* vendedor);
-    //void setComentario(Comentario *);
+    void setVendedor(Vendedor *vendedor);
+    DTProducto toDataType();
+    // void setComentario(Comentario *);
 };
 
 vector<Producto *> productosSistema; // Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)

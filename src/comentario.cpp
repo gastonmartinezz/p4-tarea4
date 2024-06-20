@@ -12,7 +12,8 @@ Comentario::~Comentario() {}
 
 // Getters
 
-int Comentario::getId() {
+int Comentario::getId()
+{
     return id;
 }
 
@@ -71,28 +72,16 @@ void Comentario::setQuienComenta(Usuario *quien)
     quienComenta = quien;
 };
 
-map<int, Comentario *> printComentarios()
+map<int, Comentario *> Comentario::printComentarios()
 {
     map<int, Comentario *> comentariosMap;
+    comentariosMap[id] = this;
 
-    // Función lambda recursiva para imprimir y llenar el map de comentarios
-    function<void(Comentario *)> imprimirYAgregar = [&](Comentario *comentario)
+    for (Comentario *respuesta : respuestas)
     {
-        if (comentario)
-        {
-            comentario->imprimir();
-            comentariosMap[comentario->getId()] = comentario;
-
-            // Recorrer respuestas recursivamente
-            for (Comentario *respuesta : comentario->getRespuestas())
-            {
-                imprimirYAgregar(respuesta);
-            }
-        }
-    };
-
-    // Iniciar la impresión y llenado del mapa desde el comentario actual
-    // imprimirYAgregar(this);
+        map<int, Comentario *> subComentarios = respuesta->printComentarios();
+        comentariosMap.insert(subComentarios.begin(), subComentarios.end());
+    }
 
     return comentariosMap;
 }

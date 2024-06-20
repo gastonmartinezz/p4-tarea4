@@ -17,10 +17,12 @@ private:
     string descripcion;
     string categoria;
     string vendedor;
-    map<int, Comentario*> Comentarios;
+    map<int, Comentario *> Comentarios;
 
 public:
-    DTProducto(int id, int stock, float precio, string nombre, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios);
+    // DTProducto(int id, int stock, float precio, string nombre, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios);
+    DTProducto(int id = 0, std::string nombre = "", int stock = 0, float precio = 0.0, std::string descripcion = "", std::string categoria = "", std::string vendedor = "", std::map<int, Comentario *> comentarios = std::map<int, Comentario *>());
+
     int getId();
     int getStock();
     float getPrecio();
