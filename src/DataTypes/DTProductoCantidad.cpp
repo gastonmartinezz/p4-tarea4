@@ -1,4 +1,4 @@
-#include "DTProductoCantidad.h"
+#include "../include/DataTypes/DTProductosCantidad.h"
 
 DTProductoCantidad::DTProductoCantidad(set<DTProducto> productos, map<DTProducto, int> cantMinima)
     : productos(productos), cantMinima(cantMinima) {}

@@ -1,17 +1,17 @@
 #include "DTVendedor.h"
 
-DTVendedor::DTVendedor(string rut, set<DTProducto> productos, set<DTPromocion> promociones)
+DTVendedor::DTVendedor(int rut, vector<Producto*> productos, vector<Promocion*> promociones)
     : rut(rut), productos(productos), promociones(promociones) {}
 
-string DTVendedor::getRut() {
+int DTVendedor::getRut() {
     return rut;
 }
 
-set<DTProducto> DTVendedor::getProductos() {
+vector<Producto*> DTVendedor::getProductos() {
     return productos;
 }
 
-set<DTPromocion> DTVendedor::getPromociones() {
+vector<Promocion*> DTVendedor::getPromociones() {
     return promociones;
 }
 

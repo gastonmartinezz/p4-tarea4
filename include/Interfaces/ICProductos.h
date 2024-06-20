@@ -19,7 +19,7 @@ class Comentario;
 class ICProductos {
 public:
     virtual ~ICProductos() = default;
-    virtual vector<DTProducto *> listarProductos() = 0;
+    virtual void listarProductos() = 0;
     virtual void confirmarAltaPromocion() = 0;
     virtual void ingresarDatosPromocion(const std::string &nombre, float descuento, const DTFecha &fechaVen) = 0;
     virtual void listarVendedor() = 0;

@@ -1,4 +1,4 @@
-#include "DTCompras.h"
+#include "../include/DataTypes/DTCompra.h"
 
 DTCompras::DTCompras(string nombreCliente, DTFecha fechaCompra)
     : nombreCliente(nombreCliente), fechaCompra(fechaCompra) {}

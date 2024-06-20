@@ -7,21 +7,22 @@
 #include <string>
 #include "DTProducto.h"
 #include "DTPromocion.h"
+#include "../include/Promocion.h"
+#include "../include/Producto.h"
 
 using namespace std;
 
-class DTVendedor
-{
-private:
-    string rut;
-    set<DTProducto> productos;
-    set<DTPromocion> promociones;
+class DTVendedor {
+private: 
+    int rut;
+    vector<Producto*> productos;
+    vector<Promocion*> promociones;
 
 public:
-    DTVendedor(int rut, vector<Producto*> productos, vector<Promocion*> promociones); //Compila pero estamos usando OBJETOS y no DATATYPES. Hay que corregirlo
-    string getRut();
-    set<DTProducto> getProductos();
-    set<DTPromocion> getPromociones();
+    DTVendedor(int rut, vector<Producto*> productos, vector<Promocion*> promociones); //Compila pero estamos usando OBJETOS y no DATATYPES. Hay que corregirlo aca y en CPP.
+    int getRut();
+    vector<Producto*> getProductos();
+    vector<Promocion*> getPromociones();
     ~DTVendedor();
 };
 

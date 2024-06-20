@@ -1,16 +1,16 @@
 #include "../../include/DataTypes/DTUsuario.h"
 
-DtUsuario::DtUsuario(string _nombre, string _fechaNacimiento){
-    nombre = _nombre;
-    FechaNacimiento = _fechaNacimiento;
+DTUsuario::DTUsuario(string _nombre, DTFecha _fechaNacimiento, string password) {
+    nickname = _nombre;
+    fechaNacimiento = _fechaNacimiento;
 }
 
-string DtUsuario::getNombre(){
-    return nombre;
+string DTUsuario::getNombre(){
+    return nickname;
 }
 
-string DtUsuario::getFechaNacimiento(){
-    return FechaNacimiento;
+DTFecha DTUsuario::getFechaNacimiento(){
+    return fechaNacimiento;
 }
 
-DtUsuario::~DtUsuario(){}
+DTUsuario::~DTUsuario(){}

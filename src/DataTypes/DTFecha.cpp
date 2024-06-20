@@ -16,7 +16,7 @@ DTFecha:: DTFecha (int d,int m,int a){
 int DTFecha::getAnio(){
     return anio;
 }
- DTFecha
+
 int DTFecha::getDia(){
     return dia;
 }

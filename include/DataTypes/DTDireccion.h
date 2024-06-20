@@ -13,6 +13,7 @@ private:
     int numero_puerta;
 
 public:
+    DTDireccion();
     DTDireccion(string ciudad_residencia, string calle, int numero_puerta);
     string getCiudadResidencia();
     string getCalle();

@@ -1,4 +1,4 @@
-#include "DTDetalleCompra.h"
+#include "../include/DataTypes/DTDetalleCompras.h"
 
 DTDetalleCompra::DTDetalleCompra(float monto_total, DTFecha fecha, set<DTProducto> productos)
     : monto_total(monto_total), fecha(fecha), productos(productos) {}

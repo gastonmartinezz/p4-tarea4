@@ -5,17 +5,15 @@
 #include <string>
 #include <set>
 #include "DTDireccion.h"
-#include "../include/Compra.h"
-
+#include "Compra.h"
 using namespace std;
 
 class Compra;
 class DTDireccion;
 
-class DTCliente
-{
+class DTCliente {
 private:
-    std::string nickname;
+    string nickname;
     DTDireccion direccion;
     set<string> compras;
 

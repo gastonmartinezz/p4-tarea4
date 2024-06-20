@@ -13,10 +13,10 @@ protected:
     std::string password;
 
 public:
-    DTUsuario(std::string nombre, DTFecha fechaNacimiento, std::string password = "");
+    DTUsuario(string nombre, DTFecha fechaNacimiento, string password = "");
     string getNombre();
     DTFecha getFechaNacimiento();
-    std::string getPassword();
+    string getPassword();
     ~DTUsuario();
 };
 

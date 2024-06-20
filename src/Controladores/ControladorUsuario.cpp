@@ -16,8 +16,7 @@ ControladorUsuario *ControladorUsuario::instance = NULL;
     return instance;
 } */
 
-void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento)
-{
+void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento) {
     if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
     {
         throw std::invalid_argument("El nickname ya está en uso.");
@@ -30,8 +29,7 @@ void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const
     // Aquí solo podemos validar los datos básicos del usuario.
 }
 
-void ControladorUsuario::datosVendedor(const string &codigoRUT)
-{
+void ControladorUsuario::datosVendedor(const string &codigoRUT) {
     if (codigoRUT.length() != 12) {
         throw invalid_argument("El código RUT debe tener 12 caracteres.");
     }
@@ -46,8 +44,7 @@ void ControladorUsuario::datosCliente(const string &direccion, const string &ciu
 }
 
 
-void ControladorUsuario::confirmarAltaUsuario(std::string &nickname, std::string &password, DTFecha &fechaNacimiento, DTDireccion &direccion)
-{
+void ControladorUsuario::confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion) {
     if (ListaUsuarios.find(nickname) != ListaUsuarios.end()) {
         throw std::invalid_argument("El nickname ya está en uso.");
     }
@@ -57,14 +54,11 @@ void ControladorUsuario::confirmarAltaUsuario(std::string &nickname, std::string
     ListaUsuarios[nickname] = nuevoUsuario;
 }
 
-void ControladorUsuario::confirmarAltaVendedor(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento, const std::string &codigoRUT)
-{
-    if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
-    {
+void ControladorUsuario::confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT) {
+    if (ListaUsuarios.find(nickname) != ListaUsuarios.end()) {
         throw std::invalid_argument("El nickname ya está en uso.");
     }
-    if (codigoRUT.length() != 12)
-    {
+    if (codigoRUT.length() != 12) {
         throw std::invalid_argument("El código RUT debe tener 12 caracteres.");
     }
 
@@ -73,61 +67,50 @@ void ControladorUsuario::confirmarAltaVendedor(const std::string &nickname, cons
     ListaUsuarios[nickname] = nuevoUsuario;
 } 
 
-std::vector<DTUsuario> ControladorUsuario::listarUsuarios()
-{
+vector<DTUsuario> ControladorUsuario::listarUsuarios() {
     vector<DTUsuario> aux;
 
-    for (auto it = ListaUsuarios.begin(); it != ListaUsuarios.end(); it++)
-    {
+    for (auto it = ListaUsuarios.begin(); it != ListaUsuarios.end(); it++) {
         aux.push_back(it->second->toDataType());
     }
     return aux;
 }
 
-std::vector<DTCliente> ControladorUsuario::listarClientes()
-{
+vector<DTCliente> ControladorUsuario::listarClientes() {
     vector<DTCliente> aux;
 
-    for (auto it = ListaClientes.begin(); it != ListaClientes.end(); it++)
-    {
+    for (auto it = ListaClientes.begin(); it != ListaClientes.end(); it++) {
         aux.push_back(it->second->toDataType());
     }
     return aux;
 }
 
-std::vector<DTVendedor> ControladorUsuario::listaVendedor()
-{
+vector<DTVendedor> ControladorUsuario::listaVendedor() {
     vector<DTVendedor> aux;
-
-    for (auto it = ListaVendedores.begin(); it != ListaVendedores.end(); it++)
-    {
-        aux.push_back(it->second->toDataType());
+    for (auto it = ListaVendedores.begin(); it != ListaVendedores.end(); it++) {
+        //aux.push_back(it->second->toDataType()); !!!! LO COMENTE PORQUE NO ME DEJABA COMPILAR, HAY QUE ARREGLARLO DESPUES - TONGA
     }
     return aux;
 }
 
-void ControladorUsuario::listarComentarios()
-{
+void ControladorUsuario::listarComentarios() {
     // Implementación para listar comentarios
 }
 
-void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId)
-{
+void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId) {
     // Implementación para eliminar comentario y respuestas
 }
 
-// void ControladorUsuario::obtenerVendedoresNoSuscriptos()
+/* void ControladorUsuario::obtenerVendedoresNoSuscriptos()
 {
     // Implementación para obtener vendedores no suscriptos
-}
+} */
 
-void ControladorUsuario::agregarSuscripcion(const std::string &nickname)
-{
+void ControladorUsuario::agregarSuscripcion(const string &nickname) {
     // Implementación para agregar suscripción
 }
 
-bool ControladorUsuario::validarPassword(const std::string &nickname, const std::string &password)
-{
+bool ControladorUsuario::validarPassword(const string &nickname, const string &password) {
     auto it = ListaUsuarios.find(nickname);
     if (it != ListaUsuarios.end() && it->second->getPassword() == password)
     {
@@ -136,88 +119,64 @@ bool ControladorUsuario::validarPassword(const std::string &nickname, const std:
     return false;
 }
 
-void ControladorUsuario::listarComentariosUsuarioSeleccionado(const std::string &nickname)
-{
+void ControladorUsuario::listarComentariosUsuarioSeleccionado(const string &nickname) {
     // Implementación para listar comentarios de usuario seleccionado
 }
 
-void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId)
-{
-    // Implementación para eliminar comentario y respuestas
-}
-
-void ControladorUsuario::eliminarComentario(int comentarioId)
-{
+void ControladorUsuario::eliminarComentario(int comentarioId) {
     // Implementación para eliminar comentario
 }
 
-void ControladorUsuario::eliminarLinkComentario(int comentarioId)
-{
+void ControladorUsuario::eliminarLinkComentario(int comentarioId) {
     // Implementación para eliminar link de comentario
 }
 
-std::vector<Vendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos()
-{
+vector<Vendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos() {
     // Implementación para obtener vendedores no suscriptos
-    return std::vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
+    return vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
 }
 
-void ControladorUsuario::agregarSuscripcion(const std::string &vendedorNickname)
-{
-    // Implementación para agregar suscripción
-}
-
-std::vector<Vendedor> ControladorUsuario::obtenerListaDeVendedoresSuscriptos()
-{
+vector<Vendedor> ControladorUsuario::obtenerListaDeVendedoresSuscriptos() {
     // Implementación para obtener lista de vendedores suscriptos
-    return std::vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
+    return vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
 }
 
-void ControladorUsuario::suscribirse(const std::string &vendedorNickname)
-{
+void ControladorUsuario::suscribirse(const string &vendedorNickname) {
     // Implementación para suscribirse a un vendedor
 }
 
-std::vector<std::string> ControladorUsuario::obtenerNotificaciones(const std::string &nickname)
-{
+vector<std::string> ControladorUsuario::obtenerNotificaciones(const string &nickname) {
     // Implementación para obtener notificaciones
     return std::vector<std::string>(); // Valor de retorno por defecto, cambiar según implementación
 }
 
-void ControladorUsuario::mostrarYEliminarNotificacion(const std::string &nickname)
-{
+void ControladorUsuario::mostrarYEliminarNotificacion(const string &nickname) {
     // Implementación para mostrar y eliminar notificación
 }
 
-void ControladorUsuario::eliminarNotificaciones(const std::string &nickname)
-{
+void ControladorUsuario::eliminarNotificaciones(const string &nickname) {
     // Implementación para eliminar notificaciones
 }
 
-std::vector<std::string> ControladorUsuario::getNotificaciones(const std::string &nickname)
-{
+vector<std::string> ControladorUsuario::getNotificaciones(const string &nickname) {
     // Implementación para obtener notificaciones
     return std::vector<std::string>(); // Valor de retorno por defecto, cambiar según implementación
 }
 
-std::vector<Vendedor> ControladorUsuario::obtenerVendedoresSuscritos(const std::string &clienteNickname)
-{
+vector<Vendedor> ControladorUsuario::obtenerVendedoresSuscritos(const string &clienteNickname) {
     // Implementación para obtener vendedores suscritos
     return std::vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
 }
 
-void ControladorUsuario::eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname)
-{
+void ControladorUsuario::eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname) {
     // Implementación para eliminar suscripción
 }
 
-void ControladorUsuario::registrarCompra(const Compra &compra)
-{
+void ControladorUsuario::registrarCompra(const Compra &compra) {
     // Implementación para registrar compra
 }
 
-void obtenerListaVendedoresSistema()
-{
+void obtenerListaVendedoresSistema() {
     for (auto p : vendedoresSistema)
     {
         cout << p->getNickname() << endl;

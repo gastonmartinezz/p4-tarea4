@@ -79,32 +79,33 @@ public:
     static ControladorUsuario *getInstance();
 
     // Métodos del diagrama UML
-    void ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento);
-    void confirmarAltaUsuario(const std::string &direccion, const std::string &ciudad);
-    void confirmarAltaVendedor(const std::string &codigoRUT);
-    std::vector<DTUsuario> listarUsuarios();
-    std::vector<DTCliente> listarClientes();
-    std::vector<DTVendedor> listaVendedor();
+    void ingresarDatosUsuario(const string &nickname, const string &password, const DTFecha &fechaNacimiento);
+    void confirmarAltaUsuario(const string &direccion, const string &ciudad);
+    void confirmarAltaVendedor(const string &codigoRUT);
+    vector<DTUsuario> listarUsuarios();
+    vector<DTCliente> listarClientes();
+    vector<DTVendedor> listaVendedor();
 
     void listarComentarios();
     void datosVendedor(const string &codigoRUT);
     void datosCliente(const string &direccion, const string &ciudad);
     void eliminarComentarioYRespuestas(int comentarioId);
-    virtual std::vector<Vendedor> obtenerVendedoresNoSuscriptos();
-    bool validarPassword(const std::string &nickname, const std::string &password);
-    void listarComentariosUsuarioSeleccionado(const std::string &nickname);
-    void confirmarAltaUsuario(std::string &nickname, std::string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); //Le saque ciudad pq no me compilaba - Tonga
+    virtual vector<Vendedor> obtenerVendedoresNoSuscriptos();
+    bool validarPassword(const string &nickname, const string &password);
+    void listarComentariosUsuarioSeleccionado(const string &nickname);
+    void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); //Le saque ciudad pq no me compilaba - Tonga
+    void confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT);
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
     void agregarSuscripcion(const std::string &vendedorNickname);
-    std::vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
-    void suscribirse(const std::string &vendedorNickname);
-    std::vector<std::string> obtenerNotificaciones(const std::string &nickname);
-    void mostrarYEliminarNotificacion(const std::string &nickname);
-    void eliminarNotificaciones(const std::string &nickname);
-    std::vector<std::string> getNotificaciones(const std::string &nickname);
-    std::vector<Vendedor> obtenerVendedoresSuscritos(const std::string &clienteNickname);
-    void eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname);
+    vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
+    void suscribirse(const string &vendedorNickname);
+    vector<string> obtenerNotificaciones(const string &nickname);
+    void mostrarYEliminarNotificacion(const string &nickname);
+    void eliminarNotificaciones(const string &nickname);
+    vector<string> getNotificaciones(const string &nickname);
+    vector<Vendedor> obtenerVendedoresSuscritos(const string &clienteNickname);
+    void eliminarSuscripcion(const string &vendedorNickname, const string &clienteNickname);
     void registrarCompra(const Compra &compra);
 };
 
