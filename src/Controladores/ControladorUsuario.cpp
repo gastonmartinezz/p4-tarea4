@@ -71,7 +71,7 @@ void ControladorUsuario::confirmarAltaVendedor(const std::string &nickname, cons
     Usuario *nuevoUsuario = new Vendedor(nickname, password, fechaNacimiento, std::stoi(codigoRUT));
     ListaVendedores[nickname] = dynamic_cast<Vendedor *>(nuevoUsuario);
     ListaUsuarios[nickname] = nuevoUsuario;
-}
+} 
 
 std::vector<DTUsuario> ControladorUsuario::listarUsuarios()
 {
