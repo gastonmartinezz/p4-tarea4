@@ -1,6 +1,4 @@
-
-/*
-#include <iostream>
+/*#include <iostream>
 #include <algorithm>
 #include <cctype>
 #include "../include/Promocion.h"

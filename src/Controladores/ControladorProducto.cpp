@@ -17,11 +17,10 @@ ControladorProducto *ControladorProducto::getInstance()
 
 void ControladorProducto::listarProductos()
 {
-    for (long unsigned int i = 0; i <= arrayProductos.size(); i++)
-    {
-        cout << "Nombre: " << arrayProductos[i]->getNombre() << endl;
-        cout << "Descripción: " << arrayProductos[i]->getDescripcion() << endl;
-        cout << "Id: " << arrayProductos[i]->getId() << endl;
+    for (long unsigned int i = 0; i <= listaProductos.size(); i++) {
+        cout << "Nombre: " << listaProductos[i]->getNombre() << endl;
+        cout << "Descripción: " << listaProductos[i]->getDescripcion() << endl;
+        cout << "Id: " << listaProductos[i]->getId() << endl;
         /*cout << "Precio: " << arrayProductos[i]->getPrecio() << endl;
         cout << "Stock: " << arrayProductos[i]->getStock() << endl;
         cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;*/
