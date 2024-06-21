@@ -24,7 +24,7 @@ void displayAndProcessMenu()
         cout << "MENU" << endl;
         cout << "0.  Salir" << endl;
         cout << "1.  Alta de Usuario" << endl;
-        cout << "2.  Consulta de Notificaciones" << endl;
+        cout << "2.  Alta Producto" << endl;
         cout << "3.  Consultar Producto" << endl;
         cout << "4.  Consultar Promocion" << endl;
         cout << "5.  Crear Promocion" << endl;
@@ -33,22 +33,24 @@ void displayAndProcessMenu()
         cout << "8.  Expediente de Usuario" << endl;
         cout << "9.  Lista de Usuarios" << endl;
         cout << "10. Suscribirse a Notificaciones" << endl;
+        cout << "11.  Consulta de Notificaciones" << endl;
         cout << endl;
         cout << "Ingrese el numero de opcion que desea ejecutar: ";
 
         cin >> option;
+
         if (option != 0)
         {
             try
             {
                 switch (option)
                 {
-                // case 1:
-                //     altaUsuario();
-                //     break;
-                // case 2:
-                //     consultaDeNotificaciones();
-                //     break;
+                    // case 1:
+                    //     altaUsuario();
+                    //     break;
+                case 2:
+                    AltaProducto();
+                    break;
                 // case 3:
                 //     consultarProducto();
                 //     break;

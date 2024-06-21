@@ -27,6 +27,7 @@ private:
     ControladorProducto() = default;
     static ControladorProducto *instance;
     map<int, Producto *> listaProductos;
+    int contador_id_producto = 0;
 
 public:
     // Métodos estáticos para obtener la instancia única
@@ -55,6 +56,8 @@ public:
     void ingresarPromocionASistema(Promocion promo);
     void AddComentario(Comentario *coment, int producto);
     map<int, Producto *> getListaProductos();
+    void incrementarContador();
+    int getContador();
 };
 
 #endif // CONTROLADORPRODUCTO_H

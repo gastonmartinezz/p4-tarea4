@@ -12,17 +12,20 @@
 
 using namespace std;
 
-class DTVendedor {
-private: 
+class DTVendedor
+{
+private:
     int rut;
-    vector<Producto*> productos;
-    vector<Promocion*> promociones;
+    vector<Producto *> productos;
+    vector<Promocion *> promociones;
+    std::string nickname;
 
 public:
-    DTVendedor(int rut, vector<Producto*> productos, vector<Promocion*> promociones); //Compila pero estamos usando OBJETOS y no DATATYPES. Hay que corregirlo aca y en CPP.
+    DTVendedor(int rut, vector<Producto *> productos, vector<Promocion *> promociones, std::string nickname); // Compila pero estamos usando OBJETOS y no DATATYPES. Hay que corregirlo aca y en CPP.
     int getRut();
-    vector<Producto*> getProductos();
-    vector<Promocion*> getPromociones();
+    std::string getNickname();
+    vector<Producto *> getProductos();
+    vector<Promocion *> getPromociones();
     ~DTVendedor();
 };
 

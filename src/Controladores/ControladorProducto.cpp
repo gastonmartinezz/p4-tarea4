@@ -155,6 +155,15 @@ void ControladorProducto::AddComentario(Comentario *coment, int productoId)
     }
 }
 
+void ControladorProducto::incrementarContador()
+{
+    contador_id_producto++;
+};
+int ControladorProducto::getContador()
+{
+    return contador_id_producto;
+};
+
 // void obtenerProductosDeVendedor(string nickname) {
 //     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
 

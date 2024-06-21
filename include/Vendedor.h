@@ -14,6 +14,7 @@ using namespace std;
 class Cliente;
 class Producto;
 class Promocion;
+class DTVendedor;
 
 class Vendedor : public Usuario
 {
@@ -30,7 +31,7 @@ public:
     set<Cliente *> getSuscriptores();
     vector<Producto *> getProductos();    // Agregar este método para obtener los productos
     vector<Promocion *> getPromociones(); // Agregar este método para obtener las promociones
-    void toDataType();                    // es un void pq en si genera un nuevo objeto en DTVendedor.cpp [REVISAR]
+    DTVendedor toDataType();              // es un void pq en si genera un nuevo objeto en DTVendedor.cpp [REVISAR]
 
     void setCodigoRut(int codigoRut);
 

@@ -103,9 +103,30 @@ vector<DTVendedor> ControladorUsuario::listaVendedor()
     vector<DTVendedor> aux;
     for (auto it = ListaVendedores.begin(); it != ListaVendedores.end(); it++)
     {
-        // aux.push_back(it->second->toDataType()); !!!! LO COMENTE PORQUE NO ME DEJABA COMPILAR, HAY QUE ARREGLARLO DESPUES - TONGA
+        aux.push_back(it->second->toDataType());
     }
     return aux;
+}
+Producto *ControladorUsuario::AddProducto(int id, int stock, float precio, std::string nombre, std::string descripcion, Producto::Categoria cat, std::string vendedorNickname)
+{
+    // Buscar el vendedor por su nickname
+    Vendedor *vendedor = findVendedor(vendedorNickname);
+    if (vendedor == nullptr)
+    {
+        std::cerr << "Vendedor no encontrado." << std::endl;
+        return nullptr;
+    }
+
+    // Crear el producto
+    Producto *nuevoProducto = new Producto(id, stock, precio, nombre, descripcion, cat, vendedor); // Asumimos que el ID es generado automáticamente o es irrelevante para este ejemplo
+
+    // Agregar el producto al vendedor
+    vendedor->agregarProducto(nuevoProducto);
+
+    // Opcionalmente, agregar el producto a una colección global si existe
+    // productosSistema.push_back(nuevoProducto);
+
+    return nuevoProducto;
 }
 Comentario *ControladorUsuario::AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname)
 {
@@ -126,6 +147,19 @@ Usuario *ControladorUsuario::findUsuario(std::string nickname)
 {
     auto it = ListaUsuarios.find(nickname);
     if (it != ListaUsuarios.end())
+    {
+        return it->second;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+
+Vendedor *ControladorUsuario::findVendedor(std::string nickname)
+{
+    auto it = ListaVendedores.find(nickname);
+    if (it != ListaVendedores.end())
     {
         return it->second;
     }

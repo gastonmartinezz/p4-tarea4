@@ -1,1 +1,2 @@
 void DejarComentario();
+void AltaProducto();

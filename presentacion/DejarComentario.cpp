@@ -8,6 +8,11 @@
 #include <iostream>
 #include <string>
 
+#include <limits>
+
+using std::numeric_limits;
+using std::streamsize;
+
 using std::cin;
 using std::cout;
 using std::endl;
@@ -133,4 +138,7 @@ void DejarComentario()
     {
         cerr << e.what() << '\n';
     };
+    std::cout << "Presiona Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.get(); // Espera que el usuario presione Enter
 }

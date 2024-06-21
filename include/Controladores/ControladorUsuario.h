@@ -91,6 +91,7 @@ public:
     int getContador();
 
     Comentario *AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname);
+    Producto *AddProducto(int id, int stock, float precio, std::string nombre, std::string descripcion, Producto::Categoria cat, std::string vendedor);
 
     void listarComentarios();
     void datosVendedor(const string &codigoRUT);
@@ -114,6 +115,7 @@ public:
     void eliminarSuscripcion(const string &vendedorNickname, const string &clienteNickname);
     void registrarCompra(const Compra &compra);
     Usuario *findUsuario(string nickname);
+    Vendedor *findVendedor(std::string nickname);
 };
 
 #endif // CONTROLADORUSUARIO_H
