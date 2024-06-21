@@ -12,35 +12,36 @@ using namespace std;
 class Vendedor;
 class Contenido;
 
-class Promocion {
+class Promocion
+{
 private:
     float descuento;
     string nombre;
     string descripcion;
     DTFecha fecha_vencimiento;
-    set<Contenido*> productosDentroDePromo;
-    Vendedor* vendedor;
+    set<Contenido *> productosDentroDePromo;
+    Vendedor *vendedor;
 
 public:
     Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven);
     ~Promocion();
 
-    set<Contenido*> getProductosDentroDePromo();
+    set<Contenido *> getProductosDentroDePromo();
     string getDescripcion();
     float getDescuento();
     string getNombre();
     DTFecha getFechaVencimiento();
-    Vendedor* getVendedor();
+    Vendedor *getVendedor();
 
     void setDescuento(float descuento);
     void setNombre(string nombre);
     void setDescripcion(string descripcion);
     void setFechaVencimiento(DTFecha fecha);
-    void setVendedor(Vendedor* vendedor);
+    void setVendedor(Vendedor *vendedor);
 
     void agregarProducto(Contenido *contenido);
 };
 
-set<Promocion*> promociones; //Set donde guardamos todas las promociones del sistema
-set<Promocion*> promocionesVigentes; //Set donde guardamos todas las promociones vigentes del sistema
+// set<Promocion*> promociones; //Set donde guardamos todas las promociones del sistema
+// set<Promocion*> promocionesVigentes; //Set donde guardamos todas las promociones vigentes del sistema
 #endif

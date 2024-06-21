@@ -26,7 +26,7 @@ private:
     // Constructor privado para el patrón Singleton
     ControladorProducto() = default;
     static ControladorProducto *instance;
-    map<int, Producto*> listaProductos;
+    map<int, Producto *> listaProductos;
 
 public:
     // Métodos estáticos para obtener la instancia única
@@ -54,7 +54,7 @@ public:
     void obtenerProductosDeVendedor(string nickname);
     void ingresarPromocionASistema(Promocion promo);
     void AddComentario(Comentario *coment, int producto);
-    map<int, Producto*> getListaProductos();
+    map<int, Producto *> getListaProductos();
 };
 
 #endif // CONTROLADORPRODUCTO_H

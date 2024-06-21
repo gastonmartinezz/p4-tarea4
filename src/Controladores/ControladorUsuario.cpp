@@ -235,13 +235,13 @@ void ControladorUsuario::registrarCompra(const Compra &compra)
     // Implementación para registrar compra
 }
 
-void obtenerListaVendedoresSistema()
-{
-    for (auto p : vendedoresSistema)
-    {
-        cout << p->getNickname() << endl;
-    }
-}
+// void obtenerListaVendedoresSistema()
+// {
+//     for (auto p : vendedoresSistema)
+//     {
+//         cout << p->getNickname() << endl;
+//     }
+// }
 
 void ControladorUsuario::incrementarContador()
 {

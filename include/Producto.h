@@ -54,6 +54,6 @@ public:
     // void setComentario(Comentario *);
 };
 
-vector<Producto *> productosSistema; // Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
+// vector<Producto *> productosSistema; // Set donde guardamos todos los productos del sistema, ordenados por ID (Codigo identificador)
 
 #endif // PRODUCTO_H

@@ -17,7 +17,8 @@ ControladorProducto *ControladorProducto::getInstance()
 
 void ControladorProducto::listarProductos()
 {
-    for (long unsigned int i = 0; i <= listaProductos.size(); i++) {
+    for (long unsigned int i = 0; i <= listaProductos.size(); i++)
+    {
         cout << "Nombre: " << listaProductos[i]->getNombre() << endl;
         cout << "Descripción: " << listaProductos[i]->getDescripcion() << endl;
         cout << "Id: " << listaProductos[i]->getId() << endl;
@@ -117,26 +118,26 @@ void ControladorProducto::desplegarCompra(int compraId) const
     // Implementación para desplegar detalles de una compra
 }
 
-bool productoEnPromoExistente(int id)
-{
-    bool b;
-    for (auto promo : promocionesVigentes)
-    {
-        for (auto productos : promo->getProductosDentroDePromo())
-        {
-            if (id == productos->getProducto()->getId())
-            {
-                b = true;
-                break;
-            }
-            else
-            {
-                b = false;
-            }
-        }
-    }
-    return b;
-}
+// bool productoEnPromoExistente(int id)
+// {
+//     bool b;
+//     for (auto promo : promocionesVigentes)
+//     {
+//         for (auto productos : promo->getProductosDentroDePromo())
+//         {
+//             if (id == productos->getProducto()->getId())
+//             {
+//                 b = true;
+//                 break;
+//             }
+//             else
+//             {
+//                 b = false;
+//             }
+//         }
+//     }
+//     return b;
+// }
 
 void ControladorProducto::AddComentario(Comentario *coment, int productoId)
 {

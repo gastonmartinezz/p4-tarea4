@@ -1,5 +1,6 @@
 
 #include "../include/Fabrica.h"
+#include "../include/CasosDeUso.h"
 #include "../include/DataTypes/DTFecha.h"
 #include "../include/Comentario.h"
 #include "../include/Usuario.h"

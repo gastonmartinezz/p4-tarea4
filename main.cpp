@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "../presentacion/DejarComentario.cpp"
+#include "../include/CasosDeUso.h"
 using namespace std;
 
 void clearScreen()
