@@ -9,6 +9,7 @@
 #include "../include/DataTypes/DTFecha.h"
 #include "Usuario.h"
 using namespace std;
+class Usuario;
 
 class Comentario
 {
@@ -32,7 +33,7 @@ public:
     vector<Comentario *> getRespuestas();
     Comentario *getComentarioRaiz();
     Usuario *getQuienComenta();
-    void imprimir(); //Falta la implementacion de este metodo, revisar
+    void imprimir(); // Falta la implementacion de este metodo, revisar
 
     // Setters
     void setID(int id);

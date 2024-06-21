@@ -42,6 +42,8 @@ public:
     virtual std::vector<Vendedor> obtenerVendedoresSuscritos(const std::string &clienteNickname) = 0;
     virtual void eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname) = 0;
     virtual void registrarCompra(const Compra &compra) = 0;
+    virtual Usuario *findUsuario(string nickname) = 0;
+    virtual Comentario *AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname) = 0;
 };
 
 #endif // ICUSUARIO_H

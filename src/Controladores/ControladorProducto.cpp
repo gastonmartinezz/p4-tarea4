@@ -139,6 +139,22 @@ bool productoEnPromoExistente(int id)
     return b;
 }
 
+void ControladorProducto::AddComentario(Comentario *coment, int productoId)
+{
+    // Buscar el producto por su ID en la lista de productos
+    auto it = listaProductos.find(productoId);
+    if (it != listaProductos.end())
+    {
+        Producto *producto = it->second;
+        producto->addComentario(coment);
+    }
+    else
+    {
+        // Manejar caso donde el producto no existe
+        cout << "Error: Producto con ID " << productoId << " no encontrado." << endl;
+    }
+}
+
 // void obtenerProductosDeVendedor(string nickname) {
 //     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
 

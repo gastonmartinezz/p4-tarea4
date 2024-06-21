@@ -56,7 +56,7 @@ void ControladorUsuario::confirmarAltaUsuario(string &nickname, string &password
     }
 
     Usuario *nuevoUsuario = new Cliente(nickname, password, fechaNacimiento, direccion);
-    //ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
+    // ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
     ListaUsuarios[nickname] = nuevoUsuario;
 }
 
@@ -72,7 +72,7 @@ void ControladorUsuario::confirmarAltaVendedor(string &nickname, string &passwor
     }
 
     Usuario *nuevoUsuario = new Vendedor(nickname, password, fechaNacimiento, std::stoi(codigoRUT));
-    //ListaVendedores[nickname] = dynamic_cast<Vendedor *>(nuevoUsuario);
+    // ListaVendedores[nickname] = dynamic_cast<Vendedor *>(nuevoUsuario);
     ListaUsuarios[nickname] = nuevoUsuario;
 }
 
@@ -106,6 +106,33 @@ vector<DTVendedor> ControladorUsuario::listaVendedor()
         // aux.push_back(it->second->toDataType()); !!!! LO COMENTE PORQUE NO ME DEJABA COMPILAR, HAY QUE ARREGLARLO DESPUES - TONGA
     }
     return aux;
+}
+Comentario *ControladorUsuario::AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname)
+{
+    Usuario *usuario = findUsuario(nickname);
+    if (usuario)
+    {
+        incrementarContador();
+        int comentario_id = getContador();
+        Comentario *nuevoComentario = new Comentario(comentario_id, texto_comentario, fecha);
+        nuevoComentario->setQuienComenta(usuario);
+        usuario->addComentario(nuevoComentario);
+        return nuevoComentario;
+    }
+    return nullptr;
+}
+
+Usuario *ControladorUsuario::findUsuario(std::string nickname)
+{
+    auto it = ListaUsuarios.find(nickname);
+    if (it != ListaUsuarios.end())
+    {
+        return it->second;
+    }
+    else
+    {
+        return nullptr;
+    }
 }
 
 void ControladorUsuario::listarComentarios()
@@ -214,4 +241,22 @@ void obtenerListaVendedoresSistema()
     {
         cout << p->getNickname() << endl;
     }
+}
+
+void ControladorUsuario::incrementarContador()
+{
+    contador_id_comentario++;
+}
+
+void ControladorUsuario::decrementarContador()
+{
+    if (contador_id_comentario > 0)
+    {
+        contador_id_comentario--;
+    }
+}
+
+int ControladorUsuario::getContador()
+{
+    return contador_id_comentario;
 }

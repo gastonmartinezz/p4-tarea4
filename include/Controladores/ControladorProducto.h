@@ -53,6 +53,7 @@ public:
     bool productoEnPromoExistente(int id);
     void obtenerProductosDeVendedor(string nickname);
     void ingresarPromocionASistema(Promocion promo);
+    void AddComentario(Comentario *coment, int producto);
 };
 
 vector<Producto *> arrayProductos; // Array donde guardamos los productos del sistema.

@@ -49,6 +49,8 @@ public:
     void setDescripcion(const string &descripcion);
     void setVendedor(Vendedor *vendedor);
     DTProducto toDataType();
+    void addComentario(Comentario *coment);
+
     // void setComentario(Comentario *);
 };
 

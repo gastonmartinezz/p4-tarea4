@@ -34,4 +34,9 @@ DTProducto Producto::toDataType()
     return DTProducto(getId(), getNombre());
 }
 
+void Producto::addComentario(Comentario *coment)
+{
+    Comentarios[coment->getId()] = coment;
+}
+
 Producto::~Producto() {}

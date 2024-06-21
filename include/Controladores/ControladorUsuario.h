@@ -24,9 +24,10 @@ private:
     ControladorUsuario() = default;
     static ControladorUsuario *instance;
 
-    map<string, Usuario *> ListaUsuarios;
-    map<string, Cliente *> ListaClientes;
-    map<string, Vendedor *> ListaVendedores;
+    map<std::string, Usuario *> ListaUsuarios;
+    map<std::string, Cliente *> ListaClientes;
+    map<std::string, Vendedor *> ListaVendedores;
+    int contador_id_comentario = 0;
 
     // // Miembros temporales para el registro de usuarios en AltaUsuario.cpp
     // string nicknameTemp;
@@ -85,6 +86,11 @@ public:
     vector<DTUsuario> listarUsuarios();
     vector<DTCliente> listarClientes();
     vector<DTVendedor> listaVendedor();
+    void incrementarContador();
+    void decrementarContador();
+    int getContador();
+
+    Comentario *AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname);
 
     void listarComentarios();
     void datosVendedor(const string &codigoRUT);
@@ -107,6 +113,7 @@ public:
     vector<Vendedor> obtenerVendedoresSuscritos(const string &clienteNickname);
     void eliminarSuscripcion(const string &vendedorNickname, const string &clienteNickname);
     void registrarCompra(const Compra &compra);
+    Usuario *findUsuario(string nickname);
 };
 
 #endif // CONTROLADORUSUARIO_H
