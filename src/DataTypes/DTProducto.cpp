@@ -1,8 +1,13 @@
 #include "DTProducto.h"
 #include <map>
 
-DTProducto::DTProducto(int id, string nombre, int stock, float precio, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios)
-    : id(id), stock(stock), precio(precio), nombre(nombre), descripcion(descripcion), categoria(categoria), vendedor(vendedor), Comentarios(Comentarios) {}
+DTProducto::DTProducto(int id, string nombre, std::map<int, Comentario *> Comentarios, int stock, float precio, string descripcion, string categoria, string vendedor)
+    : id(id), nombre(nombre), Comentarios(Comentarios), stock(stock), precio(precio), descripcion(descripcion), categoria(categoria), vendedor(vendedor) {}
+
+std::map<int, Comentario *> DTProducto::getComentarios()
+{
+    return Comentarios;
+}
 
 int DTProducto::getId()
 {

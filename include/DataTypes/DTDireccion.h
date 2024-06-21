@@ -6,7 +6,8 @@
 
 using namespace std;
 
-class DTDireccion {
+class DTDireccion
+{
 private:
     string ciudad_residencia;
     string calle;
@@ -21,6 +22,6 @@ public:
     ~DTDireccion();
 };
 
-ostream& operator<<(ostream& os, DTDireccion dtDireccion);
+ostream &operator<<(ostream &os, DTDireccion dtDireccion);
 
 #endif // DTDIRECCION_H

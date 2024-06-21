@@ -11,9 +11,10 @@ BUILD_DIR = build
 OUTPUT = main
 
 # Collect all the source files
-SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp $(SRC_DIR)/Controladores/*.cpp $(SRC_DIR)/DataTypes/*.cpp $(PRESENTACION_DIR)/*.cpp)
+SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp $(SRC_DIR)/Controladores/*.cpp $(SRC_DIR)/DataTypes/*.cpp $(PRESENTACION_DIR)/*.cpp main.cpp)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(SRC_FILES))
 OBJ_FILES := $(patsubst $(PRESENTACION_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(OBJ_FILES))
+OBJ_FILES := $(patsubst main.cpp, $(BUILD_DIR)/main.o, $(OBJ_FILES))
 
 # Define the include flags
 INCLUDE_FLAGS = -I$(INCLUDE_DIR) -I$(INCLUDE_DIR)/Controladores -I$(INCLUDE_DIR)/DataTypes -I$(INCLUDE_DIR)/Interfaces
@@ -34,6 +35,10 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(BUILD_DIR)/%.o: $(PRESENTACION_DIR)/%.cpp
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(BUILD_DIR)/main.o: main.cpp
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 

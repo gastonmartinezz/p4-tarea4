@@ -21,7 +21,7 @@ private:
 
 public:
     // DTProducto(int id, int stock, float precio, string nombre, string descripcion, string categoria, string vendedor, std::map<int, Comentario *> Comentarios);
-    DTProducto(int id = 0, std::string nombre = "", int stock = 0, float precio = 0.0, std::string descripcion = "", std::string categoria = "", std::string vendedor = "", std::map<int, Comentario *> comentarios = std::map<int, Comentario *>());
+    DTProducto(int id = 0, std::string nombre = "", std::map<int, Comentario *> comentarios = std::map<int, Comentario *>(), int stock = 0, float precio = 0.0, std::string descripcion = "", std::string categoria = "", std::string vendedor = "");
 
     int getId();
     int getStock();

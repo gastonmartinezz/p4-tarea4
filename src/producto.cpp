@@ -17,6 +17,11 @@ std::string Producto::getDescripcion() { return descripcion; }
 
 Vendedor *Producto::getVendedor() { return quienVende; }
 
+std::map<int, Comentario *> Producto::getComentarios()
+{
+    return Comentarios;
+};
+
 void Producto::setId(int id) { this->id = id; }
 
 void Producto::setStock(int stock) { this->stock = stock; }
