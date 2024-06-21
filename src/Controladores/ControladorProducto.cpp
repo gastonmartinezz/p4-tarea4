@@ -118,27 +118,6 @@ void ControladorProducto::desplegarCompra(int compraId) const
     // Implementación para desplegar detalles de una compra
 }
 
-// bool productoEnPromoExistente(int id)
-// {
-//     bool b;
-//     for (auto promo : promocionesVigentes)
-//     {
-//         for (auto productos : promo->getProductosDentroDePromo())
-//         {
-//             if (id == productos->getProducto()->getId())
-//             {
-//                 b = true;
-//                 break;
-//             }
-//             else
-//             {
-//                 b = false;
-//             }
-//         }
-//     }
-//     return b;
-// }
-
 void ControladorProducto::AddComentario(Comentario *coment, int productoId)
 {
     // Buscar el producto por su ID en la lista de productos
@@ -183,3 +162,81 @@ int ControladorProducto::getContador()
 // void ingresarPromocionASistema(Promocion promo) {
 //     promocionesVigentes.insert(promo);
 // }
+
+bool ControladorProducto::productoEnPromoExistente(int id) {
+/*     bool b;
+    map<int, Contenido*> copiaPromocionesSistemasVigentes = getPromocionesSistemaVigentes();
+    for (auto promo : copiaPromocionesSistemasVigentes) {
+        for (auto productos : promo->getProductosDentroDePromo()) {
+            if (id == productos->getProducto()->getId()) {
+                b = true;
+                break;
+            } else {
+                b = false;
+            }
+         }
+     }
+    return b; */
+}
+
+void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
+/*     for (auto f: promocionesSistema) {
+        if (compararFechas(f->getFechaVencimiento(), fecha)) {
+            promocionesSistemaVigentes.insert(f);
+        }
+    }
+
+    for (auto promociones: promocionesSistemaVigentes) {
+        cout << "Nombre de la promocion: " << promociones->getNombre() << endl;
+        cout << "Descripcion de la promocion: " << promociones->getDescripcion() << endl;
+        cout << "Descuento de la promocion: " << promociones->getDescuento() << endl;
+        cout << "Fecha de Vencimiento de la promocion: " << promociones->getFechaVencimiento() << endl;
+        cout << "Vendedor de la promocion: " << promociones->getVendedor() << endl;
+    } */
+}
+
+//Funcion para comparar fechas
+bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
+    if (fecha1.getAnio() > fecha2.getAnio()) {
+        return true;
+
+    } else if (fecha1.getAnio() < fecha2.getAnio()) {
+        return false;   
+        
+    } else {
+        if (fecha1.getMes() > fecha2.getMes()) {
+            return true;
+        } else if (fecha1.getMes() < fecha2.getMes()) {
+            return false;
+        } else {
+            return fecha1.getDia() > fecha2.getDia();
+        }
+    }
+}
+
+void ControladorProducto::seleccionarPromocion(string nombre) {    
+/*     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
+    
+    for (auto promo: promocionesSistemaVigentes) {
+        string nombrePromocion = promo->getProducto()->getNombre();
+
+        transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
+
+        if (nombre == nombrePromocion) {
+            DTPromocion promoNueva = promo->toDataType();
+            //Imprimir datos del vendedor y los productos de la promocion 
+            //(fijarse en cambiar el tipo de devolucion de la funcion)
+            cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
+            cout << "Vendedor de la promocion: " << promoNueva.getVendedor() << endl;
+            cout << "RUT del vendedor: " << promoNueva.getVendedor()->getCodigoRut() << endl;
+
+            for (auto productos: promo->getProductosDentroDePromo()) {
+                DTProducto prod = promo->getProducto()->toDataType();
+                cout << "Nombre del producto: " << prod->getNombre() << endl; 
+                cout << "Id del producto: " << prod->getId() << endl;
+                cout << "Descripcion del producto: " << prod->getDescripcion() << endl;
+                cout << "Stock del producto: " << prod->getStock() << endl;
+            }
+        }
+    } */
+}

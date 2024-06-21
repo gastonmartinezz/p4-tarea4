@@ -16,6 +16,7 @@
 #include "../include/DataTypes/DTUsuario.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include "../include/DataTypes/DTCliente.h"
+using namespace std;
 
 class ControladorUsuario : public ICUsuario
 {
@@ -24,9 +25,9 @@ private:
     ControladorUsuario() = default;
     static ControladorUsuario *instance;
 
-    map<std::string, Usuario *> ListaUsuarios;
-    map<std::string, Cliente *> ListaClientes;
-    map<std::string, Vendedor *> ListaVendedores;
+    map<string, Usuario*> ListaUsuarios;
+    map<string, Cliente*> ListaClientes;
+    map<string, Vendedor*> ListaVendedores;
     int contador_id_comentario = 0;
 
     // // Miembros temporales para el registro de usuarios en AltaUsuario.cpp
@@ -104,7 +105,7 @@ public:
     void confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT);
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
-    void agregarSuscripcion(const std::string &vendedorNickname);
+    void agregarSuscripcion(const string &vendedorNickname);
     vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
     void suscribirse(const string &vendedorNickname);
     vector<string> obtenerNotificaciones(const string &nickname);
