@@ -45,9 +45,11 @@ void Cliente::agregarCompra(Compra *compra)
 
 void Cliente::mostrarInformacionCliente()
 {
+    DTFecha fecha = getFechaDeNacimiento();
+    std::string string_fecha = fecha.toString();
     cout << "Nickname: " << getNickname() << endl;
-    cout << "Fecha de Nacimiento: " << getFechaDeNacimiento() << endl;
-    cout << "Direccion: " << getDireccion() << endl;
+    cout << "Fecha de Nacimiento: " << string_fecha << endl;
+    // cout << "Direccion: " << getDireccion() << endl;
 }
 
 DTCliente Cliente::toDataType()

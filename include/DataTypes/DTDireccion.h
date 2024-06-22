@@ -35,7 +35,8 @@ ostream &operator<<(ostream &os, DTDireccion dtDireccion);
 #include <iostream>
 #include <string>
 
-class DTDireccion {
+class DTDireccion
+{
 private:
     std::string ciudad_residencia;
     std::string calle;
@@ -50,12 +51,6 @@ public:
     int getNumeroPuerta() const;
 
     ~DTDireccion();
-
-    // Sobrecarga del operador de salida
-    friend std::ostream& operator<<(std::ostream& os, const DTDireccion& dtDireccion);
-
-    // Sobrecarga del operador de entrada
-    friend std::istream& operator>>(std::istream& is, DTDireccion& dtDireccion);
 };
 
 #endif // DTDIRECCION_H

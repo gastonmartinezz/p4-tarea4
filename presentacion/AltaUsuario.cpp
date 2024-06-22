@@ -22,9 +22,10 @@ void altaUsuario()
     // ICUsuario* ctrlUsuario = Fabrica::getICUsuario();
     ICUsuario *ctrlUsuario = Fabrica::getICUsuario();
 
-    string nickname, contraseña, codigoRUT;
+    string nickname, contraseña, codigoRUT, ciudad_residencia, calle;
     int codigoRUT_int;
     char tipoUsuario;
+    int dia, mes, anio, numero_puerta;
     DTFecha fechaNacimiento;
     DTDireccion direccion;
 
@@ -34,11 +35,40 @@ void altaUsuario()
         cout << "Nombre: ";
         getline(cin, nickname);
 
-        if ((ctrlUsuario->findUsuario(nickname)) != NULL)
+        if ((ctrlUsuario->findUsuario(nickname)) != nullptr)
             throw invalid_argument("El usuario '" + nickname + "' ya existe.");
 
-        std::cout << "Introduce la fecha de nacimiento (dd/mm/yyyy): ";
-        std::cin >> fechaNacimiento;
+        cout << "Fecha de nacimiento: ";
+        cout << "Ingrese día de la fecha: ";
+        cin >> dia;
+        while (cin.fail() || dia < 1 || dia > 31)
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Día inválido. Por favor, ingrese un día entre 1 y 31: ";
+            cin >> dia;
+        }
+
+        cout << "Ingrese mes: ";
+        cin >> mes;
+        while (cin.fail() || mes < 1 || mes > 12)
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Mes inválido. Por favor, ingrese un mes entre 1 y 12: ";
+            cin >> mes;
+        }
+
+        cout << "Ingrese año: ";
+        cin >> anio;
+        while (cin.fail() || anio < 1900 || anio > 2100)
+        { // Puedes ajustar el rango según tus necesidades
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Año inválido. Por favor, ingrese un año razonable: ";
+            cin >> anio;
+        }
+        fechaNacimiento = DTFecha(dia, mes, anio);
 
         cout << "Contraseña: ";
         getline(cin, contraseña);
@@ -56,7 +86,23 @@ void altaUsuario()
         {
 
             std::cout << "Ingrese direccion:" << std::endl;
-            std::cin >> direccion;
+            cout << "Ingrese la ciudad de residencia: ";
+            std::cin >> ciudad_residencia;
+
+            cout << "Ingrese la calle: ";
+            std::cin >> calle;
+
+            cout << "Ingrese el número de puerta: ";
+            std::cin >> numero_puerta;
+            while (std::cin.fail() || numero_puerta <= 0)
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Número de puerta inválido. Por favor, ingrese un número positivo: ";
+                std::cin >> numero_puerta;
+            }
+
+            direccion = DTDireccion(ciudad_residencia, calle, numero_puerta);
 
             ctrlUsuario->confirmarAltaCliente(nickname, contraseña, fechaNacimiento, direccion);
         }

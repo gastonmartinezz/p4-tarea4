@@ -40,7 +40,8 @@ void listaUsuarios()
         }
         vector<DTVendedor> vendedores = CUsuario->listaVendedor();
 
-        cout << " Clientes" << endl;
+        cout << "       " << endl;
+        cout << " Vendedores" << endl;
         cout << "___________________" << endl;
         cout << endl;
 

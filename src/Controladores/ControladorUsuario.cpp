@@ -65,15 +65,15 @@ void ControladorUsuario::confirmarAltaUsuario(string &nickname, string &password
 void ControladorUsuario::confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion)
 {
     Cliente *nuevoCliente = new Cliente(nickname, password, fechaNacimiento, direccion);
-    ListaClientes.insert({"nickname", nuevoCliente});
-    ListaUsuarios.insert({"nickname", nuevoCliente});
+    ListaClientes.insert({nickname, nuevoCliente});
+    ListaUsuarios.insert({nickname, nuevoCliente});
 }
 
 void ControladorUsuario::confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, int codigoRUT)
 {
     Vendedor *nuevoVendedor = new Vendedor(nickname, password, fechaNacimiento, codigoRUT);
-    ListaVendedores.insert({"nickname", nuevoVendedor});
-    ListaUsuarios.insert({"nickname", nuevoVendedor});
+    ListaVendedores.insert({nickname, nuevoVendedor});
+    ListaUsuarios.insert({nickname, nuevoVendedor});
 }
 
 vector<DTUsuario> ControladorUsuario::listarUsuarios()
