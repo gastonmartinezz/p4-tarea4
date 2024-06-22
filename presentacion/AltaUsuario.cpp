@@ -7,84 +7,91 @@
 #include "../include/DataTypes/DTDireccion.h"
 #include "../include/Usuario.h"
 #include <limits>
+
 using std::numeric_limits;
 using std::streamsize;
 using namespace std;
 
-void altaUsuario() {
+void altaUsuario()
+{
     cout << endl;
     cout << " Alta de Usuario" << endl;
     cout << "----------------" << endl;
     cout << endl;
 
-    //ICUsuario* ctrlUsuario = Fabrica::getICUsuario();
-    ControladorUsuario *ctrlUsuario = Fabrica::getICUsuario();
+    // ICUsuario* ctrlUsuario = Fabrica::getICUsuario();
+    ICUsuario *ctrlUsuario = Fabrica::getICUsuario();
 
     string nickname, contraseña, codigoRUT;
+    int codigoRUT_int;
     char tipoUsuario;
     DTFecha fechaNacimiento;
-    DTDireccion direccion; 
+    DTDireccion direccion;
 
     try
     {
         cin.ignore();
-        cout << "Nombre: ";    
+        cout << "Nombre: ";
         getline(cin, nickname);
-        
-        if ((ctrlUsuario->findUsuario(nickname))!=NULL)
+
+        if ((ctrlUsuario->findUsuario(nickname)) != NULL)
             throw invalid_argument("El usuario '" + nickname + "' ya existe.");
 
-        
-        
         std::cout << "Introduce la fecha de nacimiento (dd/mm/yyyy): ";
         std::cin >> fechaNacimiento;
 
         cout << "Contraseña: ";
         getline(cin, contraseña);
-        while  (contraseña.length() < 6) {
-        std::cerr << "Error: La contraseña debe tener al menos 6 caracteres." << std::endl;
-        std::cout << "Ingrese contraseña (al menos 6 caracteres): ";
-        std::cin >> contraseña;}
-
+        while (contraseña.length() < 6)
+        {
+            std::cerr << "Error: La contraseña debe tener al menos 6 caracteres." << std::endl;
+            std::cout << "Ingrese contraseña (al menos 6 caracteres): ";
+            std::cin >> contraseña;
+        }
 
         std::cout << "¿Es cliente o vendedor? (C/V): ";
         std::cin >> tipoUsuario;
 
-        if (tipoUsuario == 'C' || tipoUsuario == 'c') {
+        if (tipoUsuario == 'C' || tipoUsuario == 'c')
+        {
 
             std::cout << "Ingrese direccion:" << std::endl;
             std::cin >> direccion;
-            
+
             ctrlUsuario->confirmarAltaCliente(nickname, contraseña, fechaNacimiento, direccion);
         }
-        
-         else if (tipoUsuario == 'V' || tipoUsuario == 'v') {
+
+        else if (tipoUsuario == 'V' || tipoUsuario == 'v')
+        {
             std::cout << "Ingrese código RUT (12 caracteres): ";
             std::cin >> codigoRUT;
-            while (codigoRUT.length() != 12) {
+            while (codigoRUT.length() != 12)
+            {
                 std::cerr << "Error: El código RUT debe tener 12 caracteres." << std::endl;
                 std::cout << "Ingrese código RUT (12 caracteres): ";
                 std::cin >> codigoRUT;
             }
-
-            ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT);
-        } else {
+            codigoRUT_int = stoi(codigoRUT);
+            ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT_int);
+        }
+        else
+        {
             std::cerr << "Tipo de usuario no válido." << std::endl;
             return;
         }
 
         std::cout << "Usuario registrado con éxito." << std::endl;
-    } catch (const std::invalid_argument &e) {
+    }
+    catch (const std::invalid_argument &e)
+    {
         std::cerr << "Error: " << e.what() << std::endl;
     }
-
+    std::cout << "Presiona Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.get();
 }
 
-
-
-
-
-/* 
+/*
 #include "../include/Fabrica.h"
 #include "../include/DataTypes/DTFecha.h"
 #include <iostream>

@@ -45,9 +45,9 @@ void displayAndProcessMenu()
             {
                 switch (option)
                 {
-                    // case 1:
-                    //     altaUsuario();
-                    //     break;
+                case 1:
+                    altaUsuario();
+                    break;
                 case 2:
                     AltaProducto();
                     break;
