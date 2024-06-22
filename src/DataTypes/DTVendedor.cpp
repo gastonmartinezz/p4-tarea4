@@ -1,11 +1,16 @@
 #include "DTVendedor.h"
 
-DTVendedor::DTVendedor(int rut, vector<Producto *> productos, vector<Promocion *> promociones, std::string nickname)
+DTVendedor::DTVendedor(string nickname, int rut, set<Cliente *> suscriptores , vector<Producto *> productos, vector<Promocion *> promociones)
     : rut(rut), productos(productos), promociones(promociones), nickname(nickname) {}
+
 
 int DTVendedor::getRut()
 {
     return rut;
+}
+
+set<Cliente *> DTVendedor::getSuscriptores() {
+    return suscriptores;
 }
 
 vector<Producto *> DTVendedor::getProductos()

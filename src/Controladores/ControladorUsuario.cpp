@@ -169,6 +169,19 @@ Vendedor *ControladorUsuario::findVendedor(std::string nickname)
     }
 }
 
+Cliente *ControladorUsuario::findCliente(std::string nickname)
+{
+    auto it = ListaClientes.find(nickname);
+    if (it != ListaClientes.end())
+    {
+        return it->second;
+    }
+    else
+    {
+        return nullptr;
+    }
+}
+
 void ControladorUsuario::listarComentarios()
 {
     // Implementación para listar comentarios
@@ -184,9 +197,11 @@ void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId)
     // Implementación para obtener vendedores no suscriptos
 } */
 
-void ControladorUsuario::agregarSuscripcion(const string &nickname)
+void ControladorUsuario::agregarSuscripcion(Cliente* cliente, Vendedor* vendedor)
 {
-    // Implementación para agregar suscripción
+    if(!(vendedor->getSuscriptores().count(cliente) > 0)) {
+        vendedor->getSuscriptores().insert(cliente);
+    }
 }
 
 bool ControladorUsuario::validarPassword(const string &nickname, const string &password)
@@ -214,21 +229,17 @@ void ControladorUsuario::eliminarLinkComentario(int comentarioId)
     // Implementación para eliminar link de comentario
 }
 
-vector<Vendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos()
-{
-    // Implementación para obtener vendedores no suscriptos
-    return vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
-}
+vector<DTVendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos(Cliente* cliente) {
+    vector<DTVendedor> vendedores = {};
+    vector<DTVendedor> vendedoresNoSuscriptos = {};
 
-vector<Vendedor> ControladorUsuario::obtenerListaDeVendedoresSuscriptos()
-{
-    // Implementación para obtener lista de vendedores suscriptos
-    return vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
-}
+    for (auto it = vendedores.begin(); it != vendedores.end(); ++it) {
+        if(!(it->getSuscriptores().count(cliente) > 0)) {
+            vendedoresNoSuscriptos.push_back(*it);
+        }
+    }
 
-void ControladorUsuario::suscribirse(const string &vendedorNickname)
-{
-    // Implementación para suscribirse a un vendedor
+    return vendedoresNoSuscriptos;
 }
 
 vector<std::string> ControladorUsuario::obtenerNotificaciones(const string &nickname)

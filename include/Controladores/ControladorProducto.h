@@ -12,6 +12,7 @@
 #include "../include/Comentario.h"
 #include "../include/Compra.h"
 #include "../include/DataTypes/DTFecha.h"
+#include "../include/DataTypes/DTProducto.h"
 #include "../Interfaces/ICProductos.h"
 using namespace std;
 
@@ -19,6 +20,7 @@ class Producto;
 class Promocion;
 class Comentario;
 class Compra;
+class DTProducto;
 
 class ControladorProducto /* : public ICProductos */
 {
@@ -59,14 +61,14 @@ public:
     void incrementarContador();
     int getContador();
 
-    map<int, Producto*> getListaProductos();
-    map<int, Contenido*> getPromocionesSistema();
-    map<int, Contenido*> getPromocionesSistemaVigentes();
-    void ingresarPromocionVigente(Promocion* promo, int cant_minima, map<int, Contenido*> promocionesSistemaVigentes);
-    void obtenerPromocionesActivas(DTFecha fecha);
-    bool productoEnPromoExistente(int id);
-    bool compararFechas(DTFecha fecha1, DTFecha fecha2);
-    void seleccionarPromocion(string nombre);
+    //map<int, Producto*> getListaProductos();
+    //map<int, Contenido*> getPromocionesSistema();
+    //map<int, Contenido*> getPromocionesSistemaVigentes();
+    //void ingresarPromocionVigente(Promocion* promo, int cant_minima, map<int, Contenido*> promocionesSistemaVigentes);
+    //void obtenerPromocionesActivas(DTFecha fecha);
+    //bool productoEnPromoExistente(int id);
+    //bool compararFechas(DTFecha fecha1, DTFecha fecha2);
+    //void seleccionarPromocion(string nombre);
 };
 
 #endif // CONTROLADORPRODUCTO_H

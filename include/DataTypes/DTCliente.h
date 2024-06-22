@@ -19,6 +19,7 @@ private:
 
 public:
     DTCliente(string nickname, DTDireccion direccion, vector<Compra*> compras); // Ver si el puntero a compra es correcto
+    string getNickname();
     DTDireccion getDireccion();
     set<string> getCompras();
     ~DTCliente();

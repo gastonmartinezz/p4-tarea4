@@ -163,7 +163,7 @@ int ControladorProducto::getContador()
 //     promocionesVigentes.insert(promo);
 // }
 
-bool ControladorProducto::productoEnPromoExistente(int id) {
+//bool ControladorProducto::productoEnPromoExistente(int id) {
 /*     bool b;
     map<int, Contenido*> copiaPromocionesSistemasVigentes = getPromocionesSistemaVigentes();
     for (auto promo : copiaPromocionesSistemasVigentes) {
@@ -177,9 +177,9 @@ bool ControladorProducto::productoEnPromoExistente(int id) {
          }
      }
     return b; */
-}
+//}
 
-void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
+//void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
 /*     for (auto f: promocionesSistema) {
         if (compararFechas(f->getFechaVencimiento(), fecha)) {
             promocionesSistemaVigentes.insert(f);
@@ -193,50 +193,50 @@ void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
         cout << "Fecha de Vencimiento de la promocion: " << promociones->getFechaVencimiento() << endl;
         cout << "Vendedor de la promocion: " << promociones->getVendedor() << endl;
     } */
-}
+//}
 
 //Funcion para comparar fechas
-bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
-    if (fecha1.getAnio() > fecha2.getAnio()) {
-        return true;
+// bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
+//     if (fecha1.getAnio() > fecha2.getAnio()) {
+//         return true;
 
-    } else if (fecha1.getAnio() < fecha2.getAnio()) {
-        return false;   
+//     } else if (fecha1.getAnio() < fecha2.getAnio()) {
+//         return false;   
         
-    } else {
-        if (fecha1.getMes() > fecha2.getMes()) {
-            return true;
-        } else if (fecha1.getMes() < fecha2.getMes()) {
-            return false;
-        } else {
-            return fecha1.getDia() > fecha2.getDia();
-        }
-    }
-}
+//     } else {
+//         if (fecha1.getMes() > fecha2.getMes()) {
+//             return true;
+//         } else if (fecha1.getMes() < fecha2.getMes()) {
+//             return false;
+//         } else {
+//             return fecha1.getDia() > fecha2.getDia();
+//         }
+//     }
+// }
 
-void ControladorProducto::seleccionarPromocion(string nombre) {    
-/*     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
+// void ControladorProducto::seleccionarPromocion(string nombre) {    
+// /*     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
     
-    for (auto promo: promocionesSistemaVigentes) {
-        string nombrePromocion = promo->getProducto()->getNombre();
+//     for (auto promo: promocionesSistemaVigentes) {
+//         string nombrePromocion = promo->getProducto()->getNombre();
 
-        transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
+//         transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
 
-        if (nombre == nombrePromocion) {
-            DTPromocion promoNueva = promo->toDataType();
-            //Imprimir datos del vendedor y los productos de la promocion 
-            //(fijarse en cambiar el tipo de devolucion de la funcion)
-            cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
-            cout << "Vendedor de la promocion: " << promoNueva.getVendedor() << endl;
-            cout << "RUT del vendedor: " << promoNueva.getVendedor()->getCodigoRut() << endl;
+//         if (nombre == nombrePromocion) {
+//             DTPromocion promoNueva = promo->toDataType();
+//             //Imprimir datos del vendedor y los productos de la promocion 
+//             //(fijarse en cambiar el tipo de devolucion de la funcion)
+//             cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
+//             cout << "Vendedor de la promocion: " << promoNueva.getVendedor() << endl;
+//             cout << "RUT del vendedor: " << promoNueva.getVendedor()->getCodigoRut() << endl;
 
-            for (auto productos: promo->getProductosDentroDePromo()) {
-                DTProducto prod = promo->getProducto()->toDataType();
-                cout << "Nombre del producto: " << prod->getNombre() << endl; 
-                cout << "Id del producto: " << prod->getId() << endl;
-                cout << "Descripcion del producto: " << prod->getDescripcion() << endl;
-                cout << "Stock del producto: " << prod->getStock() << endl;
-            }
-        }
-    } */
-}
+//             for (auto productos: promo->getProductosDentroDePromo()) {
+//                 DTProducto prod = promo->getProducto()->toDataType();
+//                 cout << "Nombre del producto: " << prod->getNombre() << endl; 
+//                 cout << "Id del producto: " << prod->getId() << endl;
+//                 cout << "Descripcion del producto: " << prod->getDescripcion() << endl;
+//                 cout << "Stock del producto: " << prod->getStock() << endl;
+//             }
+//         }
+//     } */
+// }

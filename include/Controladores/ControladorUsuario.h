@@ -98,16 +98,14 @@ public:
     void datosVendedor(const string &codigoRUT);
     void datosCliente(const string &direccion, const string &ciudad);
     void eliminarComentarioYRespuestas(int comentarioId);
-    vector<Vendedor> obtenerVendedoresNoSuscriptos();
+    vector<DTVendedor> obtenerVendedoresNoSuscriptos(Cliente* cliente);
     bool validarPassword(const string &nickname, const string &password);
     void listarComentariosUsuarioSeleccionado(const string &nickname);
     void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); // Le saque ciudad pq no me compilaba - Tonga
     void confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT);
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
-    void agregarSuscripcion(const string &vendedorNickname);
-    vector<Vendedor> obtenerListaDeVendedoresSuscriptos();
-    void suscribirse(const string &vendedorNickname);
+    void agregarSuscripcion(Cliente* cliente, Vendedor* vendedor);
     vector<string> obtenerNotificaciones(const string &nickname);
     void mostrarYEliminarNotificacion(const string &nickname);
     void eliminarNotificaciones(const string &nickname);
@@ -117,6 +115,7 @@ public:
     void registrarCompra(const Compra &compra);
     Usuario *findUsuario(string nickname);
     Vendedor *findVendedor(std::string nickname);
+    Cliente *findCliente(std::string nickname);
 };
 
 #endif // CONTROLADORUSUARIO_H
