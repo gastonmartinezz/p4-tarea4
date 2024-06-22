@@ -1,5 +1,4 @@
-/*
-#include <iostream>
+/* #include <iostream>
 #include <string>
 #include <set>
 #include <algorithm>
@@ -13,37 +12,20 @@ using namespace std;
 
 //Función para imprimir los vendedores que hay registrado en el sistema.
 
-void seleccionarProductosParaPromocion(string nickname, int id, int cant_minima) {
-
-    transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
-
-    for (auto p: vendedoresSistema) {
-        if (nickname == p->getNickname()) {
-            for (auto prod: p->getProductos()) {
-                if (productoEnPromoExistente(id)) {
-                    cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
-                } else {
-                    promoNueva->productosDentroDePromo.insert(prod);
-                    //Indiquemos la cantidad minima para la promocion por producto
-                    for (auto promocion: promoNueva->productosDentroDePromo) {
-                        if (id == Producto::getId()) {
-                            //Hay que indicar que la cantidad minima de ese producto dentro de la promocion es cant_minima
-                            promoNueva->productosDentroDePromo->cantidad_minima = cant_minima;
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
-
 void ingresarPromocionASistema(Promocion promo) {
     promocionesVigentes.insert(promo);
 }
 
 //Faltaria funcion para dar de alta la promocion en el sistema que tengo dudas para hacerlo
 
-void crearPromocion() {
+Promocion* crearPromocion() {
+
+    ControladorProducto *ctrlProducto = Fabrica::getICProductos();
+    ControladorUsuario *ctrlUsuario = Fabrica::getICUsuario();
+
+    try {
+
+    
     string nombre, desc;
     float descuento;
     int dia, mes, anio;
@@ -66,16 +48,26 @@ void crearPromocion() {
     fechaVencimiento->mes = mes;
     fechaVencimiento->anio = anio;
     
-    //Luego de ingresar los datos para la promoción, invoco a la función obtenerListaVendedores()
-    obtenerListaVendedores();
+    //Muestro los datos de los vendedores para que el administrador elija uno con el nickname.
+    std::vector<DTVendedor> vendedores = ctrlUsuario->listaVendedor();
+    std::cout << "Lista de Vendedores:" << std::endl;
+    if (vendedores.size() == 0)
+    {
+        throw invalid_argument("No hay usuarios registrados.");
+    }
 
+    for (vector<DTVendedor>::size_type i = 0; i < vendedores.size(); ++i)
+    {
+        cout << i << "-";
+        cout << vendedores[i].getNickname() << endl;
+    }
 
     //El usuario selecciona un vendedor de la lista por su nickname.
     string nickVendedor;
     cout << "Ingrese el nickname del vendedor para asignarle la promoción: " << endl;
     cin >> nickVendedor;
 
-    obtenerProductosDeVendedor(nickVendedor);
+    ctrlProducto->listarProductosVendedor(string nickname);
 
     //Invoco la función para ir agregando los productos a la promoción.
     string respuesta;
@@ -84,19 +76,29 @@ void crearPromocion() {
 
     cout << "Deseas agregar un producto a la promoción? (si/no)" << endl;
     cin >> respuesta;
+    transform(respuesta.begin(), respuesta.end(), ::toupper)
 
-    while ((respuesta != "SI") or (respuesta != "s")) {
+    set<Contenido*>productosPromocion;
+    bool seguir = true;
+
+    while (seguir) {
         cout << "Ingrese el Id del producto que desea agregar a la promoción: " << endl;
         cin >> idProducto;
 
         cout << "Ingrese la cantidad mínima de ese producto para que la promoción sea válida: " << endl;
         cin >> cantMin;
 
-        seleccionarProductosParaPromocion(nickVendedor, idProducto, cantMin);
+        Contenido* conte = seleccionarProductosParaPromocion(nickVendedor, ctrlProducto->listaProductos[idProducto], cantMin);
+        productosPromocion.insert(conte);
 
         cout << "Desea agregar otro producto a la promoción? (si/no)" << endl;
         cin >> respuesta;
+
         transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
+
+        if !((respuesta == "SI") || (respuesta == "S")) {
+            seguir = false;
+        } 
     }
 
     Promocion* promoNueva = new Promocion();
@@ -104,6 +106,18 @@ void crearPromocion() {
     promoNueva->setNombre(nombre);
     promoNueva->setDescuento(descuento);
     promoNueva->setFechaVencimiento(fechaVencimiento);
-} 
+    promoNueva->setProductosDentroDePromo(productosPromocion);
 
-*/
+    ctrlProducto->getpromocionesSistemaVigentes().insert(promoNueva);
+    ctrlProducto->getpromocionesSistema().insert(promoNueva);
+
+    return promoNueva;
+
+    } catch (const std::exception &e)
+    {
+        cerr << e.what() << '\n';
+    };
+    std::cout << "Presiona Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.get(); // Espera que el usuario presione Enter
+} */
