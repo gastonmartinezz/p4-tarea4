@@ -5,7 +5,8 @@
 
 Vendedor::Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, int codigoRut) : Usuario(nickname, password, fechaDeNacimiento), codigoRut(codigoRut) {}
 
-string Vendedor::getNickname() {
+string Vendedor::getNickname()
+{
     return nickname;
 }
 
@@ -58,8 +59,9 @@ void Vendedor::mostrarInformacionVendedor() {
     // Implementación de la función para mostrar la información del vendedor
 };
 
-DTVendedor Vendedor::toDataType() {
-    DTVendedor(getNickname(), getCodigoRut(), getSuscriptores() ,getProductos(), getPromociones());
+DTVendedor Vendedor::toDataType()
+{
+    DTVendedor(getNickname(), getCodigoRut(), getFechaDeNacimiento(), getSuscriptores(), getProductos(), getPromociones());
 };
 
 Vendedor::~Vendedor()

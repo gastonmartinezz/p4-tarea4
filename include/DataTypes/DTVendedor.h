@@ -21,12 +21,13 @@ class DTVendedor
 private:
     std::string nickname;
     int rut;
-    set<Cliente*> suscriptores;
+    set<Cliente *> suscriptores;
     vector<Producto *> productos;
     vector<Promocion *> promociones;
+    DTFecha fechaNacimiento;
 
 public:
-    DTVendedor(string nickname, int rut, set<Cliente *> suscriptores ,vector<Producto*> productos, vector<Promocion*> promociones);
+    DTVendedor(string nickname, int rut, DTFecha fechaNacimiento, set<Cliente *> suscriptores = {}, vector<Producto *> productos = {}, vector<Promocion *> promociones = {});
     std::string getNickname();
     int getRut();
     set<Cliente *> getSuscriptores();

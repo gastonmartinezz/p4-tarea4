@@ -45,9 +45,9 @@ void displayAndProcessMenu()
             {
                 switch (option)
                 {
-                    // case 1:
-                    //     altaUsuario();
-                    //     break;
+                case 1:
+                    altaUsuario();
+                    break;
                 case 2:
                     AltaProducto();
                     break;
@@ -69,9 +69,9 @@ void displayAndProcessMenu()
                 // case 8:
                 //     expedienteUsuario();
                 //     break;
-                // case 9:
-                //     listaDeUsuarios();
-                //     break;
+                case 9:
+                    listaUsuarios();
+                    break;
                 case 10:
                     suscribirseANotificaciones();
                     break;

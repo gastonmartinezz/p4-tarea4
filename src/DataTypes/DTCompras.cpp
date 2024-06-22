@@ -3,24 +3,31 @@
 DTCompras::DTCompras(string nombreCliente, DTFecha fechaCompra)
     : nombreCliente(nombreCliente), fechaCompra(fechaCompra) {}
 
-string DTCompras::getNombreCliente() {
+string DTCompras::getNombreCliente()
+{
     return nombreCliente;
 }
 
-DTFecha DTCompras::getFechaCompra() {
+DTFecha DTCompras::getFechaCompra()
+{
     return fechaCompra;
 }
 
-void DTCompras::setNombreCliente(string nombreCliente){
+void DTCompras::setNombreCliente(string nombreCliente)
+{
     this->nombreCliente = nombreCliente;
 }
-void DTCompras::setFechaCompra(DTFecha fecha) {
+void DTCompras::setFechaCompra(DTFecha fecha)
+{
     this->fechaCompra = fecha;
 }
 
 DTCompras::~DTCompras() {}
 
-ostream& operator<<(ostream& os, DTCompras dtCompras) {
-    os << "Nombre del Cliente: " << dtCompras.getNombreCliente() << ", Fecha de Compra: " << dtCompras.getFechaCompra();
+ostream &operator<<(ostream &os, DTCompras dtCompras)
+{
+
+    DTFecha fecha = dtCompras.getFechaCompra();
+    os << "Nombre del Cliente: " << dtCompras.getNombreCliente() << ", Fecha de Compra: " << fecha.toString();
     return os;
 }

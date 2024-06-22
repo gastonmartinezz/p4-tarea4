@@ -27,12 +27,16 @@ public:
     virtual void listarComentarios() = 0;
     virtual void eliminarComentarioYRespuestas(int comentarioId) = 0;
 
-    virtual void agregarSuscripcion(Cliente* cliente, Vendedor* vendedor) = 0;
+    virtual void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, int codigoRUT) = 0;
+    virtual void confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion) = 0;
+
+    // virtual void agregarSuscripcion(const std::string &nickname) = 0;
+    virtual void agregarSuscripcion(Cliente *cliente, Vendedor *vendedor) = 0;
     virtual bool validarPassword(const std::string &nickname, const std::string &password) = 0;
     virtual void listarComentariosUsuarioSeleccionado(const std::string &nickname) = 0;
     virtual void eliminarComentario(int comentarioId) = 0;
     virtual void eliminarLinkComentario(int comentarioId) = 0;
-    virtual std::vector<DTVendedor> obtenerVendedoresNoSuscriptos(Cliente* cliente) = 0;
+    virtual std::vector<DTVendedor> obtenerVendedoresNoSuscriptos(Cliente *cliente) = 0;
     virtual std::vector<std::string> obtenerNotificaciones(const std::string &nickname) = 0;
     virtual void mostrarYEliminarNotificacion(const std::string &nickname) = 0;
     virtual void eliminarNotificaciones(const std::string &nickname) = 0;

@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include "../include/Controladores/ControladorUsuario.h"
 #include "../include/Cliente.h"
+#include "../include/Vendedor.h"
 using namespace std;
 
 // Inicialización de la instancia singleton
@@ -50,30 +51,29 @@ void ControladorUsuario::datosCliente(const string &direccion, const string &ciu
 
 void ControladorUsuario::confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion)
 {
-    if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
-    {
-        throw std::invalid_argument("El nickname ya está en uso.");
-    }
+    /*  if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
+      {
+          throw std::invalid_argument("El nickname ya está en uso.");
+      }
 
-    Usuario *nuevoUsuario = new Cliente(nickname, password, fechaNacimiento, direccion);
-    // ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
-    ListaUsuarios[nickname] = nuevoUsuario;
+      Usuario *nuevoUsuario = new Cliente(nickname, password, fechaNacimiento, direccion);
+      // ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
+      ListaUsuarios[nickname] = nuevoUsuario;
+     */
 }
 
-void ControladorUsuario::confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT)
+void ControladorUsuario::confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion)
 {
-    if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
-    {
-        throw std::invalid_argument("El nickname ya está en uso.");
-    }
-    if (codigoRUT.length() != 12)
-    {
-        throw std::invalid_argument("El código RUT debe tener 12 caracteres.");
-    }
+    Cliente *nuevoCliente = new Cliente(nickname, password, fechaNacimiento, direccion);
+    ListaClientes.insert({nickname, nuevoCliente});
+    ListaUsuarios.insert({nickname, nuevoCliente});
+}
 
-    Usuario *nuevoUsuario = new Vendedor(nickname, password, fechaNacimiento, std::stoi(codigoRUT));
-    // ListaVendedores[nickname] = dynamic_cast<Vendedor *>(nuevoUsuario);
-    ListaUsuarios[nickname] = nuevoUsuario;
+void ControladorUsuario::confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, int codigoRUT)
+{
+    Vendedor *nuevoVendedor = new Vendedor(nickname, password, fechaNacimiento, codigoRUT);
+    ListaVendedores.insert({nickname, nuevoVendedor});
+    ListaUsuarios.insert({nickname, nuevoVendedor});
 }
 
 vector<DTUsuario> ControladorUsuario::listarUsuarios()
@@ -197,9 +197,10 @@ void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId)
     // Implementación para obtener vendedores no suscriptos
 } */
 
-void ControladorUsuario::agregarSuscripcion(Cliente* cliente, Vendedor* vendedor)
+void ControladorUsuario::agregarSuscripcion(Cliente *cliente, Vendedor *vendedor)
 {
-    if(!(vendedor->getSuscriptores().count(cliente) > 0)) {
+    if (!(vendedor->getSuscriptores().count(cliente) > 0))
+    {
         vendedor->getSuscriptores().insert(cliente);
     }
 }
@@ -229,12 +230,15 @@ void ControladorUsuario::eliminarLinkComentario(int comentarioId)
     // Implementación para eliminar link de comentario
 }
 
-vector<DTVendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos(Cliente* cliente) {
+vector<DTVendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos(Cliente *cliente)
+{
     vector<DTVendedor> vendedores = {};
     vector<DTVendedor> vendedoresNoSuscriptos = {};
 
-    for (auto it = vendedores.begin(); it != vendedores.end(); ++it) {
-        if(!(it->getSuscriptores().count(cliente) > 0)) {
+    for (auto it = vendedores.begin(); it != vendedores.end(); ++it)
+    {
+        if (!(it->getSuscriptores().count(cliente) > 0))
+        {
             vendedoresNoSuscriptos.push_back(*it);
         }
     }

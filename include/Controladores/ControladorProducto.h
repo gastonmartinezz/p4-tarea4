@@ -41,6 +41,7 @@ public:
     // Métodos del diagrama UML
     vector<DTProducto> listarProductos2();
     void listarProductos(); // es un void ya que es hacer 'cout'
+    void agregarALaLista(int id,Producto* prod);
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
     void listarProductosVendedor(string nickname);

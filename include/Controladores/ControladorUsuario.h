@@ -25,9 +25,9 @@ private:
     ControladorUsuario() = default;
     static ControladorUsuario *instance;
 
-    map<string, Usuario*> ListaUsuarios;
-    map<string, Cliente*> ListaClientes;
-    map<string, Vendedor*> ListaVendedores;
+    map<string, Usuario *> ListaUsuarios;
+    map<string, Cliente *> ListaClientes;
+    map<string, Vendedor *> ListaVendedores;
     int contador_id_comentario = 0;
 
     // // Miembros temporales para el registro de usuarios en AltaUsuario.cpp
@@ -98,14 +98,17 @@ public:
     void datosVendedor(const string &codigoRUT);
     void datosCliente(const string &direccion, const string &ciudad);
     void eliminarComentarioYRespuestas(int comentarioId);
-    vector<DTVendedor> obtenerVendedoresNoSuscriptos(Cliente* cliente);
+    vector<DTVendedor> obtenerVendedoresNoSuscriptos(Cliente *cliente);
     bool validarPassword(const string &nickname, const string &password);
     void listarComentariosUsuarioSeleccionado(const string &nickname);
     void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); // Le saque ciudad pq no me compilaba - Tonga
-    void confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT);
+
+    void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, int codigoRUT);
+    void confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion);
+
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
-    void agregarSuscripcion(Cliente* cliente, Vendedor* vendedor);
+    void agregarSuscripcion(Cliente *cliente, Vendedor *vendedor);
     vector<string> obtenerNotificaciones(const string &nickname);
     void mostrarYEliminarNotificacion(const string &nickname);
     void eliminarNotificaciones(const string &nickname);

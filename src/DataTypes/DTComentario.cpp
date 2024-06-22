@@ -23,6 +23,7 @@ DTComentario::~DTComentario() {}
 
 ostream &operator<<(ostream &os, DTComentario dtComentario)
 {
-    os << "ID: " << dtComentario.getId() << ", Texto: " << dtComentario.getTexto() << ", Fecha: " << dtComentario.getFechaDeRealizado();
+    DTFecha fecha = dtComentario.getFechaDeRealizado();
+    os << "ID: " << dtComentario.getId() << ", Texto: " << dtComentario.getTexto() << ", Fecha: " << fecha.toString();
     return os;
 }

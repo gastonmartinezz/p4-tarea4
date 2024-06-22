@@ -1,4 +1,143 @@
-/* 
+#include <iostream>
+#include "../include/Interfaces/ICUsuario.h"
+#include "../include/Fabrica.h"
+#include <string>
+#include "../include/Controladores/ControladorUsuario.h"
+#include "../include/DataTypes/DTFecha.h"
+#include "../include/DataTypes/DTDireccion.h"
+#include "../include/Usuario.h"
+#include <limits>
+
+using std::numeric_limits;
+using std::streamsize;
+using namespace std;
+
+void altaUsuario()
+{
+    cout << endl;
+    cout << " Alta de Usuario" << endl;
+    cout << "----------------" << endl;
+    cout << endl;
+
+    // ICUsuario* ctrlUsuario = Fabrica::getICUsuario();
+    ICUsuario *ctrlUsuario = Fabrica::getICUsuario();
+
+    string nickname, contraseña, codigoRUT, ciudad_residencia, calle;
+    int codigoRUT_int;
+    char tipoUsuario;
+    int dia, mes, anio, numero_puerta;
+    DTFecha fechaNacimiento;
+    DTDireccion direccion;
+
+    try
+    {
+        cin.ignore();
+        cout << "Nombre: ";
+        getline(cin, nickname);
+
+        if ((ctrlUsuario->findUsuario(nickname)) != nullptr)
+            throw invalid_argument("El usuario '" + nickname + "' ya existe.");
+
+        cout << "Fecha de nacimiento: ";
+        cout << "Ingrese día de la fecha: ";
+        cin >> dia;
+        while (cin.fail() || dia < 1 || dia > 31)
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Día inválido. Por favor, ingrese un día entre 1 y 31: ";
+            cin >> dia;
+        }
+
+        cout << "Ingrese mes: ";
+        cin >> mes;
+        while (cin.fail() || mes < 1 || mes > 12)
+        {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Mes inválido. Por favor, ingrese un mes entre 1 y 12: ";
+            cin >> mes;
+        }
+
+        cout << "Ingrese año: ";
+        cin >> anio;
+        while (cin.fail() || anio < 1900 || anio > 2100)
+        { // Puedes ajustar el rango según tus necesidades
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Año inválido. Por favor, ingrese un año razonable: ";
+            cin >> anio;
+        }
+        fechaNacimiento = DTFecha(dia, mes, anio);
+
+        cout << "Contraseña: ";
+        getline(cin, contraseña);
+        while (contraseña.length() < 6)
+        {
+            std::cerr << "Error: La contraseña debe tener al menos 6 caracteres." << std::endl;
+            std::cout << "Ingrese contraseña (al menos 6 caracteres): ";
+            std::cin >> contraseña;
+        }
+
+        std::cout << "¿Es cliente o vendedor? (C/V): ";
+        std::cin >> tipoUsuario;
+
+        if (tipoUsuario == 'C' || tipoUsuario == 'c')
+        {
+
+            std::cout << "Ingrese direccion:" << std::endl;
+            cout << "Ingrese la ciudad de residencia: ";
+            std::cin >> ciudad_residencia;
+
+            cout << "Ingrese la calle: ";
+            std::cin >> calle;
+
+            cout << "Ingrese el número de puerta: ";
+            std::cin >> numero_puerta;
+            while (std::cin.fail() || numero_puerta <= 0)
+            {
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cout << "Número de puerta inválido. Por favor, ingrese un número positivo: ";
+                std::cin >> numero_puerta;
+            }
+
+            direccion = DTDireccion(ciudad_residencia, calle, numero_puerta);
+
+            ctrlUsuario->confirmarAltaCliente(nickname, contraseña, fechaNacimiento, direccion);
+        }
+
+        else if (tipoUsuario == 'V' || tipoUsuario == 'v')
+        {
+            std::cout << "Ingrese código RUT (12 caracteres): ";
+            std::cin >> codigoRUT;
+            while (codigoRUT.length() != 12)
+            {
+                std::cerr << "Error: El código RUT debe tener 12 caracteres." << std::endl;
+                std::cout << "Ingrese código RUT (12 caracteres): ";
+                std::cin >> codigoRUT;
+            }
+            codigoRUT_int = stoi(codigoRUT);
+            ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT_int);
+        }
+        else
+        {
+            std::cerr << "Tipo de usuario no válido." << std::endl;
+            return;
+        }
+
+        std::cout << "Usuario registrado con éxito." << std::endl;
+    }
+    catch (const std::invalid_argument &e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+    std::cout << "Presiona Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.get();
+}
+
+/*
 #include "../include/Fabrica.h"
 #include "../include/DataTypes/DTFecha.h"
 #include <iostream>

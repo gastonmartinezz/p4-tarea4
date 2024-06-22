@@ -1,45 +1,39 @@
 #include "../../include/DataTypes/DTFecha.h"
 
-DTFecha::DTFecha() {
-    this->dia = 1;
-    this->mes = 1;
-    this->anio = 1700;
-}
+#include <sstream>
 
-DTFecha:: DTFecha (int d,int m,int a){
-    dia=d;
-    mes=m;
-    anio=a;
-    
-}
+// Constructores
+DTFecha::DTFecha() : dia(0), mes(0), anio(0) {}
 
-int DTFecha::getAnio(){
-    return anio;
-}
+DTFecha::DTFecha(int d, int m, int a) : dia(d), mes(m), anio(a) {}
 
-int DTFecha::getDia(){
-    return dia;
-}
+// Métodos de acceso
+int DTFecha::getDia() const { return dia; }
+int DTFecha::getMes() const { return mes; }
+int DTFecha::getAnio() const { return anio; }
 
-
-int DTFecha::getMes(){
-    return mes;
-}
-
-bool DTFecha::operator>(DTFecha f){
-    if(anio>f.anio) return true;
-    if(anio==f.anio && mes>f.mes) return true;
-    if(anio==f.anio && mes==f.mes && dia>f.dia) return true;
+// Operador mayor que
+bool DTFecha::operator>(const DTFecha &other) const
+{
+    if (anio > other.anio)
+        return true;
+    if (anio == other.anio && mes > other.mes)
+        return true;
+    if (anio == other.anio && mes == other.mes && dia > other.dia)
+        return true;
     return false;
 }
 
-DTFecha::~DTFecha(){}
-
-ostream& operator<<(ostream& os, DTFecha fecha) {
-    os << fecha.getDia() << "/" << fecha.getMes() << "/" << fecha.getAnio();
-    return os;
+// Método para verificar si la fecha es nula
+bool DTFecha::esNula() const
+{
+    return dia == 0 && mes == 0 && anio == 0;
 }
 
-bool DTFecha::esNula(){
-    return anio==1700;
+// Destructor
+DTFecha::~DTFecha() {}
+
+std::string DTFecha::toString() const
+{
+    return std::to_string(dia) + "/" + std::to_string(mes) + "/" + std::to_string(anio);
 }
