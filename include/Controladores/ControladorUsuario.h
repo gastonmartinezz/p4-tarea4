@@ -101,7 +101,10 @@ public:
     bool validarPassword(const string &nickname, const string &password);
     void listarComentariosUsuarioSeleccionado(const string &nickname);
     void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); // Le saque ciudad pq no me compilaba - Tonga
-    void confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT);
+    
+    void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, string codigoRUT);
+    void confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion);
+    
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
     void agregarSuscripcion(const std::string &vendedorNickname);
