@@ -72,9 +72,9 @@ void displayAndProcessMenu()
                 // case 9:
                 //     listaDeUsuarios();
                 //     break;
-                // case 10:
-                //     suscribirseANotificaciones();
-                //     break;
+                case 10:
+                    suscribirseANotificaciones();
+                    break;
                 default:
                     throw invalid_argument("Opcion no valida. Intente de nuevo.");
                 }

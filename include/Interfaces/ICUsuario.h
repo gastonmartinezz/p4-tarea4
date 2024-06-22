@@ -27,14 +27,16 @@ public:
     virtual void listarComentarios() = 0;
     virtual void eliminarComentarioYRespuestas(int comentarioId) = 0;
 
-    virtual void agregarSuscripcion(const std::string &nickname) = 0;
+    virtual void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, string codigoRUT) =0;
+    virtual void confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion)=0;
+
+    //virtual void agregarSuscripcion(const std::string &nickname) = 0;
+    virtual void agregarSuscripcion(Cliente* cliente, Vendedor* vendedor) = 0;
     virtual bool validarPassword(const std::string &nickname, const std::string &password) = 0;
     virtual void listarComentariosUsuarioSeleccionado(const std::string &nickname) = 0;
     virtual void eliminarComentario(int comentarioId) = 0;
     virtual void eliminarLinkComentario(int comentarioId) = 0;
-    virtual std::vector<Vendedor> obtenerVendedoresNoSuscriptos() = 0;
-    virtual std::vector<Vendedor> obtenerListaDeVendedoresSuscriptos() = 0;
-    virtual void suscribirse(const std::string &vendedorNickname) = 0;
+    virtual std::vector<DTVendedor> obtenerVendedoresNoSuscriptos(Cliente* cliente) = 0;
     virtual std::vector<std::string> obtenerNotificaciones(const std::string &nickname) = 0;
     virtual void mostrarYEliminarNotificacion(const std::string &nickname) = 0;
     virtual void eliminarNotificaciones(const std::string &nickname) = 0;
@@ -43,6 +45,8 @@ public:
     virtual void eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname) = 0;
     virtual void registrarCompra(const Compra &compra) = 0;
     virtual Usuario *findUsuario(string nickname) = 0;
+    virtual Cliente *findCliente(std::string nickname) = 0;
+    virtual Vendedor *findVendedor(std::string nickname) = 0;
     virtual Comentario *AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname) = 0;
 };
 

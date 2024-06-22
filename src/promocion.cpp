@@ -66,3 +66,7 @@ void Promocion::setVendedor(Vendedor* vendedor) {
 void Promocion::agregarProducto(Contenido *contenido) {
     productosDentroDePromo.insert(contenido);
 }
+
+DTPromocion Promocion::toDataType() {
+    return DTPromocion(getDescuento(), getNombre(), getDescripcion(), getFechaVencimiento());
+}

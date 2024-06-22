@@ -3,6 +3,11 @@
 
 DTCliente::DTCliente(string nickname, DTDireccion direccion, vector<Compra *> compras){};
 
+string DTCliente::getNickname() {
+    return nickname;
+}
+
+
 DTDireccion DTCliente::getDireccion()
 {
     return direccion;

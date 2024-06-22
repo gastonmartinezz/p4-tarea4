@@ -5,25 +5,31 @@
 #include <set>
 #include <vector>
 #include <string>
+#include "DTCliente.h"
 #include "DTProducto.h"
 #include "DTPromocion.h"
+#include "../include/Cliente.h"
 #include "../include/Promocion.h"
 #include "../include/Producto.h"
+
+class Cliente;
 
 using namespace std;
 
 class DTVendedor
 {
 private:
+    std::string nickname;
     int rut;
+    set<Cliente*> suscriptores;
     vector<Producto *> productos;
     vector<Promocion *> promociones;
-    std::string nickname;
 
 public:
-    DTVendedor(int rut, vector<Producto *> productos, vector<Promocion *> promociones, std::string nickname); // Compila pero estamos usando OBJETOS y no DATATYPES. Hay que corregirlo aca y en CPP.
-    int getRut();
+    DTVendedor(string nickname, int rut, set<Cliente *> suscriptores ,vector<Producto*> productos, vector<Promocion*> promociones);
     std::string getNickname();
+    int getRut();
+    set<Cliente *> getSuscriptores();
     vector<Producto *> getProductos();
     vector<Promocion *> getPromociones();
     ~DTVendedor();

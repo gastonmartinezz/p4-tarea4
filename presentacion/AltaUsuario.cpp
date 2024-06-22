@@ -1,3 +1,89 @@
+#include <iostream>
+#include "../include/Interfaces/ICUsuario.h"
+#include "../include/Fabrica.h"
+#include <string>
+#include "../include/Controladores/ControladorUsuario.h"
+#include "../include/DataTypes/DTFecha.h"
+#include "../include/DataTypes/DTDireccion.h"
+#include "../include/Usuario.h"
+#include <limits>
+using std::numeric_limits;
+using std::streamsize;
+using namespace std;
+
+void altaUsuario() {
+    cout << endl;
+    cout << " Alta de Usuario" << endl;
+    cout << "----------------" << endl;
+    cout << endl;
+
+    //ICUsuario* ctrlUsuario = Fabrica::getICUsuario();
+    ControladorUsuario *ctrlUsuario = Fabrica::getICUsuario();
+
+    string nickname, contraseña, codigoRUT;
+    char tipoUsuario;
+    DTFecha fechaNacimiento;
+    DTDireccion direccion; 
+
+    try
+    {
+        cin.ignore();
+        cout << "Nombre: ";    
+        getline(cin, nickname);
+        
+        if ((ctrlUsuario->findUsuario(nickname))!=NULL)
+            throw invalid_argument("El usuario '" + nickname + "' ya existe.");
+
+        
+        
+        std::cout << "Introduce la fecha de nacimiento (dd/mm/yyyy): ";
+        std::cin >> fechaNacimiento;
+
+        cout << "Contraseña: ";
+        getline(cin, contraseña);
+        while  (contraseña.length() < 6) {
+        std::cerr << "Error: La contraseña debe tener al menos 6 caracteres." << std::endl;
+        std::cout << "Ingrese contraseña (al menos 6 caracteres): ";
+        std::cin >> contraseña;}
+
+
+        std::cout << "¿Es cliente o vendedor? (C/V): ";
+        std::cin >> tipoUsuario;
+
+        if (tipoUsuario == 'C' || tipoUsuario == 'c') {
+
+            std::cout << "Ingrese direccion:" << std::endl;
+            std::cin >> direccion;
+            
+            ctrlUsuario->confirmarAltaCliente(nickname, contraseña, fechaNacimiento, direccion);
+        }
+        
+         else if (tipoUsuario == 'V' || tipoUsuario == 'v') {
+            std::cout << "Ingrese código RUT (12 caracteres): ";
+            std::cin >> codigoRUT;
+            while (codigoRUT.length() != 12) {
+                std::cerr << "Error: El código RUT debe tener 12 caracteres." << std::endl;
+                std::cout << "Ingrese código RUT (12 caracteres): ";
+                std::cin >> codigoRUT;
+            }
+
+            ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT);
+        } else {
+            std::cerr << "Tipo de usuario no válido." << std::endl;
+            return;
+        }
+
+        std::cout << "Usuario registrado con éxito." << std::endl;
+    } catch (const std::invalid_argument &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
+
+}
+
+
+
+
+
 /* 
 #include "../include/Fabrica.h"
 #include "../include/DataTypes/DTFecha.h"

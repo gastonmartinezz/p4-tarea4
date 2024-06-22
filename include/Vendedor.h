@@ -27,11 +27,12 @@ private:
 public:
     Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, int codigoRut);
 
+    string getNickname();
     int getCodigoRut();
     set<Cliente *> getSuscriptores();
     vector<Producto *> getProductos();    // Agregar este método para obtener los productos
     vector<Promocion *> getPromociones(); // Agregar este método para obtener las promociones
-    DTVendedor toDataType();              // es un void pq en si genera un nuevo objeto en DTVendedor.cpp [REVISAR]
+    DTVendedor toDataType();             
 
     void setCodigoRut(int codigoRut);
 
