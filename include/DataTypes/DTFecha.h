@@ -7,7 +7,7 @@
 
 using namespace std;
 
-class DTFecha{
+class DTFecha {
     private:
         int dia;
         int mes;

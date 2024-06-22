@@ -7,13 +7,13 @@
 #include "../include/DataTypes/DTFecha.h"
 #include "Vendedor.h"
 #include "contenido.h"
+#include "../include/DataTypes/DTPromocion.h"
 using namespace std;
 
 class Vendedor;
 class Contenido;
 
-class Promocion
-{
+class Promocion {
 private:
     float descuento;
     string nombre;
@@ -21,7 +21,6 @@ private:
     DTFecha fecha_vencimiento;
     set<Contenido *> productosDentroDePromo;
     Vendedor *vendedor;
-
 public:
     Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven);
     ~Promocion();
@@ -38,6 +37,8 @@ public:
     void setDescripcion(string descripcion);
     void setFechaVencimiento(DTFecha fecha);
     void setVendedor(Vendedor *vendedor);
+
+    DTPromocion toDataType();
 
     void agregarProducto(Contenido *contenido);
 };
