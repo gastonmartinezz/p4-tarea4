@@ -8,8 +8,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
+<<<<<<< Updated upstream
       "cwd": "d:/P4/lab4/p4-tarea4",
       "program": "d:/P4/lab4/p4-tarea4/build/Debug/outDebug",
+=======
+      "cwd": "c:/Users/santi/OneDrive/Documents/GitHub/p4-tarea4",
+      "program": "c:/Users/santi/OneDrive/Documents/GitHub/p4-tarea4/build/Debug/outDebug",
+>>>>>>> Stashed changes
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
