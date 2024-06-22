@@ -52,7 +52,7 @@ void Cliente::mostrarInformacionCliente()
 
 DTCliente Cliente::toDataType()
 {
-    return DTCliente(getNickname(), getDireccion(), getCompras());
+    return DTCliente(getNickname(), getDireccion(), getFechaDeNacimiento(), getCompras());
 }
 
 Cliente::~Cliente()
