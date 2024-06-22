@@ -64,17 +64,10 @@ void AltaProducto()
         cat = static_cast<Producto::Categoria>(catInt); // Corregido para usar Producto::Categoria
         ctrlProducto->incrementarContador();
         Producto *newProducto = ctrlUsuario->AddProducto(ctrlProducto->getContador(), stock, precio, nombre, descripcion, cat, vendedorNickname);
-        // ctrlProducto->addProducto(ctrlProducto->getContador(), newProducto)
-        //     Vendedor *vendedor = ctrlUsuario->getVendedorPorNickname(vendedorNickname); // Asumiendo que existe un método para obtener el vendedor por su nickname
-        // if (vendedor == nullptr)
-        // {
-        //     std::cout << "Vendedor no encontrado." << std::endl;
-        //     return;
-        // }
+        ctrlProducto->agregarALaLista(ctrlProducto->getContador(),newProducto);
+        
 
-        // Producto nuevoProducto(ctrlProducto->getNextProductId(), stock, precio, nombre, descripcion, cat, vendedor);
-        // ctrlProducto->agregarProducto(nuevoProducto);
-        // std::cout << "Producto agregado con éxito. ID: " << nuevoProducto.getId() << ", Nombre: " << nombre << std::endl;
+        std::cout << "Producto agregado con éxito. ID: " << newProducto->getId() << ", Nombre: " << nombre << std::endl;
 
         // // Listar productos para verificar
         // ctrlProducto->listarProductos();

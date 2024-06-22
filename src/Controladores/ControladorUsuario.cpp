@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include "../include/Controladores/ControladorUsuario.h"
 #include "../include/Cliente.h"
+#include "../include/Vendedor.h"
 using namespace std;
 
 // Inicialización de la instancia singleton
@@ -50,7 +51,7 @@ void ControladorUsuario::datosCliente(const string &direccion, const string &ciu
 
 void ControladorUsuario::confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion)
 {
-    if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
+  /*  if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
     {
         throw std::invalid_argument("El nickname ya está en uso.");
     }
@@ -58,23 +59,24 @@ void ControladorUsuario::confirmarAltaUsuario(string &nickname, string &password
     Usuario *nuevoUsuario = new Cliente(nickname, password, fechaNacimiento, direccion);
     // ListaClientes[nickname] = dynamic_cast<Cliente *>(nuevoUsuario);
     ListaUsuarios[nickname] = nuevoUsuario;
+   */ 
 }
 
-void ControladorUsuario::confirmarAltaVendedor(string &nickname, string &password, const DTFecha &fechaNacimiento, string &codigoRUT)
+void ControladorUsuario::confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion)
 {
-    if (ListaUsuarios.find(nickname) != ListaUsuarios.end())
-    {
-        throw std::invalid_argument("El nickname ya está en uso.");
-    }
-    if (codigoRUT.length() != 12)
-    {
-        throw std::invalid_argument("El código RUT debe tener 12 caracteres.");
-    }
-
-    Usuario *nuevoUsuario = new Vendedor(nickname, password, fechaNacimiento, std::stoi(codigoRUT));
-    // ListaVendedores[nickname] = dynamic_cast<Vendedor *>(nuevoUsuario);
-    ListaUsuarios[nickname] = nuevoUsuario;
+    Cliente *nuevoCliente = new Cliente(nickname, password, fechaNacimiento, direccion);
+    ListaClientes.insert({"nickname", nuevoCliente});
+    ListaUsuarios.insert({"nickname", nuevoCliente}); 
+    
 }
+
+void ControladorUsuario::confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, string codigoRUT)
+{
+    Vendedor *nuevoVendedor = new Vendedor(nickname, password, fechaNacimiento, std::stoi(codigoRUT));
+    ListaVendedores.insert({"nickname", nuevoVendedor});
+    ListaUsuarios.insert({"nickname", nuevoVendedor});
+}
+
 
 vector<DTUsuario> ControladorUsuario::listarUsuarios()
 {
@@ -86,6 +88,7 @@ vector<DTUsuario> ControladorUsuario::listarUsuarios()
     }
     return aux;
 }
+
 
 vector<DTCliente> ControladorUsuario::listarClientes()
 {

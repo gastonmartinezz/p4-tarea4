@@ -15,6 +15,10 @@ ControladorProducto *ControladorProducto::getInstance()
     return instance;
 }
 
+void ControladorProducto::agregarALaLista(int id,Producto* prod) { 
+    listaProductos.insert(std::make_pair(id, prod));
+}
+
 void ControladorProducto::listarProductos()
 {
     for (long unsigned int i = 0; i <= listaProductos.size(); i++)
