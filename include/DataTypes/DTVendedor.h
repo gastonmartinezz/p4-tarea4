@@ -20,16 +20,16 @@ class DTVendedor
 {
 private:
     std::string nickname;
-    int rut;
+    string rut;
     set<Cliente *> suscriptores;
     vector<Producto *> productos;
     vector<Promocion *> promociones;
     DTFecha fechaNacimiento;
 
 public:
-    DTVendedor(string nickname, int rut, DTFecha fechaNacimiento, set<Cliente *> suscriptores = {}, vector<Producto *> productos = {}, vector<Promocion *> promociones = {});
+    DTVendedor(string nickname, string rut, DTFecha fechaNacimiento, set<Cliente *> suscriptores = {}, vector<Producto *> productos = {}, vector<Promocion *> promociones = {});
     std::string getNickname();
-    int getRut();
+    string getRut();
     set<Cliente *> getSuscriptores();
     vector<Producto *> getProductos();
     vector<Promocion *> getPromociones();

@@ -3,14 +3,15 @@
 #include <iostream>
 #include <set>
 
-Vendedor::Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, int codigoRut) : Usuario(nickname, password, fechaDeNacimiento), codigoRut(codigoRut) {}
+Vendedor::Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, std::string codigoRut)
+    : Usuario(nickname, password, fechaDeNacimiento), codigoRut(codigoRut) {}
 
 string Vendedor::getNickname()
 {
     return nickname;
 }
 
-int Vendedor::getCodigoRut()
+string Vendedor::getCodigoRut()
 {
     return codigoRut;
 }

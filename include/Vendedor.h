@@ -19,20 +19,20 @@ class DTVendedor;
 class Vendedor : public Usuario
 {
 private:
-    int codigoRut;
+    string codigoRut;
     set<Cliente *> suscriptores;
     vector<Producto *> productos;    // Agregar esta línea para almacenar los productos del vendedor
     vector<Promocion *> promociones; // Agregar esta línea para almacenar las promociones del vendedor
 
 public:
-    Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, int codigoRut);
+    Vendedor(const string &nickname, const string &password, const DTFecha &fechaDeNacimiento, std::string codigoRut);
 
     string getNickname();
-    int getCodigoRut();
+    string getCodigoRut();
     set<Cliente *> getSuscriptores();
     vector<Producto *> getProductos();    // Agregar este método para obtener los productos
     vector<Promocion *> getPromociones(); // Agregar este método para obtener las promociones
-    DTVendedor toDataType();             
+    DTVendedor toDataType();
 
     void setCodigoRut(int codigoRut);
 

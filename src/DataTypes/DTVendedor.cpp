@@ -1,9 +1,9 @@
 #include "DTVendedor.h"
 
-DTVendedor::DTVendedor(string nickname, int rut, DTFecha fechaNacimiento, set<Cliente *> suscriptores, vector<Producto *> productos, vector<Promocion *> promociones)
+DTVendedor::DTVendedor(string nickname, string rut, DTFecha fechaNacimiento, set<Cliente *> suscriptores, vector<Producto *> productos, vector<Promocion *> promociones)
     : rut(rut), productos(productos), promociones(promociones), nickname(nickname), fechaNacimiento(fechaNacimiento) {}
 
-int DTVendedor::getRut()
+string DTVendedor::getRut()
 {
     return rut;
 }

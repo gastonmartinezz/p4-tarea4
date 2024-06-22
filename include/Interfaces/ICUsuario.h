@@ -27,7 +27,7 @@ public:
     virtual void listarComentarios() = 0;
     virtual void eliminarComentarioYRespuestas(int comentarioId) = 0;
 
-    virtual void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, int codigoRUT) = 0;
+    virtual void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, string codigoRUT) = 0;
     virtual void confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion) = 0;
 
     // virtual void agregarSuscripcion(const std::string &nickname) = 0;

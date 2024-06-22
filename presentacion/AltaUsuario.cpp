@@ -12,6 +12,26 @@ using std::numeric_limits;
 using std::streamsize;
 using namespace std;
 
+bool esCodigoValido(const std::string &codigo)
+{
+    // Verificar la longitud del string
+    if (codigo.length() != 12)
+    {
+        return false;
+    }
+
+    // Verificar que todos los caracteres sean dígitos
+    for (char c : codigo)
+    {
+        if (!std::isdigit(c))
+        {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 void altaUsuario()
 {
     cout << endl;
@@ -23,7 +43,7 @@ void altaUsuario()
     ICUsuario *ctrlUsuario = Fabrica::getICUsuario();
 
     string nickname, contraseña, codigoRUT, ciudad_residencia, calle;
-    int codigoRUT_int;
+
     char tipoUsuario;
     int dia, mes, anio, numero_puerta;
     DTFecha fechaNacimiento;
@@ -111,14 +131,18 @@ void altaUsuario()
         {
             std::cout << "Ingrese código RUT (12 caracteres): ";
             std::cin >> codigoRUT;
-            while (codigoRUT.length() != 12)
+            while (!esCodigoValido(codigoRUT))
             {
-                std::cerr << "Error: El código RUT debe tener 12 caracteres." << std::endl;
+                std::cerr << "Error: El código RUT debe tener 12 digitos." << std::endl;
                 std::cout << "Ingrese código RUT (12 caracteres): ";
                 std::cin >> codigoRUT;
             }
-            codigoRUT_int = stoi(codigoRUT);
-            ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT_int);
+
+            ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT);
+            Vendedor *vend = ctrlUsuario->findVendedor(nickname);
+
+            std::cout << "PASE EL ALTA"; /// borrar
+            std::cout << vend->getNickname();
         }
         else
         {

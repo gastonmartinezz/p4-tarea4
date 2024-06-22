@@ -103,7 +103,7 @@ public:
     void listarComentariosUsuarioSeleccionado(const string &nickname);
     void confirmarAltaUsuario(string &nickname, string &password, DTFecha &fechaNacimiento, DTDireccion &direccion); // Le saque ciudad pq no me compilaba - Tonga
 
-    void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, int codigoRUT);
+    void confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, std::string codigoRUT);
     void confirmarAltaCliente(string nickname, string password, DTFecha fechaNacimiento, DTDireccion direccion);
 
     void eliminarComentario(int comentarioId);

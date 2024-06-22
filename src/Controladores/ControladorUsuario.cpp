@@ -69,7 +69,7 @@ void ControladorUsuario::confirmarAltaCliente(string nickname, string password, 
     ListaUsuarios.insert({nickname, nuevoCliente});
 }
 
-void ControladorUsuario::confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, int codigoRUT)
+void ControladorUsuario::confirmarAltaVendedor(string nickname, string password, const DTFecha fechaNacimiento, std::string codigoRUT)
 {
     Vendedor *nuevoVendedor = new Vendedor(nickname, password, fechaNacimiento, codigoRUT);
     ListaVendedores.insert({nickname, nuevoVendedor});
