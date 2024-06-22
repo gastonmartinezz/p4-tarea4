@@ -20,6 +20,7 @@ class ICProductos {
 public:
     virtual ~ICProductos() = default;
     virtual void listarProductos() = 0;
+    virtual void agregarALaLista(int id,Producto* prod) = 0;
     virtual void confirmarAltaPromocion() = 0;
     virtual void ingresarDatosPromocion(const std::string &nombre, float descuento, const DTFecha &fechaVen) = 0;
     virtual void listarVendedor() = 0;
