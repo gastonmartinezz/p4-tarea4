@@ -8,65 +8,58 @@
 #include "../include/Interfaces/ICUsuario.h"
 #include "../include/Controladores/ControladorUsuario.h"
 
-void listaUsuarios(){}
+#include <limits>
 
-/*
-{  
-    cout << " Consulta de Usuario" << endl;
+using std::numeric_limits;
+using std::streamsize;
+
+void listaUsuarios()
+{
+    cout << " Listar Usuarios" << endl;
     cout << "---------------------" << endl;
     cout << endl;
 
-    
-    ICUsuario *CtrlUsuario = Fabrica::getICUsuario();
+    ICUsuario *CUsuario = Fabrica::getICUsuario();
 
-try
+    try
     {
-        int comentario_respondido;
-        vector<DTUsuario>::size_type i_usuario;
+        vector<DTCliente> clientes = CUsuario->listarClientes();
 
-        vector<DTUsuario> usuarios = CUsuario->listarUsuarios();
-
-        cout << " Usuarios" << endl;
+        cout << " Clientes" << endl;
         cout << "___________________" << endl;
         cout << endl;
 
-        if (usuarios.size() == 0)
+        if (clientes.size() == 0)
         {
-            throw invalid_argument("No hay usuarios registrados.");
+            cout << "No hay clientes registrados." << endl;
         }
-        for (vector<DTUsuario>::size_type i = 0; i < usuarios.size(); ++i)
+        for (vector<DTUsuario>::size_type i = 0; i < clientes.size(); ++i)
         {
             cout << i << "-";
-            cout << usuarios[i].getNombre() << endl;
+            cout << clientes[i].getNickname() << endl;
         }
+        vector<DTVendedor> vendedores = CUsuario->listaVendedor();
 
+        cout << " Clientes" << endl;
+        cout << "___________________" << endl;
+        cout << endl;
 
-
-
-
-    std::vector<Usuario *> usuarios = ctrlUsuario->listarUsuarios();
-
-    for (Usuario *usuario : usuarios)
-    {
-        std::cout << "Nickname: " << usuario->getNickname() << std::endl;
-        std::cout << "Fecha de Nacimiento: " << usuario->getFechaDeNacimiento().toString() << std::endl;
-
-        Cliente *cliente = dynamic_cast<Cliente *>(usuario);
-        if (cliente)
+        if (vendedores.size() == 0)
         {
-            std::cout << "Direccion: " << cliente->getDireccion() << std::endl;
-            std::cout << "Ciudad: " << cliente->getCiudadResidencia() << std::endl;
+            throw invalid_argument("No hay vendedores registrados.");
         }
-
-        Vendedor *vendedor = dynamic_cast<Vendedor *>(usuario);
-        if (vendedor)
+        for (vector<DTUsuario>::size_type i = 0; i < vendedores.size(); ++i)
         {
-            std::cout << "Codigo RUT: " << vendedor->getRut() << std::endl;
+            cout << i << "-";
+            cout << vendedores[i].getNickname() << endl;
         }
-
-        std::cout << "----------------------------" << std::endl;
     }
-}
- 
-*/
 
+    catch (const std::exception &e)
+    {
+        cerr << e.what() << '\n';
+    };
+    std::cout << "Presiona Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.get(); // Espera que el usuario presione Enter
+}
