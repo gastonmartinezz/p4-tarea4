@@ -15,6 +15,10 @@ Producto *Contenido::getProducto() {
     return prod;
 }
 
+Promocion* Contenido::getPromocion() {
+    return promo;
+}
+
 void Contenido::setCantMinima(int cantMinima) {
     this->cantidad_minima = cantMinima;
 }

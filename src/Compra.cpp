@@ -3,53 +3,35 @@
 #include <ctime>
 #include "../include/Compra.h"
 
-Compra::Compra(float monto_total, DTFecha fecha, vector<carro> &carrito)
-    : monto_total(monto_total), fecha(fecha), carrito(carrito)
-{
+Compra::Compra(float monto_total, DTFecha fecha, vector<DTCarro>& carrito)
+    : monto_total(monto_total), fecha(fecha), carrito(carrito) {
     // Constructor: inicialización de atributos
 }
 
-float Compra::getMonto_total() const
-{
+float Compra::getMonto_total() const {
     return monto_total;
 }
 
-DTFecha Compra::getFecha_de_la_compra() const
-{
+DTFecha Compra::getFecha_de_la_compra() const {
     return fecha;
 }
 
-vector<carro> Compra::getCarrito() const
-{
+vector<DTCarro> Compra::getCarrito() const {
     return carrito;
 }
 
-void Compra::setMonto_total(float monto_total)
-{
+void Compra::setMonto_total(float monto_total) {
     this->monto_total = monto_total;
 }
 
-void Compra::setFecha_de_la_compra(DTFecha fecha)
-{
+void Compra::setFecha_de_la_compra(DTFecha fecha) {
     this->fecha = fecha;
 }
 
-void Compra::setCarrito(const vector<carro> &carrito)
-{
+void Compra::setCarrito(const vector<DTCarro>& carrito) {
     this->carrito = carrito;
 }
 
-Compra::~Compra()
-{
+Compra::~Compra() {
     // Destructor: limpieza o liberación de recursos
-}
-
-int Compra::getId()
-{
-    return id;
-}
-
-void Compra::setId(int id_compra)
-{
-    id = id_compra;
 }

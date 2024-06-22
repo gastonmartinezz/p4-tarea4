@@ -14,25 +14,22 @@ class DTProducto;
 class Compra
 {
 private:
-    int id;
     float monto_total;
     DTFecha fecha;
-    vector<carro> carrito;
+    vector<DTCarro> carrito;
 
 public:
-    Compra(float monto_total, DTFecha fecha, vector<carro> &carrito);
+    Compra(float monto_total, DTFecha fecha, vector<DTCarro> &carrito);
 
     // Getters
     float getMonto_total() const;
     DTFecha getFecha_de_la_compra() const;
-    vector<carro> getCarrito() const;
-    int getId();
+    vector<DTCarro> getCarrito() const;
 
     // Setters
-    void setId(int id_compra);
     void setMonto_total(float monto_total);
     void setFecha_de_la_compra(DTFecha fecha);
-    void setCarrito(const vector<carro> &productos);
+    void setCarrito(const vector<DTCarro> &productos);
 
     // Destructor
     ~Compra();

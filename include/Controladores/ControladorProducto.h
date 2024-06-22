@@ -29,6 +29,9 @@ private:
     ControladorProducto() = default;
     static ControladorProducto *instance;
     map<int, Producto *> listaProductos;
+    set<Promocion*> promocionesSistemaVigentes;
+    set<Promocion*> promocionesSistema;
+
     int contador_id_producto = 0;
 
 public:
@@ -41,7 +44,7 @@ public:
     void agregarALaLista(int id,Producto* prod);
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
-    void listarVendedor();
+    void listarProductosVendedor(string nickname);
     void eliminarLinkComentario(int comentarioId);
     void agregarProducto(const Producto &producto);
     void ponerProductosLibres();
@@ -61,13 +64,16 @@ public:
     map<int, Producto *> getListaProductos();
     void incrementarContador();
     int getContador();
+    void seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima);
+    set<Promocion*> getpromocionesSistemaVigentes();
+    set<Promocion*> getpromocionesSistema(); 
 
     //map<int, Producto*> getListaProductos();
     //map<int, Contenido*> getPromocionesSistema();
     //map<int, Contenido*> getPromocionesSistemaVigentes();
     //void ingresarPromocionVigente(Promocion* promo, int cant_minima, map<int, Contenido*> promocionesSistemaVigentes);
     //void obtenerPromocionesActivas(DTFecha fecha);
-    //bool productoEnPromoExistente(int id);
+    bool productoEnPromoExistente(int id);
     //bool compararFechas(DTFecha fecha1, DTFecha fecha2);
     //void seleccionarPromocion(string nombre);
 };

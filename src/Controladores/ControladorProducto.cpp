@@ -55,10 +55,24 @@ void ControladorProducto::ingresarDatosPromocion(const string &nombre, float des
     // Implementación para ingresar datos de promoción
 }
 
-void ControladorProducto::listarVendedor()
-{
-    // Implementación para listar vendedor
-}
+void ControladorProducto::listarProductosVendedor(string nickname) { 
+    for (auto prod: ListaVendedores) {
+        if (nickname == prod->getNickname()) {
+            for (auto producto: prod->productos) {
+                if (prod->productos.size() == 0) {
+                    DTProducto prodAux = DTProducto();
+                    prodAux.setId() = prod->productos->getId();
+                    prodAux.setNombre() = prod->productos->getNombre();
+
+                    cout << "Id de Producto: " << prodAux.getId() << endl;
+                    cout << "Nombre de Producto: " << prodAux.getNombre() << endl;
+                } else {
+                    cout << "Este vendedor no tiene productos para mostrar." << endl;
+                }
+            }
+        }
+    }
+} 
 
 void ControladorProducto::eliminarLinkComentario(int comentarioId)
 {
@@ -244,3 +258,45 @@ int ControladorProducto::getContador()
 //         }
 //     } */
 // }
+
+bool ControladorProducto::productoEnPromoExistente(int id) {
+    b = false;
+    for (auto contenidou: promocionesSistemaVigentes) {
+        Promocion* promo = contenidou->getPromocion();
+
+        for (auto productos: promo->getProductosDentroDePromo()) {
+            if (id == productos->getProducto()->getId()) {
+                b = true;
+                break;
+            }
+        }
+    }
+    return b;
+}
+
+Contenido* ControladorProducto::seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima) {
+    transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
+
+    for (auto p: ListaVendedores) {
+        if (nickname == p->getNickname()) {
+            for (auto prod: p->getProductos()) {
+                if (productoEnPromoExistente(id)) {
+                    cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
+                    break;
+                } else {
+                    Contenido* conteNuevo = new Contenido();
+                    conteNuevo->setCantMinima(cant_minima);
+                    conteNuevo->setProducto(prod); //Agregar metodo a contenido.h
+                    return conteNuevo;
+                    }
+                }
+            }
+    }
+}
+
+set<Promocion*> ControladorProducto::getpromocionesSistemaVigentes() {
+    return promocionesSistemaVigentes;
+}
+set<Promocion*> ControladorProducto::getpromocionesSistema() {
+    return promocionesSistema;
+} 

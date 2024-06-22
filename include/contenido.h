@@ -3,7 +3,7 @@
 #include "Promocion.h"
 #include "Producto.h"
 
-// Esta clase es la clase producto/promocion
+// Esta clase es la clase asociativa producto/promocion
 
 class Producto;
 class Promocion;
@@ -20,7 +20,8 @@ public:
     ~Contenido();
 
     int getCantMinima();
-    Producto *getProducto();
+    Producto* getProducto();
+    Promocion* getPromocion();
 
     void setCantMinima(int cantMinima);
 };
