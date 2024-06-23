@@ -68,9 +68,9 @@ void displayAndProcessMenu()
                 // case 7:
                 //     eliminarSuscripcion();
                 //     break;
-                // case 8:
-                //     expedienteUsuario();
-                //     break;
+                case 8:
+                     ExpedienteUsuario();
+                     break;
                 case 9:
                     listaUsuarios();
                     break;

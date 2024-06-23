@@ -77,24 +77,25 @@ void ExpedienteUsuario()
         Usuario* usuarioPtr = ctrlUsuario->findUsuario(usuarioSeleccionado.getNombre());
 
         if (Vendedor* vendedor = dynamic_cast<Vendedor*>(usuarioPtr))
-        {
-            ctrlProducto->obtenerProductosDeVendedor(vendedor->getNickname());
-            vector<DTProducto> productos = ctrlProducto->listarProductos2(); // Asumiendo que lista productos del vendedor actual
-            std::vector<std::string> promociones = convertirPromocionesAVectorDeStrings(vendedor->getPromociones()); // Convierte promociones a string
+        {   
+            vector<Producto*> listaProductos = vendedor->getProductos();
+           // ctrlProducto->obtenerProductosDeVendedor(vendedor->getNickname());
+            //vector<DTProducto> productos = ctrlProducto->listarProductos2(); // Asumiendo que lista productos del vendedor actual
+            std::vector<std::string> promociones = convertirPromocionesAVectorDeStrings(vendedor->getPromociones()); 
           //  vector<string> promociones = vendedor->getPromociones(); // O usa otro método para obtener promociones del vendedor
 
             cout << endl;
             cout << "Productos a la Venta" << endl;
             cout << "--------------------" << endl;
-            if (productos.empty())
+            if (listaProductos.empty())
             {
                 cout << "No tiene productos a la venta." << endl;
             }
             else
             {
-                for (const auto& producto : productos)
+                for (const auto& producto : listaProductos)
                 {
-                    cout << "- " << producto.getNombre() << endl;
+                    cout << "- " << producto->getNombre() << endl;
                 }
             }
 

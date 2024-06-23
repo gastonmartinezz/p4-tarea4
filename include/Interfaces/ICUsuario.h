@@ -23,7 +23,7 @@ public:
     virtual std::vector<DTUsuario> listarUsuarios() = 0;
     virtual std::vector<DTCliente> listarClientes() = 0;
     virtual std::vector<DTVendedor> listaVendedor() = 0;
-
+    //virtual void obtenerProductosDeVendedor(string nickname);
     virtual void listarComentarios() = 0;
     virtual void eliminarComentarioYRespuestas(int comentarioId) = 0;
 

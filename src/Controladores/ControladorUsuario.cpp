@@ -18,6 +18,22 @@ ControladorUsuario *ControladorUsuario::getInstance()
     return instance;
 }
 
+// void obtenerProductosDeVendedor(string nickname) {
+//     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
+
+//     for (auto p: vendedoresSistema) {
+//         string nicknameVendedorTemporal = p->getNickname();
+//         transform(nicknameVendedorTemporal.begin(), nicknameVendedorTemporal.end(), nicknameVendedorTemporal.begin(), ::toupper);
+
+//         if (nickname == nicknameVendedorTemporal) {
+//             for (auto prod: p->getProductos()) {
+//                 cout << prod.getId() << endl;
+//                 cout << prod.getNombre() << endl;
+//             }
+//         }
+//     }
+// }
+
 void ControladorUsuario::ingresarDatosUsuario(const std::string &nickname, const std::string &password, const DTFecha &fechaNacimiento)
 {
     if (ListaUsuarios.find(nickname) != ListaUsuarios.end())

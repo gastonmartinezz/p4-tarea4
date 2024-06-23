@@ -6,3 +6,4 @@ void listaUsuarios();
 void cargaDatosDePrueba();
 void RealizarCompra();
 void crearPromocion();
+void ExpedienteUsuario();

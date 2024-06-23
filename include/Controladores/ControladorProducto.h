@@ -63,7 +63,7 @@ public:
     void registrarCompra(const Compra &compra);
     void desplegarCompra(int compraId) const;
     
-    void obtenerProductosDeVendedor(string nickname);
+    //void obtenerProductosDeVendedor(string nickname);
     void ingresarPromocionASistema(Promocion promo);
     void AddComentario(Comentario *coment, int producto);
     void incrementarContador();

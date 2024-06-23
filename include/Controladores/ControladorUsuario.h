@@ -119,6 +119,7 @@ public:
     Usuario *findUsuario(string nickname);
     Vendedor *findVendedor(std::string nickname);
     Cliente *findCliente(std::string nickname);
+    //void obtenerProductosDeVendedor(string nickname);
     void cargarDatosPrueba();
 };
 
