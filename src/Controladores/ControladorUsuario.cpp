@@ -309,3 +309,29 @@ int ControladorUsuario::getContador()
 {
     return contador_id_comentario;
 }
+
+void ControladorUsuario::cargarDatosPrueba()
+{
+    DTFecha fechaAna(15, 5, 1988);
+    DTFecha fechaCarlos(18, 6, 1986);
+    DTFecha fechaDiegom(28, 7, 1993);
+    // Continuar con otras fechas...
+
+    // Direcciones predefinidas
+    DTDireccion direccionJuan("Montevideo", "Rondeau", 1617);
+    DTDireccion direccionLaura("Montevideo", "Av. Brasil", 1011);
+    DTDireccion direccionNatalia("Salto", "Paysandú", 2021);
+    // Continuar con otras direcciones...
+
+    // Alta de vendedores
+    confirmarAltaVendedor("ana23", "qwer1234", fechaAna, "212345678001");
+    confirmarAltaVendedor("carlos78", "asdfghj", fechaCarlos, "356789012345");
+    confirmarAltaVendedor("diegom", "zxcvbn", fechaDiegom, "190123456789");
+    // Continuar con otros vendedores...
+
+    // Alta de clientes
+    confirmarAltaCliente("juan87", "1qaz2wsx", DTFecha(20, 10, 1992), direccionJuan);
+    confirmarAltaCliente("laura", "3edc4rfv", DTFecha(22, 9, 1979), direccionLaura);
+    confirmarAltaCliente("natalia", "poiuyt", DTFecha(14, 4, 1982), direccionNatalia);
+    // Continúa con los demás clientes
+}

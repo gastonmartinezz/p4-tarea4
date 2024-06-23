@@ -48,6 +48,7 @@ public:
     virtual Cliente *findCliente(std::string nickname) = 0;
     virtual Vendedor *findVendedor(std::string nickname) = 0;
     virtual Comentario *AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname) = 0;
+    virtual void cargarDatosPrueba() = 0;
 };
 
 #endif // ICUSUARIO_H

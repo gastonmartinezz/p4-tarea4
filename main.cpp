@@ -34,6 +34,7 @@ void displayAndProcessMenu()
         cout << "9.  Lista de Usuarios" << endl;
         cout << "10. Suscribirse a Notificaciones" << endl;
         cout << "11.  Consulta de Notificaciones" << endl;
+        cout << "12.  Carga de datos de prueba" << endl;
         cout << endl;
         cout << "Ingrese el numero de opcion que desea ejecutar: ";
 
@@ -74,6 +75,9 @@ void displayAndProcessMenu()
                     break;
                 case 10:
                     suscribirseANotificaciones();
+                    break;
+                case 12:
+                    cargaDatosDePrueba();
                     break;
                 default:
                     throw invalid_argument("Opcion no valida. Intente de nuevo.");
