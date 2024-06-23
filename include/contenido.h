@@ -8,7 +8,8 @@
 class Producto;
 class Promocion;
 
-class Contenido {
+class Contenido
+{
 private:
     Producto *prod;
     Promocion *promo;
@@ -19,12 +20,12 @@ public:
     ~Contenido();
 
     Contenido();
-    void setProducto(Producto* produ);
-    void setPromocion(Promocion* promoc);
+    void setProducto(Producto *produ);
+    void setPromocion(Promocion *promoc);
 
     int getCantMinima();
-    Producto* getProducto();
-    Promocion* getPromocion();
+    Producto *getProducto();
+    Promocion *getPromocion();
 
     void setCantMinima(int cantMinima);
 };

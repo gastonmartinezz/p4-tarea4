@@ -76,7 +76,8 @@ map<int, Comentario *> Comentario::printComentarios()
 {
     map<int, Comentario *> comentariosMap;
     comentariosMap[id] = this;
-
+    cout << this->getId() << endl;
+    cout << this->getTexto() << endl;
     for (Comentario *respuesta : respuestas)
     {
         map<int, Comentario *> subComentarios = respuesta->printComentarios();

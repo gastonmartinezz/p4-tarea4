@@ -1,10 +1,12 @@
 #include "../include/Controladores/ControladorProducto.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include "../include/Interfaces/ICProductos.h"
+#include "../include/contenido.h"
 #include <iostream>
 #include <vector>
 #include <map>
 using namespace std;
+class Contenido;
 
 // Inicialización de la instancia singleton
 ControladorProducto *ControladorProducto::instance = nullptr;
@@ -18,7 +20,8 @@ ControladorProducto *ControladorProducto::getInstance()
     return instance;
 }
 
-void ControladorProducto::agregarALaLista(int id,Producto* prod) { 
+void ControladorProducto::agregarALaLista(int id, Producto *prod)
+{
     listaProductos.insert(std::make_pair(id, prod));
 }
 
@@ -58,20 +61,27 @@ void ControladorProducto::ingresarDatosPromocion(const string &nombre, float des
     // Implementación para ingresar datos de promoción
 }
 
-void ControladorProducto::listarProductosVendedor(string nickname, vector<DTVendedor> lista) { 
-    for (vector<DTVendedor>::size_type i = 0; i < lista.size(); ++i) {
-        if (nickname == lista[i].getNickname()) {
-            for (vector<Producto*>::size_type h = 0; h < lista[i].getProductos().size(); ++h) {
-                if (lista[i].getProductos().size() != 0) {
+void ControladorProducto::listarProductosVendedor(string nickname, vector<DTVendedor> lista)
+{
+    for (vector<DTVendedor>::size_type i = 0; i < lista.size(); ++i)
+    {
+        if (nickname == lista[i].getNickname())
+        {
+            for (vector<Producto *>::size_type h = 0; h < lista[i].getProductos().size(); ++h)
+            {
+                if (lista[i].getProductos().size() != 0)
+                {
                     cout << "Id de Producto: " << lista[i].getProductos()[h]->getId() << endl;
                     cout << "Nombre de Producto: " << lista[i].getProductos()[h]->getNombre() << endl;
-                } else {
+                }
+                else
+                {
                     cout << "Este vendedor no tiene productos para mostrar." << endl;
                 }
             }
         }
     }
-} 
+}
 
 void ControladorProducto::eliminarLinkComentario(int comentarioId)
 {
@@ -180,7 +190,7 @@ int ControladorProducto::getContador()
 //     promocionesVigentes.insert(promo);
 // }
 
-//bool ControladorProducto::productoEnPromoExistente(int id) {
+// bool ControladorProducto::productoEnPromoExistente(int id) {
 /*     bool b;
     map<int, Contenido*> copiaPromocionesSistemasVigentes = getPromocionesSistemaVigentes();
     for (auto promo : copiaPromocionesSistemasVigentes) {
@@ -196,7 +206,7 @@ int ControladorProducto::getContador()
     return b; */
 //}
 
-//void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
+// void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
 /*     for (auto f: promocionesSistema) {
         if (compararFechas(f->getFechaVencimiento(), fecha)) {
             promocionesSistemaVigentes.insert(f);
@@ -212,14 +222,14 @@ int ControladorProducto::getContador()
     } */
 //}
 
-//Funcion para comparar fechas
-// bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
-//     if (fecha1.getAnio() > fecha2.getAnio()) {
-//         return true;
+// Funcion para comparar fechas
+//  bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
+//      if (fecha1.getAnio() > fecha2.getAnio()) {
+//          return true;
 
 //     } else if (fecha1.getAnio() < fecha2.getAnio()) {
-//         return false;   
-        
+//         return false;
+
 //     } else {
 //         if (fecha1.getMes() > fecha2.getMes()) {
 //             return true;
@@ -231,9 +241,9 @@ int ControladorProducto::getContador()
 //     }
 // }
 
-// void ControladorProducto::seleccionarPromocion(string nombre) {    
+// void ControladorProducto::seleccionarPromocion(string nombre) {
 // /*     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
-    
+
 //     for (auto promo: promocionesSistemaVigentes) {
 //         string nombrePromocion = promo->getProducto()->getNombre();
 
@@ -241,7 +251,7 @@ int ControladorProducto::getContador()
 
 //         if (nombre == nombrePromocion) {
 //             DTPromocion promoNueva = promo->toDataType();
-//             //Imprimir datos del vendedor y los productos de la promocion 
+//             //Imprimir datos del vendedor y los productos de la promocion
 //             //(fijarse en cambiar el tipo de devolucion de la funcion)
 //             cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
 //             cout << "Vendedor de la promocion: " << promoNueva.getVendedor() << endl;
@@ -249,7 +259,7 @@ int ControladorProducto::getContador()
 
 //             for (auto productos: promo->getProductosDentroDePromo()) {
 //                 DTProducto prod = promo->getProducto()->toDataType();
-//                 cout << "Nombre del producto: " << prod->getNombre() << endl; 
+//                 cout << "Nombre del producto: " << prod->getNombre() << endl;
 //                 cout << "Id del producto: " << prod->getId() << endl;
 //                 cout << "Descripcion del producto: " << prod->getDescripcion() << endl;
 //                 cout << "Stock del producto: " << prod->getStock() << endl;
@@ -258,11 +268,15 @@ int ControladorProducto::getContador()
 //     } */
 // }
 
-bool ControladorProducto::productoEnPromoExistente(int id) {
+bool ControladorProducto::productoEnPromoExistente(int id)
+{
     bool b = false;
-    for (vector<Promocion*>::size_type i = 0; i < promocionesSistemaVigentes.size(); ++i) {
-        for (vector<Contenido*>::size_type h = 0; h < promocionesSistemaVigentes[i]->getProductosDentroDePromo().size(); ++h) {
-            if (id == promocionesSistemaVigentes[i]->getProductosDentroDePromo()[h]->getProducto()->getId()) {
+    for (vector<Promocion *>::size_type i = 0; i < promocionesSistemaVigentes.size(); ++i)
+    {
+        for (vector<Contenido *>::size_type h = 0; h < promocionesSistemaVigentes[i]->getProductosDentroDePromo().size(); ++h)
+        {
+            if (id == promocionesSistemaVigentes[i]->getProductosDentroDePromo()[h]->getProducto()->getId())
+            {
                 b = true;
                 break;
             }
@@ -271,36 +285,47 @@ bool ControladorProducto::productoEnPromoExistente(int id) {
     return b;
 }
 
-Contenido* ControladorProducto::seleccionarProductosParaPromocion(vector<DTVendedor>lista, string nickname, Producto* prod, int cant_minima, int id) {
+Contenido *ControladorProducto::seleccionarProductosParaPromocion(vector<DTVendedor> lista, string nickname, Producto *prod, int cant_minima, int id)
+{
     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
 
-    for (auto p: lista) {
-        if (nickname == p.getNickname()) {
-            for (auto prod: p.getProductos()) {
-                if (productoEnPromoExistente(id)) {
+    for (auto p : lista)
+    {
+        if (nickname == p.getNickname())
+        {
+            for (auto prod : p.getProductos())
+            {
+                if (productoEnPromoExistente(id))
+                {
                     cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
                     break;
-                } else {
-                    Contenido* conteNuevo = new Contenido();
+                }
+                else
+                {
+                    Contenido *conteNuevo = new Contenido();
                     conteNuevo->setCantMinima(cant_minima);
-                    conteNuevo->setProducto(prod); //Agregar metodo a contenido.h
+                    conteNuevo->setProducto(prod); // Agregar metodo a contenido.h
                     return conteNuevo;
-                    }
                 }
             }
+        }
     }
 }
- vector<Promocion*> ControladorProducto::getpromocionesSistemaVigentes() {
+vector<Promocion *> ControladorProducto::getpromocionesSistemaVigentes()
+{
     return promocionesSistemaVigentes;
 }
-vector<Promocion*> ControladorProducto::getpromocionesSistema() {
+vector<Promocion *> ControladorProducto::getpromocionesSistema()
+{
     return promocionesSistema;
-}  
+}
 
-Producto* ControladorProducto::getProducto(int idProducto) {
+Producto *ControladorProducto::getProducto(int idProducto)
+{
     return listaProductos[idProducto];
 }
 
-map<int, Producto*> ControladorProducto::getListaProductos() {
+map<int, Producto *> ControladorProducto::getListaProductos()
+{
     return listaProductos;
 }

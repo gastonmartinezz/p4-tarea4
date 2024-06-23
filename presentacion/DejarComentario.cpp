@@ -49,7 +49,8 @@ void DejarComentario()
             cout << usuarios[i].getNombre() << endl;
         }
 
-        cout << "Indique el usuario";
+        cout << "Indique el usuario" << endl;
+        ;
         cin >> i_usuario;
 
         if (i_usuario > usuarios.size() || i_usuario < 0)
@@ -73,7 +74,8 @@ void DejarComentario()
             cout << productos[i].getNombre() << endl;
         }
         long unsigned int i_producto;
-        cout << "Indique el Producto";
+        cout << "Indique el Producto" << endl;
+        ;
         cin >> i_producto;
 
         if (i_producto > productos.size() || i_producto < 0)
