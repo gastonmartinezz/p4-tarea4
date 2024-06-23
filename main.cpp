@@ -1,6 +1,10 @@
 #include <iostream>
 #include <stdexcept>
+#include "../include/Interfaces/ICProductos.h"
 #include "../include/CasosDeUso.h"
+#include "../include/Controladores/ControladorProducto.h"
+#include "../include/Producto.h"
+#include "../include/Fabrica.h"
 using namespace std;
 
 void clearScreen()
@@ -33,9 +37,9 @@ void displayAndProcessMenu()
         cout << "8.  Expediente de Usuario" << endl;
         cout << "9.  Lista de Usuarios" << endl;
         cout << "10. Suscribirse a Notificaciones" << endl;
-        cout << "11.  Consulta de Notificaciones" << endl;
+        cout << "11. Consulta de Notificaciones" << endl;
         cout << "12. Realizar Compra" << endl;
-        cout << "13.  Carga de datos de prueba" << endl;
+        cout << "13. Carga de datos de prueba" << endl;
         cout << endl;
         cout << "Ingrese el numero de opcion que desea ejecutar: ";
 
@@ -53,9 +57,9 @@ void displayAndProcessMenu()
                 case 2:
                     AltaProducto();
                     break;
-                // case 3:
-                //     consultarProducto();
-                //     break;
+                case 3:
+                    consultarProducto();
+                    break;
                 // case 4:
                 //     consultarPromocion();
                 //     break;

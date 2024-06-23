@@ -1,34 +1,37 @@
+#include <iostream>
+#include <set>
+#include "../include/Producto.h"
+#include  "../include/Controladores/ControladorProducto.h"
+#include "../include/CasosDeUso.h"
+#include "../include/Fabrica.h"
+using namespace std;
 
-// #include <iostream>
-// #include <set>
-// #include "../include/Producto.h"
-// #include  "../include/Controladores/ControladorProducto.h"
-// using namespace std;
+void consultarProducto() {
+    ControladorProducto* controlador = Fabrica::getICProductos();
+    controlador->listarProductos();
 
-// void consultarProducto() {
-//     ControladorProducto* controlador = ControladorProducto::getInstance();
-//     controlador->listarProductos(); //revisar esto
+    int id;
+    cout << "Indique el numero de Id del producto que desea ver: " << endl;
+    cin >> id;
 
-//     int id;
-//     cout << "Indique el numero de Id del producto que desea ver: " << endl;
-//     cin >> id;
+    cout << "Hasta aca llego0" << endl;
+    map<int, Producto*> lista = controlador->getListaProductos();
+    cout << "Hasta aca llego1" << endl;
 
-//     map<int, Producto*> lista = controlador->getListaProductos();
+    Producto* prod = lista[id];
+    DTProducto producto = prod->toDataType();
+    
+    cout << "Hasta aca llego2" << endl;
 
-//     for (int i = 0; i <= lista.size(); i++) {
+    producto.setPrecio(prod->getPrecio());
+    producto.setStock(prod->getStock());
+    producto.setDescripcion(prod->getDescripcion());
+    cout << "Hasta aca llego3" << endl;
 
-//         if (id == lista[i]->getId()) {
-//             DTProducto producto = lista[i]->toDataType();
-
-//             producto.setPrecio(lista[i]->getPrecio());
-//             producto.setStock(lista[i]->getStock());
-//             producto.setDescripcion(lista[i]->getDescripcion());
-
-//             cout << "Nombre: " << producto.getNombre() << endl;
-//             cout << "Id: " << producto.getId() << endl;
-//             cout << "Precio: " << producto.getPrecio() << endl;
-//             cout << "Stock: " << producto.getNombre() << endl;
-//             cout << "Descripcion: " << producto.getDescripcion()<< endl;
-//         }
-//     }
-// }
+    cout << "Nombre: " << producto.getNombre() << endl;
+    cout << "Id: " << producto.getId() << endl;
+    cout << "Precio: " << producto.getPrecio() << endl;
+    cout << "Stock: " << producto.getNombre() << endl;
+    cout << "Descripcion: " << producto.getDescripcion()<< endl;
+    //Falta agregar para que imprima el vendedor tambien
+}

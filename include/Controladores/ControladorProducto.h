@@ -16,6 +16,7 @@
 #include "../include/DataTypes/DTProducto.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include "../Interfaces/ICProductos.h"
+#include "../include/Categoria.h"
 using namespace std;
 
 class Producto;
@@ -35,7 +36,7 @@ private:
     map<int, Producto*> listaProductos;
     vector<Promocion*> promocionesSistemaVigentes;
     vector<Promocion*> promocionesSistema;
-    int contador_id_producto = 0;
+    int contador_id_producto;
 
 public:
     // Métodos estáticos para obtener la instancia única
@@ -62,12 +63,14 @@ public:
     void confirmarCompra();
     void registrarCompra(const Compra &compra);
     void desplegarCompra(int compraId) const;
+
+    int getContador();
+    void setContador(int valorContador);
     
     //void obtenerProductosDeVendedor(string nickname);
     void ingresarPromocionASistema(Promocion promo);
     void AddComentario(Comentario *coment, int producto);
     void incrementarContador();
-    int getContador();
     Contenido* seleccionarProductosParaPromocion(vector<DTVendedor>lista, string nickname, Producto* prod, int cant_minima, int id);
     vector<Promocion*> getpromocionesSistemaVigentes();
     vector<Promocion*> getpromocionesSistema();

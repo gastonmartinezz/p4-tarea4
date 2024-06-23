@@ -58,7 +58,7 @@ void altaUsuario()
         if ((ctrlUsuario->findUsuario(nickname)) != nullptr)
             throw invalid_argument("El usuario '" + nickname + "' ya existe.");
 
-        cout << "Fecha de nacimiento: ";
+        cout << "Fecha de nacimiento " << endl;
         cout << "Ingrese día de la fecha: ";
         cin >> dia;
         while (cin.fail() || dia < 1 || dia > 31)
@@ -90,11 +90,12 @@ void altaUsuario()
         }
         fechaNacimiento = DTFecha(dia, mes, anio);
 
-        cout << "Contraseña: ";
-        getline(cin, contraseña);
+        cout << "Contraseña: " << endl;
+        cin >> contraseña;
+        //getline(cin, contraseña);
         while (contraseña.length() < 6)
         {
-            std::cerr << "Error: La contraseña debe tener al menos 6 caracteres." << std::endl;
+            std::cout << "Error: La contraseña debe tener al menos 6 caracteres." << std::endl;
             std::cout << "Ingrese contraseña (al menos 6 caracteres): ";
             std::cin >> contraseña;
         }
@@ -141,8 +142,7 @@ void altaUsuario()
             ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT);
             Vendedor *vend = ctrlUsuario->findVendedor(nickname);
 
-            std::cout << "PASE EL ALTA"; /// borrar
-            std::cout << vend->getNickname();
+            std::cout << vend->getNickname() << endl;
         }
         else
         {

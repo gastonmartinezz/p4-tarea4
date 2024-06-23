@@ -25,18 +25,22 @@ void ControladorProducto::agregarALaLista(int id, Producto *prod)
     listaProductos.insert(std::make_pair(id, prod));
 }
 
-void ControladorProducto::listarProductos()
-{
-    for (long unsigned int i = 0; i <= listaProductos.size(); i++)
-    {
-        cout << "Nombre: " << listaProductos[i]->getNombre() << endl;
-        cout << "Descripción: " << listaProductos[i]->getDescripcion() << endl;
-        cout << "Id: " << listaProductos[i]->getId() << endl;
-        /*cout << "Precio: " << arrayProductos[i]->getPrecio() << endl;
-        cout << "Stock: " << arrayProductos[i]->getStock() << endl;
-        cout << "Vendedor: " << arrayProductos[i]->getVendedor() << endl;*/
+void ControladorProducto::listarProductos() {
+    long unsigned int i;
+    if (listaProductos.size() == 0 ) {
+        cout << "No hay productos registrados en el sistema." << endl;
+    } else {
+        cout << "Lista de los productos registrados en el sistema: " << endl;
+        cout << "-------------------------------------------------" << endl;
 
-        // Comento las salidas de consola de arriba ya que no se si debemos imprimir toda la información del producto
+        for (i = 1; i <= listaProductos.size(); i++) {
+            DTProducto prod = listaProductos[i]->toDataType();
+            prod.setDescripcion(listaProductos[i]->getDescripcion());
+
+            cout << "Id: " << prod.getId() << endl;
+            cout << "Nombre: " << prod.getNombre() << endl;
+            cout << "Descripción: " << prod.getDescripcion() << endl;
+        }
     }
 }
 
@@ -161,14 +165,22 @@ void ControladorProducto::AddComentario(Comentario *coment, int productoId)
     }
 }
 
-void ControladorProducto::incrementarContador()
-{
+int ControladorProducto::getContador() {
+    return this->contador_id_producto;
+}
+
+void ControladorProducto::setContador(int valorContador) {
+    contador_id_producto = valorContador;
+}
+
+void ControladorProducto::incrementarContador() {
     contador_id_producto++;
-};
-int ControladorProducto::getContador()
+}
+
+/* int ControladorProducto::getContador()
 {
     return contador_id_producto;
-};
+}; */
 
 // void obtenerProductosDeVendedor(string nickname) {
 //     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
@@ -277,32 +289,29 @@ bool ControladorProducto::productoEnPromoExistente(int id) {
     return b;
 }
 
-Contenido *ControladorProducto::seleccionarProductosParaPromocion(vector<DTVendedor> lista, string nickname, Producto *prod, int cant_minima, int id)
-{
+Contenido *ControladorProducto::seleccionarProductosParaPromocion(vector<DTVendedor> lista, string nickname, Producto *prod, int cant_minima, int id) {
+    Contenido *conteNuevo;
     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
 
-    for (auto p : lista)
-    {
-        if (nickname == p.getNickname())
-        {
-            for (auto prod : p.getProductos())
-            {
-                if (productoEnPromoExistente(id))
-                {
+    for (auto p : lista) {
+        if (nickname == p.getNickname()) {
+            for (auto prod : p.getProductos()) {
+                if (productoEnPromoExistente(id)) {
                     cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
+                    return nullptr;
                     break;
                 }
-                else
-                {
-                    Contenido *conteNuevo = new Contenido();
+                else {
+                    conteNuevo = new Contenido();
                     conteNuevo->setCantMinima(cant_minima);
-                    conteNuevo->setProducto(prod); // Agregar metodo a contenido.h
-                    return conteNuevo;
+                    conteNuevo->setProducto(prod);
                 }
             }
         }
     }
+    return conteNuevo;
 }
+
 vector<Promocion *> ControladorProducto::getpromocionesSistemaVigentes()
 {
     return promocionesSistemaVigentes;
@@ -319,5 +328,5 @@ Producto *ControladorProducto::getProducto(int idProducto)
 
 map<int, Producto *> ControladorProducto::getListaProductos()
 {
-    return listaProductos;
+    return this->listaProductos;
 }

@@ -7,3 +7,4 @@ void cargaDatosDePrueba();
 void RealizarCompra();
 void crearPromocion();
 void ExpedienteUsuario();
+void consultarProducto();

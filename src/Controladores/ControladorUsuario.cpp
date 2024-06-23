@@ -123,7 +123,7 @@ vector<DTVendedor> ControladorUsuario::listaVendedor()
     }
     return aux;
 }
-Producto *ControladorUsuario::AddProducto(int id, int stock, float precio, std::string nombre, std::string descripcion, Producto::Categoria cat, std::string vendedorNickname)
+Producto *ControladorUsuario::AddProducto(int id, int stock, float precio, std::string nombre, std::string descripcion, Categoria cat, std::string vendedorNickname)
 {
     // Buscar el vendedor por su nickname
     Vendedor *vendedor = findVendedor(vendedorNickname);

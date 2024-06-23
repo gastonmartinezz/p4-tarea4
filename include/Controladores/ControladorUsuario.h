@@ -16,6 +16,7 @@
 #include "../include/DataTypes/DTUsuario.h"
 #include "../include/DataTypes/DTVendedor.h"
 #include "../include/DataTypes/DTCliente.h"
+#include "../include/Categoria.h"
 using namespace std;
 
 class ControladorUsuario : public ICUsuario
@@ -92,7 +93,7 @@ public:
     int getContador();
 
     Comentario *AddComentario(std::string texto_comentario, DTFecha fecha, std::string nickname);
-    Producto *AddProducto(int id, int stock, float precio, std::string nombre, std::string descripcion, Producto::Categoria cat, std::string vendedor);
+    Producto *AddProducto(int id, int stock, float precio, std::string nombre, std::string descripcion, Categoria cat, std::string vendedor);
 
     void listarComentarios();
     void datosVendedor(const string &codigoRUT);

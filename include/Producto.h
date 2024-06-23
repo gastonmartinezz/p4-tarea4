@@ -6,6 +6,7 @@
 #include <map>
 #include "Vendedor.h"
 #include "Comentario.h"
+#include "Categoria.h"
 #include "../include/Controladores/ControladorProducto.h"
 #include "../include/DataTypes/DTProducto.h"
 
@@ -20,17 +21,11 @@ private:
     float precio;
     string nombre;
     string descripcion;
+    Categoria categoria;
     Vendedor *quienVende;
     map<int, Comentario *> Comentarios;
 
 public:
-    enum class Categoria
-    {
-        Ropa,
-        Electrodomesticos,
-        Otros
-    }; // Enum declarado dentro de la clase Producto
-
     Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria, Vendedor *quienVende);
     ~Producto();
 

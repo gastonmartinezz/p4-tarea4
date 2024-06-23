@@ -40,7 +40,7 @@ void AltaProducto()
         float precio;
         int stock;
         int catInt;
-        Producto::Categoria cat;
+        Categoria cat;
 
         std::cout << "Seleccione el nickname del vendedor: ";
         std::cin >> vendedorNickname;
@@ -61,13 +61,17 @@ void AltaProducto()
 
         std::cout << "Seleccione la categoría del producto (0: Ropa, 1: Electrodomesticos, 2: Otros): ";
         std::cin >> catInt;
-        cat = static_cast<Producto::Categoria>(catInt); // Corregido para usar Producto::Categoria
-        ctrlProducto->incrementarContador();
-        Producto *newProducto = ctrlUsuario->AddProducto(ctrlProducto->getContador(), stock, precio, nombre, descripcion, cat, vendedorNickname);
-        ctrlProducto->agregarALaLista(ctrlProducto->getContador(),newProducto);
-        
+        cat = static_cast<Categoria>(catInt); // Corregido para usar Producto::Categoria
+        int cont = ctrlProducto->getListaProductos().size();
 
-        std::cout << "Producto agregado con éxito. ID: " << newProducto->getId() << ", Nombre: " << nombre << std::endl;
+        cont++;
+        ctrlProducto->setContador(cont); 
+        Producto *newProducto = ctrlUsuario->AddProducto(cont, stock, precio, nombre, descripcion, cat, vendedorNickname);
+        ctrlProducto->agregarALaLista(cont, newProducto);        
+
+        cout << "Producto agregado con éxito." << endl;
+        cout << "ID: " << newProducto->getId() << endl;
+        cout << "Nombre: " << nombre << endl;
 
         // // Listar productos para verificar
         // ctrlProducto->listarProductos();

@@ -38,7 +38,7 @@ void ExpedienteUsuario()
     cout << endl;
 
     ICUsuario *ctrlUsuario = Fabrica::getICUsuario();
-    ControladorProducto *ctrlProducto = Fabrica::getICProductos(); 
+    //ControladorProducto *ctrlProducto = Fabrica::getICProductos(); Lo comento ya que no no lo estamos utilizando
 
     try
     {

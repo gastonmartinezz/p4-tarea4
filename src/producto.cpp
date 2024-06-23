@@ -3,7 +3,8 @@
 
 // Producto::Producto() : id(0), stock(0), precio(0.0f), nombre(""), descripcion("") {}
 
-Producto::Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria, Vendedor *quienVende){};
+Producto::Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria, Vendedor *quienVende):
+id(id), precio(precio), nombre(nombre), descripcion(descripcion), categoria(categoria), quienVende(quienVende){};
 
 int Producto::getId() { return id; }
 

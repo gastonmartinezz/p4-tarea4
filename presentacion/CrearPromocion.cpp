@@ -3,6 +3,7 @@
 #include <set>
 #include <algorithm>
 #include <cctype>
+#include <limits>
 #include "../include/Promocion.h"
 #include "../include/contenido.h"
 #include "../include/Vendedor.h"
@@ -16,7 +17,7 @@ void crearPromocion() {
     ControladorProducto *ctrlProducto = Fabrica::getICProductos();
     ControladorUsuario *ctrlUsuario = Fabrica::getICUsuario();
 
-    cout<< "hola"<<endl;
+    cout << "Inicio de crearPromocion" << endl;
     try {
         string nombre, desc;
         float descuento;
@@ -25,33 +26,66 @@ void crearPromocion() {
 
         cout << "Ingresa el nombre de la promoción: " << endl;
         cin >> nombre;
+        if (cin.fail()) {
+            cerr << "Error: Entrada no válida para nombre" << endl;
+            return;
+        }
+
         cout << "Ingrese la descripción de la promoción: " << endl;
         cin >> desc;
+        if (cin.fail()) {
+            cerr << "Error: Entrada no válida para la descripción." << endl;
+            return;
+        }
+
         cout << "Ingrese el descuento de la promoción: " << endl;
         cin >> descuento;
+        if (cin.fail()) {
+            cerr << "Error: Entrada no válida para el descuento." << endl;
+            return;
+        }
+
         cout << "Ingrese el dia de la fecha de vencimiento: " << endl;
         cin >> dia;
+        while (cin.fail() || dia < 1 || dia > 31) {
+            cerr << "Error: Entrada no válida para el dia de la fecha de vencimiento." << endl;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Día inválido. Por favor, ingrese un día entre 1 y 31: ";
+            cin >> dia;
+        }
+
         cout << "Ingrese el numero de mes de la fecha de vencimiento: " << endl;
         cin >> mes;
-        cout << "Ingrese el anio de la fecha de vencimiento: " << endl;
-        cin >> anio;
+        if (cin.fail()) {
+            cerr << "Error: Entrada no válida para el mes de la fecha de vencimiento." << endl;
+            return;
+        }
 
-        fechaVencimiento.setDia(dia);
-        fechaVencimiento.setMes(mes);
-        fechaVencimiento.setAnio(anio);
+        cout << "Ingrese el año de la fecha de vencimiento: " << endl;
+        cin >> anio;
+        if (cin.fail()) {
+            cerr << "Error: Entrada no válida para el año de la fecha de vencimiento." << endl;
+            return;
+        }
+
+        fechaVencimiento = DTFecha(dia, mes, anio);
+        fechaVencimiento.toString();
 
         // Muestro los datos de los vendedores para que el administrador elija uno con el nickname.
-        vector<DTVendedor> vendedores = ctrlUsuario->listaVendedor();
-        cout << "Lista de Vendedores:" << std::endl;
+        vector<DTUsuario> vendedores = ctrlUsuario->listarUsuarios();
+        //vector<DTVendedor> vendedores = ctrlUsuario->listaVendedor();
+        cout << "Lista de Vendedores:" << endl;
         if (vendedores.size() == 0) {
             throw invalid_argument("No hay usuarios registrados.");
         }
 
         for (vector<DTVendedor>::size_type i = 0; i < vendedores.size(); ++i) {
             cout << i << "-";
-            cout << vendedores[i].getNickname() << endl;
+            cout << vendedores[i].getNombre() << endl;
         }
-
+        
+        cout << "llego aca2" << endl;
         // El usuario selecciona un vendedor de la lista por su nickname.
         string nickVendedor;
         cout << "Ingrese el nickname del vendedor para asignarle la promoción: " << endl;
@@ -100,11 +134,11 @@ void crearPromocion() {
 
         ctrlProducto->getpromocionesSistemaVigentes().push_back(promoNueva);
         ctrlProducto->getpromocionesSistema().push_back(promoNueva);
-    }
+     }
     catch (const std::exception &e) {
         cerr << e.what() << '\n';
     };
     std::cout << "Presiona Enter para continuar...";
     // cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    std::cin.get(); // Espera que el usuario presione Enter
+    std::cin.get(); // Espera que el usuario presione Enter 
 }
