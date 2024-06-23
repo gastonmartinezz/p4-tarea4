@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../include/Interfaces/ICUsuario.h"
 #include "../include/Interfaces/ICProductos.h"
-#include "../include/Fabrica.h" 
+#include "../include/Fabrica.h"
 
 #include <string>
 #include "../include/Controladores/ControladorUsuario.h"
@@ -15,15 +15,15 @@
 using std::numeric_limits;
 using std::streamsize;
 
-void DesplegarCompra() {
-
+void RealizarCompra()
+{
 
     ControladorProducto *ctrlProducto = Fabrica::getICProductos();
     ControladorUsuario *ctrlUsuario = Fabrica::getICUsuario();
 
+    try
+    {
 
-    try {
-    
         cout << " Realizar Compra" << endl;
         cout << "------------------" << endl;
         cout << endl;
@@ -40,14 +40,12 @@ void DesplegarCompra() {
 
         for (vector<DTCliente>::size_type i = 0; i < clientes.size(); ++i)
         {
-             cout << i << "-";
+            cout << i << "-";
             cout << clientes[i].getNickname() << endl;
         }
 
         std::cout << "Seleccione el nickname del cliente: ";
         std::cin >> clienteNickname;
-
-
 
         std::vector<DTProducto> productos = ctrlProducto->listarProductos2();
         std::cout << "Lista de Productos:" << std::endl;
@@ -63,27 +61,26 @@ void DesplegarCompra() {
             cout << productos[i].getId() << endl;
         }
 
-    
         std::vector<DTCarro> carrito;
         bool seleccion = true;
 
-        while(seleccion) {
-            if (seleccion) {
+        while (seleccion)
+        {
+            if (seleccion)
+            {
                 std::cout << "Seleccione el id del producto: ";
                 std::cin >> iden;
                 std::cout << "Seleccione la cantidad que quiera comprar: ";
                 std::cin >> cantidad;
-                carrito.push_back(DTCarro(iden,cantidad));
+                carrito.push_back(DTCarro(iden, cantidad));
             }
-        cout << "¿Queres seguir comprando? ";
+            cout << "¿Queres seguir comprando? ";
             cin >> seleccion;
         }
-        
+
         for (vector<DTCarro>::size_type i = 0; i < carrito.size(); ++i)
         {
-            
         }
-
     }
     catch (const std::exception &e)
     {

@@ -34,7 +34,8 @@ void displayAndProcessMenu()
         cout << "9.  Lista de Usuarios" << endl;
         cout << "10. Suscribirse a Notificaciones" << endl;
         cout << "11.  Consulta de Notificaciones" << endl;
-        cout << "12.  Carga de datos de prueba" << endl;
+        cout << "12. Realizar Compra" << endl;
+        cout << "13.  Carga de datos de prueba" << endl;
         cout << endl;
         cout << "Ingrese el numero de opcion que desea ejecutar: ";
 
@@ -77,6 +78,10 @@ void displayAndProcessMenu()
                     suscribirseANotificaciones();
                     break;
                 case 12:
+                    RealizarCompra();
+
+                    break;
+                case 13:
                     cargaDatosDePrueba();
                     break;
                 default:
