@@ -13,6 +13,7 @@
 #include "../include/Compra.h"
 #include "../include/DataTypes/DTFecha.h"
 #include "../include/DataTypes/DTProducto.h"
+#include "../include/DataTypes/DTVendedor.h"
 #include "../Interfaces/ICProductos.h"
 using namespace std;
 
@@ -21,6 +22,7 @@ class Promocion;
 class Comentario;
 class Compra;
 class DTProducto;
+class DTVendedor;
 
 class ControladorProducto /* : public ICProductos */
 {
@@ -29,8 +31,8 @@ private:
     ControladorProducto() = default;
     static ControladorProducto *instance;
     map<int, Producto *> listaProductos;
-    set<Promocion*> promocionesSistemaVigentes;
-    set<Promocion*> promocionesSistema;
+    vector<Promocion*> promocionesSistemaVigentes;
+    vector<Promocion*> promocionesSistema;
 
     int contador_id_producto = 0;
 
@@ -44,7 +46,7 @@ public:
     void agregarALaLista(int id,Producto* prod);
     void confirmarAltaPromocion();
     void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
-    void listarProductosVendedor(string nickname);
+    void listarProductosVendedor(string nickname, std::vector<DTVendedor> lista);
     void eliminarLinkComentario(int comentarioId);
     void agregarProducto(const Producto &producto);
     void ponerProductosLibres();
@@ -65,8 +67,9 @@ public:
     void incrementarContador();
     int getContador();
     void seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima);
-    set<Promocion*> getpromocionesSistemaVigentes();
-    set<Promocion*> getpromocionesSistema(); 
+    vector<Promocion*> getpromocionesSistemaVigentes();
+    vector<Promocion*> getpromocionesSistema();
+    //Contenido* seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima); 
 
     //map<int, Producto*> getListaProductos();
     //map<int, Contenido*> getPromocionesSistema();

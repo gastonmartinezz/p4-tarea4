@@ -1,4 +1,5 @@
 #include "../include/Controladores/ControladorProducto.h"
+#include "../include/DataTypes/DTVendedor.h"
 #include "../include/Interfaces/ICProductos.h"
 #include <iostream>
 #include <vector>
@@ -7,6 +8,7 @@ using namespace std;
 // Inicialización de la instancia singleton
 ControladorProducto *ControladorProducto::instance = nullptr;
 ControladorProducto *ControladorProducto::getInstance()
+
 {
     if (!instance)
     {
@@ -55,17 +57,14 @@ void ControladorProducto::ingresarDatosPromocion(const string &nombre, float des
     // Implementación para ingresar datos de promoción
 }
 
-void ControladorProducto::listarProductosVendedor(string nickname) { 
-    for (auto prod: ListaVendedores) {
-        if (nickname == prod->getNickname()) {
-            for (auto producto: prod->productos) {
-                if (prod->productos.size() == 0) {
-                    DTProducto prodAux = DTProducto();
-                    prodAux.setId() = prod->productos->getId();
-                    prodAux.setNombre() = prod->productos->getNombre();
+void ControladorProducto::listarProductosVendedor(string nickname, std::vector<DTVendedor> lista) { 
 
-                    cout << "Id de Producto: " << prodAux.getId() << endl;
-                    cout << "Nombre de Producto: " << prodAux.getNombre() << endl;
+    for (vector<DTVendedor>::size_type i = 0; i < lista.size(); ++i) {
+        if (nickname == lista[i].getNickname()) {
+            for (vector<Producto*>::size_type h = 0; h < lista[i].getProductos().size(); ++h) {
+                if (lista[i].getProductos().size() != 0) {
+                    cout << "Id de Producto: " << lista[i].getProductos()[h]->getId() << endl;
+                    cout << "Nombre de Producto: " << lista[i].getProductos()[h]->getNombre() << endl;
                 } else {
                     cout << "Este vendedor no tiene productos para mostrar." << endl;
                 }
@@ -260,12 +259,10 @@ int ControladorProducto::getContador()
 // }
 
 bool ControladorProducto::productoEnPromoExistente(int id) {
-    b = false;
-    for (auto contenidou: promocionesSistemaVigentes) {
-        Promocion* promo = contenidou->getPromocion();
-
-        for (auto productos: promo->getProductosDentroDePromo()) {
-            if (id == productos->getProducto()->getId()) {
+    bool b = false;
+    for (vector<Promocion*>::size_type i = 0; i < promocionesSistemaVigentes.size(); ++i) {
+        for (vector<Contenido*>::size_type h = 0; h < promocionesSistemaVigentes[i]->getProductosDentroDePromo().size(); ++h) {
+            if (id == promocionesSistemaVigentes[i]->getProductosDentroDePromo()[h]->getProducto()->getId()) {
                 b = true;
                 break;
             }
@@ -274,7 +271,7 @@ bool ControladorProducto::productoEnPromoExistente(int id) {
     return b;
 }
 
-Contenido* ControladorProducto::seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima) {
+/* Contenido* ControladorProducto::seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima) {
     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
 
     for (auto p: ListaVendedores) {
@@ -293,10 +290,10 @@ Contenido* ControladorProducto::seleccionarProductosParaPromocion(string nicknam
             }
     }
 }
-
-set<Promocion*> ControladorProducto::getpromocionesSistemaVigentes() {
+ */
+ vector<Promocion*> ControladorProducto::getpromocionesSistemaVigentes() {
     return promocionesSistemaVigentes;
 }
-set<Promocion*> ControladorProducto::getpromocionesSistema() {
+vector<Promocion*> ControladorProducto::getpromocionesSistema() {
     return promocionesSistema;
-} 
+}  

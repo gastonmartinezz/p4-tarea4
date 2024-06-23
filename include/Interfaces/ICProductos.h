@@ -39,6 +39,9 @@ public:
     virtual bool productoEnPromoExistente(int id) = 0;
     virtual void obtenerProductosDeVendedor(std::string nickname) = 0;
     virtual void ingresarPromocionASistema(Promocion promo) = 0;
+    virtual void listarProductosVendedor(string nickname, std::vector<DTVendedor> lista);
+    virtual vector<Promocion*> getpromocionesSistemaVigentes() = 0;
+    virtual vector<Promocion*> getpromocionesSistema() = 0;
 };
 
 #endif // ICPRODUCTOS_H

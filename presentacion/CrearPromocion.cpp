@@ -67,7 +67,7 @@ Promocion* crearPromocion() {
     cout << "Ingrese el nickname del vendedor para asignarle la promoción: " << endl;
     cin >> nickVendedor;
 
-    ctrlProducto->listarProductosVendedor(string nickname);
+    ctrlProducto->listarProductosVendedor(nickVendedor,ctrlProducto->listarProductos2());
 
     //Invoco la función para ir agregando los productos a la promoción.
     string respuesta;

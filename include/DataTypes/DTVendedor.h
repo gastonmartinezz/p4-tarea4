@@ -13,9 +13,9 @@
 #include "../include/Producto.h"
 
 class Cliente;
+class Promocion;
 
 using namespace std;
-
 class DTVendedor
 {
 private:

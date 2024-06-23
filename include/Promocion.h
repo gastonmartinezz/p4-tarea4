@@ -19,13 +19,13 @@ private:
     string nombre;
     string descripcion;
     DTFecha fecha_vencimiento;
-    set<Contenido *> productosDentroDePromo;
+    vector<Contenido *> productosDentroDePromo;
     Vendedor *vendedor;
 public:
     Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven);
     ~Promocion();
 
-    set<Contenido *> getProductosDentroDePromo();
+    vector<Contenido *> getProductosDentroDePromo();
     string getDescripcion();
     float getDescuento();
     string getNombre();
