@@ -18,7 +18,7 @@ class DTCarro {
     DTCarro(int prod = 0, int cantidad = 0);
     DTCarro();
 
-    int getProd();
+    int getProd()const;
     int getCantidad();
     void setProd(int p);
     void setCantidad(int c);

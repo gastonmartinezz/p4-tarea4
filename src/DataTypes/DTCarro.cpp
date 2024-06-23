@@ -4,7 +4,7 @@
 DTCarro::DTCarro(int prod, int cantidad) : prod(prod), cantidad(cantidad) {}
 
 
-int DTCarro::getProd() {
+int DTCarro::getProd()const {
     return prod;
 }
 int DTCarro::getCantidad() {

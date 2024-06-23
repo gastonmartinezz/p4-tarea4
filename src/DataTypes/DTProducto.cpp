@@ -24,7 +24,7 @@ float DTProducto::getPrecio()
     return precio;
 }
 
-string DTProducto::getNombre()
+string DTProducto::getNombre()const
 {
     return nombre;
 }

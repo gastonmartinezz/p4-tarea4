@@ -24,7 +24,7 @@ string Promocion::getNombre() {
     return nombre;
 }
 
-string Promocion::getDescripcion() {
+string Promocion::getDescripcion()const {
     return descripcion;
 }
 

@@ -27,7 +27,7 @@ public:
     Promocion();
 
     vector<Contenido *> getProductosDentroDePromo();
-    string getDescripcion();
+    string getDescripcion()const;
     float getDescuento();
     string getNombre();
     DTFecha getFechaVencimiento();

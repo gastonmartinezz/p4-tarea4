@@ -31,7 +31,7 @@ public:
     DTUsuario toDataType();
     void addComentario(Comentario *coment);
     vector<Comentario *> listarComentarios();
-    ~Usuario();
+    virtual ~Usuario();
 };
 
 #endif // USUARIO_H

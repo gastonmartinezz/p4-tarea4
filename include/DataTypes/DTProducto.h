@@ -26,7 +26,7 @@ public:
     int getId();
     int getStock();
     float getPrecio();
-    string getNombre();
+    string getNombre()const;
     string getDescripcion();
     string getCategoria();
     string getVendedor();
