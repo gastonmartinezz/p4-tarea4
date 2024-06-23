@@ -70,7 +70,7 @@ void DejarComentario()
         }
         for (vector<DTProducto>::size_type i = 0; i < productos.size(); ++i)
         {
-            cout << i << "-";
+            cout << i + 1 << "-";
             cout << productos[i].getNombre() << endl;
         }
         long unsigned int i_producto;
@@ -97,10 +97,14 @@ void DejarComentario()
         std::map<int, Comentario *> comentarios_all;
         if (opcion == 2)
         {
-            std::map<int, Comentario *> comentarios_raiz = productos[i_producto].getComentarios();
-
+            std::map<int, Comentario *> comentarios_raiz = productos[i_producto - 1].getComentarios();
+            int aux = comentarios_raiz.size();
+            cout << "Largo de getComentarios" << endl;
+            cout << aux << endl;
             for (std::map<int, Comentario *>::iterator it = comentarios_raiz.begin(); it != comentarios_raiz.end(); ++it)
             {
+                cout << "Toy en comentario raiz" << endl;
+
                 std::map<int, Comentario *> aux = it->second->printComentarios();
                 comentarios_all.insert(aux.begin(), aux.end());
             }
@@ -121,7 +125,9 @@ void DejarComentario()
         string texto_comentario;
         cout << "Ingrese el comentario" << endl;
         ;
-        cin >> texto_comentario;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        getline(cin, texto_comentario);
+
         DTFecha fecha = DTFecha(1, 1, 1);
 
         Comentario *new_coment = CUsuario->AddComentario(texto_comentario, fecha, usuarios[i_usuario].getNombre());
@@ -134,6 +140,10 @@ void DejarComentario()
         {
             CProducto->AddComentario(new_coment, i_producto);
         }
+        cout << "Se registró  el comentario" << endl;
+        cout << new_coment->getId() << endl;
+        cout << new_coment->getTexto() << endl;
+        ;
     }
 
     catch (const std::exception &e)

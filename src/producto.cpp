@@ -3,8 +3,7 @@
 
 // Producto::Producto() : id(0), stock(0), precio(0.0f), nombre(""), descripcion("") {}
 
-Producto::Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria, Vendedor *quienVende):
-id(id), precio(precio), nombre(nombre), descripcion(descripcion), categoria(categoria), quienVende(quienVende){};
+Producto::Producto(int id, int stock, float precio, string nombre, string descripcion, Categoria categoria, Vendedor *quienVende) : id(id), precio(precio), nombre(nombre), descripcion(descripcion), categoria(categoria), quienVende(quienVende){};
 
 int Producto::getId() { return id; }
 
@@ -37,7 +36,7 @@ void Producto::setVendedor(Vendedor *vendedor) { this->quienVende = vendedor; }
 
 DTProducto Producto::toDataType()
 {
-    return DTProducto(getId(), getNombre());
+    return DTProducto(getId(), getNombre(), getComentarios());
 }
 
 void Producto::addComentario(Comentario *coment)
