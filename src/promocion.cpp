@@ -11,7 +11,6 @@ Promocion::~Promocion() {
     for (auto prod: productosDentroDePromo) {
         delete prod;
     }
-
     productosDentroDePromo.clear();
 }
 
@@ -73,4 +72,8 @@ DTPromocion Promocion::toDataType() {
 
 void Promocion::setProductosDentroDePromo(vector<Contenido*> produ) {
     this->productosDentroDePromo = produ;
+}
+
+Promocion::Promocion() : descuento(0), nombre(""), descripcion(""), fecha_vencimiento(DTFecha()), productosDentroDePromo(), vendedor(nullptr) {
+    // You can add any necessary initialization code here
 }

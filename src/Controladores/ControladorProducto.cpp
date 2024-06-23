@@ -111,7 +111,7 @@ void ControladorProducto::crearPromocion(const string &nombre, float descuento, 
 float ControladorProducto::sumaDeLosPrecios() const
 {
     // Implementación para sumar los precios de los productos
-    return 0.0f; // Valor de retorno por defecto, cambiar según implementación
+    return 0.0; // Valor de retorno por defecto, cambiar según implementación
 }
 
 bool ControladorProducto::productoEstaEnDetalleCompra(int productoId, int compraId) const
@@ -184,10 +184,6 @@ int ControladorProducto::getContador()
 //             }
 //         }
 //     }
-// }
-
-// void ingresarPromocionASistema(Promocion promo) {
-//     promocionesVigentes.insert(promo);
 // }
 
 // bool ControladorProducto::productoEnPromoExistente(int id) {
@@ -268,15 +264,11 @@ int ControladorProducto::getContador()
 //     } */
 // }
 
-bool ControladorProducto::productoEnPromoExistente(int id)
-{
+bool ControladorProducto::productoEnPromoExistente(int id) {
     bool b = false;
-    for (vector<Promocion *>::size_type i = 0; i < promocionesSistemaVigentes.size(); ++i)
-    {
-        for (vector<Contenido *>::size_type h = 0; h < promocionesSistemaVigentes[i]->getProductosDentroDePromo().size(); ++h)
-        {
-            if (id == promocionesSistemaVigentes[i]->getProductosDentroDePromo()[h]->getProducto()->getId())
-            {
+    for (vector<Promocion *>::size_type i = 0; i < promocionesSistemaVigentes.size(); i++) {
+        for (vector<Contenido *>::size_type h = 0; h < promocionesSistemaVigentes[i]->getProductosDentroDePromo().size(); h++) {
+            if (id == promocionesSistemaVigentes[i]->getProductosDentroDePromo()[h]->getProducto()->getId()) {
                 b = true;
                 break;
             }
