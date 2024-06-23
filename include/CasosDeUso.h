@@ -5,3 +5,4 @@ void suscribirseANotificaciones();
 void listaUsuarios();
 void cargaDatosDePrueba();
 void RealizarCompra();
+void crearPromocion();

@@ -59,9 +59,9 @@ void displayAndProcessMenu()
                 // case 4:
                 //     consultarPromocion();
                 //     break;
-                // case 5:
-                //     crearPromocion();
-                //     break;
+                case 5:
+                    crearPromocion();
+                    break;
                 case 6:
                     DejarComentario();
                     break;
