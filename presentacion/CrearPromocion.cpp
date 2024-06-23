@@ -64,9 +64,12 @@ void crearPromocion() {
 
         cout << "Ingrese el año de la fecha de vencimiento: " << endl;
         cin >> anio;
-        if (cin.fail()) {
-            cerr << "Error: Entrada no válida para el año de la fecha de vencimiento." << endl;
-            return;
+        while (cin.fail() || anio < 1900 || anio > 2100)
+        { // Puedes ajustar el rango según tus necesidades
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Año inválido. Por favor, ingrese un año razonable: ";
+            cin >> anio;
         }
 
         fechaVencimiento = DTFecha(dia, mes, anio);
@@ -139,6 +142,6 @@ void crearPromocion() {
         cerr << e.what() << '\n';
     };
     std::cout << "Presiona Enter para continuar...";
-    // cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     std::cin.get(); // Espera que el usuario presione Enter 
 }

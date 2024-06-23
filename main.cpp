@@ -40,6 +40,7 @@ void displayAndProcessMenu()
         cout << "11. Consulta de Notificaciones" << endl;
         cout << "12. Realizar Compra" << endl;
         cout << "13. Carga de datos de prueba" << endl;
+        cout << "14. Fecha" << endl;
         cout << endl;
         cout << "Ingrese el numero de opcion que desea ejecutar: ";
 
@@ -87,6 +88,9 @@ void displayAndProcessMenu()
                     break;
                 case 13:
                     cargaDatosDePrueba();
+                    break;
+                case 14:
+                    Fecha();
                     break;
                 default:
                     throw invalid_argument("Opcion no valida. Intente de nuevo.");
