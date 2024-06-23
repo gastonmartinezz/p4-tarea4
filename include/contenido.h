@@ -15,9 +15,12 @@ private:
 
 public:
     int cantidad_minima;
-
     Contenido(Producto *prod, Promocion *promo);
     ~Contenido();
+
+    Contenido();
+    void setProducto(Producto* produ);
+    void setPromocion(Promocion* promoc);
 
     int getCantMinima();
     Producto* getProducto();

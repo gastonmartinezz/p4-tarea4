@@ -11,6 +11,7 @@
 #include "../include/Promocion.h"
 #include "../include/Comentario.h"
 #include "../include/Compra.h"
+#include "../include/contenido.h"
 #include "../include/DataTypes/DTFecha.h"
 #include "../include/DataTypes/DTProducto.h"
 #include "../include/DataTypes/DTVendedor.h"
@@ -23,6 +24,7 @@ class Comentario;
 class Compra;
 class DTProducto;
 class DTVendedor;
+class Contenido;
 
 class ControladorProducto /* : public ICProductos */
 {
@@ -30,10 +32,9 @@ private:
     // Constructor privado para el patrón Singleton
     ControladorProducto() = default;
     static ControladorProducto *instance;
-    map<int, Producto *> listaProductos;
+    map<int, Producto*> listaProductos;
     vector<Promocion*> promocionesSistemaVigentes;
     vector<Promocion*> promocionesSistema;
-
     int contador_id_producto = 0;
 
 public:
@@ -42,6 +43,8 @@ public:
 
     // Métodos del diagrama UML
     vector<DTProducto> listarProductos2();
+    Producto* getProducto(int idProducto);
+    map<int, Producto*> getListaProductos();
     void listarProductos(); // es un void ya que es hacer 'cout'
     void agregarALaLista(int id,Producto* prod);
     void confirmarAltaPromocion();
@@ -63,10 +66,9 @@ public:
     void obtenerProductosDeVendedor(string nickname);
     void ingresarPromocionASistema(Promocion promo);
     void AddComentario(Comentario *coment, int producto);
-    map<int, Producto *> getListaProductos();
     void incrementarContador();
     int getContador();
-    void seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima);
+    Contenido* seleccionarProductosParaPromocion(vector<DTVendedor>lista, string nickname, Producto* prod, int cant_minima, int id);
     vector<Promocion*> getpromocionesSistemaVigentes();
     vector<Promocion*> getpromocionesSistema();
     //Contenido* seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima); 

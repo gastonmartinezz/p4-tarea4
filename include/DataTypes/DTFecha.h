@@ -60,6 +60,10 @@ public:
     int getMes() const;
     int getAnio() const;
 
+    void setDia(int dia);
+    void setMes(int mes);
+    void setAnio(int anio);
+
     bool operator>(const DTFecha &other) const;
     bool esNula() const;
 

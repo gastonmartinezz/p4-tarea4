@@ -3,6 +3,7 @@
 #include "../include/Interfaces/ICProductos.h"
 #include <iostream>
 #include <vector>
+#include <map>
 using namespace std;
 
 // Inicialización de la instancia singleton
@@ -57,8 +58,7 @@ void ControladorProducto::ingresarDatosPromocion(const string &nombre, float des
     // Implementación para ingresar datos de promoción
 }
 
-void ControladorProducto::listarProductosVendedor(string nickname, std::vector<DTVendedor> lista) { 
-
+void ControladorProducto::listarProductosVendedor(string nickname, vector<DTVendedor> lista) { 
     for (vector<DTVendedor>::size_type i = 0; i < lista.size(); ++i) {
         if (nickname == lista[i].getNickname()) {
             for (vector<Producto*>::size_type h = 0; h < lista[i].getProductos().size(); ++h) {
@@ -271,12 +271,12 @@ bool ControladorProducto::productoEnPromoExistente(int id) {
     return b;
 }
 
-/* Contenido* ControladorProducto::seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima) {
+Contenido* ControladorProducto::seleccionarProductosParaPromocion(vector<DTVendedor>lista, string nickname, Producto* prod, int cant_minima, int id) {
     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
 
-    for (auto p: ListaVendedores) {
-        if (nickname == p->getNickname()) {
-            for (auto prod: p->getProductos()) {
+    for (auto p: lista) {
+        if (nickname == p.getNickname()) {
+            for (auto prod: p.getProductos()) {
                 if (productoEnPromoExistente(id)) {
                     cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
                     break;
@@ -290,10 +290,17 @@ bool ControladorProducto::productoEnPromoExistente(int id) {
             }
     }
 }
- */
  vector<Promocion*> ControladorProducto::getpromocionesSistemaVigentes() {
     return promocionesSistemaVigentes;
 }
 vector<Promocion*> ControladorProducto::getpromocionesSistema() {
     return promocionesSistema;
 }  
+
+Producto* ControladorProducto::getProducto(int idProducto) {
+    return listaProductos[idProducto];
+}
+
+map<int, Producto*> ControladorProducto::getListaProductos() {
+    return listaProductos;
+}

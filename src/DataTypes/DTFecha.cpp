@@ -37,3 +37,13 @@ std::string DTFecha::toString() const
 {
     return std::to_string(dia) + "/" + std::to_string(mes) + "/" + std::to_string(anio);
 }
+
+void DTFecha::setDia(int dia) {
+    this->dia = dia;
+}
+void DTFecha::setMes(int mes) {
+    this->mes = mes;
+}
+void DTFecha::setAnio(int anio) {
+    this->anio = anio;
+}

@@ -25,9 +25,9 @@ private:
     ControladorUsuario() = default;
     static ControladorUsuario *instance;
 
-    map<string, Usuario *> ListaUsuarios;
-    map<string, Cliente *> ListaClientes;
-    map<string, Vendedor *> ListaVendedores;
+    map<string, Usuario*> ListaUsuarios;
+    map<string, Cliente*> ListaClientes;
+    map<string, Vendedor*> ListaVendedores;
     int contador_id_comentario = 0;
 
     // // Miembros temporales para el registro de usuarios en AltaUsuario.cpp

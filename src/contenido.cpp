@@ -22,3 +22,10 @@ Promocion* Contenido::getPromocion() {
 void Contenido::setCantMinima(int cantMinima) {
     this->cantidad_minima = cantMinima;
 }
+
+void Contenido::setProducto(Producto* produ) {
+    this->prod = produ;
+}
+void Contenido::setPromocion(Promocion* promoc) {
+    this->promo = promoc;
+}

@@ -72,7 +72,7 @@ void DejarComentario()
             cout << i << "-";
             cout << productos[i].getNombre() << endl;
         }
-        int i_producto;
+        long unsigned int i_producto;
         cout << "Indique el Producto";
         cin >> i_producto;
 

@@ -62,7 +62,7 @@ void Vendedor::mostrarInformacionVendedor() {
 
 DTVendedor Vendedor::toDataType()
 {
-    DTVendedor(getNickname(), getCodigoRut(), getFechaDeNacimiento(), getSuscriptores(), getProductos(), getPromociones());
+    return DTVendedor(getNickname(), getCodigoRut(), getFechaDeNacimiento(), getSuscriptores(), getProductos(), getPromociones());
 };
 
 Vendedor::~Vendedor()

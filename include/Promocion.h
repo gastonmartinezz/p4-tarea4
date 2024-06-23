@@ -24,6 +24,7 @@ private:
 public:
     Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven);
     ~Promocion();
+    Promocion();
 
     vector<Contenido *> getProductosDentroDePromo();
     string getDescripcion();
@@ -37,6 +38,7 @@ public:
     void setDescripcion(string descripcion);
     void setFechaVencimiento(DTFecha fecha);
     void setVendedor(Vendedor *vendedor);
+    void setProductosDentroDePromo(vector<Contenido*> produ);
 
     DTPromocion toDataType();
 

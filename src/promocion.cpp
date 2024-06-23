@@ -32,7 +32,7 @@ DTFecha Promocion::getFechaVencimiento() {
     return fecha_vencimiento;
 }
 
-set<Contenido*> Promocion::getProductosDentroDePromo() {
+vector<Contenido*> Promocion::getProductosDentroDePromo() {
     return productosDentroDePromo;
 }
 
@@ -64,9 +64,13 @@ void Promocion::setVendedor(Vendedor* vendedor) {
 
 // Otros métodos
 void Promocion::agregarProducto(Contenido *contenido) {
-    productosDentroDePromo.insert(contenido);
+    productosDentroDePromo.push_back(contenido);
 }
 
 DTPromocion Promocion::toDataType() {
     return DTPromocion(getDescuento(), getNombre(), getDescripcion(), getFechaVencimiento());
+}
+
+void Promocion::setProductosDentroDePromo(vector<Contenido*> produ) {
+    this->productosDentroDePromo = produ;
 }
