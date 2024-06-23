@@ -42,6 +42,8 @@ public:
     virtual void listarProductosVendedor(string nickname, std::vector<DTVendedor> lista);
     virtual vector<Promocion*> getpromocionesSistemaVigentes() = 0;
     virtual vector<Promocion*> getpromocionesSistema() = 0;
+    virtual DTFecha getFecha() = 0;
+    virtual void setFecha(DTFecha fecha) = 0;
 };
 
 #endif // ICPRODUCTOS_H

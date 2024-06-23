@@ -8,3 +8,4 @@ void RealizarCompra();
 void crearPromocion();
 void ExpedienteUsuario();
 void consultarProducto();
+void Fecha();

@@ -1,52 +1,10 @@
-/*
-
-#ifndef DTFECHAHORA
-#define DTFECHAHORA
-
-#include <iostream>
-
-using namespace std;
-
-class DTFecha {
-    private:
-        int dia;
-        int mes;
-        int anio;
-
-    public:
-        DTFecha();
-        DTFecha(int,int,int);
-        int getDia();
-        int getMes();
-        int getAnio();
-
-        bool operator>(DTFecha);
-        bool esNula();
-        ~DTFecha();
-};
-
-// Sobrecarga del operador de salida
-    friend std::ostream& operator<<(std::ostream& os, const DTFecha& fecha);
-
-    // Sobrecarga del operador de entrada
-    friend std::istream& operator>>(std::istream& is, DTFecha& fecha);
-
-ostream& operator<<(ostream&, DTFecha);
-
-
-
-#endif
-
-*/
-
 #ifndef DTFECHA_H
 #define DTFECHA_H
 
 #include <iostream>
 #include <string>
-
-class DTFecha
-{
+using namespace std;
+class DTFecha {
 private:
     int dia;
     int mes;
@@ -69,7 +27,7 @@ public:
 
     ~DTFecha();
 
-    std::string toString() const;
+    string toString() const;
 };
 
 #endif // DTFECHA_H

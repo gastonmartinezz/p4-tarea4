@@ -10,18 +10,25 @@ class Contenido;
 
 // Inicialización de la instancia singleton
 ControladorProducto *ControladorProducto::instance = nullptr;
-ControladorProducto *ControladorProducto::getInstance()
 
-{
-    if (!instance)
-    {
+ControladorProducto *ControladorProducto::getInstance() {
+    if (!instance) {
         instance = new ControladorProducto();
     }
     return instance;
+
 }
 
-void ControladorProducto::agregarALaLista(int id, Producto *prod)
-{
+DTFecha ControladorProducto::fecha = DTFecha(24, 6, 2024);
+
+DTFecha ControladorProducto::getFecha() {
+    return this->fecha;
+}
+void ControladorProducto::setFecha(DTFecha fecha) {
+    this->fecha = fecha;
+}
+
+void ControladorProducto::agregarALaLista(int id, Producto *prod) {
     listaProductos.insert(std::make_pair(id, prod));
 }
 

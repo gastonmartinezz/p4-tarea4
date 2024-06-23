@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <cctype>
 #include <map>
+#include "../include/DataTypes/DTFecha.h"
 #include "../include/Producto.h"
 #include "../include/Promocion.h"
 #include "../include/Comentario.h"
@@ -26,6 +27,7 @@ class Compra;
 class DTProducto;
 class DTVendedor;
 class Contenido;
+class DTFecha;
 
 class ControladorProducto /* : public ICProductos */
 {
@@ -37,6 +39,7 @@ private:
     vector<Promocion*> promocionesSistemaVigentes;
     vector<Promocion*> promocionesSistema;
     int contador_id_producto;
+    static DTFecha fecha;
 
 public:
     // Métodos estáticos para obtener la instancia única
@@ -63,6 +66,8 @@ public:
     void confirmarCompra();
     void registrarCompra(const Compra &compra);
     void desplegarCompra(int compraId) const;
+    DTFecha getFecha();
+    void setFecha(DTFecha fecha);
 
     int getContador();
     void setContador(int valorContador);
