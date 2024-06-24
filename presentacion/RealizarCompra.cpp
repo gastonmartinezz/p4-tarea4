@@ -1,4 +1,6 @@
-#include <iostream>
+
+
+ #include <iostream>
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -12,6 +14,7 @@
 #include "../include/DataTypes/DTCarro.h"
 #include "../include/Producto.h"
 #include "../include/Usuario.h"
+#include <bits/stdc++.h>
 
 using namespace std;
 
@@ -57,19 +60,61 @@ void RealizarCompra() {
 
         vector<DTCarro> carrito;
 
-        bool seguir = true;
         string respuesta;
 
-        while (seguir) {
+        cout << "Deseas agregar un producto a la compra? (si/no)" << endl;
+        cin >> respuesta;
 
-            cout << "Seleccione el id del producto: ";
+        transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
+
+        if (respuesta == "SI" || respuesta == "S") { 
+            cout << "Ingrese el Id del producto que desea agregar a carrito: " << endl;
             cin >> iden;
-            cout << "Seleccione la cantidad que quiera comprar: ";
-            /// Falta validar stock
+            if (cin.fail()) {
+                throw invalid_argument("Error: Entrada no válida para el Id del producto.");
+            }
+
+            cout << "Ingrese una catidad: " << endl;
             cin >> cantidad;
+            if (cin.fail()) {
+                throw invalid_argument("Error: Entrada no válida para la cantidad.");
+            }
+
+        carrito.push_back(DTCarro(iden, cantidad));
+
+
+        } else if (respuesta == "NO" || respuesta == "N") {
+            cout << "No se van a agregar productos al carrito." << endl;
+            cout << "Presiona Enter para continuar...";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.get();
+            return;
+        }
+
+        cout << "Desea agregar otro producto al carrito? (si/no)" << endl;
+        cin >> respuesta;
+        
+        transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
+        
+        bool seguir = true;
+        if (!((respuesta == "SI") || (respuesta == "S"))) {
+            seguir = false;
+            cout << "No se van a agregar más productos al carrito." << endl;
+            cout << "-------------------------------------------------" << endl;
+        }
+
+        while (seguir) {
+            cout << "Ingrese el Id del producto que desea agregar al carrito: " << endl;
+            cin >> iden;
+            
+            cout << "Ingrese la cantidad que desea comprar: " << endl;
+            cin >> cantidad;
+
             carrito.push_back(DTCarro(iden, cantidad));
-            cout << "Desea agregar otro producto a la compra? (si/no)" << endl;
+
+            cout << "Desea agregar otro producto al carrito? (si/no)" << endl;
             cin >> respuesta;
+    
 
             transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
 
@@ -77,6 +122,7 @@ void RealizarCompra() {
                 seguir = false;
             }
         }
+
 
         for (size_t i = 0; i < carrito.size(); ++i) {
                 cout << "Producto ID: " << carrito[i].getProd() 
@@ -146,10 +192,13 @@ void RealizarCompra() {
         std::cout << "El monto total de la compra es: " << montoTotal << std::endl;
 
 
-    } catch (const exception &e) {
-        cerr << e.what() << '\n';
+    } catch (const std::invalid_argument &e) {
+        std::cerr << "Error: " << e.what() << std::endl;
     }
-}
+    std::cout << "Presiona Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.get();
+} 
 
 
 
