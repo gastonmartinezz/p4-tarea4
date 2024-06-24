@@ -29,7 +29,7 @@ public:
 
     string getNickname();
     string getCodigoRut();
-    set<Cliente *> getSuscriptores();
+    set<Cliente *>& getSuscriptores();
     vector<Producto *> getProductos();    // Agregar este método para obtener los productos
     vector<Promocion *> getPromociones(); // Agregar este método para obtener las promociones
     DTVendedor toDataType();

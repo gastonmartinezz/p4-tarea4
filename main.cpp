@@ -70,9 +70,9 @@ void displayAndProcessMenu()
                 case 6:
                     DejarComentario();
                     break;
-                // case 7:
-                //     eliminarSuscripcion();
-                //     break;
+                case 7:
+                    eliminarSuscripcion();
+                    break;
                 case 8:
                     ExpedienteUsuario();
                     break;
