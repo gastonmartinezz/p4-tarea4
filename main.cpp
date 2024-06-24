@@ -74,8 +74,8 @@ void displayAndProcessMenu()
                 //     eliminarSuscripcion();
                 //     break;
                 case 8:
-                     ExpedienteUsuario();
-                     break;
+                    ExpedienteUsuario();
+                    break;
                 case 9:
                     listaUsuarios();
                     break;
@@ -88,6 +88,7 @@ void displayAndProcessMenu()
                     break;
                 case 13:
                     cargaDatosDePrueba();
+                    AltaProductoTest();
                     break;
                 case 14:
                     Fecha();
