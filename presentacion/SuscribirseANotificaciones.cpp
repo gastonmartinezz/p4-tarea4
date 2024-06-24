@@ -7,6 +7,7 @@
 #include "../include/Vendedor.h"
 #include "../include/Controladores/ControladorUsuario.h"
 #include <string>
+#include <limits>
 
 
 void suscribirseANotificaciones() {
@@ -23,27 +24,20 @@ void suscribirseANotificaciones() {
         std::string nicknameCliente;
         std::string nicknameVendedor;
         vector<DTCliente> clientes = ControladorUsuario->listarClientes();
-        bool clienteRegistrado = false;
-        bool vendedorRegistrado = false;
         vector<DTVendedor> vendedoresNoSuscriptos = {};
+        vector<DTVendedor> vendedoresSuscriptos = {};
 
         cout << "Ingrese nickname del cliente" << endl;;
         cin >> nicknameCliente;
 
-        for (auto it = clientes.begin(); it != clientes.end(); ++it) {
-            if(!clienteRegistrado) {
-                clienteRegistrado = (it->getNickname() == nicknameCliente);
-            }
-        }
-        
-        if(!clienteRegistrado) {
+        Cliente* cliente = ControladorUsuario->findCliente(nicknameCliente);
+
+        if(cliente == nullptr) {
             throw invalid_argument("El cliente no esta registrado");
         }
 
-        Cliente* cliente = ControladorUsuario->findCliente(nicknameCliente);
         vendedoresNoSuscriptos = ControladorUsuario->obtenerVendedoresNoSuscriptos(cliente);
         
-
         if(vendedoresNoSuscriptos.size() == 0) {
             throw invalid_argument("El cliente esta suscripto a todos los vendedores");
         }
@@ -57,25 +51,35 @@ void suscribirseANotificaciones() {
         cout << "Vendedor al que se quiere suscribir:" << endl;
         cin >> nicknameVendedor;
 
-        for (auto it = vendedoresNoSuscriptos.begin(); it != vendedoresNoSuscriptos.end(); ++it) {
-            if(!vendedorRegistrado) {
-                vendedorRegistrado = (it->getNickname() == nicknameVendedor);
-            }
-        }
+        Vendedor* vendedor = ControladorUsuario->findVendedor(nicknameVendedor);
 
-        if(!vendedorRegistrado) {
+        if(vendedor == nullptr) {
             throw invalid_argument("No existe vendedor con ese nickname");
         }
 
-        Vendedor* vendedor = ControladorUsuario->findVendedor(nicknameVendedor);
         ControladorUsuario->agregarSuscripcion(cliente, vendedor);
+
+        cout << "----------------------" << endl;
+        cout << "SUSCRIPTO" << endl;
+        cout << "----------------------" << endl;
+
+        vendedoresSuscriptos = ControladorUsuario->obtenerVendedoresSuscriptos(cliente);
+
+        cout << "Vendedores a los que el cliente esta suscripto:" << endl;  
+        for (auto it = vendedoresSuscriptos.begin(); it != vendedoresSuscriptos.end(); ++it) {
+            cout << it->getNickname() << endl;
+        }
 
 
     }
 
-    catch (const std::exception &e)
+     catch (const std::invalid_argument &e)
     {
-        cerr << e.what() << '\n';
+        std::cerr << "Error: " << e.what() << std::endl;
     };
+
+    std::cout << "Presiona Enter para continuar...";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    std::cin.get();
 
 }

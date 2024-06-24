@@ -114,8 +114,8 @@ public:
     void mostrarYEliminarNotificacion(const string &nickname);
     void eliminarNotificaciones(const string &nickname);
     vector<string> getNotificaciones(const string &nickname);
-    vector<Vendedor> obtenerVendedoresSuscritos(const string &clienteNickname);
-    void eliminarSuscripcion(const string &vendedorNickname, const string &clienteNickname);
+    vector<DTVendedor> obtenerVendedoresSuscriptos(Cliente *cliente);
+    void eliminarSuscripcion(Cliente *cliente, Vendedor *vendedor);
     void registrarCompra(const Compra &compra);
     Usuario *findUsuario(string nickname);
     Vendedor *findVendedor(std::string nickname);

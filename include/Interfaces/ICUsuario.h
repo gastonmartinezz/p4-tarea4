@@ -41,8 +41,8 @@ public:
     virtual void mostrarYEliminarNotificacion(const std::string &nickname) = 0;
     virtual void eliminarNotificaciones(const std::string &nickname) = 0;
     virtual std::vector<std::string> getNotificaciones(const std::string &nickname) = 0;
-    virtual std::vector<Vendedor> obtenerVendedoresSuscritos(const std::string &clienteNickname) = 0;
-    virtual void eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname) = 0;
+    virtual std::vector<DTVendedor> obtenerVendedoresSuscriptos(Cliente *cliente) = 0;
+    virtual void eliminarSuscripcion(Cliente *cliente, Vendedor *vendedor) = 0;
     virtual void registrarCompra(const Compra &compra) = 0;
     virtual Usuario *findUsuario(string nickname) = 0;
     virtual Cliente *findCliente(std::string nickname) = 0;

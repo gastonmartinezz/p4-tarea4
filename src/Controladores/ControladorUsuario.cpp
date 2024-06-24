@@ -217,10 +217,8 @@ void ControladorUsuario::eliminarComentarioYRespuestas(int comentarioId)
 
 void ControladorUsuario::agregarSuscripcion(Cliente *cliente, Vendedor *vendedor)
 {
-    if (!(vendedor->getSuscriptores().count(cliente) > 0))
-    {
-        vendedor->getSuscriptores().insert(cliente);
-    }
+    set<Cliente *>& suscriptores = vendedor->getSuscriptores();
+    suscriptores.insert(cliente);
 }
 
 bool ControladorUsuario::validarPassword(const string &nickname, const string &password)
@@ -250,14 +248,15 @@ void ControladorUsuario::eliminarLinkComentario(int comentarioId)
 
 vector<DTVendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos(Cliente *cliente)
 {
-    vector<DTVendedor> vendedores = {};
     vector<DTVendedor> vendedoresNoSuscriptos = {};
 
-    for (auto it = vendedores.begin(); it != vendedores.end(); ++it)
-    {
-        if (!(it->getSuscriptores().count(cliente) > 0))
-        {
-            vendedoresNoSuscriptos.push_back(*it);
+    for (auto it = ListaVendedores.begin(); it != ListaVendedores.end(); ++it)
+    {   
+        auto suscriptores = it->second->getSuscriptores();
+        auto cl = suscriptores.find(cliente);
+
+        if (cl == suscriptores.end()) {
+            vendedoresNoSuscriptos.push_back(it->second->toDataType());
         }
     }
 
@@ -286,15 +285,27 @@ vector<std::string> ControladorUsuario::getNotificaciones(const string &nickname
     return std::vector<std::string>(); // Valor de retorno por defecto, cambiar según implementación
 }
 
-vector<Vendedor> ControladorUsuario::obtenerVendedoresSuscritos(const string &clienteNickname)
+vector<DTVendedor> ControladorUsuario::obtenerVendedoresSuscriptos(Cliente *cliente)
 {
-    // Implementación para obtener vendedores suscritos
-    return std::vector<Vendedor>(); // Valor de retorno por defecto, cambiar según implementación
+    vector<DTVendedor> vendedoresSuscriptos = {};
+
+    for (auto it = ListaVendedores.begin(); it != ListaVendedores.end(); ++it)
+    {   
+        auto suscriptores = it->second->getSuscriptores();
+        auto cl = suscriptores.find(cliente);
+
+        if (cl != suscriptores.end()) {
+            vendedoresSuscriptos.push_back(it->second->toDataType());
+        }
+    }
+
+    return vendedoresSuscriptos;
 }
 
-void ControladorUsuario::eliminarSuscripcion(const std::string &vendedorNickname, const std::string &clienteNickname)
+void ControladorUsuario::eliminarSuscripcion(Cliente *cliente, Vendedor *vendedor)
 {
-    // Implementación para eliminar suscripción
+    set<Cliente *>& suscriptores = vendedor->getSuscriptores();
+    suscriptores.erase(cliente);
 }
 
 void ControladorUsuario::registrarCompra(const Compra &compra)

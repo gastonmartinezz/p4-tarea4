@@ -16,7 +16,7 @@ string Vendedor::getCodigoRut()
     return codigoRut;
 }
 
-set<Cliente *> Vendedor::getSuscriptores()
+set<Cliente *>& Vendedor::getSuscriptores()
 {
     return suscriptores;
 }
