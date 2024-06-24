@@ -38,6 +38,7 @@ public:
     virtual void eliminarLinkComentario(int comentarioId) = 0;
     virtual std::vector<DTVendedor> obtenerVendedoresNoSuscriptos(Cliente *cliente) = 0;
     virtual vector<DTNotificacion> getNotificaciones(Cliente *cliente) = 0;
+    virtual void enviarNotificacion(Promocion *promo, Vendedor *vendedor) = 0;
     virtual void mostrarYEliminarNotificacion(DTNotificacion notificacion, Cliente *cliente) = 0;
     virtual std::vector<DTVendedor> obtenerVendedoresSuscriptos(Cliente *cliente) = 0;
     virtual void eliminarSuscripcion(Cliente *cliente, Vendedor *vendedor) = 0;

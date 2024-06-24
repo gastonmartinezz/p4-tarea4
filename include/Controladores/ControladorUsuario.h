@@ -111,6 +111,7 @@ public:
     void eliminarLinkComentario(int comentarioId);
     void agregarSuscripcion(Cliente *cliente, Vendedor *vendedor);
     vector<DTNotificacion> getNotificaciones(Cliente *cliente);
+    void enviarNotificacion(Promocion *promo, Vendedor *vendedor);
     void mostrarYEliminarNotificacion(DTNotificacion notificacion, Cliente *cliente);
     vector<DTVendedor> obtenerVendedoresSuscriptos(Cliente *cliente);
     void eliminarSuscripcion(Cliente *cliente, Vendedor *vendedor);

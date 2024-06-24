@@ -212,6 +212,7 @@ void crearPromocion() {
 
         ctrlProducto->setPromocionesSistema(promocionesTotales);
         ctrlProducto->setPromocionesSistemaVigentes(promocionesVigentes);
+        ctrlUsuario->enviarNotificacion(promoNueva, vendedorPromocion);
 
         DTVendedor dtVen = promoNueva->getVendedor()->toDataType();
 

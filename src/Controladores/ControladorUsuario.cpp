@@ -256,7 +256,7 @@ vector<DTVendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos(Cliente *cl
         auto cl = suscriptores.find(cliente);
 
         if (cl == suscriptores.end()) {
-            vendedoresNoSuscriptos.push_back(it->second->toDataType());
+            vendedoresNoSuscriptos.push_back(it->second->toDataType()); 
         }
     }
 
@@ -266,6 +266,15 @@ vector<DTVendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos(Cliente *cl
 vector<DTNotificacion> ControladorUsuario::getNotificaciones(Cliente *cliente)
 {
     return cliente->getNotificaciones();
+}
+
+void ControladorUsuario::enviarNotificacion(Promocion *promo, Vendedor *vendedor) {
+    set<Cliente *> suscriptores = vendedor->getSuscriptores();
+    DTNotificacion nuevaNotificacion = DTNotificacion(vendedor, promo); 
+
+    for (auto it = suscriptores.begin(); it != suscriptores.end(); ++it) {
+        (*it)->agregarNotificacion(nuevaNotificacion);
+    }
 }
 
 void ControladorUsuario::mostrarYEliminarNotificacion(DTNotificacion notificacion, Cliente *cliente)
