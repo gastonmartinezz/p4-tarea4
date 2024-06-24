@@ -351,8 +351,8 @@ void ControladorUsuario::cargarDatosPrueba()
     DTDireccion direccionJuan("Melo", "Av. 18 de Julio", 456 );
     DTDireccion direccionLaura("Montevideo", "Rondeau ", 1617 );
     DTDireccion direccionNatalia("Salto", "Paysandú", 2021);
-    DTDireccion direccionPablo("Mercedes", "Av. Rivera", 2021);
-    DTDireccion direccionRoberto("Montevideo", "Av. Brasil ", 2021);
+    DTDireccion direccionPablo("Mercedes", "Av. Rivera", 1819);
+    DTDireccion direccionRoberto("Montevideo", "Av. Brasil ", 1011);
     // Continuar con otras direcciones...
 
     // Alta de vendedores
