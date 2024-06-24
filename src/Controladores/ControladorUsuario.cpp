@@ -172,6 +172,8 @@ Usuario *ControladorUsuario::findUsuario(std::string nickname)
     }
 }
 
+
+
 Vendedor *ControladorUsuario::findVendedor(std::string nickname)
 {
     auto it = ListaVendedores.find(nickname);

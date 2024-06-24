@@ -122,6 +122,7 @@ public:
     Cliente *findCliente(std::string nickname);
     //void obtenerProductosDeVendedor(string nickname);
     void cargarDatosPrueba();
+    
 };
 
 #endif // CONTROLADORUSUARIO_H

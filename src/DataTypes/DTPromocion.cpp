@@ -31,3 +31,11 @@ ostream &operator<<(ostream &os, DTPromocion dtPromocion)
     os << "Descuento: " << dtPromocion.getDescuento() << ", Nombre: " << dtPromocion.getNombre() << ", Descripción: " << dtPromocion.getDescripcion() << ", Fecha de Vencimiento: " << fecha.toString();
     return os;
 }
+
+void DTPromocion::setVendedor(Vendedor* vendedor) {
+    this->vendedor = vendedor;
+}
+
+Vendedor* DTPromocion::getVendedor() {
+    return vendedor;
+}

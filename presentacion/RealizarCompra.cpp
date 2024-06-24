@@ -108,69 +108,69 @@ void RealizarCompra()
         // Copia del carrito para manipular durante las promociones
         vector<DTCarro> copia_carrito = carrito;
 
-        // Procesando las promociones
-        for (auto &promo : promociones)
-        {
-            vector<Contenido *> contenidosPromo = promo->getProductosDentroDePromo();
-            map<Producto *, int> productosNecesarios;
+        // // Procesando las promociones
+        // for (auto &promo : promociones)
+        // {
+        //     vector<Contenido *> contenidosPromo = promo->getProductosDentroDePromo();
+        //     map<Producto *, int> productosNecesarios;
 
-            // Construir un mapa de los productos necesarios para la promoción
-            for (auto &contenido : contenidosPromo)
-            {
-                productosNecesarios[contenido->getProducto()] = contenido->getCantMinima();
-            }
+        //     // Construir un mapa de los productos necesarios para la promoción
+        //     for (auto &contenido : contenidosPromo)
+        //     {
+        //         productosNecesarios[contenido->getProducto()] = contenido->getCantMinima();
+        //     }
 
-            // Verificar si todos los productos necesarios están en el carrito en la cantidad adecuada
-            bool promoAplicable = true;
-            map<Producto *, int> productosUsados;
-            for (auto &prodNecesario : productosNecesarios)
-            {
-                bool encontrado = false;
-                for (auto &itemCarrito : copia_carrito)
-                {
-                    Producto *prodEnCarrito = ctrlProducto->getProducto(itemCarrito.getProd());
-                    if (prodEnCarrito == prodNecesario.first && itemCarrito.getCantidad() >= prodNecesario.second)
-                    {
-                        encontrado = true;
-                        productosUsados[prodEnCarrito] = prodNecesario.second;
-                        break;
-                    }
-                }
-                if (!encontrado)
-                {
-                    promoAplicable = false;
-                    productosUsados.clear();
-                    break;
-                }
-            }
+        //     // Verificar si todos los productos necesarios están en el carrito en la cantidad adecuada
+        //     bool promoAplicable = true;
+        //     map<Producto *, int> productosUsados;
+        //     for (auto &prodNecesario : productosNecesarios)
+        //     {
+        //         bool encontrado = false;
+        //         for (auto &itemCarrito : copia_carrito)
+        //         {
+        //             Producto *prodEnCarrito = ctrlProducto->getProducto(itemCarrito.getProd());
+        //             if (prodEnCarrito == prodNecesario.first && itemCarrito.getCantidad() >= prodNecesario.second)
+        //             {
+        //                 encontrado = true;
+        //                 productosUsados[prodEnCarrito] = prodNecesario.second;
+        //                 break;
+        //             }
+        //         }
+        //         if (!encontrado)
+        //         {
+        //             promoAplicable = false;
+        //             productosUsados.clear();
+        //             break;
+        //         }
+        //     }
 
-            // Si la promoción es aplicable, procesarla y calcular el descuento
-            if (promoAplicable)
-            {
-                cout << "Aplicando promoción: " << promo->getNombre() << endl;
-                float precioPromocion = 0.0;
-                for (auto &productoUsado : productosUsados)
-                {
-                    auto it = remove_if(copia_carrito.begin(), copia_carrito.end(), [&](DTCarro &item)
-                                        { return item.getProd() == productoUsado.first->getId() && item.getCantidad() >= productoUsado.second; });
-                    copia_carrito.erase(it, copia_carrito.end());
+        //     // Si la promoción es aplicable, procesarla y calcular el descuento
+        //     if (promoAplicable)
+        //     {
+        //         cout << "Aplicando promoción: " << promo->getNombre() << endl;
+        //         float precioPromocion = 0.0;
+        //         for (auto &productoUsado : productosUsados)
+        //         {
+        //             auto it = remove_if(copia_carrito.begin(), copia_carrito.end(), [&](DTCarro &item)
+        //                                 { return item.getProd() == productoUsado.first->getId() && item.getCantidad() >= productoUsado.second; });
+        //             copia_carrito.erase(it, copia_carrito.end());
 
-                    precioPromocion += productoUsado.first->getPrecio() * productoUsado.second;
-                }
-                precioPromocion *= (1 - promo->getDescuento());
-                precioTotal += precioPromocion;
-            }
-        }
+        //             precioPromocion += productoUsado.first->getPrecio() * productoUsado.second;
+        //         }
+        //         precioPromocion *= (1 - promo->getDescuento());
+        //         precioTotal += precioPromocion;
+        //     }
+        // }
 
-        // Sumar precios de productos restantes en el carrito
-        for (auto &itemCarrito : copia_carrito)
-        {
-            Producto *prodEnCarrito = ctrlProducto->getProducto(itemCarrito.getProd());
-            precioTotal += prodEnCarrito->getPrecio() * itemCarrito.getCantidad();
-        }
+        // // Sumar precios de productos restantes en el carrito
+        // for (auto &itemCarrito : copia_carrito)
+        // {
+        //     Producto *prodEnCarrito = ctrlProducto->getProducto(itemCarrito.getProd());
+        //     precioTotal += prodEnCarrito->getPrecio() * itemCarrito.getCantidad();
+        // }
 
-        // Imprimir el precio total después de aplicar todas las promociones y sumar los productos restantes
-        cout << "Precio total con descuentos y productos restantes: $" << precioTotal << endl;
+        // // Imprimir el precio total después de aplicar todas las promociones y sumar los productos restantes
+        // cout << "Precio total con descuentos y productos restantes: $" << precioTotal << endl;
     }
     catch (const std::exception &e)
     {
