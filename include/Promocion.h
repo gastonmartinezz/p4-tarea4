@@ -12,6 +12,7 @@ using namespace std;
 
 class Vendedor;
 class Contenido;
+class DTPromocion;
 
 class Promocion {
 private:

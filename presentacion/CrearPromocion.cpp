@@ -11,6 +11,7 @@
 #include "../include/Controladores/ControladorUsuario.h"
 #include "../include/Fabrica.h"
 #include "../include/CasosDeUso.h"
+#include <bits/stdc++.h>
 using namespace std;
 
 void crearPromocion() {
@@ -73,7 +74,6 @@ void crearPromocion() {
         }
 
         fechaVencimiento = DTFecha(dia, mes, anio);
-        fechaVencimiento.toString();
 
         // Muestro los datos de los vendedores para que el administrador elija uno con el nickname.
         vector<DTUsuario> vendedores = ctrlUsuario->listarUsuarios();
@@ -88,11 +88,13 @@ void crearPromocion() {
             cout << vendedores[i].getNombre() << endl;
         }
         
-        cout << "llego aca2" << endl;
         // El usuario selecciona un vendedor de la lista por su nickname.
         string nickVendedor;
         cout << "Ingrese el nickname del vendedor para asignarle la promoción: " << endl;
         cin >> nickVendedor;
+
+        //Guardo el objeto del vendedor para asignarle a la promocion luego.
+        Vendedor* vendedorPromocion = ctrlUsuario->findVendedor(nickVendedor);
 
         ctrlProducto->listarProductosVendedor(nickVendedor, ctrlUsuario->listaVendedor());
 
@@ -103,23 +105,38 @@ void crearPromocion() {
 
         cout << "Deseas agregar un producto a la promoción? (si/no)" << endl;
         cin >> respuesta;
+
         transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
 
-        vector<Contenido *> productosPromocion;
-        bool seguir = true;
+        if (respuesta == "SI" || respuesta == "S") { 
+            ctrlProducto->listarProductosVendedor(nickVendedor, ctrlUsuario->listaVendedor());
+        } else {
+            cout << "No se ingresarán productos a la promoción y se eliminará esta misma." << endl;
+            return;
+        }
+        
 
+        //Vector de Contenido para ir guardando los productos a la Promoción
+        vector<Contenido *> productosPromocion;
+
+        //Mecanismo para ir agregando productos a la promoción
+        bool seguir = true;
         while (seguir) {
             cout << "Ingrese el Id del producto que desea agregar a la promoción: " << endl;
             cin >> idProducto;
 
             cout << "Ingrese la cantidad mínima de ese producto para que la promoción sea válida: " << endl;
             cin >> cantMin;
+            
+            bool existeProductoEnPromo = ctrlProducto->productoEnPromoExistente(idProducto);
 
-            Contenido* contenido = new Contenido(ctrlProducto->getProducto(idProducto),cantMin);
-
-            //Contenido *conte = ctrlProducto->seleccionarProductosParaPromocion(ctrlUsuario->listaVendedor(), nickVendedor, ctrlProducto->getListaProductos()[idProducto], cantMin, idProducto);
-            productosPromocion.push_back(contenido);
-
+            if (!(existeProductoEnPromo)) {
+                Contenido* contenido = new Contenido(ctrlProducto->getProducto(idProducto),cantMin);
+                productosPromocion.push_back(contenido);
+            } else {
+                cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
+            }
+            
             cout << "Desea agregar otro producto a la promoción? (si/no)" << endl;
             cin >> respuesta;
 
@@ -132,12 +149,22 @@ void crearPromocion() {
 
         Promocion *promoNueva = new Promocion(descuento,nombre,desc,fechaVencimiento);
         promoNueva->setProductosDentroDePromo(productosPromocion);
+        promoNueva->setVendedor(vendedorPromocion);
 
         ctrlProducto->getpromocionesSistemaVigentes().push_back(promoNueva);
         ctrlProducto->getpromocionesSistema().push_back(promoNueva);
 
-        cout << "La promoción a sido ingresada con exito" << endl;
+        cout << "Promoción ingresada: " << endl;
 
+        DTPromocion promo = DTPromocion(promoNueva->getDescuento(), promoNueva->getNombre(), promoNueva->getDescripcion(), fechaVencimiento);
+        cout << "Nombre de Promocion: " << promo.getNombre() << endl;
+        cout << "Descripción de Promoción: " << promo.getDescripcion() << endl;
+        cout << "Descuento de Promoción: " << promo.getDescuento() << "%" << endl;
+        cout << "Fecha de Vencimiento de la Promoción: " << fechaVencimiento.toString() << endl;
+        cout << "Vendedor de la promoción: " << promoNueva->getVendedor()->getNickname() << endl;
+        cout << "Productos dentro de la Promoción: " << endl;
+        ctrlProducto->imprimirProductosDentroDePromo(promoNueva->getProductosDentroDePromo());
+        cout << "La promoción fue ingresada con éxito." << endl;
      }
     catch (const std::exception &e) {
         cerr << e.what() << '\n';

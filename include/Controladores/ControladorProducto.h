@@ -76,7 +76,6 @@ public:
     void ingresarPromocionASistema(Promocion promo);
     void AddComentario(Comentario *coment, int producto);
     void incrementarContador();
-    Contenido* seleccionarProductosParaPromocion(vector<DTVendedor>lista, string nickname, Producto* prod, int cant_minima, int id);
     vector<Promocion*> getpromocionesSistemaVigentes();
     vector<Promocion*> getpromocionesSistema();
     //Contenido* seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima); 
@@ -85,10 +84,11 @@ public:
     //map<int, Contenido*> getPromocionesSistema();
     //map<int, Contenido*> getPromocionesSistemaVigentes();
     //void ingresarPromocionVigente(Promocion* promo, int cant_minima, map<int, Contenido*> promocionesSistemaVigentes);
-    //void obtenerPromocionesActivas(DTFecha fecha);
+    void obtenerPromocionesActivas(DTFecha fecha);
     bool productoEnPromoExistente(int id);
-    //bool compararFechas(DTFecha fecha1, DTFecha fecha2);
-    //void seleccionarPromocion(string nombre);
+    bool compararFechas(DTFecha fecha1, DTFecha fecha2);
+    void seleccionarPromocion(string nombre);
+    void imprimirProductosDentroDePromo(vector<Contenido*>Promocion);
 };
 
 #endif // CONTROLADORPRODUCTO_H

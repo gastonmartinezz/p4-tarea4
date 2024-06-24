@@ -24,13 +24,18 @@ void consultarProducto() {
         producto.setPrecio(prod->getPrecio());
         producto.setStock(prod->getStock());
         producto.setDescripcion(prod->getDescripcion());
+        producto.setVendedor(prod->getVendedor()->getNickname());
+
+        cout << "Producto Consultado: " << endl;
+        cout << "--------------------" << endl;
 
         cout << "Nombre: " << producto.getNombre() << endl;
         cout << "Id: " << producto.getId() << endl;
         cout << "Precio: " << producto.getPrecio() << endl;
         cout << "Stock: " << producto.getNombre() << endl;
         cout << "Descripcion: " << producto.getDescripcion()<< endl;
-        //Falta agregar para que imprima el vendedor tambien
+        cout << "Vendedor del Producto: " << producto.getVendedor() << endl;
+        
     } catch (const std::invalid_argument &e)
     {
         std::cerr << "Error: " << e.what() << std::endl;
