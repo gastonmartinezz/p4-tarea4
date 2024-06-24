@@ -182,38 +182,24 @@ void ControladorProducto::incrementarContador() {
 
 //Funcion para comparar fechas
 bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
-     if (fecha1.getAnio() > fecha2.getAnio()) {
-         return true;
-
-    } else if (fecha1.getAnio() < fecha2.getAnio()) {
-        return false;
-
-    } else {
-        if (fecha1.getMes() > fecha2.getMes()) {
-            return true;
-        } else if (fecha1.getMes() < fecha2.getMes()) {
-            return false;
-        } else {
-            return fecha1.getDia() > fecha2.getDia();
-        }
-    }
+    //Retorna true si fecha2 > fecha1
+    if (fecha1.getAnio() < fecha2.getAnio()) return true;
+    if (fecha1.getAnio() > fecha2.getAnio()) return false;
+    if (fecha1.getMes() < fecha2.getMes()) return true;
+    if (fecha1.getMes() > fecha2.getMes()) return false;
+    if (fecha1.getDia() < fecha2.getDia()) return true;
+    if (fecha1.getDia() > fecha2.getDia()) return false;
+    return false;
 }
 
 void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
-    for (auto f: promocionesSistema) {
-        if (compararFechas(f->getFechaVencimiento(), fecha)) {
-            bool found = false;
-            for (auto p : promocionesSistemaVigentes) {
-                if (p->getNombre() == f->getNombre()) {
-                    found = true;
-                    break;
-                }
-            }
+    promocionesSistemaVigentes.clear();
 
-            // Si no está en la lista, la agregamos
-            if (!found) {
-                promocionesSistemaVigentes.push_back(f);
-            }
+    for (auto f: promocionesSistema) {
+        if (compararFechas(fecha, f->getFechaVencimiento())) {
+            vector<Promocion*> promocionesVigentes = getpromocionesSistemaVigentes();
+            promocionesVigentes.push_back(f);
+            setPromocionesSistemaVigentes(promocionesVigentes);
         }
     }
 

@@ -182,6 +182,7 @@ void crearPromocion() {
                 productosPromocion.push_back(contenido);
             } else {
                 cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl;
+                return;
             }
             
             cout << "Desea agregar otro producto a la promoción? (si/no)" << endl;
