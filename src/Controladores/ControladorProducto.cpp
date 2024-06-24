@@ -233,7 +233,18 @@ bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
 void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
     for (auto f: promocionesSistema) {
         if (compararFechas(f->getFechaVencimiento(), fecha)) {
-            promocionesSistemaVigentes.push_back(f);
+            bool found = false;
+            for (auto p : promocionesSistemaVigentes) {
+                if (p->getNombre() == f->getNombre()) {
+                    found = true;
+                    break;
+                }
+            }
+
+            // Si no está en la lista, la agregamos
+            if (!found) {
+                promocionesSistemaVigentes.push_back(f);
+            }
         }
     }
 
