@@ -27,6 +27,11 @@ std::string DTVendedor::getNickname()
     return nickname;
 }
 
+DTFecha DTVendedor::getfechaNacimiento()
+{
+    return fechaNacimiento;
+}
+
 DTVendedor::~DTVendedor() {}
 
 ostream &operator<<(ostream &os, DTVendedor dtVendedor)

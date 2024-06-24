@@ -34,6 +34,7 @@ public:
     set<Cliente *> getSuscriptores();
     vector<Producto *> getProductos();
     vector<Promocion *> getPromociones();
+    DTFecha getfechaNacimiento();
     ~DTVendedor();
 };
 

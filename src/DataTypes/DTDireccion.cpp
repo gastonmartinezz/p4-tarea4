@@ -43,6 +43,11 @@ DTDireccion::DTDireccion(std::string ciudad_residencia, std::string calle, int n
 std::string DTDireccion::getCiudadResidencia() const { return ciudad_residencia; }
 std::string DTDireccion::getCalle() const { return calle; }
 int DTDireccion::getNumeroPuerta() const { return numero_puerta; }
+std::string DTDireccion::toString() const
+{
+    return getCiudadResidencia() + "-" + getCalle() + " : " + std::to_string(getNumeroPuerta());
+    // return std::to_string(dia) + "/" + std::to_string(mes) + "/" + std::to_string(anio);
+}
 
 // Destructor
 DTDireccion::~DTDireccion() {}

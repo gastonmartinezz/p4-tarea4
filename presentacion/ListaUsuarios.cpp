@@ -37,6 +37,8 @@ void listaUsuarios()
         {
             cout << i << "-";
             cout << clientes[i].getNickname() << endl;
+            cout << clientes[i].getFechaNacimiento().toString() << endl;
+            cout << clientes[i].getDireccion().toString() << endl;
         }
         vector<DTVendedor> vendedores = CUsuario->listaVendedor();
 
@@ -53,6 +55,8 @@ void listaUsuarios()
         {
             cout << i << "-";
             cout << vendedores[i].getNickname() << endl;
+            cout << vendedores[i].getfechaNacimiento().toString() << endl;
+            cout << vendedores[i].getRut() << endl;
         }
     }
 
