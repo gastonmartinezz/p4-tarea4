@@ -12,20 +12,18 @@ class Contenido
 {
 private:
     Producto *prod;
-    Promocion *promo;
+    int cantidad_minima;
 
 public:
-    int cantidad_minima;
-    Contenido(Producto *prod, Promocion *promo);
+    
+    Contenido(Producto *prod, int cantidad_minima);
     ~Contenido();
 
     Contenido();
     void setProducto(Producto *produ);
-    void setPromocion(Promocion *promoc);
 
     int getCantMinima();
     Producto *getProducto();
-    Promocion *getPromocion();
 
     void setCantMinima(int cantMinima);
 };

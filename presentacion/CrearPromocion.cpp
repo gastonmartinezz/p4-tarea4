@@ -115,8 +115,10 @@ void crearPromocion() {
             cout << "Ingrese la cantidad mínima de ese producto para que la promoción sea válida: " << endl;
             cin >> cantMin;
 
-            Contenido *conte = ctrlProducto->seleccionarProductosParaPromocion(ctrlUsuario->listaVendedor(), nickVendedor, ctrlProducto->getListaProductos()[idProducto], cantMin, idProducto);
-            productosPromocion.push_back(conte);
+            Contenido* contenido = new Contenido(ctrlProducto->getProducto(idProducto),cantMin);
+
+            //Contenido *conte = ctrlProducto->seleccionarProductosParaPromocion(ctrlUsuario->listaVendedor(), nickVendedor, ctrlProducto->getListaProductos()[idProducto], cantMin, idProducto);
+            productosPromocion.push_back(contenido);
 
             cout << "Desea agregar otro producto a la promoción? (si/no)" << endl;
             cin >> respuesta;
@@ -128,15 +130,14 @@ void crearPromocion() {
             }
         }
 
-        Promocion *promoNueva = new Promocion();
-        promoNueva->setDescripcion(desc);
-        promoNueva->setNombre(nombre);
-        promoNueva->setDescuento(descuento);
-        promoNueva->setFechaVencimiento(fechaVencimiento);
+        Promocion *promoNueva = new Promocion(descuento,nombre,desc,fechaVencimiento);
         promoNueva->setProductosDentroDePromo(productosPromocion);
 
         ctrlProducto->getpromocionesSistemaVigentes().push_back(promoNueva);
         ctrlProducto->getpromocionesSistema().push_back(promoNueva);
+
+        cout << "La promoción a sido ingresada con exito" << endl;
+
      }
     catch (const std::exception &e) {
         cerr << e.what() << '\n';
