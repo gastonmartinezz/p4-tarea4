@@ -263,27 +263,19 @@ vector<DTVendedor> ControladorUsuario::obtenerVendedoresNoSuscriptos(Cliente *cl
     return vendedoresNoSuscriptos;
 }
 
-vector<std::string> ControladorUsuario::obtenerNotificaciones(const string &nickname)
+vector<DTNotificacion> ControladorUsuario::getNotificaciones(Cliente *cliente)
 {
-    // Implementación para obtener notificaciones
-    return std::vector<std::string>(); // Valor de retorno por defecto, cambiar según implementación
+    return cliente->getNotificaciones();
 }
 
-void ControladorUsuario::mostrarYEliminarNotificacion(const string &nickname)
+void ControladorUsuario::mostrarYEliminarNotificacion(DTNotificacion notificacion, Cliente *cliente)
 {
-    // Implementación para mostrar y eliminar notificación
+    cout << "Notificacion de:" << notificacion.getEmisor()->getNickname() << endl;
+    cout << "Nueva promocion:" << notificacion.getContenido()->getNombre() << endl;
+
+    cliente->eliminarNotificacion();
 }
 
-void ControladorUsuario::eliminarNotificaciones(const string &nickname)
-{
-    // Implementación para eliminar notificaciones
-}
-
-vector<std::string> ControladorUsuario::getNotificaciones(const string &nickname)
-{
-    // Implementación para obtener notificaciones
-    return std::vector<std::string>(); // Valor de retorno por defecto, cambiar según implementación
-}
 
 vector<DTVendedor> ControladorUsuario::obtenerVendedoresSuscriptos(Cliente *cliente)
 {

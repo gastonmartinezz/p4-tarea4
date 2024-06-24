@@ -4,27 +4,24 @@
 #include <iostream>
 #include <string>
 #include <set>
+#include "../include/Vendedor.h"
+#include "../include/Promocion.h"
+
+class Promocion;
+class Vendedor;
 
 using namespace std;
 
 class DTNotificacion {
 private:
-    string emisor; // Vendedor emisor ?
-    string nombre;
-    int id;
-    string texto;
-    set<string> contenido; //set<Producto> contenido?
+    Vendedor *emisor;  
+    Promocion *contenido; 
 
 public:
-    DTNotificacion(string emisor, string nombre, int id, string texto, set<string> contenido);
-    string getEmisor();
-    string getNombre();
-    int getId();
-    string getTexto();
-    set<string> getContenido();
+    DTNotificacion(Vendedor *emisor, Promocion *contenido);
+    Vendedor *getEmisor();
+    Promocion *getContenido();
     ~DTNotificacion();
 };
-
-ostream& operator<<(ostream& os, DTNotificacion dtNotificacion);
 
 #endif // DTNOTIFICACION_H

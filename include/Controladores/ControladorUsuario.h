@@ -110,10 +110,8 @@ public:
     void eliminarComentario(int comentarioId);
     void eliminarLinkComentario(int comentarioId);
     void agregarSuscripcion(Cliente *cliente, Vendedor *vendedor);
-    vector<string> obtenerNotificaciones(const string &nickname);
-    void mostrarYEliminarNotificacion(const string &nickname);
-    void eliminarNotificaciones(const string &nickname);
-    vector<string> getNotificaciones(const string &nickname);
+    vector<DTNotificacion> getNotificaciones(Cliente *cliente);
+    void mostrarYEliminarNotificacion(DTNotificacion notificacion, Cliente *cliente);
     vector<DTVendedor> obtenerVendedoresSuscriptos(Cliente *cliente);
     void eliminarSuscripcion(Cliente *cliente, Vendedor *vendedor);
     void registrarCompra(const Compra &compra);

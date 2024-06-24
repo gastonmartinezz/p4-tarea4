@@ -82,6 +82,9 @@ void displayAndProcessMenu()
                 case 10:
                     suscribirseANotificaciones();
                     break;
+                case 11:
+                    consultaDeNotificaciones();
+                    break;
                 case 12:
                     RealizarCompra();
 

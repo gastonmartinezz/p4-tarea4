@@ -13,7 +13,7 @@ DTDireccion Cliente::getDireccion()
     return direccion;
 }
 
-set<string> Cliente::getNotificaciones()
+vector<DTNotificacion> Cliente::getNotificaciones()
 {
     return notificaciones;
 }
@@ -28,14 +28,14 @@ void Cliente::setDireccion(DTDireccion &direccion)
     this->direccion = direccion;
 }
 
-void Cliente::agregarNotificacion(string &notificacion)
+void Cliente::agregarNotificacion(DTNotificacion &notificacion)
 {
-    notificaciones.insert(notificacion);
+    notificaciones.push_back(notificacion);
 }
 
-void Cliente::eliminarNotificacion(string &notificacion)
+void Cliente::eliminarNotificacion()
 {
-    notificaciones.erase(notificacion);
+    notificaciones.erase(notificaciones.begin());
 }
 
 void Cliente::agregarCompra(Compra *compra)

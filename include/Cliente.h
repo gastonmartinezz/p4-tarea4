@@ -5,6 +5,7 @@
 #include "Compra.h"
 #include "../include/DataTypes/DTCliente.h"
 #include "../include/DataTypes/DTDireccion.h"
+#include "../include/DataTypes/DTNotificacion.h"
 #include "../include/Compra.h"
 #include <vector>
 #include <set>
@@ -13,12 +14,13 @@ using namespace std;
 
 class DTCliente;
 class DTDireccion;
+class DTNotificacion;
 class Compra;
 
 class Cliente : public Usuario {
 private:
     DTDireccion direccion;
-    set<string> notificaciones;
+    vector<DTNotificacion> notificaciones;
     vector<Compra *> compras; // Agregar esta línea para almacenar las compras del cliente
 
 public:
@@ -26,14 +28,14 @@ public:
     ~Cliente();
 
     DTDireccion getDireccion();
-    set<string> getNotificaciones();
+    vector<DTNotificacion> getNotificaciones();
     vector<Compra *> getCompras(); // Agregar este método para obtener las compras
 
     DTCliente toDataType();
 
     void setDireccion(DTDireccion &direccion);
-    void agregarNotificacion(string &notificacion);
-    void eliminarNotificacion(string &notificacion);
+    void agregarNotificacion(DTNotificacion &notificacion);
+    void eliminarNotificacion();
     void agregarCompra(Compra *compra); // Agregar este método para agregar una compra
     void mostrarInformacionCliente();
 };
