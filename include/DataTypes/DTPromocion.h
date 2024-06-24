@@ -5,6 +5,7 @@
 #include <string>
 #include "DTFecha.h"
 #include "../include/Vendedor.h"
+#include "../include/DataTypes/DTVendedor.h"
 using namespace std;
 
 class Vendedor;
@@ -16,6 +17,7 @@ private:
     string descripcion;
     DTFecha fechaVencimiento;
     Vendedor* vendedor;
+
 public:
     DTPromocion(float descuento, string nombre, string descripcion, DTFecha fechaVencimiento);
     float getDescuento();
@@ -24,6 +26,7 @@ public:
     DTFecha getFechaVencimiento();
     Vendedor* getVendedor();
     ~DTPromocion();
+    
 
     void setVendedor(Vendedor* vendedor);
 

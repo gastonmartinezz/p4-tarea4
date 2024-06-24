@@ -18,8 +18,6 @@ Producto *Contenido::getProducto()
     return this->prod;
 }
 
-
-
 void Contenido::setCantMinima(int cantMinima)
 {
     this->cantidad_minima = cantMinima;
@@ -28,4 +26,8 @@ void Contenido::setCantMinima(int cantMinima)
 void Contenido::setProducto(Producto *produ)
 {
     this->prod = produ;
+}
+
+DTContenido Contenido::toDataType() {
+    return DTContenido(getProducto()->toDataType(), getCantMinima());
 }

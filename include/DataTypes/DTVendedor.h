@@ -14,6 +14,7 @@
 
 class Cliente;
 class Promocion;
+class Producto;
 
 using namespace std;
 class DTVendedor

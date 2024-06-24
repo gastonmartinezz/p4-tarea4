@@ -42,7 +42,7 @@ void altaUsuario()
     // ICUsuario* ctrlUsuario = Fabrica::getICUsuario();
     ICUsuario *ctrlUsuario = Fabrica::getICUsuario();
 
-    string nickname, contraseña, codigoRUT, ciudad_residencia, calle;
+    string nickname, contrasenia, codigoRUT, ciudad_residencia, calle;
 
     char tipoUsuario;
     int dia, mes, anio, numero_puerta;
@@ -91,13 +91,13 @@ void altaUsuario()
         fechaNacimiento = DTFecha(dia, mes, anio);
 
         cout << "Contraseña: " << endl;
-        cin >> contraseña;
+        cin >> contrasenia;
         //getline(cin, contraseña);
-        while (contraseña.length() < 6)
+        while (contrasenia.length() < 6)
         {
             std::cout << "Error: La contraseña debe tener al menos 6 caracteres." << std::endl;
             std::cout << "Ingrese contraseña (al menos 6 caracteres): ";
-            std::cin >> contraseña;
+            std::cin >> contrasenia;
         }
 
         std::cout << "¿Es cliente o vendedor? (C/V): ";
@@ -125,7 +125,7 @@ void altaUsuario()
 
             direccion = DTDireccion(ciudad_residencia, calle, numero_puerta);
 
-            ctrlUsuario->confirmarAltaCliente(nickname, contraseña, fechaNacimiento, direccion);
+            ctrlUsuario->confirmarAltaCliente(nickname, contrasenia, fechaNacimiento, direccion);
         }
 
         else if (tipoUsuario == 'V' || tipoUsuario == 'v')
@@ -139,7 +139,7 @@ void altaUsuario()
                 std::cin >> codigoRUT;
             }
 
-            ctrlUsuario->confirmarAltaVendedor(nickname, contraseña, fechaNacimiento, codigoRUT);
+            ctrlUsuario->confirmarAltaVendedor(nickname, contrasenia, fechaNacimiento, codigoRUT);
             Vendedor *vend = ctrlUsuario->findVendedor(nickname);
 
             std::cout << vend->getNickname() << endl;

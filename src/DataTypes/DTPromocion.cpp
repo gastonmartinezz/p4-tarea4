@@ -32,7 +32,7 @@ ostream &operator<<(ostream &os, DTPromocion dtPromocion)
     return os;
 }
 
-void DTPromocion::setVendedor(Vendedor* vendedor) {
+void DTPromocion::setVendedor(Vendedor* vendedor) { 
     this->vendedor = vendedor;
 }
 

@@ -18,6 +18,7 @@
 #include "../include/DataTypes/DTVendedor.h"
 #include "../Interfaces/ICProductos.h"
 #include "../include/Categoria.h"
+#include "../include/DataTypes/DTContenido.h"
 using namespace std;
 
 class Producto;
@@ -46,14 +47,12 @@ public:
     static ControladorProducto *getInstance();
 
     // Métodos del diagrama UML
-    vector<DTProducto> listarProductos2();
     Producto* getProducto(int idProducto);
     map<int, Producto*> getListaProductos();
+    vector<DTProducto> listarProductos2();
     void listarProductos(); // es un void ya que es hacer 'cout'
     void agregarALaLista(int id,Producto* prod);
-    void confirmarAltaPromocion();
-    void ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen);
-    void listarProductosVendedor(string nickname, std::vector<DTVendedor> lista);
+    void listarProductosVendedor(string nickname, vector<DTVendedor> lista);
     void eliminarLinkComentario(int comentarioId);
     void agregarProducto(const Producto &producto);
     void ponerProductosLibres();
@@ -68,25 +67,14 @@ public:
     void desplegarCompra(int compraId) const;
     DTFecha getFecha();
     void setFecha(DTFecha fecha);
-
     int getContador();
     void setContador(int valorContador);
-    
-    //void obtenerProductosDeVendedor(string nickname);
-    void ingresarPromocionASistema(Promocion promo);
     void AddComentario(Comentario *coment, int producto);
     void incrementarContador();
     vector<Promocion*> getpromocionesSistemaVigentes();
     vector<Promocion*> getpromocionesSistema();
     void setPromocionesSistemaVigentes(vector<Promocion*> promoSisV);
     void setPromocionesSistema(vector<Promocion*> promoSis);
-
-    //Contenido* seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima); 
-
-    //map<int, Producto*> getListaProductos();
-    //map<int, Contenido*> getPromocionesSistema();
-    //map<int, Contenido*> getPromocionesSistemaVigentes();
-    //void ingresarPromocionVigente(Promocion* promo, int cant_minima, map<int, Contenido*> promocionesSistemaVigentes);
     void obtenerPromocionesActivas(DTFecha fecha);
     bool productoEnPromoExistente(int id);
     bool compararFechas(DTFecha fecha1, DTFecha fecha2);

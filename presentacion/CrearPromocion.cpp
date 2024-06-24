@@ -11,6 +11,7 @@
 #include "../include/Controladores/ControladorUsuario.h"
 #include "../include/Fabrica.h"
 #include "../include/CasosDeUso.h"
+#include "../include/DataTypes/DTContenido.h"
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -212,6 +213,8 @@ void crearPromocion() {
         ctrlProducto->setPromocionesSistema(promocionesTotales);
         ctrlProducto->setPromocionesSistemaVigentes(promocionesVigentes);
 
+        DTVendedor dtVen = promoNueva->getVendedor()->toDataType();
+
         cout << "Promoción ingresada: " << endl;
 
         DTPromocion promo = DTPromocion(promoNueva->getDescuento(), promoNueva->getNombre(), promoNueva->getDescripcion(), fechaVencimiento);
@@ -219,15 +222,17 @@ void crearPromocion() {
         cout << "Descripción de Promoción: " << promo.getDescripcion() << endl;
         cout << "Descuento de Promoción: " << promo.getDescuento() << "%" << endl;
         cout << "Fecha de Vencimiento de la Promoción: " << fechaVencimiento.toString() << endl;
-        cout << "Vendedor de la promoción: " << promoNueva->getVendedor()->getNickname() << endl;
+
+        cout << "Vendedor de la promoción: " << dtVen.getNickname() << endl;
         cout << "Productos dentro de la Promoción: " << endl;
         ctrlProducto->imprimirProductosDentroDePromo(promoNueva->getProductosDentroDePromo());
         cout << "La promoción fue ingresada con éxito." << endl;
-    } catch (const std::exception &e) {
+        cout << "-------------------------------------" << endl;
+    } catch (const exception &e) {
         cerr << e.what() << '\n';
     };
 
     std::cout << "Presiona Enter para continuar...";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-    std::cin.get(); // Espera que el usuario presione Enter 
+    std::cin.get();
 }

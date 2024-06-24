@@ -71,16 +71,6 @@ vector<DTProducto> ControladorProducto::listarProductos2()
     return aux;
 }
 
-void ControladorProducto::confirmarAltaPromocion()
-{
-    // Implementación para confirmar alta de promoción
-}
-
-void ControladorProducto::ingresarDatosPromocion(const string &nombre, float descuento, const DTFecha &fechaVen)
-{
-    // Implementación para ingresar datos de promoción
-}
-
 void ControladorProducto::listarProductosVendedor(string nickname, vector<DTVendedor> lista) {
     for (vector<DTVendedor>::size_type i = 0; i < lista.size(); ++i) {
         if (nickname == lista[i].getNickname()) {
@@ -190,27 +180,6 @@ void ControladorProducto::incrementarContador() {
     contador_id_producto++;
 }
 
-/* int ControladorProducto::getContador()
-{
-    return contador_id_producto;
-}; */
-
-// void obtenerProductosDeVendedor(string nickname) {
-//     transform(nickname.begin(), nickname.end(), nickname.begin(), ::toupper);
-
-//     for (auto p: vendedoresSistema) {
-//         string nicknameVendedorTemporal = p->getNickname();
-//         transform(nicknameVendedorTemporal.begin(), nicknameVendedorTemporal.end(), nicknameVendedorTemporal.begin(), ::toupper);
-
-//         if (nickname == nicknameVendedorTemporal) {
-//             for (auto prod: p->getProductos()) {
-//                 cout << prod.getId() << endl;
-//                 cout << prod.getNombre() << endl;
-//             }
-//         }
-//     }
-// }
-
 //Funcion para comparar fechas
 bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
      if (fecha1.getAnio() > fecha2.getAnio()) {
@@ -260,35 +229,7 @@ void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
 }
 
 void ControladorProducto::seleccionarPromocion(string nombre) {
-/*     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
-
-    for (auto promo: promocionesSistemaVigentes) {
-        string nombrePromocion = promo->getNombre();
-
-        transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
-
-        if (nombre == nombrePromocion) {
-            DTPromocion promoNueva = promo->toDataType();
-
-
-            promoNueva.setVendedor(promo->getVendedor());
-            cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
-            cout << "Vendedor de la promocion: " << promoNueva.getVendedor()->getNickname() << endl;
-            cout << "RUT del vendedor: " << promoNueva.getVendedor()->getCodigoRut() << endl;
-
-            for (auto productos: promo->getProductosDentroDePromo()) {
-                DTProducto prod = productos->getProducto()->toDataType();
-                prod.setStock(productos->getProducto()->getStock());
-                prod.setDescripcion(productos->getProducto()->getDescripcion());
-
-                cout << "Nombre del producto: " << prod.getNombre() << endl;
-                cout << "Id del producto: " << prod.getId() << endl;
-                cout << "Descripcion del producto: " << prod.getDescripcion() << endl;
-                cout << "Stock del producto: " << prod.getStock() << endl;
-            }
-        }
-    }  */
-transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
+    transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
 
     bool encontrada = false;
     for (auto promo: promocionesSistemaVigentes) {
@@ -298,23 +239,26 @@ transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transforma
 
         if (nombre == nombrePromocion) {
             DTPromocion promoNueva = promo->toDataType();
+            DTVendedor vendedor = promo->getVendedor()->toDataType();
 
             promoNueva.setVendedor(promo->getVendedor());
             cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
-            cout << "Vendedor de la promocion: " << promoNueva.getVendedor()->getNickname() << endl;
-            cout << "RUT del vendedor: " << promoNueva.getVendedor()->getCodigoRut() << endl;
+            cout << "Vendedor de la promocion: " << vendedor.getNickname() << endl;
+            cout << "RUT del vendedor: " << vendedor.getRut() << endl;
 
             for (auto productos: promo->getProductosDentroDePromo()) {
                 DTProducto prod = productos->getProducto()->toDataType();
                 prod.setStock(productos->getProducto()->getStock());
                 prod.setDescripcion(productos->getProducto()->getDescripcion());
 
+                DTContenido contenidou = productos->toDataType();
+
                 cout << "Nombre del producto: " << prod.getNombre() << endl;
                 cout << "Id del producto: " << prod.getId() << endl;
                 cout << "Descripcion del producto: " << prod.getDescripcion() << endl;
                 cout << "Stock del producto: " << prod.getStock() << endl;
+                cout << "Cantidad mínima para la promoción: " << contenidou.getCantMinima() << endl;
             }
-
             encontrada = true;
             break;
         }
@@ -368,13 +312,11 @@ map<int, Producto *> ControladorProducto::getListaProductos()
 
 void ControladorProducto::imprimirProductosDentroDePromo(vector<Contenido*>Promocion) {
     for (auto contenido : Promocion) {
-        Producto* producto = contenido->getProducto();
-        if (producto != nullptr) {
-            cout << "Producto: " << producto->getNombre() << endl;
-            cout << "Cantidad mínima: " << contenido->getCantMinima() << endl;
-        } else {
-            cout << "Producto no disponible" << endl;
-        }
+        DTContenido contenidou = contenido->toDataType();
+        DTProducto producto = contenido->getProducto()->toDataType();
+
+        cout << "Producto: " << producto.getNombre() << endl;
+        cout << "Cantidad mínima: " << contenidou.getCantMinima() << endl;
     }
 }
 

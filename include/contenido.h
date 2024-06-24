@@ -2,11 +2,15 @@
 #define CONTENIDO_H
 #include "Promocion.h"
 #include "Producto.h"
+#include "../include/DataTypes/DTContenido.h"
+#include "../include/DataTypes/DTProducto.h"
 
 // Esta clase es la clase asociativa producto/promocion
 
 class Producto;
 class Promocion;
+class DTContenido;
+class DTProducto;
 
 class Contenido
 {
@@ -15,7 +19,6 @@ private:
     int cantidad_minima;
 
 public:
-    
     Contenido(Producto *prod, int cantidad_minima);
     ~Contenido();
 
@@ -26,6 +29,7 @@ public:
     Producto *getProducto();
 
     void setCantMinima(int cantMinima);
+    DTContenido toDataType();
 };
 
 #endif
