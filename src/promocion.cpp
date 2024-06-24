@@ -77,3 +77,10 @@ void Promocion::setProductosDentroDePromo(vector<Contenido*> produ) {
 Promocion::Promocion() : descuento(0), nombre(""), descripcion(""), fecha_vencimiento(DTFecha()), productosDentroDePromo(), vendedor(nullptr) {
     // You can add any necessary initialization code here
 }
+void Promocion::setReferencia(string ref) {
+    this->ref = ref;
+}
+
+string Promocion::getReferencia() {
+    return this->ref;
+}

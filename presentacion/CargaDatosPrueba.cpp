@@ -31,6 +31,8 @@ void cargaDatosDePrueba()
     cout << endl;
 
     ICUsuario *ctrlUsuario = Fabrica::getICUsuario();
+    ControladorProducto *ctrlProducto = Fabrica::getICProductos();
+    ctrlProducto->cargarDatosPromocion();
     ctrlUsuario->cargarDatosPrueba();
     std::cout << "Presiona Enter para continuar...";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -84,6 +86,7 @@ void AltaProductoTest()
             std::cout << "Nombre: " << producto.nombre << std::endl;
         }
     }
+
     catch (const std::exception &e)
     {
         std::cerr << e.what() << '\n';

@@ -17,10 +17,13 @@ class Contenido
 private:
     Producto *prod;
     int cantidad_minima;
+    string ref;
 
 public:
     Contenido(Producto *prod, int cantidad_minima);
     ~Contenido();
+    void setReferencia(string ref);
+    string getReferencia(); 
 
     Contenido();
     void setProducto(Producto *produ);

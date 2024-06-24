@@ -22,6 +22,7 @@ private:
     DTFecha fecha_vencimiento;
     vector<Contenido *> productosDentroDePromo;
     Vendedor *vendedor;
+    string ref;
 public:
     Promocion(float descuento, string nombre, string desc, DTFecha fecha_ven);
     ~Promocion();
@@ -33,6 +34,8 @@ public:
     string getNombre();
     DTFecha getFechaVencimiento();
     Vendedor *getVendedor();
+    void setReferencia(string ref);
+    string getReferencia();
 
     void setDescuento(float descuento);
     void setNombre(string nombre);

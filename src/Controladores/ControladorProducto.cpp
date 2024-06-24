@@ -214,6 +214,105 @@ void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
     } 
 }
 
+void ControladorProducto::confirmarAltaPromocion(float descuento, string nombre, string desc, DTFecha fecha_ven, string ref) {
+    vector<Promocion*> promociones;
+
+    Promocion* nP = new Promocion(descuento, nombre, desc, fecha_ven);
+    nP->setReferencia(ref);
+    vector<Promocion*> promocionesVigentes = getpromocionesSistema();
+    promocionesVigentes.push_back(nP);
+    setPromocionesSistema(promocionesVigentes);
+}
+
+void ControladorProducto::cargarDatosPromocion() {
+    DTFecha fechaPM1 = DTFecha(25,10, 2024);
+    DTFecha fechaPM2 = DTFecha(26,10, 2024);
+    DTFecha fechaPM3 = DTFecha(26,10, 2024);
+    DTFecha fechaPM4 = DTFecha(26,3, 2024);
+
+    string descPM1 = "Para que puedas ahorrar en la casa nueva";
+    string descPM2 = "Para que no te quedes sin ropa para las fiestas";
+    string descPM3 = "Para modernizar tu casa";
+    string descPM4 = "Hasta agotar stock";
+
+    string nombrePM1 = "Casa nueva";
+    string nombrePM2 = "Fiesta";
+    string nombrePM3 = "Domotica";
+    string nombrePM4 = "Liquidacion";
+    
+    string refPM1 = "PM1";
+    string refPM2 = "PM2";
+    string refPM3 = "PM3";
+    string refPM4 = "PM4";
+
+    confirmarAltaPromocion(30, nombrePM1, descPM1, fechaPM1, refPM1);
+    confirmarAltaPromocion(20, nombrePM2, descPM2, fechaPM2, refPM2);
+    confirmarAltaPromocion(10, nombrePM3, descPM3, fechaPM3, refPM3);
+    confirmarAltaPromocion(10, nombrePM4, descPM4, fechaPM4, refPM4);
+
+    for (auto promo : promocionesSistema) {
+        cout << "Promoción agregado con éxito: " << endl ;
+        cout << "Nombre de la promoción: " << promo->getNombre() << endl;
+        cout << "Descripción de la promoción: " << promo->getDescripcion() << endl;
+        cout << "Referencia de la promoción: " << promo->getReferencia() << endl;
+    }
+}
+/*
+void ControladorProducto::confirmarAltaContenido(Producto* prod, int cantMin, string refCont) {
+    vector<Promocion*> promociones;
+
+    Contenido* cP = new Contenido(prod, cantMin);
+    cP->setReferencia(refCont);
+    vector<Promocion*> promocionesVigentes = getpromocionesSistema();
+    promocionesVigentes.push_back(nP);
+    setPromocionesSistema(promocionesVigentes);
+}
+
+void ControladorProducto::cargarDatosContenido() {
+
+    string descPM1 = "Para que puedas ahorrar en la casa nueva";
+    string descPM2 = "Para que no te quedes sin ropa para las fiestas";
+    string descPM3 = "Para modernizar tu casa";
+    string descPM4 = "Hasta agotar stock";
+
+    string nombrePM1 = "Casa nueva";
+    string nombrePM2 = "Fiesta";
+    string nombrePM3 = "Domotica";
+    string nombrePM4 = "Liquidacion";
+
+    string refPP1 = "PP1";
+    string refPP2 = "PP2";
+    string refPP3 = "PP3";
+    string refPP4 = "PP4";
+    string refPP5 = "PP5";
+    string refPP6 = "PP6";
+    string refPP7 = "PP7";
+
+    Producto* nV1 = new Producto();
+    Producto* nV2 = new Producto();
+    Producto* nV3 = new Producto();
+    Producto* nV4 = new Producto();
+    Producto* nV5 = new Producto();
+    Producto* nV6 = new Producto();
+    Producto* nV7 = new Producto();
+
+    confirmarAltaContenido(nV1, 1, refPP1);
+    confirmarAltaContenido(nV2, 1, refPP2);
+    confirmarAltaContenido(nV3, 1, refPP3);
+    confirmarAltaContenido(nV4, 2, refPP4);
+    confirmarAltaContenido(nV5, 3, refPP5);
+    confirmarAltaContenido(nV6, 2, refPP6);
+    confirmarAltaContenido(nV7, 1, refPP7);
+    
+
+
+    for (auto promo : promocionesSistema) {
+        cout << "Promoción agregado con éxito: " << endl ;
+        cout << "Nombre de la promoción: " << promo->getNombre() << endl;
+        cout << "Descripción de la promoción: " << promo->getDescripcion() << endl;
+    }
+}*/
+
 void ControladorProducto::seleccionarPromocion(string nombre) {
     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
 

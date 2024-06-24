@@ -54,6 +54,9 @@ public:
     virtual bool compararFechas(DTFecha fecha1, DTFecha fecha2) = 0;
     virtual void seleccionarPromocion(string nombre) = 0;
     virtual void imprimirProductosDentroDePromo(vector<Contenido*>Promocion) = 0;
+    virtual void confirmarAltaPromocion(float descuento, string nombre, string desc, DTFecha fecha_ven, string ref) = 0;
+    virtual void cargarDatosPromocion() = 0;
+    /*virtual void cargarDatosContenido() = 0;s
+    virtual void confirmarAltaContenido() = 0;*/
 };
-
 #endif // ICPRODUCTOS_H

@@ -31,3 +31,10 @@ void Contenido::setProducto(Producto *produ)
 DTContenido Contenido::toDataType() {
     return DTContenido(getProducto()->toDataType(), getCantMinima());
 }
+
+void Contenido::setReferencia(string ref) {
+    this->ref = ref;
+}
+string Contenido::getReferencia() {
+    return ref;
+}

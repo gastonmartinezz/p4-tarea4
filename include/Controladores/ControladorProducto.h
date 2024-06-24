@@ -80,6 +80,10 @@ public:
     bool compararFechas(DTFecha fecha1, DTFecha fecha2);
     void seleccionarPromocion(string nombre);
     void imprimirProductosDentroDePromo(vector<Contenido*>Promocion);
+    void confirmarAltaPromocion(float descuento, string nombre, string desc, DTFecha fecha_ven, string ref);
+    void cargarDatosPromocion();
+    /*void cargarDatosContenido();
+    void confirmarAltaContenido();*/
 };
 
 #endif // CONTROLADORPRODUCTO_H
