@@ -49,7 +49,7 @@ public:
     std::string getCiudadResidencia() const;
     std::string getCalle() const;
     int getNumeroPuerta() const;
-
+    std::string toString() const;
     ~DTDireccion();
 };
 
