@@ -58,15 +58,17 @@ void crearPromocion() {
 
         cout << "Ingrese el numero de mes de la fecha de vencimiento: " << endl;
         cin >> mes;
-        if (cin.fail()) {
+        while (cin.fail() || mes < 1 || mes > 12) {
             cerr << "Error: Entrada no válida para el mes de la fecha de vencimiento." << endl;
-            return;
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Mes inválido. Por favor, ingrese un mes entre 1 y 12: ";
+            cin >> mes;
         }
 
         cout << "Ingrese el año de la fecha de vencimiento: " << endl;
         cin >> anio;
-        while (cin.fail() || anio < 1900 || anio > 2100)
-        { // Puedes ajustar el rango según tus necesidades
+        while (cin.fail() || anio < 1900 || anio > 2100) { 
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             cout << "Año inválido. Por favor, ingrese un año razonable: ";
@@ -76,16 +78,15 @@ void crearPromocion() {
         fechaVencimiento = DTFecha(dia, mes, anio);
 
         // Muestro los datos de los vendedores para que el administrador elija uno con el nickname.
-        vector<DTUsuario> vendedores = ctrlUsuario->listarUsuarios();
-        //vector<DTVendedor> vendedores = ctrlUsuario->listaVendedor();
+        vector<DTVendedor> vendedores = ctrlUsuario->listaVendedor();
         cout << "Lista de Vendedores:" << endl;
-        if (vendedores.size() == 0) {
+        if (vendedores.empty()) {
             throw invalid_argument("No hay usuarios registrados.");
         }
 
-        for (vector<DTVendedor>::size_type i = 0; i < vendedores.size(); ++i) {
+        for (vector<DTVendedor>::size_type i = 0; i < vendedores.size(); i++) {
             cout << i << "-";
-            cout << vendedores[i].getNombre() << endl;
+            cout << vendedores[i].getNickname() << endl;
         }
         
         // El usuario selecciona un vendedor de la lista por su nickname.
@@ -95,36 +96,81 @@ void crearPromocion() {
 
         //Guardo el objeto del vendedor para asignarle a la promocion luego.
         Vendedor* vendedorPromocion = ctrlUsuario->findVendedor(nickVendedor);
-
-        ctrlProducto->listarProductosVendedor(nickVendedor, ctrlUsuario->listaVendedor());
+        if (!vendedorPromocion) {
+            throw invalid_argument("Error: Vendedor no encontrado.");
+        }
 
         // Invoco la función para ir agregando los productos a la promoción.
+        ctrlProducto->listarProductosVendedor(nickVendedor, ctrlUsuario->listaVendedor());
+
+        
         string respuesta;
         int idProducto;
         int cantMin;
+        vector<Contenido *> productosPromocion; //Vector de Contenido para ir guardando los productos a la Promoción
 
         cout << "Deseas agregar un producto a la promoción? (si/no)" << endl;
         cin >> respuesta;
+        /* while(cin.fail() || respuesta != "SI" || respuesta != "S" || respuesta != "NO" || respuesta != "N") {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Respuesta inválida, indique solamente si/no." << endl;
+            cin >> respuesta;
+        } */
 
         transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
 
         if (respuesta == "SI" || respuesta == "S") { 
-            ctrlProducto->listarProductosVendedor(nickVendedor, ctrlUsuario->listaVendedor());
-        } else {
-            cout << "No se ingresarán productos a la promoción y se eliminará esta misma." << endl;
-            return;
-        }
-        
-
-        //Vector de Contenido para ir guardando los productos a la Promoción
-        vector<Contenido *> productosPromocion;
-
-        //Mecanismo para ir agregando productos a la promoción
-        bool seguir = true;
-        while (seguir) {
             cout << "Ingrese el Id del producto que desea agregar a la promoción: " << endl;
             cin >> idProducto;
+            if (cin.fail()) {
+                throw invalid_argument("Error: Entrada no válida para el Id del producto.");
+            }
 
+            cout << "Ingrese la cantidad mínima de ese producto para que la promoción sea válida: " << endl;
+            cin >> cantMin;
+            if (cin.fail()) {
+                throw invalid_argument("Error: Entrada no válida para la cantidad mínima.");
+            }
+
+            //Revisando si el producto ya pertenece a una promocion
+            if (!(ctrlProducto->productoEnPromoExistente(idProducto))) {
+                Contenido* contenido = new Contenido(ctrlProducto->getProducto(idProducto),cantMin);
+                productosPromocion.push_back(contenido);
+
+            } else { cout << "Este producto no se puede agregar a la promoción ya que ya pertenece a otra promoción vigente." << endl; }
+
+        } else if (respuesta == "NO" || respuesta == "N") {
+            cout << "No se van a agregar productos a la promoción." << endl;
+            cout << "Presiona Enter para continuar...";
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.get();
+            return;
+        }
+
+        cout << "Desea agregar otro producto a la promoción? (si/no)" << endl;
+        cin >> respuesta;
+        /* while(cin.fail() || respuesta != "SI" || respuesta != "S" || respuesta != "NO" || respuesta != "N") {
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Respuesta inválida, indique solamente si/no." << endl;
+            cin >> respuesta;
+        } */
+        transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
+        
+        //Mecanismo para ir agregando productos a la promoción
+        bool seguir = true;
+        if (!((respuesta == "SI") || (respuesta == "S"))) {
+            seguir = false;
+            cout << "No se van a agregar más productos a la promoción." << endl;
+            cout << "-------------------------------------------------" << endl;
+        }
+
+        while (seguir) {
+            ctrlProducto->listarProductosVendedor(nickVendedor, ctrlUsuario->listaVendedor());
+            cout << "Ingrese el Id del producto que desea agregar a la promoción: " << endl;
+            cin >> idProducto;
+            
             cout << "Ingrese la cantidad mínima de ese producto para que la promoción sea válida: " << endl;
             cin >> cantMin;
             
@@ -139,6 +185,12 @@ void crearPromocion() {
             
             cout << "Desea agregar otro producto a la promoción? (si/no)" << endl;
             cin >> respuesta;
+            /* if (cin.fail() || respuesta != "SI" || respuesta != "S" || respuesta != "NO" || respuesta != "N") {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cout << "Respuesta inválida, indique solamente si/no." << endl;
+                cin >> respuesta;
+            } */
 
             transform(respuesta.begin(), respuesta.end(), respuesta.begin(), ::toupper);
 
@@ -151,8 +203,14 @@ void crearPromocion() {
         promoNueva->setProductosDentroDePromo(productosPromocion);
         promoNueva->setVendedor(vendedorPromocion);
 
-        ctrlProducto->getpromocionesSistemaVigentes().push_back(promoNueva);
-        ctrlProducto->getpromocionesSistema().push_back(promoNueva);
+        vector<Promocion*> promocionesVigentes = ctrlProducto->getpromocionesSistemaVigentes();
+        vector<Promocion*> promocionesTotales = ctrlProducto->getpromocionesSistema();
+
+        promocionesVigentes.push_back(promoNueva);
+        promocionesTotales.push_back(promoNueva);
+
+        ctrlProducto->setPromocionesSistema(promocionesTotales);
+        ctrlProducto->setPromocionesSistemaVigentes(promocionesVigentes);
 
         cout << "Promoción ingresada: " << endl;
 
@@ -165,10 +223,10 @@ void crearPromocion() {
         cout << "Productos dentro de la Promoción: " << endl;
         ctrlProducto->imprimirProductosDentroDePromo(promoNueva->getProductosDentroDePromo());
         cout << "La promoción fue ingresada con éxito." << endl;
-     }
-    catch (const std::exception &e) {
+    } catch (const std::exception &e) {
         cerr << e.what() << '\n';
     };
+
     std::cout << "Presiona Enter para continuar...";
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     std::cin.get(); // Espera que el usuario presione Enter 

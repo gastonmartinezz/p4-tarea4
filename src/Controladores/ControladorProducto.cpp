@@ -211,22 +211,6 @@ void ControladorProducto::incrementarContador() {
 //     }
 // }
 
-// bool ControladorProducto::productoEnPromoExistente(int id) {
-/*     bool b;
-    map<int, Contenido*> copiaPromocionesSistemasVigentes = getPromocionesSistemaVigentes();
-    for (auto promo : copiaPromocionesSistemasVigentes) {
-        for (auto productos : promo->getProductosDentroDePromo()) {
-            if (id == productos->getProducto()->getId()) {
-                b = true;
-                break;
-            } else {
-                b = false;
-            }
-         }
-     }
-    return b; */
-//}
-
 //Funcion para comparar fechas
 bool ControladorProducto::compararFechas(DTFecha fecha1, DTFecha fecha2) {
      if (fecha1.getAnio() > fecha2.getAnio()) {
@@ -254,16 +238,18 @@ void ControladorProducto::obtenerPromocionesActivas(DTFecha fecha) {
     }
 
     for (auto promociones: promocionesSistemaVigentes) {
+        cout << "Promociones Vigentes: " << endl;
+        cout << "----------------------" << endl;
         cout << "Nombre de la promocion: " << promociones->getNombre() << endl;
         cout << "Descripcion de la promocion: " << promociones->getDescripcion() << endl;
         cout << "Descuento de la promocion: " << promociones->getDescuento() << endl;
         cout << "Fecha de Vencimiento de la promocion: " << promociones->getFechaVencimiento().toString() << endl;
-        cout << "Vendedor de la promocion: " << promociones->getVendedor() << endl;
+        cout << "Vendedor de la promocion: " << promociones->getVendedor()->getNickname() << endl;
     } 
 }
 
 void ControladorProducto::seleccionarPromocion(string nombre) {
-    transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
+/*     transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
 
     for (auto promo: promocionesSistemaVigentes) {
         string nombrePromocion = promo->getNombre();
@@ -272,11 +258,11 @@ void ControladorProducto::seleccionarPromocion(string nombre) {
 
         if (nombre == nombrePromocion) {
             DTPromocion promoNueva = promo->toDataType();
-            //Imprimir datos del vendedor y los productos de la promocion
-            //(fijarse en cambiar el tipo de devolucion de la funcion)
+
+
             promoNueva.setVendedor(promo->getVendedor());
             cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
-            cout << "Vendedor de la promocion: " << promoNueva.getVendedor() << endl;
+            cout << "Vendedor de la promocion: " << promoNueva.getVendedor()->getNickname() << endl;
             cout << "RUT del vendedor: " << promoNueva.getVendedor()->getCodigoRut() << endl;
 
             for (auto productos: promo->getProductosDentroDePromo()) {
@@ -290,24 +276,63 @@ void ControladorProducto::seleccionarPromocion(string nombre) {
                 cout << "Stock del producto: " << prod.getStock() << endl;
             }
         }
-    } 
+    }  */
+transform(nombre.begin(), nombre.end(), nombre.begin(), ::toupper); //transformar el string de minúscula a mayúscula
+
+    bool encontrada = false;
+    for (auto promo: promocionesSistemaVigentes) {
+        string nombrePromocion = promo->getNombre();
+
+        transform(nombrePromocion.begin(), nombrePromocion.end(), nombrePromocion.begin(), ::toupper);
+
+        if (nombre == nombrePromocion) {
+            DTPromocion promoNueva = promo->toDataType();
+
+            promoNueva.setVendedor(promo->getVendedor());
+            cout << "Nombre de la promocion: " << promoNueva.getNombre() << endl;
+            cout << "Vendedor de la promocion: " << promoNueva.getVendedor()->getNickname() << endl;
+            cout << "RUT del vendedor: " << promoNueva.getVendedor()->getCodigoRut() << endl;
+
+            for (auto productos: promo->getProductosDentroDePromo()) {
+                DTProducto prod = productos->getProducto()->toDataType();
+                prod.setStock(productos->getProducto()->getStock());
+                prod.setDescripcion(productos->getProducto()->getDescripcion());
+
+                cout << "Nombre del producto: " << prod.getNombre() << endl;
+                cout << "Id del producto: " << prod.getId() << endl;
+                cout << "Descripcion del producto: " << prod.getDescripcion() << endl;
+                cout << "Stock del producto: " << prod.getStock() << endl;
+            }
+
+            encontrada = true;
+            break;
+        }
+    }
+
+    if (!encontrada) {
+        cout << "No se encontró ninguna promoción con ese nombre." << endl;
+    }
 }
 
 bool ControladorProducto::productoEnPromoExistente(int id) {
-    bool b = false;
-    if (promocionesSistemaVigentes.size() == 0) {
-        return b = false;
-    } else {
-        for (vector<Promocion *>::size_type i = 0; i < promocionesSistemaVigentes.size(); i++) {
-            for (vector<Contenido *>::size_type h = 0; h < promocionesSistemaVigentes[i]->getProductosDentroDePromo().size(); h++) {
-                if (id == promocionesSistemaVigentes[i]->getProductosDentroDePromo()[h]->getProducto()->getId()) {
-                    return b = true;
-                    break;
+    if (promocionesSistemaVigentes.empty()) {
+        return false;
+    }
+
+    for (Promocion* promocion : promocionesSistemaVigentes) {
+
+        for (Contenido* contenido : promocion->getProductosDentroDePromo()) {
+            Producto* producto = contenido->getProducto();
+
+            if (producto) {
+                if (producto->getId() == id) {
+                    return true;
                 }
-            }
+            } 
         }
     }
-    return b;
+
+    return false;
 }
 
 
@@ -342,3 +367,10 @@ void ControladorProducto::imprimirProductosDentroDePromo(vector<Contenido*>Promo
     }
 }
 
+void ControladorProducto::setPromocionesSistemaVigentes(vector<Promocion*> promoSisV) {
+    this->promocionesSistemaVigentes = promoSisV;
+}
+
+void ControladorProducto::setPromocionesSistema(vector<Promocion*> promoSis) {
+    this->promocionesSistema = promoSis;
+}

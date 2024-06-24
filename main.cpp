@@ -61,9 +61,9 @@ void displayAndProcessMenu()
                 case 3:
                     consultarProducto();
                     break;
-                // case 4:
-                //     consultarPromocion();
-                //     break;
+                case 4:
+                    consultarPromocion();
+                    break;
                 case 5:
                     crearPromocion();
                     break;

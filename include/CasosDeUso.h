@@ -10,3 +10,4 @@ void ExpedienteUsuario();
 void consultarProducto();
 void Fecha();
 void AltaProductoTest();
+void consultarPromocion();

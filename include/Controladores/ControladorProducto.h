@@ -78,6 +78,9 @@ public:
     void incrementarContador();
     vector<Promocion*> getpromocionesSistemaVigentes();
     vector<Promocion*> getpromocionesSistema();
+    void setPromocionesSistemaVigentes(vector<Promocion*> promoSisV);
+    void setPromocionesSistema(vector<Promocion*> promoSis);
+
     //Contenido* seleccionarProductosParaPromocion(string nickname, Producto* prod, int cant_minima); 
 
     //map<int, Producto*> getListaProductos();
